@@ -6662,7 +6662,7 @@ const ql = /* @__PURE__ */ Gl(Wl), Kl = ["placeholder"], ou = {
       ref_key: "phoneInput",
       ref: r,
       placeholder: c.$props.placeholder,
-      class: V(`mt-1 !text-base bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-sm ${o.value ? "border-green-500 iti__tel-input focus:outline-green-500" : ""}`),
+      class: V(`mt-1 !text-base bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-sm iti__tel-input ${o.value ? "border-green-500 focus:outline-green-500" : ""}`),
       onInput: u
     }, null, 42, Kl));
   }

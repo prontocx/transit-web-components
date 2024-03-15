@@ -1,5 +1,5 @@
 <template>
-  <input ref="phoneInput" :placeholder="$props.placeholder" :class="`mt-1 !text-base bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-sm ${isValidPhoneNumber ? 'border-green-500 iti__tel-input focus:outline-green-500' : ''}`" @input="updateInput">
+  <input ref="phoneInput" :placeholder="$props.placeholder" :class="`mt-1 !text-base bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-sm iti__tel-input ${isValidPhoneNumber ? 'border-green-500 focus:outline-green-500' : ''}`" @input="updateInput">
 </template>
 <script setup>
 import { ref, onMounted } from 'vue'
