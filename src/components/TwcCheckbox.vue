@@ -1,9 +1,9 @@
 <template>
-  <fwb-checkbox v-bind="$props" />
+  <FwbToggle v-bind="$props" />
 </template>
 
 <script setup>
-import { FwbCheckbox } from 'flowbite-vue'
+import { FwbToggle } from 'flowbite-vue'
 </script>
 
 <style scoped>

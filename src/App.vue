@@ -2,9 +2,11 @@
   <fwb-tabs v-model="activeTab" variant="underline" class="p-5">
     <!-- Buttons -->
     <fwb-tab name="buttons" title="Buttons">
+      <TwcButton size="sm">Primary (small)</TwcButton>
+      <span class="ml-2"></span>
       <TwcButton @click="clicked">Primary</TwcButton>
       <span class="ml-2"></span>
-      <TwcButton size="lg">Primary (LG)</TwcButton>
+      <TwcButton size="lg">Primary (large)</TwcButton>
       <span class="ml-2"></span>
       <TwcButton square>Primary (Square)</TwcButton>
       <span class="ml-2"></span>
@@ -16,6 +18,12 @@
       <span class="ml-2"></span>
       <TwcButton disabled>Disable</TwcButton>
       <span class="ml-2"></span>
+      <TwcButton flat>Flat</TwcButton>
+      <span class="ml-2"></span>
+      <TwcButton link href="https://www.google.com">Link</TwcButton>
+      <span class="ml-2"></span>
+      <TwcButton icon>→</TwcButton>
+      
     </fwb-tab>
 
     <!-- Inputs -->
