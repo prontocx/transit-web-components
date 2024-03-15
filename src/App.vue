@@ -177,6 +177,11 @@
 
       <TwcLabel class="italic text-red-500">With Custom class</TwcLabel>
     </fwb-tab>
+
+     <!-- PhoneInput -->
+     <fwb-tab name="phoneInputs" title="Phone Inputs">
+      <TwcPhoneInput placeholder="Mobile phone"></TwcPhoneInput>
+    </fwb-tab>
   </fwb-tabs>
 </template>
 
@@ -191,6 +196,7 @@ import TwcHeading from "./components/TwcHeading.vue"
 import TwcLabel from "./components/TwcLabel.vue"
 import TwcLink from "./components/TwcLink.vue"
 import TwcParagraph from "./components/TwcParagraph.vue"
+import TwcPhoneInput from './components/TwcPhoneInput.vue'
 
 const activeTab = ref('buttons')
 
