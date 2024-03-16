@@ -5585,12 +5585,13 @@ const Fl = ["disabled"], Ml = /* @__PURE__ */ J({
   },
   setup(e) {
     const t = e, r = P(() => {
+      let n = "text-base	";
       if (t.flat)
-        return "border-0 bg-transparent text-gray-800 hover:bg-gray-300";
+        return `${n}border-0 bg-transparent text-gray-800 hover:bg-gray-300`;
       if (t.icon)
-        return "border-0 bg-transparent text-gray-800 hover:bg-gray-300 p-2";
+        return `${n}border-0 bg-transparent text-gray-800 hover:bg-gray-300 p-2`;
       if (t.link)
-        return "border-0 bg-transparent text-gray-800 hover:bg-transparent hover:underline p-0 text-blue-700";
+        return `${n}border-0 bg-transparent text-gray-800 hover:bg-transparent hover:underline p-0 text-blue-700`;
     });
     return (n, o) => (L(), q(A(Eo), ct(n.$props, { class: r.value }), {
       default: Z(() => [

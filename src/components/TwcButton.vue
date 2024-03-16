@@ -26,16 +26,19 @@ const props = defineProps({
 });
 
 const classes = computed(() => {
+
+  let result = "text-base	";
+
   if (props.flat) {
-    return "border-0 bg-transparent text-gray-800 hover:bg-gray-300";
+    return `${result}border-0 bg-transparent text-gray-800 hover:bg-gray-300`;
   }
 
   if (props.icon) {
-    return "border-0 bg-transparent text-gray-800 hover:bg-gray-300 p-2";
+    return `${result}border-0 bg-transparent text-gray-800 hover:bg-gray-300 p-2`;
   }
 
   if (props.link) {
-    return "border-0 bg-transparent text-gray-800 hover:bg-transparent hover:underline p-0 text-blue-700";
+    return `${result}border-0 bg-transparent text-gray-800 hover:bg-transparent hover:underline p-0 text-blue-700`;
   }
 })
 </script>
