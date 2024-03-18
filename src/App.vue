@@ -23,7 +23,7 @@
       <TwcButton link href="https://www.google.com">Link</TwcButton>
       <span class="ml-2"></span>
       <TwcButton icon>→</TwcButton>
-      
+
     </fwb-tab>
 
     <!-- Inputs -->
@@ -182,6 +182,29 @@
     <fwb-tab name="phoneInputs" title="Phone Inputs">
       <TwcPhoneInput placeholder="Mobile phone"></TwcPhoneInput>
     </fwb-tab>
+
+    <!-- Spinners -->
+    <fwb-tab name="spinners" title="Spinners">
+      <TwcLabel class="mb-2">Default 0.75s duration</TwcLabel>
+      <TwcSpinner />
+      <hr class="my-4" />
+      <TwcLabel class="mb-2">1 second duration</TwcLabel>
+      <TwcSpinner duration="1" />
+      <hr class="my-4" />
+      <TwcLabel class="mb-2">1.5 second duration</TwcLabel>
+      <TwcSpinner duration="1.5" />
+      <hr class="my-4" />
+      <TwcLabel class="mb-2">2 seconds duration</TwcLabel>
+      <TwcSpinner duration="2" />
+      <hr class="my-4" />
+      <TwcLabel class="mb-2">3 seconds duration</TwcLabel>
+      <TwcSpinner duration="3" />
+      <hr class="my-4" />
+      <TwcLabel class="mb-2">Different colors</TwcLabel>
+      <TwcSpinner color="text-red-500" class="mr-4" />
+      <TwcSpinner color="text-blue-500" duration="1" />
+      <TwcSpinner class="text-purple-500 ml-4" duration="1.5" />
+    </fwb-tab>
   </fwb-tabs>
 </template>
 
@@ -197,6 +220,7 @@ import TwcLabel from "./components/TwcLabel.vue"
 import TwcLink from "./components/TwcLink.vue"
 import TwcParagraph from "./components/TwcParagraph.vue"
 import TwcPhoneInput from './components/TwcPhoneInput.vue'
+import TwcSpinner from './components/TwcSpinner.vue'
 
 const activeTab = ref('buttons')
 

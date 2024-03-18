@@ -1,4 +1,4 @@
-import { reactive as wn, defineComponent as J, useAttrs as Ot, openBlock as L, createElementBlock as M, mergeProps as ct, unref as A, createTextVNode as tt, toDisplayString as pe, createBlock as q, resolveDynamicComponent as pt, normalizeClass as V, withCtx as Z, ref as he, provide as _n, h as Ye, TransitionGroup as xn, pushScopeId as kn, popScopeId as Cn, toRefs as me, renderSlot as B, createCommentVNode as Q, createElementVNode as G, nextTick as Sn, computed as P, resolveComponent as it, normalizeProps as ye, Fragment as Ft, Comment as $n, withDirectives as Mt, isRef as Fr, vModelDynamic as Tn, renderList as In, vModelSelect as Ln, vModelCheckbox as Pn, useSlots as An, getCurrentInstance as En, watch as Jt, guardReactiveProps as Se, withScopeId as Nn, normalizeStyle as xt, withKeys as Dn, createVNode as zn, getCurrentScope as On, onScopeDispose as Fn, inject as Mn, createSlots as Mr, onMounted as Bn } from "vue";
+import { reactive as wn, defineComponent as J, useAttrs as Ot, openBlock as L, createElementBlock as F, mergeProps as ct, unref as A, createTextVNode as tt, toDisplayString as pe, createBlock as q, resolveDynamicComponent as pt, normalizeClass as V, withCtx as Z, ref as he, provide as _n, h as Ye, TransitionGroup as xn, pushScopeId as kn, popScopeId as Cn, toRefs as me, renderSlot as B, createCommentVNode as Q, createElementVNode as G, nextTick as Sn, computed as P, resolveComponent as it, normalizeProps as ye, Fragment as Ft, Comment as $n, withDirectives as Mt, isRef as Fr, vModelDynamic as Tn, renderList as In, vModelSelect as Ln, vModelCheckbox as Pn, useSlots as An, getCurrentInstance as En, watch as Jt, guardReactiveProps as Se, withScopeId as Nn, normalizeStyle as xt, withKeys as Dn, createVNode as zn, getCurrentScope as On, onScopeDispose as Fn, inject as Mn, createSlots as Mr, onMounted as Bn } from "vue";
 wn({});
 function jn() {
   for (var e = 0, t, r, n = ""; e < arguments.length; )
@@ -324,7 +324,7 @@ function ho() {
     return ["", "0", N];
   }, W = function() {
     return ["auto", "avoid", "all", "avoid-page", "page", "left", "right", "column"];
-  }, F = function() {
+  }, M = function() {
     return [xe, Je];
   }, j = function() {
     return [xe, N];
@@ -335,12 +335,12 @@ function ho() {
       colors: [Me],
       spacing: [ee],
       blur: ["none", "", le, N],
-      brightness: F(),
+      brightness: M(),
       borderColor: [e],
       borderRadius: ["none", "", "full", le, N],
       borderSpacing: l(),
       borderWidth: d(),
-      contrast: F(),
+      contrast: M(),
       grayscale: D(),
       hueRotate: j(),
       invert: D(),
@@ -349,10 +349,10 @@ function ho() {
       gradientColorStopPositions: [ao, It],
       inset: i(),
       margin: i(),
-      opacity: F(),
+      opacity: M(),
       padding: l(),
-      saturate: F(),
-      scale: F(),
+      saturate: M(),
+      scale: M(),
       sepia: D(),
       skew: j(),
       space: l(),
@@ -2391,7 +2391,7 @@ const wo = /* @__PURE__ */ G("path", {
   },
   setup(e) {
     const t = e, { spinnerClasses: r } = yo(me(t));
-    return (n, o) => (L(), M("svg", {
+    return (n, o) => (L(), F("svg", {
       class: V(A(r)),
       fill: "none",
       role: "status",
@@ -2611,7 +2611,7 @@ const Io = {
       disabled: A(m) === "button" && _.disabled
     }), {
       default: Z(() => [
-        !s.value && (_.$slots.prefix || a.value) ? (L(), M("div", Io, [
+        !s.value && (_.$slots.prefix || a.value) ? (L(), F("div", Io, [
           a.value ? (L(), q(Ze, {
             key: 0,
             color: A(c),
@@ -2621,7 +2621,7 @@ const Io = {
         G("span", {
           class: V(o.value)
         }, [
-          s.value && (_.$slots.prefix || a.value) ? (L(), M("span", Lo, [
+          s.value && (_.$slots.prefix || a.value) ? (L(), F("span", Lo, [
             a.value ? (L(), q(Ze, {
               key: 0,
               color: A(c),
@@ -2629,7 +2629,7 @@ const Io = {
             }, null, 8, ["color", "size"])) : B(_.$slots, "prefix", { key: 1 })
           ])) : Q("", !0),
           B(_.$slots, "default"),
-          s.value && (_.$slots.suffix || u.value) ? (L(), M("span", Po, [
+          s.value && (_.$slots.suffix || u.value) ? (L(), F("span", Po, [
             u.value ? (L(), q(Ze, {
               key: 0,
               color: A(c),
@@ -2637,7 +2637,7 @@ const Io = {
             }, null, 8, ["color", "size"])) : B(_.$slots, "suffix", { key: 1 })
           ])) : Q("", !0)
         ], 2),
-        !s.value && (_.$slots.suffix || u.value) ? (L(), M("div", Ao, [
+        !s.value && (_.$slots.suffix || u.value) ? (L(), F("div", Ao, [
           u.value ? (L(), q(Ze, {
             key: 0,
             color: A(c),
@@ -3567,7 +3567,7 @@ const aa = /* @__PURE__ */ J({
     } = ia(me(r)), u = () => {
       t("close"), n.value = !1;
     };
-    return (c, p) => n.value ? (L(), M("div", {
+    return (c, p) => n.value ? (L(), F("div", {
       key: 0,
       id: "toast-default",
       class: V(A(s)),
@@ -3582,7 +3582,7 @@ const aa = /* @__PURE__ */ J({
           c.$slots.icon ? B(c.$slots, "icon", {
             key: 0,
             class: V({ "ml-3": e.type !== "empty" })
-          }) : e.type === "success" ? (L(), M("svg", la, da)) : e.type === "danger" ? (L(), M("svg", ca, ha)) : e.type === "warning" ? (L(), M("svg", fa, ma)) : Q("", !0)
+          }) : e.type === "success" ? (L(), F("svg", la, da)) : e.type === "danger" ? (L(), F("svg", ca, ha)) : e.type === "warning" ? (L(), F("svg", fa, ma)) : Q("", !0)
         ]),
         _: 3
       }, 8, ["class"])) : Q("", !0),
@@ -3591,7 +3591,7 @@ const aa = /* @__PURE__ */ J({
       }, [
         B(c.$slots, "default")
       ], 2),
-      e.closable ? (L(), M("button", {
+      e.closable ? (L(), F("button", {
         key: 1,
         "aria-label": "Close",
         class: "border-none ml-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700",
@@ -3800,11 +3800,11 @@ const $a = function(e) {
     m || _ === "none" || E.push(...function(i, l, d, f) {
       const v = te(i);
       let w = function(x, S, D) {
-        const W = ["left", "right"], F = ["right", "left"], j = ["top", "bottom"], ae = ["bottom", "top"];
+        const W = ["left", "right"], M = ["right", "left"], j = ["top", "bottom"], ae = ["bottom", "top"];
         switch (x) {
           case "top":
           case "bottom":
-            return D ? S ? F : W : S ? W : F;
+            return D ? S ? M : W : S ? W : M;
           case "left":
           case "right":
             return S ? j : ae;
@@ -4897,7 +4897,7 @@ const Ua = {
   return r;
 };
 function Ga(e, t, r, n, o, s) {
-  return L(), M("div", {
+  return L(), F("div", {
     ref: "reference",
     class: V(["v-popper", {
       "v-popper--shown": e.slotData.isShown
@@ -5024,7 +5024,7 @@ const fn = (e = "theme") => ({
 ];
 function rl(e, t, r, n, o, s) {
   const a = it("ResizeObserver");
-  return L(), M("div", {
+  return L(), F("div", {
     id: e.popperId,
     ref: "popover",
     class: V(["v-popper__popper", [
@@ -5062,7 +5062,7 @@ function rl(e, t, r, n, o, s) {
       } : void 0)
     }, [
       G("div", Za, [
-        e.mounted ? (L(), M(Ft, { key: 0 }, [
+        e.mounted ? (L(), F(Ft, { key: 0 }, [
           G("div", null, [
             B(e.$slots, "default")
           ]),
@@ -5323,13 +5323,13 @@ const pl = { class: "flex relative" }, hl = {
       t.validationStatus === Ae.Success ? "text-green-600 dark:text-green-500" : "",
       t.validationStatus === Ae.Error ? "text-red-600 dark:text-red-500" : ""
     ));
-    return (a, u) => (L(), M("div", null, [
-      a.label ? (L(), M("label", {
+    return (a, u) => (L(), F("div", null, [
+      a.label ? (L(), F("label", {
         key: 0,
         class: V(A(o))
       }, pe(a.label), 3)) : Q("", !0),
       G("div", pl, [
-        a.$slots.prefix ? (L(), M("div", hl, [
+        a.$slots.prefix ? (L(), F("div", hl, [
           B(a.$slots, "prefix")
         ])) : Q("", !0),
         Mt(G("input", ct(a.$attrs, {
@@ -5341,17 +5341,17 @@ const pl = { class: "flex relative" }, hl = {
         }), null, 16, fl), [
           [Tn, A(r)]
         ]),
-        a.$slots.suffix ? (L(), M("div", gl, [
+        a.$slots.suffix ? (L(), F("div", gl, [
           B(a.$slots, "suffix")
         ])) : Q("", !0)
       ]),
-      a.$slots.validationMessage ? (L(), M("p", {
+      a.$slots.validationMessage ? (L(), F("p", {
         key: 1,
         class: V(s.value)
       }, [
         B(a.$slots, "validationMessage")
       ], 2)) : Q("", !0),
-      a.$slots.helper ? (L(), M("p", ml, [
+      a.$slots.helper ? (L(), F("p", ml, [
         B(a.$slots, "helper")
       ])) : Q("", !0)
     ]));
@@ -5410,9 +5410,9 @@ const $l = ["disabled"], Tl = {
       r.validationStatus === ce.Success ? "text-green-600 dark:text-green-500" : "",
       r.validationStatus === ce.Error ? "text-red-600 dark:text-red-500" : ""
     ));
-    return (u, c) => (L(), M("div", null, [
+    return (u, c) => (L(), F("div", null, [
       G("label", null, [
-        u.label ? (L(), M("span", {
+        u.label ? (L(), F("span", {
           key: 0,
           class: V(A(s))
         }, pe(u.label), 3)) : Q("", !0),
@@ -5422,7 +5422,7 @@ const $l = ["disabled"], Tl = {
           class: V(A(o))
         }, [
           G("option", Tl, pe(u.placeholder), 1),
-          (L(!0), M(Ft, null, In(u.options, (p, g) => (L(), M("option", {
+          (L(!0), F(Ft, null, In(u.options, (p, g) => (L(), F("option", {
             key: g,
             value: p.value
           }, pe(p.name), 9, Il))), 128))
@@ -5430,13 +5430,13 @@ const $l = ["disabled"], Tl = {
           [Ln, A(n)]
         ])
       ]),
-      u.$slots.validationMessage ? (L(), M("p", {
+      u.$slots.validationMessage ? (L(), F("p", {
         key: 0,
         class: V(a.value)
       }, [
         B(u.$slots, "validationMessage")
       ], 2)) : Q("", !0),
-      u.$slots.helper ? (L(), M("p", Ll, [
+      u.$slots.helper ? (L(), F("p", Ll, [
         B(u.$slots, "helper")
       ])) : Q("", !0)
     ]));
@@ -5488,7 +5488,7 @@ const Fl = ["disabled"], Ml = /* @__PURE__ */ J({
       toggleColor: u,
       toggleBallClasses: c
     } = Ol(me(r));
-    return (p, g) => (L(), M("label", {
+    return (p, g) => (L(), F("label", {
       class: V(A(o))
     }, [
       Mt(G("input", {
@@ -5514,7 +5514,7 @@ const Fl = ["disabled"], Ml = /* @__PURE__ */ J({
     color: { default: "text-primary-600 dark:text-primary-500" }
   },
   setup(e) {
-    return (t, r) => (L(), M("a", {
+    return (t, r) => (L(), F("a", {
       href: t.href,
       class: V([t.color, "inline-flex items-center hover:underline"])
     }, [
@@ -5561,7 +5561,7 @@ const Fl = ["disabled"], Ml = /* @__PURE__ */ J({
       Hl,
       t.class
     ]));
-    return (n, o) => (L(), M("p", {
+    return (n, o) => (L(), F("p", {
       class: V(r.value)
     }, [
       B(n.$slots, "default")
@@ -5655,7 +5655,7 @@ const Fl = ["disabled"], Ml = /* @__PURE__ */ J({
     function r() {
       return `block text-sm font-medium ${t.class}`;
     }
-    return (n, o) => (L(), M("label", {
+    return (n, o) => (L(), F("label", {
       class: V(r())
     }, [
       B(n.$slots, "default")
@@ -6004,10 +6004,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
           key: "_generateMarkup",
           value: function() {
             this.telInput.classList.add("iti__tel-input"), !this.telInput.hasAttribute("autocomplete") && !(this.telInput.form && this.telInput.form.hasAttribute("autocomplete")) && this.telInput.setAttribute("autocomplete", "off");
-            var i = this.options, l = i.allowDropdown, d = i.showSelectedDialCode, f = i.showFlags, v = i.containerClass, w = i.hiddenInput, x = i.dropdownContainer, S = i.fixDropdownWidth, D = i.useFullscreenPopup, W = i.countrySearch, F = "iti";
-            l && (F += " iti--allow-dropdown"), d && (F += " iti--show-selected-dial-code"), f && (F += " iti--show-flags"), v && (F += " ".concat(v)), D || (F += " iti--inline-dropdown");
+            var i = this.options, l = i.allowDropdown, d = i.showSelectedDialCode, f = i.showFlags, v = i.containerClass, w = i.hiddenInput, x = i.dropdownContainer, S = i.fixDropdownWidth, D = i.useFullscreenPopup, W = i.countrySearch, M = "iti";
+            l && (M += " iti--allow-dropdown"), d && (M += " iti--show-selected-dial-code"), f && (M += " iti--show-flags"), v && (M += " ".concat(v)), D || (M += " iti--inline-dropdown");
             var j = this._createEl("div", {
-              class: F
+              class: M
             });
             this.telInput.parentNode.insertBefore(j, this.telInput);
             var ae = l || f || d;
@@ -6086,12 +6086,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         }, {
           key: "_setInitialState",
           value: function() {
-            var i = arguments.length > 0 && arguments[0] !== t ? arguments[0] : !1, l = this.telInput.getAttribute("value"), d = this.telInput.value, f = l && l.charAt(0) === "+" && (!d || d.charAt(0) !== "+"), v = f ? l : d, w = this._getDialCode(v), x = this._isRegionlessNanp(v), S = this.options, D = S.initialCountry, W = S.autoInsertDialCode, F = S.defaultToFirstCountry;
+            var i = arguments.length > 0 && arguments[0] !== t ? arguments[0] : !1, l = this.telInput.getAttribute("value"), d = this.telInput.value, f = l && l.charAt(0) === "+" && (!d || d.charAt(0) !== "+"), v = f ? l : d, w = this._getDialCode(v), x = this._isRegionlessNanp(v), S = this.options, D = S.initialCountry, W = S.autoInsertDialCode, M = S.defaultToFirstCountry;
             if (w && !x)
               this._updateFlagFromNumber(v);
             else if (D !== "auto" || i) {
               var j = D ? D.toLowerCase() : "", ae = j && this._getCountryData(j, !0);
-              ae ? this._setFlag(j) : w && x ? this._setFlag("us") : F && !v ? (this.defaultCountry = this.preferredCountries.length ? this.preferredCountries[0].iso2 : this.countries[0].iso2, this._setFlag(this.defaultCountry)) : this._setFlag(), !v && W && (this.telInput.value = "+".concat(this.selectedCountryData.dialCode));
+              ae ? this._setFlag(j) : w && x ? this._setFlag("us") : M && !v ? (this.defaultCountry = this.preferredCountries.length ? this.preferredCountries[0].iso2 : this.countries[0].iso2, this._setFlag(this.defaultCountry)) : this._setFlag(), !v && W && (this.telInput.value = "+".concat(this.selectedCountryData.dialCode));
             }
             v && this._updateValFromNumber(v);
           }
@@ -6152,8 +6152,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
               i._updateFlagFromNumber(i.telInput.value) && i._triggerCountryChange();
               var f = d && d.data && /[^+0-9]/.test(d.data), v = d && d.inputType === "insertFromPaste" && i.telInput.value;
               if (f || v ? l = !0 : /[^+0-9]/.test(i.telInput.value) || (l = !1), i.options.formatAsYouType && !l && d.inputType !== "insertFromPaste") {
-                var w = i.telInput.selectionStart, x = i.telInput.value.substring(0, w), S = x.replace(/[^+0-9]/g, "").length, D = d && d.inputType === "deleteContentForward", W = i._formatNumberAsYouType(), F = i._translateCursorPosition(S, W, w, D);
-                i.telInput.value = W, i.telInput.setSelectionRange(F, F);
+                var w = i.telInput.selectionStart, x = i.telInput.value.substring(0, w), S = x.replace(/[^+0-9]/g, "").length, D = d && d.inputType === "deleteContentForward", W = i._formatNumberAsYouType(), M = i._translateCursorPosition(S, W, w, D);
+                i.telInput.value = W, i.telInput.setSelectionRange(M, M);
               }
             }, this.telInput.addEventListener("input", this._handleKeyEvent), this._handleClipboardEvent = function() {
               setTimeout(i._handleKeyEvent);
@@ -6333,8 +6333,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
             d && v && d.charAt(0) !== "+" && (d.charAt(0) !== "1" && (d = "1".concat(d)), d = "+".concat(d)), this.options.showSelectedDialCode && f && d.charAt(0) !== "+" && (d = "+".concat(f).concat(d));
             var w = this._getDialCode(d, !0), x = this._getNumeric(d), S = null;
             if (w) {
-              var D = this.dialCodeToIso2Map[this._getNumeric(w)], W = D.indexOf(this.selectedCountryData.iso2) !== -1 && x.length <= w.length - 1, F = f === "1" && this._isRegionlessNanp(x);
-              if (!F && !W) {
+              var D = this.dialCodeToIso2Map[this._getNumeric(w)], W = D.indexOf(this.selectedCountryData.iso2) !== -1 && x.length <= w.length - 1, M = f === "1" && this._isRegionlessNanp(x);
+              if (!M && !W) {
                 for (var j = 0; j < D.length; j++)
                   if (D[j]) {
                     S = D[j];
@@ -6386,8 +6386,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
               this.isRTL ? this.telInput.style.paddingRight = "".concat(W + 6, "px") : this.telInput.style.paddingLeft = "".concat(W + 6, "px");
             }
             if (this._updatePlaceholder(), d && !w) {
-              var F = this.activeItem;
-              if (F && (F.classList.remove("iti__active"), F.setAttribute("aria-selected", "false")), i) {
+              var M = this.activeItem;
+              if (M && (M.classList.remove("iti__active"), M.setAttribute("aria-selected", "false")), i) {
                 var j = this.countryList.querySelector("#iti-".concat(this.id, "__item-").concat(i, "-preferred")) || this.countryList.querySelector("#iti-".concat(this.id, "__item-").concat(i));
                 j.setAttribute("aria-selected", "true"), j.classList.add("iti__active"), this.activeItem = j;
               }
@@ -6437,13 +6437,13 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         }, {
           key: "_scrollTo",
           value: function(i, l) {
-            var d = this.countryList, f = document.documentElement.scrollTop, v = d.offsetHeight, w = d.getBoundingClientRect().top + f, x = w + v, S = i.offsetHeight, D = i.getBoundingClientRect().top + f, W = D + S, F = D - w + d.scrollTop, j = v / 2 - S / 2;
+            var d = this.countryList, f = document.documentElement.scrollTop, v = d.offsetHeight, w = d.getBoundingClientRect().top + f, x = w + v, S = i.offsetHeight, D = i.getBoundingClientRect().top + f, W = D + S, M = D - w + d.scrollTop, j = v / 2 - S / 2;
             if (D < w)
-              l && (F -= j), d.scrollTop = F;
+              l && (M -= j), d.scrollTop = M;
             else if (W > x) {
-              l && (F += j);
+              l && (M += j);
               var ae = v - S;
-              d.scrollTop = F - ae;
+              d.scrollTop = M - ae;
             }
           }
         }, {
@@ -6667,7 +6667,7 @@ const ql = /* @__PURE__ */ Gl(Wl), Kl = ["placeholder", "data-testid"], ou = {
         geoIpLookup: c,
         utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/19.5.7/js/utils.js"
       });
-    }), (c, p) => (L(), M("input", {
+    }), (c, p) => (L(), F("input", {
       ref_key: "phoneInput",
       ref: r,
       placeholder: c.$props.placeholder,
@@ -6675,6 +6675,43 @@ const ql = /* @__PURE__ */ Gl(Wl), Kl = ["placeholder", "data-testid"], ou = {
       "data-testid": c.$props.dataTestid,
       onInput: u
     }, null, 42, Kl));
+  }
+}, iu = {
+  __name: "TwcSpinner",
+  props: {
+    color: {
+      type: String,
+      default: "text-black"
+    },
+    duration: {
+      type: String,
+      default: ""
+    },
+    class: {
+      type: String,
+      default: ""
+    }
+  },
+  setup(e) {
+    const t = e;
+    function r() {
+      switch (t.duration) {
+        case "1":
+          return "animate-[spin_1.0s_linear_infinite]";
+        case "1.5":
+          return "animate-[spin_1.5s_linear_infinite]";
+        case "2":
+          return "animate-[spin_2.0s_linear_infinite]";
+        case "3":
+          return "animate-[spin_3.0s_linear_infinite]";
+        default:
+          return "animate-[spin_0.75s_linear_infinite]";
+      }
+    }
+    return (n, o) => (L(), F("div", {
+      class: V(`inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-surface ${r()} ${t.color} ${t.class}`),
+      role: "status"
+    }, null, 2));
   }
 };
 export {
@@ -6686,5 +6723,6 @@ export {
   tu as TwcLink,
   ru as TwcParagraph,
   ou as TwcPhoneInput,
-  nu as TwcSelect
+  nu as TwcSelect,
+  iu as TwcSpinner
 };
