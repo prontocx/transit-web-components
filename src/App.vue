@@ -179,7 +179,7 @@
     </fwb-tab>
 
      <!-- PhoneInput -->
-     <fwb-tab name="phoneInputs" title="Phone Inputs">
+    <fwb-tab name="phoneInputs" title="Phone Inputs">
       <TwcPhoneInput placeholder="Mobile phone"></TwcPhoneInput>
     </fwb-tab>
   </fwb-tabs>
