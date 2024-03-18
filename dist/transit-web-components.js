@@ -6697,19 +6697,19 @@ const ql = /* @__PURE__ */ Gl(Wl), Kl = ["placeholder", "data-testid"], ou = {
     function r() {
       switch (t.duration) {
         case "1":
-          return "animate-[spin_1.0s_linear_infinite]";
+          return "!animate-[spin_1.0s_linear_infinite]";
         case "1.5":
-          return "animate-[spin_1.5s_linear_infinite]";
+          return "!animate-[spin_1.5s_linear_infinite]";
         case "2":
-          return "animate-[spin_2.0s_linear_infinite]";
+          return "!animate-[spin_2.0s_linear_infinite]";
         case "3":
-          return "animate-[spin_3.0s_linear_infinite]";
+          return "!animate-[spin_3.0s_linear_infinite]";
         default:
-          return "animate-[spin_0.75s_linear_infinite]";
+          return "!animate-[spin_0.75s_linear_infinite]";
       }
     }
     return (n, o) => (L(), F("div", {
-      class: V(`inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-surface ${r()} ${t.color} ${t.class}`),
+      class: V(`h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-surface ${r()} ${t.color} ${t.class}`),
       role: "status"
     }, null, 2));
   }

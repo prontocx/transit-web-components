@@ -20,9 +20,7 @@
     "build": "vite build",
     "preview": "vite preview"
   },
-  "dependencies": {
-    "transit-web-components": "github:prontocx/transit-web-components"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.4",
     "autoprefixer": "^10.4.17",
