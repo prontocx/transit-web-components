@@ -6626,7 +6626,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   });
 })(vn);
 var Vl = vn.exports, Wl = Vl;
-const ql = /* @__PURE__ */ Gl(Wl), Kl = ["placeholder"], ou = {
+const ql = /* @__PURE__ */ Gl(Wl), Kl = ["placeholder", "data-testid"], ou = {
   __name: "TwcPhoneInput",
   props: {
     ipInfoKey: {
@@ -6640,6 +6640,10 @@ const ql = /* @__PURE__ */ Gl(Wl), Kl = ["placeholder"], ou = {
     displayError: {
       type: Boolean,
       default: !1
+    },
+    dataTestid: {
+      type: String,
+      default: ""
     }
   },
   emits: ["change"],
@@ -6668,6 +6672,7 @@ const ql = /* @__PURE__ */ Gl(Wl), Kl = ["placeholder"], ou = {
       ref: r,
       placeholder: c.$props.placeholder,
       class: V(`mt-1 !text-base bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-sm iti__tel-input ${o.value ? "border-green-500 focus:outline-green-500 bg-green-50" : ""} ${e.displayError ? "border-red-500 focus:outline-red-500 bg-red-50" : ""}`),
+      "data-testid": c.$props.dataTestid,
       onInput: u
     }, null, 42, Kl));
   }
