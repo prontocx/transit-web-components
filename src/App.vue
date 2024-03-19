@@ -205,6 +205,56 @@
       <TwcSpinner color="text-blue-500" duration="1" />
       <TwcSpinner class="text-purple-500 ml-4" duration="1.5" />
     </fwb-tab>
+
+    <!-- Icons -->
+    <fwb-tab name="icons" title="Icons">
+      <TwcLabel class="mb-2">Styles</TwcLabel>
+      Solid
+      <TwcIcon icon="bars" type="solid" size="2x" class="mr-2" />
+      Regular
+      <TwcIcon icon="bars" type="regular" size="2x" class="mr-2" />
+      Light
+      <TwcIcon icon="bars" type="light" size="2x" class="mr-2" />
+      Duotone
+      <TwcIcon icon="bars" type="duotone" size="2x" class="mr-2" />
+      Thin
+      <TwcIcon icon="bars" type="thin" size="2x" class="mr-2" />
+      <hr class="my-4" />
+      <TwcLabel class="mb-2">Sizing</TwcLabel>
+      1x
+      <TwcIcon icon="bars" size="1x" class="mr-2" />
+      2x
+      <TwcIcon icon="bars" size="2x" class="mr-2" />
+      3x
+      <TwcIcon icon="bars" size="3x" class="mr-2" />
+      4x
+      <TwcIcon icon="bars" size="4x" class="mr-2" />
+      2xs
+      <TwcIcon icon="bars" size="2xs" class="mr-2" />
+      xs
+      <TwcIcon icon="bars" size="xs" class="mr-2" />
+      sm
+      <TwcIcon icon="bars" size="sm" class="mr-2" />
+      md
+      <TwcIcon icon="bars" size="sm" class="mr-2" />
+      lg
+      <TwcIcon icon="bars" size="lg" class="mr-2" />
+      <br>
+      <TwcLink href="https://docs.fontawesome.com/web/style/size" class="text-blue-500">FontAwesome Sizing Docs</TwcLink>
+      <hr class="my-4" />
+      <TwcLabel class="mb-2">Sharp</TwcLabel>
+      Solid
+      <TwcIcon sharp icon="bars" type="solid" size="2x" class="mr-2" />
+      Regular
+      <TwcIcon sharp icon="bars" type="regular" size="2x" class="mr-2" />
+      Light
+      <TwcIcon sharp icon="bars" type="light" size="2x" class="mr-2" />
+      Thin
+      <TwcIcon sharp icon="bars" type="thin" size="2x" class="mr-2" />
+      <hr class="my-4" />
+      <TwcLabel class="mb-2">Customs</TwcLabel>
+      <TwcIcon custom icon="nfc-n-mark" size="2x" class="mr-2" />
+    </fwb-tab>
   </fwb-tabs>
 </template>
 
@@ -221,6 +271,7 @@ import TwcLink from "./components/TwcLink.vue"
 import TwcParagraph from "./components/TwcParagraph.vue"
 import TwcPhoneInput from './components/TwcPhoneInput.vue'
 import TwcSpinner from './components/TwcSpinner.vue'
+import TwcIcon from './components/TwcIcon.vue'
 
 const activeTab = ref('buttons')
 
