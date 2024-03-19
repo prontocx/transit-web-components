@@ -1,4 +1,4 @@
-import { reactive as wn, defineComponent as J, useAttrs as Ot, openBlock as L, createElementBlock as F, mergeProps as ct, unref as A, createTextVNode as tt, toDisplayString as pe, createBlock as q, resolveDynamicComponent as pt, normalizeClass as V, withCtx as Z, ref as he, provide as _n, h as Ye, TransitionGroup as xn, pushScopeId as kn, popScopeId as Cn, toRefs as me, renderSlot as B, createCommentVNode as Q, createElementVNode as G, nextTick as Sn, computed as P, resolveComponent as it, normalizeProps as ye, Fragment as Ft, Comment as $n, withDirectives as Mt, isRef as Fr, vModelDynamic as Tn, renderList as In, vModelSelect as Ln, vModelCheckbox as Pn, useSlots as An, getCurrentInstance as En, watch as Jt, guardReactiveProps as Se, withScopeId as Nn, normalizeStyle as xt, withKeys as Dn, createVNode as zn, getCurrentScope as On, onScopeDispose as Fn, inject as Mn, createSlots as Mr, onMounted as Bn } from "vue";
+import { reactive as wn, defineComponent as J, useAttrs as Ot, openBlock as L, createElementBlock as O, mergeProps as ct, unref as A, createTextVNode as tt, toDisplayString as pe, createBlock as q, resolveDynamicComponent as pt, normalizeClass as V, withCtx as Z, ref as he, provide as _n, h as Ye, TransitionGroup as xn, pushScopeId as kn, popScopeId as Cn, toRefs as me, renderSlot as B, createCommentVNode as Q, createElementVNode as G, nextTick as Sn, computed as P, resolveComponent as it, normalizeProps as ye, Fragment as Ft, Comment as $n, withDirectives as Mt, isRef as Fr, vModelDynamic as Tn, renderList as In, vModelSelect as Ln, vModelCheckbox as Pn, useSlots as An, getCurrentInstance as En, watch as Jt, guardReactiveProps as Se, withScopeId as Nn, normalizeStyle as xt, withKeys as Dn, createVNode as zn, getCurrentScope as On, onScopeDispose as Fn, inject as Mn, createSlots as Mr, onMounted as Bn } from "vue";
 wn({});
 function jn() {
   for (var e = 0, t, r, n = ""; e < arguments.length; )
@@ -300,7 +300,7 @@ function po(e) {
   return no.test(e);
 }
 function ho() {
-  var e = U("colors"), t = U("spacing"), r = U("blur"), n = U("brightness"), o = U("borderColor"), s = U("borderRadius"), a = U("borderSpacing"), u = U("borderWidth"), c = U("contrast"), p = U("grayscale"), g = U("hueRotate"), m = U("invert"), b = U("gap"), _ = U("gradientColorStops"), k = U("gradientColorStopPositions"), C = U("inset"), T = U("margin"), I = U("opacity"), $ = U("padding"), E = U("saturate"), R = U("scale"), H = U("sepia"), O = U("skew"), K = U("space"), Y = U("translate"), y = function() {
+  var e = U("colors"), t = U("spacing"), r = U("blur"), n = U("brightness"), o = U("borderColor"), s = U("borderRadius"), a = U("borderSpacing"), u = U("borderWidth"), c = U("contrast"), p = U("grayscale"), g = U("hueRotate"), m = U("invert"), b = U("gap"), _ = U("gradientColorStops"), k = U("gradientColorStopPositions"), C = U("inset"), T = U("margin"), I = U("opacity"), $ = U("padding"), E = U("saturate"), R = U("scale"), H = U("sepia"), F = U("skew"), K = U("space"), Y = U("translate"), y = function() {
     return ["auto", "contain", "none"];
   }, h = function() {
     return ["auto", "hidden", "clip", "visible", "scroll"];
@@ -1979,14 +1979,14 @@ function ho() {
        * @see https://tailwindcss.com/docs/skew
        */
       "skew-x": [{
-        "skew-x": [O]
+        "skew-x": [F]
       }],
       /**
        * Skew Y
        * @see https://tailwindcss.com/docs/skew
        */
       "skew-y": [{
-        "skew-y": [O]
+        "skew-y": [F]
       }],
       /**
        * Transform Origin
@@ -2391,7 +2391,7 @@ const wo = /* @__PURE__ */ G("path", {
   },
   setup(e) {
     const t = e, { spinnerClasses: r } = yo(me(t));
-    return (n, o) => (L(), F("svg", {
+    return (n, o) => (L(), O("svg", {
       class: V(A(r)),
       fill: "none",
       role: "status",
@@ -2611,7 +2611,7 @@ const Io = {
       disabled: A(m) === "button" && _.disabled
     }), {
       default: Z(() => [
-        !s.value && (_.$slots.prefix || a.value) ? (L(), F("div", Io, [
+        !s.value && (_.$slots.prefix || a.value) ? (L(), O("div", Io, [
           a.value ? (L(), q(Ze, {
             key: 0,
             color: A(c),
@@ -2621,7 +2621,7 @@ const Io = {
         G("span", {
           class: V(o.value)
         }, [
-          s.value && (_.$slots.prefix || a.value) ? (L(), F("span", Lo, [
+          s.value && (_.$slots.prefix || a.value) ? (L(), O("span", Lo, [
             a.value ? (L(), q(Ze, {
               key: 0,
               color: A(c),
@@ -2629,7 +2629,7 @@ const Io = {
             }, null, 8, ["color", "size"])) : B(_.$slots, "prefix", { key: 1 })
           ])) : Q("", !0),
           B(_.$slots, "default"),
-          s.value && (_.$slots.suffix || u.value) ? (L(), F("span", Po, [
+          s.value && (_.$slots.suffix || u.value) ? (L(), O("span", Po, [
             u.value ? (L(), q(Ze, {
               key: 0,
               color: A(c),
@@ -2637,7 +2637,7 @@ const Io = {
             }, null, 8, ["color", "size"])) : B(_.$slots, "suffix", { key: 1 })
           ])) : Q("", !0)
         ], 2),
-        !s.value && (_.$slots.suffix || u.value) ? (L(), F("div", Ao, [
+        !s.value && (_.$slots.suffix || u.value) ? (L(), O("div", Ao, [
           u.value ? (L(), q(Ze, {
             key: 0,
             color: A(c),
@@ -3567,7 +3567,7 @@ const aa = /* @__PURE__ */ J({
     } = ia(me(r)), u = () => {
       t("close"), n.value = !1;
     };
-    return (c, p) => n.value ? (L(), F("div", {
+    return (c, p) => n.value ? (L(), O("div", {
       key: 0,
       id: "toast-default",
       class: V(A(s)),
@@ -3582,7 +3582,7 @@ const aa = /* @__PURE__ */ J({
           c.$slots.icon ? B(c.$slots, "icon", {
             key: 0,
             class: V({ "ml-3": e.type !== "empty" })
-          }) : e.type === "success" ? (L(), F("svg", la, da)) : e.type === "danger" ? (L(), F("svg", ca, ha)) : e.type === "warning" ? (L(), F("svg", fa, ma)) : Q("", !0)
+          }) : e.type === "success" ? (L(), O("svg", la, da)) : e.type === "danger" ? (L(), O("svg", ca, ha)) : e.type === "warning" ? (L(), O("svg", fa, ma)) : Q("", !0)
         ]),
         _: 3
       }, 8, ["class"])) : Q("", !0),
@@ -3591,7 +3591,7 @@ const aa = /* @__PURE__ */ J({
       }, [
         B(c.$slots, "default")
       ], 2),
-      e.closable ? (L(), F("button", {
+      e.closable ? (L(), O("button", {
         key: 1,
         "aria-label": "Close",
         class: "border-none ml-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700",
@@ -3752,9 +3752,9 @@ const xa = (e) => ({ name: "arrow", options: e, async fn(t) {
   if (c == null)
     return {};
   const g = en(p), m = { x: r, y: n }, b = ze(o), _ = qt(b), k = await a.getDimensions(c), C = b === "y", T = C ? "top" : "left", I = C ? "bottom" : "right", $ = C ? "clientHeight" : "clientWidth", E = s.reference[_] + s.reference[b] - m[b] - s.floating[_], R = m[b] - s.reference[b], H = await (a.getOffsetParent == null ? void 0 : a.getOffsetParent(c));
-  let O = H ? H[$] : 0;
-  O && await (a.isElement == null ? void 0 : a.isElement(H)) || (O = u.floating[$] || s.floating[_]);
-  const K = E / 2 - R / 2, Y = O / 2 - k[_] / 2 - 1, y = Ve(g[T], Y), h = Ve(g[I], Y), i = y, l = O - k[_] - h, d = O / 2 - k[_] / 2 + K, f = At(i, d, l), v = te(o) != null && d != f && s.reference[_] / 2 - (d < i ? y : h) - k[_] / 2 < 0 ? d < i ? i - d : l - d : 0;
+  let F = H ? H[$] : 0;
+  F && await (a.isElement == null ? void 0 : a.isElement(H)) || (F = u.floating[$] || s.floating[_]);
+  const K = E / 2 - R / 2, Y = F / 2 - k[_] / 2 - 1, y = Ve(g[T], Y), h = Ve(g[I], Y), i = y, l = F - k[_] - h, d = F / 2 - k[_] / 2 + K, f = At(i, d, l), v = te(o) != null && d != f && s.reference[_] / 2 - (d < i ? y : h) - k[_] / 2 < 0 ? d < i ? i - d : l - d : 0;
   return { [b]: m[b] - v, data: { [b]: f, centerOffset: d - f + v } };
 } }), ka = ["top", "right", "bottom", "left"], kr = ka.reduce((e, t) => e.concat(t, t + "-start", t + "-end"), []), Ca = { left: "right", right: "left", bottom: "top", top: "bottom" };
 function lt(e) {
@@ -3781,14 +3781,14 @@ const $a = function(e) {
     const { main: E, cross: R } = tn($, s, await (c.isRTL == null ? void 0 : c.isRTL(p.floating)));
     if (u !== $)
       return { reset: { placement: C[0] } };
-    const H = [T[ne($)], T[E], T[R]], O = [...((n = a.autoPlacement) == null ? void 0 : n.overflows) || [], { placement: $, overflows: H }], K = C[I + 1];
+    const H = [T[ne($)], T[E], T[R]], F = [...((n = a.autoPlacement) == null ? void 0 : n.overflows) || [], { placement: $, overflows: H }], K = C[I + 1];
     if (K)
-      return { data: { index: I + 1, overflows: O }, reset: { placement: K } };
-    const Y = O.map((h) => {
+      return { data: { index: I + 1, overflows: F }, reset: { placement: K } };
+    const Y = F.map((h) => {
       const i = te(h.placement);
       return [h.placement, i && g ? h.overflows.slice(0, 2).reduce((l, d) => l + d, 0) : h.overflows[0], h.overflows];
     }).sort((h, i) => h[1] - i[1]), y = ((o = Y.filter((h) => h[2].slice(0, te(h[0]) ? 2 : 3).every((i) => i <= 0))[0]) == null ? void 0 : o[0]) || Y[0][0];
-    return y !== u ? { data: { index: I + 1, overflows: O }, reset: { placement: y } } : {};
+    return y !== u ? { data: { index: I + 1, overflows: F }, reset: { placement: y } } : {};
   } };
 }, Ta = function(e) {
   return e === void 0 && (e = {}), { name: "flip", options: e, async fn(t) {
@@ -3814,13 +3814,13 @@ const $a = function(e) {
       }(ne(i), d === "start", f);
       return v && (w = w.map((x) => x + "-" + v), l && (w = w.concat(w.map(nt)))), w;
     }(a, k, _, $));
-    const R = [a, ...E], H = await mt(t, C), O = [];
+    const R = [a, ...E], H = await mt(t, C), F = [];
     let K = ((r = o.flip) == null ? void 0 : r.overflows) || [];
-    if (p && O.push(H[T]), g) {
+    if (p && F.push(H[T]), g) {
       const { main: i, cross: l } = tn(n, s, $);
-      O.push(H[i], H[l]);
+      F.push(H[i], H[l]);
     }
-    if (K = [...K, { placement: n, overflows: O }], !O.every((i) => i <= 0)) {
+    if (K = [...K, { placement: n, overflows: F }], !F.every((i) => i <= 0)) {
       var Y, y;
       const i = (((Y = o.flip) == null ? void 0 : Y.index) || 0) + 1, l = R[i];
       if (l)
@@ -3882,15 +3882,15 @@ const Pa = function(e) {
     const T = _ - c[k], I = b - c[C], $ = !t.middlewareData.shift;
     let E = T, R = I;
     if (m) {
-      const O = b - c.left - c.right;
-      R = g || $ ? Ve(I, O) : O;
+      const F = b - c.left - c.right;
+      R = g || $ ? Ve(I, F) : F;
     } else {
-      const O = _ - c.top - c.bottom;
-      E = g || $ ? Ve(T, O) : O;
+      const F = _ - c.top - c.bottom;
+      E = g || $ ? Ve(T, F) : F;
     }
     if ($ && !g) {
-      const O = _e(c.left, 0), K = _e(c.right, 0), Y = _e(c.top, 0), y = _e(c.bottom, 0);
-      m ? R = b - 2 * (O !== 0 || K !== 0 ? O + K : _e(c.left, c.right)) : E = _ - 2 * (Y !== 0 || y !== 0 ? Y + y : _e(c.top, c.bottom));
+      const F = _e(c.left, 0), K = _e(c.right, 0), Y = _e(c.top, 0), y = _e(c.bottom, 0);
+      m ? R = b - 2 * (F !== 0 || K !== 0 ? F + K : _e(c.left, c.right)) : E = _ - 2 * (Y !== 0 || y !== 0 ? Y + y : _e(c.top, c.bottom));
     }
     await a({ ...t, availableWidth: R, availableHeight: E });
     const H = await o.getDimensions(s.floating);
@@ -4897,7 +4897,7 @@ const Ua = {
   return r;
 };
 function Ga(e, t, r, n, o, s) {
-  return L(), F("div", {
+  return L(), O("div", {
     ref: "reference",
     class: V(["v-popper", {
       "v-popper--shown": e.slotData.isShown
@@ -5024,7 +5024,7 @@ const fn = (e = "theme") => ({
 ];
 function rl(e, t, r, n, o, s) {
   const a = it("ResizeObserver");
-  return L(), F("div", {
+  return L(), O("div", {
     id: e.popperId,
     ref: "popover",
     class: V(["v-popper__popper", [
@@ -5062,7 +5062,7 @@ function rl(e, t, r, n, o, s) {
       } : void 0)
     }, [
       G("div", Za, [
-        e.mounted ? (L(), F(Ft, { key: 0 }, [
+        e.mounted ? (L(), O(Ft, { key: 0 }, [
           G("div", null, [
             B(e.$slots, "default")
           ]),
@@ -5323,13 +5323,13 @@ const pl = { class: "flex relative" }, hl = {
       t.validationStatus === Ae.Success ? "text-green-600 dark:text-green-500" : "",
       t.validationStatus === Ae.Error ? "text-red-600 dark:text-red-500" : ""
     ));
-    return (a, u) => (L(), F("div", null, [
-      a.label ? (L(), F("label", {
+    return (a, u) => (L(), O("div", null, [
+      a.label ? (L(), O("label", {
         key: 0,
         class: V(A(o))
       }, pe(a.label), 3)) : Q("", !0),
       G("div", pl, [
-        a.$slots.prefix ? (L(), F("div", hl, [
+        a.$slots.prefix ? (L(), O("div", hl, [
           B(a.$slots, "prefix")
         ])) : Q("", !0),
         Mt(G("input", ct(a.$attrs, {
@@ -5341,17 +5341,17 @@ const pl = { class: "flex relative" }, hl = {
         }), null, 16, fl), [
           [Tn, A(r)]
         ]),
-        a.$slots.suffix ? (L(), F("div", gl, [
+        a.$slots.suffix ? (L(), O("div", gl, [
           B(a.$slots, "suffix")
         ])) : Q("", !0)
       ]),
-      a.$slots.validationMessage ? (L(), F("p", {
+      a.$slots.validationMessage ? (L(), O("p", {
         key: 1,
         class: V(s.value)
       }, [
         B(a.$slots, "validationMessage")
       ], 2)) : Q("", !0),
-      a.$slots.helper ? (L(), F("p", ml, [
+      a.$slots.helper ? (L(), O("p", ml, [
         B(a.$slots, "helper")
       ])) : Q("", !0)
     ]));
@@ -5410,9 +5410,9 @@ const $l = ["disabled"], Tl = {
       r.validationStatus === ce.Success ? "text-green-600 dark:text-green-500" : "",
       r.validationStatus === ce.Error ? "text-red-600 dark:text-red-500" : ""
     ));
-    return (u, c) => (L(), F("div", null, [
+    return (u, c) => (L(), O("div", null, [
       G("label", null, [
-        u.label ? (L(), F("span", {
+        u.label ? (L(), O("span", {
           key: 0,
           class: V(A(s))
         }, pe(u.label), 3)) : Q("", !0),
@@ -5422,7 +5422,7 @@ const $l = ["disabled"], Tl = {
           class: V(A(o))
         }, [
           G("option", Tl, pe(u.placeholder), 1),
-          (L(!0), F(Ft, null, In(u.options, (p, g) => (L(), F("option", {
+          (L(!0), O(Ft, null, In(u.options, (p, g) => (L(), O("option", {
             key: g,
             value: p.value
           }, pe(p.name), 9, Il))), 128))
@@ -5430,13 +5430,13 @@ const $l = ["disabled"], Tl = {
           [Ln, A(n)]
         ])
       ]),
-      u.$slots.validationMessage ? (L(), F("p", {
+      u.$slots.validationMessage ? (L(), O("p", {
         key: 0,
         class: V(a.value)
       }, [
         B(u.$slots, "validationMessage")
       ], 2)) : Q("", !0),
-      u.$slots.helper ? (L(), F("p", Ll, [
+      u.$slots.helper ? (L(), O("p", Ll, [
         B(u.$slots, "helper")
       ])) : Q("", !0)
     ]));
@@ -5488,7 +5488,7 @@ const Fl = ["disabled"], Ml = /* @__PURE__ */ J({
       toggleColor: u,
       toggleBallClasses: c
     } = Ol(me(r));
-    return (p, g) => (L(), F("label", {
+    return (p, g) => (L(), O("label", {
       class: V(A(o))
     }, [
       Mt(G("input", {
@@ -5514,7 +5514,7 @@ const Fl = ["disabled"], Ml = /* @__PURE__ */ J({
     color: { default: "text-primary-600 dark:text-primary-500" }
   },
   setup(e) {
-    return (t, r) => (L(), F("a", {
+    return (t, r) => (L(), O("a", {
       href: t.href,
       class: V([t.color, "inline-flex items-center hover:underline"])
     }, [
@@ -5561,7 +5561,7 @@ const Fl = ["disabled"], Ml = /* @__PURE__ */ J({
       Hl,
       t.class
     ]));
-    return (n, o) => (L(), F("p", {
+    return (n, o) => (L(), O("p", {
       class: V(r.value)
     }, [
       B(n.$slots, "default")
@@ -5655,7 +5655,7 @@ const Fl = ["disabled"], Ml = /* @__PURE__ */ J({
     function r() {
       return `block text-sm font-medium ${t.class}`;
     }
-    return (n, o) => (L(), F("label", {
+    return (n, o) => (L(), O("label", {
       class: V(r())
     }, [
       B(n.$slots, "default")
@@ -5885,7 +5885,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         ) : !1,
         // specify the path to the libphonenumber script to enable validation/formatting
         utilsScript: ""
-      }, H = ["800", "822", "833", "844", "855", "866", "877", "880", "881", "882", "883", "884", "885", "886", "887", "888", "889"], O = function(h) {
+      }, H = ["800", "822", "833", "844", "855", "866", "877", "880", "881", "882", "883", "884", "885", "886", "887", "888", "889"], F = function(h) {
         var i = window.intlTelInputGlobals.instances;
         Object.values(i).forEach(function(l) {
           return l[h]();
@@ -6138,10 +6138,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
             window.intlTelInputGlobals.autoCountry ? this.handleAutoCountry() : window.intlTelInputGlobals.startedLoadingAutoCountry || (window.intlTelInputGlobals.startedLoadingAutoCountry = !0, typeof this.options.geoIpLookup == "function" && this.options.geoIpLookup(function() {
               var l = arguments.length > 0 && arguments[0] !== t ? arguments[0] : "", d = l.toLowerCase(), f = d && i._getCountryData(d, !0);
               f ? (window.intlTelInputGlobals.autoCountry = d, setTimeout(function() {
-                return O("handleAutoCountry");
-              })) : (i._setInitialState(!0), O("rejectAutoCountryPromise"));
+                return F("handleAutoCountry");
+              })) : (i._setInitialState(!0), F("rejectAutoCountryPromise"));
             }, function() {
-              return O("rejectAutoCountryPromise");
+              return F("rejectAutoCountryPromise");
             }));
           }
         }, {
@@ -6604,9 +6604,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       var Y = function(h, i, l) {
         var d = document.createElement("script");
         d.onload = function() {
-          O("handleUtils"), i && i();
+          F("handleUtils"), i && i();
         }, d.onerror = function() {
-          O("rejectUtilsScriptPromise"), l && l();
+          F("rejectUtilsScriptPromise"), l && l();
         }, d.className = "iti-load-utils", d.async = !0, d.src = h, document.body.appendChild(d);
       };
       return $.loadUtils = function(y) {
@@ -6667,7 +6667,7 @@ const ql = /* @__PURE__ */ Gl(Wl), Kl = ["placeholder", "data-testid"], ou = {
         geoIpLookup: c,
         utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/19.5.7/js/utils.js"
       });
-    }), (c, p) => (L(), F("input", {
+    }), (c, p) => (L(), O("input", {
       ref_key: "phoneInput",
       ref: r,
       placeholder: c.$props.placeholder,
@@ -6708,9 +6708,46 @@ const ql = /* @__PURE__ */ Gl(Wl), Kl = ["placeholder", "data-testid"], ou = {
           return "!animate-[spin_0.75s_linear_infinite]";
       }
     }
-    return (n, o) => (L(), F("div", {
+    return (n, o) => (L(), O("div", {
       class: V(`h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-surface ${r()} ${t.color} ${t.class}`),
       role: "status"
+    }, null, 2));
+  }
+}, su = {
+  __name: "TwcIcon",
+  props: {
+    type: {
+      type: String,
+      default: "regular"
+    },
+    sharp: {
+      type: Boolean,
+      default: !1
+    },
+    icon: {
+      type: String,
+      required: !0
+    },
+    class: {
+      type: String,
+      default: null
+    },
+    size: {
+      type: String,
+      default: "1x"
+    },
+    custom: {
+      type: Boolean,
+      default: !1
+    }
+  },
+  setup(e) {
+    const t = e;
+    function r() {
+      return t.custom ? `fa-kit fa-${t.icon} fa-${t.size}` : `${t.sharp ? "fa-sharp " : ""}fa-${t.type} fa-${t.icon} fa-${t.size}`;
+    }
+    return (n, o) => (L(), O("i", {
+      class: V(`${r()} ${t.class}`)
     }, null, 2));
   }
 };
@@ -6718,6 +6755,7 @@ export {
   Yl as TwcButton,
   Jl as TwcCheckbox,
   Zl as TwcHeading,
+  su as TwcIcon,
   Xl as TwcInput,
   eu as TwcLabel,
   tu as TwcLink,
