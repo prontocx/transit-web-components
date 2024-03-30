@@ -5585,13 +5585,8 @@ const Fl = ["disabled"], Ml = /* @__PURE__ */ J({
   },
   setup(e) {
     const t = e, r = P(() => {
-      let n = "text-base	";
-      if (t.flat)
-        return `${n}border-0 bg-transparent text-gray-800 hover:bg-gray-300`;
-      if (t.icon)
-        return `${n}border-0 bg-transparent text-gray-800 hover:bg-gray-300 p-2`;
-      if (t.link)
-        return `${n}border-0 bg-transparent text-gray-800 hover:bg-transparent hover:underline p-0 text-blue-700`;
+      let n = "text-sm";
+      return t.flat ? `${n}border-0 bg-transparent text-gray-800 hover:bg-gray-300` : t.icon ? `${n}border-0 bg-transparent text-gray-800 hover:bg-gray-300 p-2` : t.link ? `${n}border-0 bg-transparent text-gray-800 hover:bg-transparent hover:underline p-0 text-blue-700` : n;
     });
     return (n, o) => (L(), q(A(Eo), ct(n.$props, { class: r.value }), {
       default: Z(() => [

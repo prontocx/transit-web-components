@@ -2,13 +2,14 @@
   <input 
     ref="phoneInput" 
     :placeholder="$props.placeholder" 
-    :class="`mt-1 !text-base bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-sm iti__tel-input ${isValidPhoneNumber ? 'border-green-500 focus:outline-green-500 bg-green-50' : ''} ${displayError ? 'border-red-500 focus:outline-red-500 bg-red-50' : ''}`"
+    :class="classes"
     :data-testid="$props.dataTestid"
     @input="updateInput">
 </template>
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import intlTelInput from 'intl-tel-input'
+
 
 const phoneInput = ref(null)
 const iti = ref(null)
@@ -35,12 +36,24 @@ const emit = defineEmits(['change'])
 
 function updateInput () {
   isValidPhoneNumber.value = iti.value.isValidNumber()
-  if (isValidPhoneNumber.value) {
-    emit('change', phoneInput.value.value, true)
-  } else {
-    emit('change', phoneInput.value.value, false)
-  }
+  emit('change', phoneInput.value.value, isValidPhoneNumber.value || false);
 }
+
+const classes = computed(() => {
+
+  let result = "TwcPhoneInput mt-1 !text-base bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-sm iti__tel-input";
+
+  if (isValidPhoneNumber.value) {
+    result += ' border-green-500 focus:border-green-500 focus:outline-green-500 focus:ring-green-500 bg-green-50';
+  }
+
+  if (props.displayError) {
+    result += ' border-red-500 focus:border-red-500 focus:outline-red-500 bg-red-50';
+  }
+
+  return result;
+})
+
 
 onMounted(() => {
   const getIp = (callbackFun) => {
@@ -76,5 +89,9 @@ onMounted(() => {
 
 .iti {
   width: 100%;
+}
+
+.TwcPhoneInput {
+  touch-action: manipulation;
 }
 </style>
