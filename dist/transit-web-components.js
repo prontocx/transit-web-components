@@ -6650,7 +6650,7 @@ const ql = /* @__PURE__ */ Gl(Wl), Kl = ["placeholder", "data-testid"], ou = {
   setup(e, { emit: t }) {
     const r = he(null), n = he(null), o = he(!1), s = e, a = t;
     function u() {
-      o.value = n.value.isValidNumber(), o.value ? a("change", r.value.value, !0) : a("change", r.value.value, !1);
+      o.value = n.value.isValidNumber(), o.value ? a("change", r.value.value, !0, n.value.getNumber()) : a("change", r.value.value, !1);
     }
     return Bn(() => {
       const c = (p) => {

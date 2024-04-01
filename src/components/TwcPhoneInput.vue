@@ -1,7 +1,7 @@
 <template>
-  <input 
-    ref="phoneInput" 
-    :placeholder="$props.placeholder" 
+  <input
+    ref="phoneInput"
+    :placeholder="$props.placeholder"
     :class="`mt-1 !text-base bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-sm iti__tel-input ${isValidPhoneNumber ? 'border-green-500 focus:outline-green-500 bg-green-50' : ''} ${displayError ? 'border-red-500 focus:outline-red-500 bg-red-50' : ''}`"
     :data-testid="$props.dataTestid"
     @input="updateInput">
@@ -36,7 +36,7 @@ const emit = defineEmits(['change'])
 function updateInput () {
   isValidPhoneNumber.value = iti.value.isValidNumber()
   if (isValidPhoneNumber.value) {
-    emit('change', phoneInput.value.value, true)
+    emit('change', phoneInput.value.value, true, iti.value.getNumber())
   } else {
     emit('change', phoneInput.value.value, false)
   }
