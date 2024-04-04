@@ -10,7 +10,6 @@
 import { ref, onMounted, computed } from 'vue'
 import intlTelInput from 'intl-tel-input'
 
-
 const phoneInput = ref(null)
 const iti = ref(null)
 const isValidPhoneNumber = ref(false)
