@@ -36,7 +36,7 @@ const emit = defineEmits(['change'])
 
 function updateInput () {
   isValidPhoneNumber.value = iti.value.isValidNumber()
-  emit('change', phoneInput.value.value, isValidPhoneNumber.value || false);
+  emit('change', phoneInput.value.value, iti.value.getNumber() || false);
 }
 
 const classes = computed(() => {

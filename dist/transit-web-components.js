@@ -6650,7 +6650,7 @@ const Zl = /* @__PURE__ */ Ql(Jl), Xl = ["placeholder", "data-testid"], uu = {
   setup(e, { emit: t }) {
     const r = he(null), n = he(null), o = he(!1), s = e, a = t;
     function u() {
-      o.value = n.value.isValidNumber(), a("change", r.value.value, o.value || !1);
+      o.value = n.value.isValidNumber(), a("change", r.value.value, n.value.getNumber() || !1);
     }
     const c = P(() => {
       let p = "TwcPhoneInput mt-1 !text-base bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-sm iti__tel-input";
