@@ -1,5 +1,5 @@
 <template>
-  <fwb-input v-bind="$props">
+  <fwb-input v-bind="$props" class="TwcInput">
     <template #helper v-if="$slots.helper">
       <slot name="helper"></slot>
     </template>
@@ -16,5 +16,8 @@
 import { FwbInput } from 'flowbite-vue'
 </script>
 
-<style scoped>
+<style scoped >
+.TwcInput {
+  touch-action: manipulation;
+}
 </style>

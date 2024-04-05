@@ -27,7 +27,7 @@ const props = defineProps({
 
 const classes = computed(() => {
 
-  let result = "text-base	";
+  let result = "TwcButton text-base";
 
   if (props.flat) {
     return `${result}border-0 bg-transparent text-gray-800 hover:bg-gray-300`;
@@ -40,8 +40,13 @@ const classes = computed(() => {
   if (props.link) {
     return `${result}border-0 bg-transparent text-gray-800 hover:bg-transparent hover:underline p-0 text-blue-700`;
   }
+
+  return result;
 })
 </script>
 
 <style scoped>
+.TwcButton {
+  touch-action: manipulation;
+}
 </style>
