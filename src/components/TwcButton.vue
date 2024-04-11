@@ -30,7 +30,7 @@ const classes = computed(() => {
   let result = "TwcButton text-base";
 
   if (props.flat) {
-    return `${result}border-0 bg-transparent text-gray-800 hover:bg-gray-300`;
+    return `${result}border-0 bg-transparent text-gray-800 hover:bg-transparent focus:ring-0`;
   }
 
   if (props.icon) {
