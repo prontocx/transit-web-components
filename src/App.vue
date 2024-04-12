@@ -126,9 +126,18 @@
 
     <!-- Checkboxes -->
     <fwb-tab name="checkbox" title="Checkbox">
-      <TwcCheckbox label="Default checkbox"/>
+      <TwcToggle label="Default checkbox" />
       <hr class="my-4" />
-      <TwcCheckbox label="Disabled checkbox" disabled/>
+      <TwcToggle label="Disabled checkbox" :disabled="true" />
+      <hr class="my-4" />
+      <TwcToggle label="Reversed checkbox" :reverse="true" />
+      <hr class="my-4" />
+      <TwcToggle 
+        label="Checkbox with hint and error"
+        hint="This is a hint"
+        error-message="This is an error message"
+        :reverse="true"
+      />
     </fwb-tab>
 
     <!-- Heading -->
@@ -264,7 +273,7 @@ import { FwbTab, FwbTabs } from 'flowbite-vue'
 import TwcButton from "./components/TwcButton.vue"
 import TwcInput from "./components/TwcInput.vue"
 import TwcSelect from "./components/TwcSelect.vue"
-import TwcCheckbox from "./components/TwcCheckbox.vue"
+import TwcToggle from "./components/TwcToggle.vue"
 import TwcHeading from "./components/TwcHeading.vue"
 import TwcLabel from "./components/TwcLabel.vue"
 import TwcLink from "./components/TwcLink.vue"
