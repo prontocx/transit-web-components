@@ -126,18 +126,20 @@
 
     <!-- Checkboxes -->
     <fwb-tab name="checkbox" title="Checkbox">
-      <TwcToggle label="Default checkbox" />
-      <hr class="my-4" />
-      <TwcToggle label="Disabled checkbox" :disabled="true" />
-      <hr class="my-4" />
-      <TwcToggle label="Reversed checkbox" :reverse="true" />
-      <hr class="my-4" />
-      <TwcToggle 
-        label="Checkbox with hint and error"
-        hint="This is a hint"
-        error-message="This is an error message"
-        :reverse="true"
-      />
+      <div class="w-1/4">
+        <TwcToggle label="Default checkbox" />
+        <hr class="my-4" />
+        <TwcToggle label="Disabled checkbox" :disabled="true" />
+        <hr class="my-4" />
+        <TwcToggle label="Reversed checkbox" :reverse="true" />
+        <hr class="my-4" />
+        <TwcToggle 
+          label="Checkbox with hint and error"
+          hint="This is a hint"
+          error-message="This is an error message"
+          :reverse="true"
+        />
+      </div>
     </fwb-tab>
 
     <!-- Heading -->

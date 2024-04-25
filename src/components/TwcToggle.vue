@@ -1,24 +1,24 @@
 <template>
   <div>
-    <div class="flex">
-    <template v-if="$props.reverse">
-      <label class="mr-4 font-semibold">{{ $props.label }}</label>
-      <FwbToggle 
-        v-model="model"
-        class="TwcToggle"
-        :disabled="$props.disabled"
-        @click="notifyClick"
-      />
-    </template>
-    <template v-else>
-      <FwbToggle 
-        v-model="model"
-        class="TwcToggle"
-        :disabled="$props.disabled"
-        @click="notifyClick"
-      />
-      <label class="mr-4 font-semibold">{{ $props.label }}</label>
-    </template>
+    <div class="flex justify-between">
+      <template v-if="$props.reverse">
+        <label class="font-semibold">{{ $props.label }}</label>
+        <FwbToggle 
+          v-model="model"
+          class="TwcToggle -mr-3"
+          :disabled="$props.disabled"
+          @click="notifyClick"
+        />
+      </template>
+      <template v-else>
+        <FwbToggle 
+          v-model="model"
+          class="TwcToggle"
+          :disabled="$props.disabled"
+          @click="notifyClick"
+        />
+        <label class="font-semibold">{{ $props.label }}</label>
+      </template>
     </div>
     <div class="flex flex-col">
       <label v-if="$props.hint" :class="`${smallTextClass} text-gray-500`">{{ $props.hint }}</label>
