@@ -8214,7 +8214,7 @@ const Cu = /* @__PURE__ */ _u(xu), ku = ["placeholder", "data-testid"], ju = {
   setup(e, { emit: t }) {
     const r = oe(null), o = oe(null), n = oe(!1), i = e, s = t;
     function u() {
-      n.value = o.value.isValidNumber(), s("change", r.value.value, o.value.getNumber() || !1);
+      n.value = o.value.isValidNumber(), n.value ? s("change", r.value.value, !0, o.value.getNumber()) : s("change", r.value.value, !1);
     }
     const c = w(() => {
       let p = "TwcPhoneInput mt-1 !text-base bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-sm iti__tel-input";
