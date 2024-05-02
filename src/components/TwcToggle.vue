@@ -30,7 +30,7 @@
 <script setup>
 import { FwbToggle } from 'flowbite-vue'
 
-const smallTextClass = "font-light text-xs mt-1"
+const smallTextClass = "font-light text-xs -mt-1"
 const emit = defineEmits(['change', 'click'])
 const props = defineProps({
   label: {
