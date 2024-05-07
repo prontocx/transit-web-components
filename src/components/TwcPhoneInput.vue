@@ -1,5 +1,6 @@
 <template>
   <input
+    v-model="model"
     ref="phoneInput"
     :placeholder="$props.placeholder"
     :class="classes"
@@ -13,6 +14,10 @@ import intlTelInput from 'intl-tel-input'
 const phoneInput = ref(null)
 const iti = ref(null)
 const isValidPhoneNumber = ref(false)
+const model = defineModel({
+  default: '',
+  type: String
+})
 const props = defineProps({
   ipInfoKey: {
     type: String,
@@ -31,7 +36,7 @@ const props = defineProps({
     default: "",
   }
 })
-const emit = defineEmits(['change'])
+const emit = defineEmits(['change', 'update:modelValue'])
 
 function updateInput () {
   isValidPhoneNumber.value = iti.value.isValidNumber()
