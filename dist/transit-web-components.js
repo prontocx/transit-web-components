@@ -8245,6 +8245,7 @@ const ku = /* @__PURE__ */ xu(Cu), $u = ["placeholder", "data-testid"], Fu = {
       "onUpdate:modelValue": f[0] || (f[0] = (b) => i.value = b),
       ref_key: "phoneInput",
       ref: r,
+      type: "tel",
       placeholder: g.$props.placeholder,
       class: R(p.value),
       "data-testid": g.$props.dataTestid,
