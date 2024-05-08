@@ -2,6 +2,7 @@
   <input
     v-model="model"
     ref="phoneInput"
+    type="tel"
     :placeholder="$props.placeholder"
     :class="classes"
     :data-testid="$props.dataTestid"
