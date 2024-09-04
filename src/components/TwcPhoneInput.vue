@@ -88,8 +88,8 @@ onMounted(() => {
   iti.value = intlTelInput(phoneInput.value, {
     initialCountry: "auto",
     geoIpLookup: getIp,
-    utilsScript:
-      "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/19.5.7/js/utils.js",
+    autoPlaceholder: 'off',
+    utilsScript: 'https://cdn.jsdelivr.net/npm/intl-tel-input@24.4.0/build/js/utils.js'
   })
 })
 </script>
