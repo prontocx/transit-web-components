@@ -1,25 +1,22 @@
-var Lo = Object.defineProperty;
-var Po = (e, t, r) => t in e ? Lo(e, t, { enumerable: !0, configurable: !0, writable: !0, value: r }) : e[t] = r;
-var P = (e, t, r) => (Po(e, typeof t != "symbol" ? t + "" : t, r), r);
-import { reactive as Ao, defineComponent as K, useAttrs as Ut, openBlock as v, createElementBlock as L, mergeProps as ze, unref as T, createTextVNode as st, toDisplayString as re, createBlock as Q, resolveDynamicComponent as bt, normalizeClass as R, withCtx as Y, ref as oe, provide as No, h as tt, TransitionGroup as Do, pushScopeId as Eo, popScopeId as zo, toRefs as ve, renderSlot as M, createCommentVNode as W, createElementVNode as j, nextTick as Mo, onMounted as yt, computed as w, resolveComponent as dt, normalizeProps as Ye, Fragment as De, Comment as Oo, withDirectives as vt, isRef as Gr, vModelDynamic as Bo, renderList as Wr, vModelSelect as jo, vModelCheckbox as Fo, onBeforeMount as Ro, onBeforeUnmount as Ho, useSlots as Vo, getCurrentInstance as Uo, watch as or, guardReactiveProps as wt, withScopeId as Go, normalizeStyle as Lt, withKeys as Wo, createVNode as We, getCurrentScope as qo, onScopeDispose as Ko, inject as Qo, mergeModels as ct, useModel as qr, createSlots as Kr, vModelText as Jo } from "vue";
-let Qr = (e = 21) => crypto.getRandomValues(new Uint8Array(e)).reduce((t, r) => (r &= 63, r < 36 ? t += r.toString(36) : r < 62 ? t += (r - 26).toString(36).toUpperCase() : r > 62 ? t += "-" : t += "_", t), "");
-const Pt = Ao({});
-function Ze(e, t) {
-  return Ro(() => {
-    e && (Pt[e] = {
+import { reactive as zo, defineComponent as K, useAttrs as Kt, openBlock as w, createElementBlock as L, mergeProps as Re, unref as T, createTextVNode as dt, toDisplayString as ne, createBlock as Q, resolveDynamicComponent as xt, normalizeClass as H, withCtx as Z, ref as ie, provide as Oo, h as it, TransitionGroup as Eo, pushScopeId as Mo, popScopeId as Bo, toRefs as Ce, renderSlot as z, createCommentVNode as U, createElementVNode as R, nextTick as jo, onMounted as _t, computed as x, resolveComponent as ft, normalizeProps as rt, Fragment as Be, Comment as Ro, withDirectives as Ct, isRef as Qr, vModelDynamic as Fo, renderList as Jr, vModelSelect as Ho, vModelCheckbox as Vo, onBeforeMount as Wo, onBeforeUnmount as Go, useSlots as Uo, getCurrentInstance as qo, watch as ar, guardReactiveProps as kt, withScopeId as Ko, normalizeStyle as Dt, withKeys as Qo, createVNode as Ye, getCurrentScope as Jo, onScopeDispose as Yo, inject as Zo, mergeModels as gt, useModel as Yr, createSlots as Zr, vModelText as Xo } from "vue";
+let Xr = (e = 21) => crypto.getRandomValues(new Uint8Array(e)).reduce((t, r) => (r &= 63, r < 36 ? t += r.toString(36) : r < 62 ? t += (r - 26).toString(36).toUpperCase() : r > 62 ? t += "-" : t += "_", t), "");
+const zt = zo({});
+function ot(e, t) {
+  return Wo(() => {
+    e && (zt[e] = {
       id: e,
       flush: (t == null ? void 0 : t.flush) ?? !1,
       alwaysOpen: (t == null ? void 0 : t.alwaysOpen) ?? !1,
       openFirstItem: (t == null ? void 0 : t.openFirstItem) ?? !0,
       panels: {}
     });
-  }), Ho(() => {
-    e && delete Pt[e];
+  }), Go(() => {
+    e && delete zt[e];
   }), {
-    accordionsStates: Pt
+    accordionsStates: zt
   };
 }
-const Yo = ["data-accordion-id"], Zo = /* @__PURE__ */ K({
+const en = ["data-accordion-id"], tn = /* @__PURE__ */ K({
   __name: "FwbAccordion",
   props: {
     alwaysOpen: { type: Boolean, default: !1 },
@@ -27,83 +24,83 @@ const Yo = ["data-accordion-id"], Zo = /* @__PURE__ */ K({
     flush: { type: Boolean, default: !1 }
   },
   setup(e) {
-    const t = e, r = Qr();
-    return Ze(r, { ...t }), (o, n) => (v(), L("div", { "data-accordion-id": T(r) }, [
-      M(o.$slots, "default")
-    ], 8, Yo));
+    const t = e, r = Xr();
+    return ot(r, { ...t }), (o, n) => (w(), L("div", { "data-accordion-id": T(r) }, [
+      z(o.$slots, "default")
+    ], 8, en));
   }
 });
-function Xo() {
+function rn() {
   for (var e = 0, t, r, o = ""; e < arguments.length; )
-    (t = arguments[e++]) && (r = Jr(t)) && (o && (o += " "), o += r);
+    (t = arguments[e++]) && (r = eo(t)) && (o && (o += " "), o += r);
   return o;
 }
-function Jr(e) {
+function eo(e) {
   if (typeof e == "string")
     return e;
   for (var t, r = "", o = 0; o < e.length; o++)
-    e[o] && (t = Jr(e[o])) && (r && (r += " "), r += t);
+    e[o] && (t = eo(e[o])) && (r && (r += " "), r += t);
   return r;
 }
-var Gt = "-";
-function en(e) {
-  var t = rn(e), r = e.conflictingClassGroups, o = e.conflictingClassGroupModifiers, n = o === void 0 ? {} : o;
-  function i(u) {
-    var c = u.split(Gt);
-    return c[0] === "" && c.length !== 1 && c.shift(), Yr(c, t) || tn(u);
+var Qt = "-";
+function on(e) {
+  var t = sn(e), r = e.conflictingClassGroups, o = e.conflictingClassGroupModifiers, n = o === void 0 ? {} : o;
+  function i(l) {
+    var d = l.split(Qt);
+    return d[0] === "" && d.length !== 1 && d.shift(), to(d, t) || nn(l);
   }
-  function s(u, c) {
-    var p = r[u] || [];
-    return c && n[u] ? [].concat(p, n[u]) : p;
+  function s(l, d) {
+    var p = r[l] || [];
+    return d && n[l] ? [].concat(p, n[l]) : p;
   }
   return {
     getClassGroupId: i,
     getConflictingClassGroupIds: s
   };
 }
-function Yr(e, t) {
+function to(e, t) {
   var s;
   if (e.length === 0)
     return t.classGroupId;
-  var r = e[0], o = t.nextPart.get(r), n = o ? Yr(e.slice(1), o) : void 0;
+  var r = e[0], o = t.nextPart.get(r), n = o ? to(e.slice(1), o) : void 0;
   if (n)
     return n;
   if (t.validators.length !== 0) {
-    var i = e.join(Gt);
-    return (s = t.validators.find(function(u) {
-      var c = u.validator;
-      return c(i);
+    var i = e.join(Qt);
+    return (s = t.validators.find(function(l) {
+      var d = l.validator;
+      return d(i);
     })) == null ? void 0 : s.classGroupId;
   }
 }
-var nr = /^\[(.+)\]$/;
-function tn(e) {
-  if (nr.test(e)) {
-    var t = nr.exec(e)[1], r = t == null ? void 0 : t.substring(0, t.indexOf(":"));
+var lr = /^\[(.+)\]$/;
+function nn(e) {
+  if (lr.test(e)) {
+    var t = lr.exec(e)[1], r = t == null ? void 0 : t.substring(0, t.indexOf(":"));
     if (r)
       return "arbitrary.." + r;
   }
 }
-function rn(e) {
+function sn(e) {
   var t = e.theme, r = e.prefix, o = {
     nextPart: /* @__PURE__ */ new Map(),
     validators: []
-  }, n = nn(Object.entries(e.classGroups), r);
+  }, n = ln(Object.entries(e.classGroups), r);
   return n.forEach(function(i) {
-    var s = i[0], u = i[1];
-    zt(u, o, s, t);
+    var s = i[0], l = i[1];
+    jt(l, o, s, t);
   }), o;
 }
-function zt(e, t, r, o) {
+function jt(e, t, r, o) {
   e.forEach(function(n) {
     if (typeof n == "string") {
-      var i = n === "" ? t : ir(t, n);
+      var i = n === "" ? t : ur(t, n);
       i.classGroupId = r;
       return;
     }
     if (typeof n == "function") {
-      if (on(n)) {
-        zt(n(o), t, r, o);
+      if (an(n)) {
+        jt(n(o), t, r, o);
         return;
       }
       t.validators.push({
@@ -113,35 +110,35 @@ function zt(e, t, r, o) {
       return;
     }
     Object.entries(n).forEach(function(s) {
-      var u = s[0], c = s[1];
-      zt(c, ir(t, u), r, o);
+      var l = s[0], d = s[1];
+      jt(d, ur(t, l), r, o);
     });
   });
 }
-function ir(e, t) {
+function ur(e, t) {
   var r = e;
-  return t.split(Gt).forEach(function(o) {
+  return t.split(Qt).forEach(function(o) {
     r.nextPart.has(o) || r.nextPart.set(o, {
       nextPart: /* @__PURE__ */ new Map(),
       validators: []
     }), r = r.nextPart.get(o);
   }), r;
 }
-function on(e) {
+function an(e) {
   return e.isThemeGetter;
 }
-function nn(e, t) {
+function ln(e, t) {
   return t ? e.map(function(r) {
     var o = r[0], n = r[1], i = n.map(function(s) {
-      return typeof s == "string" ? t + s : typeof s == "object" ? Object.fromEntries(Object.entries(s).map(function(u) {
-        var c = u[0], p = u[1];
-        return [t + c, p];
+      return typeof s == "string" ? t + s : typeof s == "object" ? Object.fromEntries(Object.entries(s).map(function(l) {
+        var d = l[0], p = l[1];
+        return [t + d, p];
       })) : s;
     });
     return [o, i];
   }) : e;
 }
-function sn(e) {
+function un(e) {
   if (e < 1)
     return {
       get: function() {
@@ -166,15 +163,15 @@ function sn(e) {
     }
   };
 }
-var Zr = "!";
-function an(e) {
+var ro = "!";
+function dn(e) {
   var t = e.separator || ":", r = t.length === 1, o = t[0], n = t.length;
   return function(i) {
-    for (var s = [], u = 0, c = 0, p, g = 0; g < i.length; g++) {
+    for (var s = [], l = 0, d = 0, p, g = 0; g < i.length; g++) {
       var f = i[g];
-      if (u === 0) {
+      if (l === 0) {
         if (f === o && (r || i.slice(g, g + n) === t)) {
-          s.push(i.slice(c, g)), c = g + n;
+          s.push(i.slice(d, g)), d = g + n;
           continue;
         }
         if (f === "/") {
@@ -182,18 +179,18 @@ function an(e) {
           continue;
         }
       }
-      f === "[" ? u++ : f === "]" && u--;
+      f === "[" ? l++ : f === "]" && l--;
     }
-    var b = s.length === 0 ? i : i.substring(c), y = b.startsWith(Zr), C = y ? b.substring(1) : b, _ = p && p > c ? p - c : void 0;
+    var m = s.length === 0 ? i : i.substring(d), y = m.startsWith(ro), k = y ? m.substring(1) : m, _ = p && p > d ? p - d : void 0;
     return {
       modifiers: s,
       hasImportantModifier: y,
-      baseClassName: C,
+      baseClassName: k,
       maybePostfixModifierPosition: _
     };
   };
 }
-function ln(e) {
+function cn(e) {
   if (e.length <= 1)
     return e;
   var t = [], r = [];
@@ -202,69 +199,69 @@ function ln(e) {
     n ? (t.push.apply(t, r.sort().concat([o])), r = []) : r.push(o);
   }), t.push.apply(t, r.sort()), t;
 }
-function un(e) {
+function pn(e) {
   return {
-    cache: sn(e.cacheSize),
-    splitModifiers: an(e),
-    ...en(e)
+    cache: un(e.cacheSize),
+    splitModifiers: dn(e),
+    ...on(e)
   };
 }
-var dn = /\s+/;
-function cn(e, t) {
+var hn = /\s+/;
+function fn(e, t) {
   var r = t.splitModifiers, o = t.getClassGroupId, n = t.getConflictingClassGroupIds, i = /* @__PURE__ */ new Set();
-  return e.trim().split(dn).map(function(s) {
-    var u = r(s), c = u.modifiers, p = u.hasImportantModifier, g = u.baseClassName, f = u.maybePostfixModifierPosition, b = o(f ? g.substring(0, f) : g), y = !!f;
-    if (!b) {
+  return e.trim().split(hn).map(function(s) {
+    var l = r(s), d = l.modifiers, p = l.hasImportantModifier, g = l.baseClassName, f = l.maybePostfixModifierPosition, m = o(f ? g.substring(0, f) : g), y = !!f;
+    if (!m) {
       if (!f)
         return {
           isTailwindClass: !1,
           originalClassName: s
         };
-      if (b = o(g), !b)
+      if (m = o(g), !m)
         return {
           isTailwindClass: !1,
           originalClassName: s
         };
       y = !1;
     }
-    var C = ln(c).join(":"), _ = p ? C + Zr : C;
+    var k = cn(d).join(":"), _ = p ? k + ro : k;
     return {
       isTailwindClass: !0,
       modifierId: _,
-      classGroupId: b,
+      classGroupId: m,
       originalClassName: s,
       hasPostfixModifier: y
     };
   }).reverse().filter(function(s) {
     if (!s.isTailwindClass)
       return !0;
-    var u = s.modifierId, c = s.classGroupId, p = s.hasPostfixModifier, g = u + c;
-    return i.has(g) ? !1 : (i.add(g), n(c, p).forEach(function(f) {
-      return i.add(u + f);
+    var l = s.modifierId, d = s.classGroupId, p = s.hasPostfixModifier, g = l + d;
+    return i.has(g) ? !1 : (i.add(g), n(d, p).forEach(function(f) {
+      return i.add(l + f);
     }), !0);
   }).reverse().map(function(s) {
     return s.originalClassName;
   }).join(" ");
 }
-function pn() {
+function gn() {
   for (var e = arguments.length, t = new Array(e), r = 0; r < e; r++)
     t[r] = arguments[r];
-  var o, n, i, s = u;
-  function u(p) {
-    var g = t[0], f = t.slice(1), b = f.reduce(function(y, C) {
-      return C(y);
+  var o, n, i, s = l;
+  function l(p) {
+    var g = t[0], f = t.slice(1), m = f.reduce(function(y, k) {
+      return k(y);
     }, g());
-    return o = un(b), n = o.cache.get, i = o.cache.set, s = c, c(p);
+    return o = pn(m), n = o.cache.get, i = o.cache.set, s = d, d(p);
   }
-  function c(p) {
+  function d(p) {
     var g = n(p);
     if (g)
       return g;
-    var f = cn(p, o);
+    var f = fn(p, o);
     return i(p, f), f;
   }
   return function() {
-    return s(Xo.apply(null, arguments));
+    return s(rn.apply(null, arguments));
   };
 }
 function G(e) {
@@ -273,121 +270,121 @@ function G(e) {
   };
   return t.isThemeGetter = !0, t;
 }
-var Xr = /^\[(?:([a-z-]+):)?(.+)\]$/i, hn = /^\d+\/\d+$/, fn = /* @__PURE__ */ new Set(["px", "full", "screen"]), gn = /^(\d+(\.\d+)?)?(xs|sm|md|lg|xl)$/, mn = /\d+(%|px|r?em|[sdl]?v([hwib]|min|max)|pt|pc|in|cm|mm|cap|ch|ex|r?lh|cq(w|h|i|b|min|max))|\b(calc|min|max|clamp)\(.+\)|^0$/, bn = /^-?((\d+)?\.?(\d+)[a-z]+|0)_-?((\d+)?\.?(\d+)[a-z]+|0)/;
-function se(e) {
-  return ke(e) || fn.has(e) || hn.test(e) || Mt(e);
+var oo = /^\[(?:([a-z-]+):)?(.+)\]$/i, mn = /^\d+\/\d+$/, bn = /* @__PURE__ */ new Set(["px", "full", "screen"]), yn = /^(\d+(\.\d+)?)?(xs|sm|md|lg|xl)$/, vn = /\d+(%|px|r?em|[sdl]?v([hwib]|min|max)|pt|pc|in|cm|mm|cap|ch|ex|r?lh|cq(w|h|i|b|min|max))|\b(calc|min|max|clamp)\(.+\)|^0$/, wn = /^-?((\d+)?\.?(\d+)[a-z]+|0)_-?((\d+)?\.?(\d+)[a-z]+|0)/;
+function le(e) {
+  return Pe(e) || bn.has(e) || mn.test(e) || Rt(e);
 }
-function Mt(e) {
-  return Te(e, "length", Cn);
-}
-function yn(e) {
-  return Te(e, "size", eo);
-}
-function vn(e) {
-  return Te(e, "position", eo);
-}
-function wn(e) {
-  return Te(e, "url", kn);
-}
-function rt(e) {
-  return Te(e, "number", ke);
-}
-function ke(e) {
-  return !Number.isNaN(Number(e));
-}
-function _n(e) {
-  return e.endsWith("%") && ke(e.slice(0, -1));
-}
-function je(e) {
-  return sr(e) || Te(e, "number", sr);
-}
-function O(e) {
-  return Xr.test(e);
-}
-function Fe() {
-  return !0;
-}
-function he(e) {
-  return gn.test(e);
+function Rt(e) {
+  return Ne(e, "length", Sn);
 }
 function xn(e) {
-  return Te(e, "", $n);
+  return Ne(e, "size", no);
 }
-function Te(e, t, r) {
-  var o = Xr.exec(e);
-  return o ? o[1] ? o[1] === t : r(o[2]) : !1;
+function _n(e) {
+  return Ne(e, "position", no);
 }
 function Cn(e) {
-  return mn.test(e);
+  return Ne(e, "url", In);
 }
-function eo() {
-  return !1;
+function st(e) {
+  return Ne(e, "number", Pe);
+}
+function Pe(e) {
+  return !Number.isNaN(Number(e));
 }
 function kn(e) {
-  return e.startsWith("url(");
+  return e.endsWith("%") && Pe(e.slice(0, -1));
 }
-function sr(e) {
-  return Number.isInteger(Number(e));
+function We(e) {
+  return dr(e) || Ne(e, "number", dr);
+}
+function E(e) {
+  return oo.test(e);
+}
+function Ge() {
+  return !0;
+}
+function be(e) {
+  return yn.test(e);
 }
 function $n(e) {
-  return bn.test(e);
+  return Ne(e, "", Tn);
 }
-function In() {
-  var e = G("colors"), t = G("spacing"), r = G("blur"), o = G("brightness"), n = G("borderColor"), i = G("borderRadius"), s = G("borderSpacing"), u = G("borderWidth"), c = G("contrast"), p = G("grayscale"), g = G("hueRotate"), f = G("invert"), b = G("gap"), y = G("gradientColorStops"), C = G("gradientColorStopPositions"), _ = G("inset"), k = G("margin"), $ = G("opacity"), I = G("padding"), z = G("saturate"), V = G("scale"), U = G("sepia"), D = G("skew"), q = G("space"), Z = G("translate"), X = function() {
+function Ne(e, t, r) {
+  var o = oo.exec(e);
+  return o ? o[1] ? o[1] === t : r(o[2]) : !1;
+}
+function Sn(e) {
+  return vn.test(e);
+}
+function no() {
+  return !1;
+}
+function In(e) {
+  return e.startsWith("url(");
+}
+function dr(e) {
+  return Number.isInteger(Number(e));
+}
+function Tn(e) {
+  return wn.test(e);
+}
+function Pn() {
+  var e = G("colors"), t = G("spacing"), r = G("blur"), o = G("brightness"), n = G("borderColor"), i = G("borderRadius"), s = G("borderSpacing"), l = G("borderWidth"), d = G("contrast"), p = G("grayscale"), g = G("hueRotate"), f = G("invert"), m = G("gap"), y = G("gradientColorStops"), k = G("gradientColorStopPositions"), _ = G("inset"), I = G("margin"), S = G("opacity"), $ = G("padding"), O = G("saturate"), V = G("scale"), W = G("sepia"), F = G("skew"), J = G("space"), X = G("translate"), ee = function() {
     return ["auto", "contain", "none"];
-  }, H = function() {
+  }, D = function() {
     return ["auto", "hidden", "clip", "visible", "scroll"];
-  }, F = function() {
-    return ["auto", O, t];
+  }, M = function() {
+    return ["auto", E, t];
   }, A = function() {
-    return [O, t];
-  }, l = function() {
-    return ["", se];
-  }, a = function() {
-    return ["auto", ke, O];
-  }, d = function() {
+    return [E, t];
+  }, j = function() {
+    return ["", le];
+  }, C = function() {
+    return ["auto", Pe, E];
+  }, te = function() {
     return ["bottom", "center", "left", "left-bottom", "left-top", "right", "right-bottom", "right-top", "top"];
-  }, h = function() {
+  }, a = function() {
     return ["solid", "dashed", "dotted", "double", "none"];
-  }, m = function() {
+  }, u = function() {
     return ["normal", "multiply", "screen", "overlay", "darken", "lighten", "color-dodge", "color-burn", "hard-light", "soft-light", "difference", "exclusion", "hue", "saturation", "color", "luminosity", "plus-lighter"];
-  }, x = function() {
+  }, c = function() {
     return ["start", "end", "center", "between", "around", "evenly", "stretch"];
-  }, E = function() {
-    return ["", "0", O];
-  }, N = function() {
+  }, h = function() {
+    return ["", "0", E];
+  }, b = function() {
     return ["auto", "avoid", "all", "avoid-page", "page", "left", "right", "column"];
-  }, S = function() {
-    return [ke, rt];
-  }, J = function() {
-    return [ke, O];
+  }, v = function() {
+    return [Pe, st];
+  }, N = function() {
+    return [Pe, E];
   };
   return {
     cacheSize: 500,
     theme: {
-      colors: [Fe],
-      spacing: [se],
-      blur: ["none", "", he, O],
-      brightness: S(),
+      colors: [Ge],
+      spacing: [le],
+      blur: ["none", "", be, E],
+      brightness: v(),
       borderColor: [e],
-      borderRadius: ["none", "", "full", he, O],
+      borderRadius: ["none", "", "full", be, E],
       borderSpacing: A(),
-      borderWidth: l(),
-      contrast: S(),
-      grayscale: E(),
-      hueRotate: J(),
-      invert: E(),
+      borderWidth: j(),
+      contrast: v(),
+      grayscale: h(),
+      hueRotate: N(),
+      invert: h(),
       gap: A(),
       gradientColorStops: [e],
-      gradientColorStopPositions: [_n, Mt],
-      inset: F(),
-      margin: F(),
-      opacity: S(),
+      gradientColorStopPositions: [kn, Rt],
+      inset: M(),
+      margin: M(),
+      opacity: v(),
       padding: A(),
-      saturate: S(),
-      scale: S(),
-      sepia: E(),
-      skew: J(),
+      saturate: v(),
+      scale: v(),
+      sepia: h(),
+      skew: N(),
       space: A(),
       translate: A()
     },
@@ -398,7 +395,7 @@ function In() {
        * @see https://tailwindcss.com/docs/aspect-ratio
        */
       aspect: [{
-        aspect: ["auto", "square", "video", O]
+        aspect: ["auto", "square", "video", E]
       }],
       /**
        * Container
@@ -410,21 +407,21 @@ function In() {
        * @see https://tailwindcss.com/docs/columns
        */
       columns: [{
-        columns: [he]
+        columns: [be]
       }],
       /**
        * Break After
        * @see https://tailwindcss.com/docs/break-after
        */
       "break-after": [{
-        "break-after": N()
+        "break-after": b()
       }],
       /**
        * Break Before
        * @see https://tailwindcss.com/docs/break-before
        */
       "break-before": [{
-        "break-before": N()
+        "break-before": b()
       }],
       /**
        * Break Inside
@@ -483,49 +480,49 @@ function In() {
        * @see https://tailwindcss.com/docs/object-position
        */
       "object-position": [{
-        object: [].concat(d(), [O])
+        object: [].concat(te(), [E])
       }],
       /**
        * Overflow
        * @see https://tailwindcss.com/docs/overflow
        */
       overflow: [{
-        overflow: H()
+        overflow: D()
       }],
       /**
        * Overflow X
        * @see https://tailwindcss.com/docs/overflow
        */
       "overflow-x": [{
-        "overflow-x": H()
+        "overflow-x": D()
       }],
       /**
        * Overflow Y
        * @see https://tailwindcss.com/docs/overflow
        */
       "overflow-y": [{
-        "overflow-y": H()
+        "overflow-y": D()
       }],
       /**
        * Overscroll Behavior
        * @see https://tailwindcss.com/docs/overscroll-behavior
        */
       overscroll: [{
-        overscroll: X()
+        overscroll: ee()
       }],
       /**
        * Overscroll Behavior X
        * @see https://tailwindcss.com/docs/overscroll-behavior
        */
       "overscroll-x": [{
-        "overscroll-x": X()
+        "overscroll-x": ee()
       }],
       /**
        * Overscroll Behavior Y
        * @see https://tailwindcss.com/docs/overscroll-behavior
        */
       "overscroll-y": [{
-        "overscroll-y": X()
+        "overscroll-y": ee()
       }],
       /**
        * Position
@@ -605,7 +602,7 @@ function In() {
        * @see https://tailwindcss.com/docs/z-index
        */
       z: [{
-        z: ["auto", je]
+        z: ["auto", We]
       }],
       // Flexbox and Grid
       /**
@@ -613,7 +610,7 @@ function In() {
        * @see https://tailwindcss.com/docs/flex-basis
        */
       basis: [{
-        basis: F()
+        basis: M()
       }],
       /**
        * Flex Direction
@@ -634,35 +631,35 @@ function In() {
        * @see https://tailwindcss.com/docs/flex
        */
       flex: [{
-        flex: ["1", "auto", "initial", "none", O]
+        flex: ["1", "auto", "initial", "none", E]
       }],
       /**
        * Flex Grow
        * @see https://tailwindcss.com/docs/flex-grow
        */
       grow: [{
-        grow: E()
+        grow: h()
       }],
       /**
        * Flex Shrink
        * @see https://tailwindcss.com/docs/flex-shrink
        */
       shrink: [{
-        shrink: E()
+        shrink: h()
       }],
       /**
        * Order
        * @see https://tailwindcss.com/docs/order
        */
       order: [{
-        order: ["first", "last", "none", je]
+        order: ["first", "last", "none", We]
       }],
       /**
        * Grid Template Columns
        * @see https://tailwindcss.com/docs/grid-template-columns
        */
       "grid-cols": [{
-        "grid-cols": [Fe]
+        "grid-cols": [Ge]
       }],
       /**
        * Grid Column Start / End
@@ -670,29 +667,29 @@ function In() {
        */
       "col-start-end": [{
         col: ["auto", {
-          span: ["full", je]
-        }, O]
+          span: ["full", We]
+        }, E]
       }],
       /**
        * Grid Column Start
        * @see https://tailwindcss.com/docs/grid-column
        */
       "col-start": [{
-        "col-start": a()
+        "col-start": C()
       }],
       /**
        * Grid Column End
        * @see https://tailwindcss.com/docs/grid-column
        */
       "col-end": [{
-        "col-end": a()
+        "col-end": C()
       }],
       /**
        * Grid Template Rows
        * @see https://tailwindcss.com/docs/grid-template-rows
        */
       "grid-rows": [{
-        "grid-rows": [Fe]
+        "grid-rows": [Ge]
       }],
       /**
        * Grid Row Start / End
@@ -700,22 +697,22 @@ function In() {
        */
       "row-start-end": [{
         row: ["auto", {
-          span: [je]
-        }, O]
+          span: [We]
+        }, E]
       }],
       /**
        * Grid Row Start
        * @see https://tailwindcss.com/docs/grid-row
        */
       "row-start": [{
-        "row-start": a()
+        "row-start": C()
       }],
       /**
        * Grid Row End
        * @see https://tailwindcss.com/docs/grid-row
        */
       "row-end": [{
-        "row-end": a()
+        "row-end": C()
       }],
       /**
        * Grid Auto Flow
@@ -729,42 +726,42 @@ function In() {
        * @see https://tailwindcss.com/docs/grid-auto-columns
        */
       "auto-cols": [{
-        "auto-cols": ["auto", "min", "max", "fr", O]
+        "auto-cols": ["auto", "min", "max", "fr", E]
       }],
       /**
        * Grid Auto Rows
        * @see https://tailwindcss.com/docs/grid-auto-rows
        */
       "auto-rows": [{
-        "auto-rows": ["auto", "min", "max", "fr", O]
+        "auto-rows": ["auto", "min", "max", "fr", E]
       }],
       /**
        * Gap
        * @see https://tailwindcss.com/docs/gap
        */
       gap: [{
-        gap: [b]
+        gap: [m]
       }],
       /**
        * Gap X
        * @see https://tailwindcss.com/docs/gap
        */
       "gap-x": [{
-        "gap-x": [b]
+        "gap-x": [m]
       }],
       /**
        * Gap Y
        * @see https://tailwindcss.com/docs/gap
        */
       "gap-y": [{
-        "gap-y": [b]
+        "gap-y": [m]
       }],
       /**
        * Justify Content
        * @see https://tailwindcss.com/docs/justify-content
        */
       "justify-content": [{
-        justify: ["normal"].concat(x())
+        justify: ["normal"].concat(c())
       }],
       /**
        * Justify Items
@@ -785,7 +782,7 @@ function In() {
        * @see https://tailwindcss.com/docs/align-content
        */
       "align-content": [{
-        content: ["normal"].concat(x(), ["baseline"])
+        content: ["normal"].concat(c(), ["baseline"])
       }],
       /**
        * Align Items
@@ -806,7 +803,7 @@ function In() {
        * @see https://tailwindcss.com/docs/place-content
        */
       "place-content": [{
-        "place-content": [].concat(x(), ["baseline"])
+        "place-content": [].concat(c(), ["baseline"])
       }],
       /**
        * Place Items
@@ -828,133 +825,133 @@ function In() {
        * @see https://tailwindcss.com/docs/padding
        */
       p: [{
-        p: [I]
+        p: [$]
       }],
       /**
        * Padding X
        * @see https://tailwindcss.com/docs/padding
        */
       px: [{
-        px: [I]
+        px: [$]
       }],
       /**
        * Padding Y
        * @see https://tailwindcss.com/docs/padding
        */
       py: [{
-        py: [I]
+        py: [$]
       }],
       /**
        * Padding Start
        * @see https://tailwindcss.com/docs/padding
        */
       ps: [{
-        ps: [I]
+        ps: [$]
       }],
       /**
        * Padding End
        * @see https://tailwindcss.com/docs/padding
        */
       pe: [{
-        pe: [I]
+        pe: [$]
       }],
       /**
        * Padding Top
        * @see https://tailwindcss.com/docs/padding
        */
       pt: [{
-        pt: [I]
+        pt: [$]
       }],
       /**
        * Padding Right
        * @see https://tailwindcss.com/docs/padding
        */
       pr: [{
-        pr: [I]
+        pr: [$]
       }],
       /**
        * Padding Bottom
        * @see https://tailwindcss.com/docs/padding
        */
       pb: [{
-        pb: [I]
+        pb: [$]
       }],
       /**
        * Padding Left
        * @see https://tailwindcss.com/docs/padding
        */
       pl: [{
-        pl: [I]
+        pl: [$]
       }],
       /**
        * Margin
        * @see https://tailwindcss.com/docs/margin
        */
       m: [{
-        m: [k]
+        m: [I]
       }],
       /**
        * Margin X
        * @see https://tailwindcss.com/docs/margin
        */
       mx: [{
-        mx: [k]
+        mx: [I]
       }],
       /**
        * Margin Y
        * @see https://tailwindcss.com/docs/margin
        */
       my: [{
-        my: [k]
+        my: [I]
       }],
       /**
        * Margin Start
        * @see https://tailwindcss.com/docs/margin
        */
       ms: [{
-        ms: [k]
+        ms: [I]
       }],
       /**
        * Margin End
        * @see https://tailwindcss.com/docs/margin
        */
       me: [{
-        me: [k]
+        me: [I]
       }],
       /**
        * Margin Top
        * @see https://tailwindcss.com/docs/margin
        */
       mt: [{
-        mt: [k]
+        mt: [I]
       }],
       /**
        * Margin Right
        * @see https://tailwindcss.com/docs/margin
        */
       mr: [{
-        mr: [k]
+        mr: [I]
       }],
       /**
        * Margin Bottom
        * @see https://tailwindcss.com/docs/margin
        */
       mb: [{
-        mb: [k]
+        mb: [I]
       }],
       /**
        * Margin Left
        * @see https://tailwindcss.com/docs/margin
        */
       ml: [{
-        ml: [k]
+        ml: [I]
       }],
       /**
        * Space Between X
        * @see https://tailwindcss.com/docs/space
        */
       "space-x": [{
-        "space-x": [q]
+        "space-x": [J]
       }],
       /**
        * Space Between X Reverse
@@ -966,7 +963,7 @@ function In() {
        * @see https://tailwindcss.com/docs/space
        */
       "space-y": [{
-        "space-y": [q]
+        "space-y": [J]
       }],
       /**
        * Space Between Y Reverse
@@ -979,14 +976,14 @@ function In() {
        * @see https://tailwindcss.com/docs/width
        */
       w: [{
-        w: ["auto", "min", "max", "fit", O, t]
+        w: ["auto", "min", "max", "fit", E, t]
       }],
       /**
        * Min-Width
        * @see https://tailwindcss.com/docs/min-width
        */
       "min-w": [{
-        "min-w": ["min", "max", "fit", O, se]
+        "min-w": ["min", "max", "fit", E, le]
       }],
       /**
        * Max-Width
@@ -994,29 +991,29 @@ function In() {
        */
       "max-w": [{
         "max-w": ["0", "none", "full", "min", "max", "fit", "prose", {
-          screen: [he]
-        }, he, O]
+          screen: [be]
+        }, be, E]
       }],
       /**
        * Height
        * @see https://tailwindcss.com/docs/height
        */
       h: [{
-        h: [O, t, "auto", "min", "max", "fit"]
+        h: [E, t, "auto", "min", "max", "fit"]
       }],
       /**
        * Min-Height
        * @see https://tailwindcss.com/docs/min-height
        */
       "min-h": [{
-        "min-h": ["min", "max", "fit", O, se]
+        "min-h": ["min", "max", "fit", E, le]
       }],
       /**
        * Max-Height
        * @see https://tailwindcss.com/docs/max-height
        */
       "max-h": [{
-        "max-h": [O, t, "min", "max", "fit"]
+        "max-h": [E, t, "min", "max", "fit"]
       }],
       // Typography
       /**
@@ -1024,7 +1021,7 @@ function In() {
        * @see https://tailwindcss.com/docs/font-size
        */
       "font-size": [{
-        text: ["base", he, Mt]
+        text: ["base", be, Rt]
       }],
       /**
        * Font Smoothing
@@ -1041,14 +1038,14 @@ function In() {
        * @see https://tailwindcss.com/docs/font-weight
        */
       "font-weight": [{
-        font: ["thin", "extralight", "light", "normal", "medium", "semibold", "bold", "extrabold", "black", rt]
+        font: ["thin", "extralight", "light", "normal", "medium", "semibold", "bold", "extrabold", "black", st]
       }],
       /**
        * Font Family
        * @see https://tailwindcss.com/docs/font-family
        */
       "font-family": [{
-        font: [Fe]
+        font: [Ge]
       }],
       /**
        * Font Variant Numeric
@@ -1085,35 +1082,35 @@ function In() {
        * @see https://tailwindcss.com/docs/letter-spacing
        */
       tracking: [{
-        tracking: ["tighter", "tight", "normal", "wide", "wider", "widest", O]
+        tracking: ["tighter", "tight", "normal", "wide", "wider", "widest", E]
       }],
       /**
        * Line Clamp
        * @see https://tailwindcss.com/docs/line-clamp
        */
       "line-clamp": [{
-        "line-clamp": ["none", ke, rt]
+        "line-clamp": ["none", Pe, st]
       }],
       /**
        * Line Height
        * @see https://tailwindcss.com/docs/line-height
        */
       leading: [{
-        leading: ["none", "tight", "snug", "normal", "relaxed", "loose", O, se]
+        leading: ["none", "tight", "snug", "normal", "relaxed", "loose", E, le]
       }],
       /**
        * List Style Image
        * @see https://tailwindcss.com/docs/list-style-image
        */
       "list-image": [{
-        "list-image": ["none", O]
+        "list-image": ["none", E]
       }],
       /**
        * List Style Type
        * @see https://tailwindcss.com/docs/list-style-type
        */
       "list-style-type": [{
-        list: ["none", "disc", "decimal", O]
+        list: ["none", "disc", "decimal", E]
       }],
       /**
        * List Style Position
@@ -1135,7 +1132,7 @@ function In() {
        * @see https://tailwindcss.com/docs/placeholder-opacity
        */
       "placeholder-opacity": [{
-        "placeholder-opacity": [$]
+        "placeholder-opacity": [S]
       }],
       /**
        * Text Alignment
@@ -1156,7 +1153,7 @@ function In() {
        * @see https://tailwindcss.com/docs/text-opacity
        */
       "text-opacity": [{
-        "text-opacity": [$]
+        "text-opacity": [S]
       }],
       /**
        * Text Decoration
@@ -1168,21 +1165,21 @@ function In() {
        * @see https://tailwindcss.com/docs/text-decoration-style
        */
       "text-decoration-style": [{
-        decoration: [].concat(h(), ["wavy"])
+        decoration: [].concat(a(), ["wavy"])
       }],
       /**
        * Text Decoration Thickness
        * @see https://tailwindcss.com/docs/text-decoration-thickness
        */
       "text-decoration-thickness": [{
-        decoration: ["auto", "from-font", se]
+        decoration: ["auto", "from-font", le]
       }],
       /**
        * Text Underline Offset
        * @see https://tailwindcss.com/docs/text-underline-offset
        */
       "underline-offset": [{
-        "underline-offset": ["auto", O, se]
+        "underline-offset": ["auto", E, le]
       }],
       /**
        * Text Decoration Color
@@ -1213,7 +1210,7 @@ function In() {
        * @see https://tailwindcss.com/docs/vertical-align
        */
       "vertical-align": [{
-        align: ["baseline", "top", "middle", "bottom", "text-top", "text-bottom", "sub", "super", O]
+        align: ["baseline", "top", "middle", "bottom", "text-top", "text-bottom", "sub", "super", E]
       }],
       /**
        * Whitespace
@@ -1241,7 +1238,7 @@ function In() {
        * @see https://tailwindcss.com/docs/content
        */
       content: [{
-        content: ["none", O]
+        content: ["none", E]
       }],
       // Backgrounds
       /**
@@ -1264,7 +1261,7 @@ function In() {
        * @see https://tailwindcss.com/docs/background-opacity
        */
       "bg-opacity": [{
-        "bg-opacity": [$]
+        "bg-opacity": [S]
       }],
       /**
        * Background Origin
@@ -1278,7 +1275,7 @@ function In() {
        * @see https://tailwindcss.com/docs/background-position
        */
       "bg-position": [{
-        bg: [].concat(d(), [vn])
+        bg: [].concat(te(), [_n])
       }],
       /**
        * Background Repeat
@@ -1294,7 +1291,7 @@ function In() {
        * @see https://tailwindcss.com/docs/background-size
        */
       "bg-size": [{
-        bg: ["auto", "cover", "contain", yn]
+        bg: ["auto", "cover", "contain", xn]
       }],
       /**
        * Background Image
@@ -1303,7 +1300,7 @@ function In() {
       "bg-image": [{
         bg: ["none", {
           "gradient-to": ["t", "tr", "r", "br", "b", "bl", "l", "tl"]
-        }, wn]
+        }, Cn]
       }],
       /**
        * Background Color
@@ -1317,21 +1314,21 @@ function In() {
        * @see https://tailwindcss.com/docs/gradient-color-stops
        */
       "gradient-from-pos": [{
-        from: [C]
+        from: [k]
       }],
       /**
        * Gradient Color Stops Via Position
        * @see https://tailwindcss.com/docs/gradient-color-stops
        */
       "gradient-via-pos": [{
-        via: [C]
+        via: [k]
       }],
       /**
        * Gradient Color Stops To Position
        * @see https://tailwindcss.com/docs/gradient-color-stops
        */
       "gradient-to-pos": [{
-        to: [C]
+        to: [k]
       }],
       /**
        * Gradient Color Stops From
@@ -1465,84 +1462,84 @@ function In() {
        * @see https://tailwindcss.com/docs/border-width
        */
       "border-w": [{
-        border: [u]
+        border: [l]
       }],
       /**
        * Border Width X
        * @see https://tailwindcss.com/docs/border-width
        */
       "border-w-x": [{
-        "border-x": [u]
+        "border-x": [l]
       }],
       /**
        * Border Width Y
        * @see https://tailwindcss.com/docs/border-width
        */
       "border-w-y": [{
-        "border-y": [u]
+        "border-y": [l]
       }],
       /**
        * Border Width Start
        * @see https://tailwindcss.com/docs/border-width
        */
       "border-w-s": [{
-        "border-s": [u]
+        "border-s": [l]
       }],
       /**
        * Border Width End
        * @see https://tailwindcss.com/docs/border-width
        */
       "border-w-e": [{
-        "border-e": [u]
+        "border-e": [l]
       }],
       /**
        * Border Width Top
        * @see https://tailwindcss.com/docs/border-width
        */
       "border-w-t": [{
-        "border-t": [u]
+        "border-t": [l]
       }],
       /**
        * Border Width Right
        * @see https://tailwindcss.com/docs/border-width
        */
       "border-w-r": [{
-        "border-r": [u]
+        "border-r": [l]
       }],
       /**
        * Border Width Bottom
        * @see https://tailwindcss.com/docs/border-width
        */
       "border-w-b": [{
-        "border-b": [u]
+        "border-b": [l]
       }],
       /**
        * Border Width Left
        * @see https://tailwindcss.com/docs/border-width
        */
       "border-w-l": [{
-        "border-l": [u]
+        "border-l": [l]
       }],
       /**
        * Border Opacity
        * @see https://tailwindcss.com/docs/border-opacity
        */
       "border-opacity": [{
-        "border-opacity": [$]
+        "border-opacity": [S]
       }],
       /**
        * Border Style
        * @see https://tailwindcss.com/docs/border-style
        */
       "border-style": [{
-        border: [].concat(h(), ["hidden"])
+        border: [].concat(a(), ["hidden"])
       }],
       /**
        * Divide Width X
        * @see https://tailwindcss.com/docs/divide-width
        */
       "divide-x": [{
-        "divide-x": [u]
+        "divide-x": [l]
       }],
       /**
        * Divide Width X Reverse
@@ -1554,7 +1551,7 @@ function In() {
        * @see https://tailwindcss.com/docs/divide-width
        */
       "divide-y": [{
-        "divide-y": [u]
+        "divide-y": [l]
       }],
       /**
        * Divide Width Y Reverse
@@ -1566,14 +1563,14 @@ function In() {
        * @see https://tailwindcss.com/docs/divide-opacity
        */
       "divide-opacity": [{
-        "divide-opacity": [$]
+        "divide-opacity": [S]
       }],
       /**
        * Divide Style
        * @see https://tailwindcss.com/docs/divide-style
        */
       "divide-style": [{
-        divide: h()
+        divide: a()
       }],
       /**
        * Border Color
@@ -1636,21 +1633,21 @@ function In() {
        * @see https://tailwindcss.com/docs/outline-style
        */
       "outline-style": [{
-        outline: [""].concat(h())
+        outline: [""].concat(a())
       }],
       /**
        * Outline Offset
        * @see https://tailwindcss.com/docs/outline-offset
        */
       "outline-offset": [{
-        "outline-offset": [O, se]
+        "outline-offset": [E, le]
       }],
       /**
        * Outline Width
        * @see https://tailwindcss.com/docs/outline-width
        */
       "outline-w": [{
-        outline: [se]
+        outline: [le]
       }],
       /**
        * Outline Color
@@ -1664,7 +1661,7 @@ function In() {
        * @see https://tailwindcss.com/docs/ring-width
        */
       "ring-w": [{
-        ring: l()
+        ring: j()
       }],
       /**
        * Ring Width Inset
@@ -1683,14 +1680,14 @@ function In() {
        * @see https://tailwindcss.com/docs/ring-opacity
        */
       "ring-opacity": [{
-        "ring-opacity": [$]
+        "ring-opacity": [S]
       }],
       /**
        * Ring Offset Width
        * @see https://tailwindcss.com/docs/ring-offset-width
        */
       "ring-offset-w": [{
-        "ring-offset": [se]
+        "ring-offset": [le]
       }],
       /**
        * Ring Offset Color
@@ -1705,35 +1702,35 @@ function In() {
        * @see https://tailwindcss.com/docs/box-shadow
        */
       shadow: [{
-        shadow: ["", "inner", "none", he, xn]
+        shadow: ["", "inner", "none", be, $n]
       }],
       /**
        * Box Shadow Color
        * @see https://tailwindcss.com/docs/box-shadow-color
        */
       "shadow-color": [{
-        shadow: [Fe]
+        shadow: [Ge]
       }],
       /**
        * Opacity
        * @see https://tailwindcss.com/docs/opacity
        */
       opacity: [{
-        opacity: [$]
+        opacity: [S]
       }],
       /**
        * Mix Blend Mode
        * @see https://tailwindcss.com/docs/mix-blend-mode
        */
       "mix-blend": [{
-        "mix-blend": m()
+        "mix-blend": u()
       }],
       /**
        * Background Blend Mode
        * @see https://tailwindcss.com/docs/background-blend-mode
        */
       "bg-blend": [{
-        "bg-blend": m()
+        "bg-blend": u()
       }],
       // Filters
       /**
@@ -1763,14 +1760,14 @@ function In() {
        * @see https://tailwindcss.com/docs/contrast
        */
       contrast: [{
-        contrast: [c]
+        contrast: [d]
       }],
       /**
        * Drop Shadow
        * @see https://tailwindcss.com/docs/drop-shadow
        */
       "drop-shadow": [{
-        "drop-shadow": ["", "none", he, O]
+        "drop-shadow": ["", "none", be, E]
       }],
       /**
        * Grayscale
@@ -1798,14 +1795,14 @@ function In() {
        * @see https://tailwindcss.com/docs/saturate
        */
       saturate: [{
-        saturate: [z]
+        saturate: [O]
       }],
       /**
        * Sepia
        * @see https://tailwindcss.com/docs/sepia
        */
       sepia: [{
-        sepia: [U]
+        sepia: [W]
       }],
       /**
        * Backdrop Filter
@@ -1834,7 +1831,7 @@ function In() {
        * @see https://tailwindcss.com/docs/backdrop-contrast
        */
       "backdrop-contrast": [{
-        "backdrop-contrast": [c]
+        "backdrop-contrast": [d]
       }],
       /**
        * Backdrop Grayscale
@@ -1862,21 +1859,21 @@ function In() {
        * @see https://tailwindcss.com/docs/backdrop-opacity
        */
       "backdrop-opacity": [{
-        "backdrop-opacity": [$]
+        "backdrop-opacity": [S]
       }],
       /**
        * Backdrop Saturate
        * @see https://tailwindcss.com/docs/backdrop-saturate
        */
       "backdrop-saturate": [{
-        "backdrop-saturate": [z]
+        "backdrop-saturate": [O]
       }],
       /**
        * Backdrop Sepia
        * @see https://tailwindcss.com/docs/backdrop-sepia
        */
       "backdrop-sepia": [{
-        "backdrop-sepia": [U]
+        "backdrop-sepia": [W]
       }],
       // Tables
       /**
@@ -1927,35 +1924,35 @@ function In() {
        * @see https://tailwindcss.com/docs/transition-property
        */
       transition: [{
-        transition: ["none", "all", "", "colors", "opacity", "shadow", "transform", O]
+        transition: ["none", "all", "", "colors", "opacity", "shadow", "transform", E]
       }],
       /**
        * Transition Duration
        * @see https://tailwindcss.com/docs/transition-duration
        */
       duration: [{
-        duration: J()
+        duration: N()
       }],
       /**
        * Transition Timing Function
        * @see https://tailwindcss.com/docs/transition-timing-function
        */
       ease: [{
-        ease: ["linear", "in", "out", "in-out", O]
+        ease: ["linear", "in", "out", "in-out", E]
       }],
       /**
        * Transition Delay
        * @see https://tailwindcss.com/docs/transition-delay
        */
       delay: [{
-        delay: J()
+        delay: N()
       }],
       /**
        * Animation
        * @see https://tailwindcss.com/docs/animation
        */
       animate: [{
-        animate: ["none", "spin", "ping", "pulse", "bounce", O]
+        animate: ["none", "spin", "ping", "pulse", "bounce", E]
       }],
       // Transforms
       /**
@@ -1991,42 +1988,42 @@ function In() {
        * @see https://tailwindcss.com/docs/rotate
        */
       rotate: [{
-        rotate: [je, O]
+        rotate: [We, E]
       }],
       /**
        * Translate X
        * @see https://tailwindcss.com/docs/translate
        */
       "translate-x": [{
-        "translate-x": [Z]
+        "translate-x": [X]
       }],
       /**
        * Translate Y
        * @see https://tailwindcss.com/docs/translate
        */
       "translate-y": [{
-        "translate-y": [Z]
+        "translate-y": [X]
       }],
       /**
        * Skew X
        * @see https://tailwindcss.com/docs/skew
        */
       "skew-x": [{
-        "skew-x": [D]
+        "skew-x": [F]
       }],
       /**
        * Skew Y
        * @see https://tailwindcss.com/docs/skew
        */
       "skew-y": [{
-        "skew-y": [D]
+        "skew-y": [F]
       }],
       /**
        * Transform Origin
        * @see https://tailwindcss.com/docs/transform-origin
        */
       "transform-origin": [{
-        origin: ["center", "top", "top-right", "right", "bottom-right", "bottom", "bottom-left", "left", "top-left", O]
+        origin: ["center", "top", "top-right", "right", "bottom-right", "bottom", "bottom-left", "left", "top-left", E]
       }],
       // Interactivity
       /**
@@ -2046,7 +2043,7 @@ function In() {
        * @see https://tailwindcss.com/docs/cursor
        */
       cursor: [{
-        cursor: ["auto", "default", "pointer", "wait", "text", "move", "help", "not-allowed", "none", "context-menu", "progress", "cell", "crosshair", "vertical-text", "alias", "copy", "no-drop", "grab", "grabbing", "all-scroll", "col-resize", "row-resize", "n-resize", "e-resize", "s-resize", "w-resize", "ne-resize", "nw-resize", "se-resize", "sw-resize", "ew-resize", "ns-resize", "nesw-resize", "nwse-resize", "zoom-in", "zoom-out", O]
+        cursor: ["auto", "default", "pointer", "wait", "text", "move", "help", "not-allowed", "none", "context-menu", "progress", "cell", "crosshair", "vertical-text", "alias", "copy", "no-drop", "grab", "grabbing", "all-scroll", "col-resize", "row-resize", "n-resize", "e-resize", "s-resize", "w-resize", "ne-resize", "nw-resize", "se-resize", "sw-resize", "ew-resize", "ns-resize", "nesw-resize", "nwse-resize", "zoom-in", "zoom-out", E]
       }],
       /**
        * Caret Color
@@ -2251,7 +2248,7 @@ function In() {
        * @see https://tailwindcss.com/docs/will-change
        */
       "will-change": [{
-        "will-change": ["auto", "scroll", "contents", "transform", O]
+        "will-change": ["auto", "scroll", "contents", "transform", E]
       }],
       // SVG
       /**
@@ -2266,7 +2263,7 @@ function In() {
        * @see https://tailwindcss.com/docs/stroke-width
        */
       "stroke-w": [{
-        stroke: [se, rt]
+        stroke: [le, st]
       }],
       /**
        * Stroke
@@ -2329,13 +2326,13 @@ function In() {
     }
   };
 }
-var ne = /* @__PURE__ */ pn(In);
-const Tn = "p-5 border border-gray-200 dark:border-gray-700 dark:bg-gray-900";
-function Sn(e) {
-  const t = w(() => e.value.parentElement.parentElement.dataset.accordionId), r = w(() => e.value.parentElement.dataset.panelId), { accordionsStates: o } = Ze(), n = w(() => o[t.value]), i = w(() => o[t.value].panels[r.value]), s = w(() => Object.keys(o[t.value].panels[r.value]).length);
+var se = /* @__PURE__ */ gn(Pn);
+const Ln = "p-5 border border-gray-200 dark:border-gray-700 dark:bg-gray-900";
+function An(e) {
+  const t = x(() => e.value.parentElement.parentElement.dataset.accordionId), r = x(() => e.value.parentElement.dataset.panelId), { accordionsStates: o } = ot(), n = x(() => o[t.value]), i = x(() => o[t.value].panels[r.value]), s = x(() => Object.keys(o[t.value].panels[r.value]).length);
   return {
-    contentClasses: w(() => ne(
-      Tn,
+    contentClasses: x(() => se(
+      Ln,
       !i.value.isVisible && "hidden",
       (i.value.order !== s.value - 1 || n.value.flush) && "border-b-0",
       i.value.order === s.value - 1 && "border-t-0",
@@ -2343,116 +2340,116 @@ function Sn(e) {
     ))
   };
 }
-const Ln = /* @__PURE__ */ K({
+const Nn = /* @__PURE__ */ K({
   __name: "FwbAccordionContent",
   setup(e) {
-    const t = oe(!1), r = oe();
+    const t = ie(!1), r = ie();
     let o;
-    return yt(() => {
-      o = Sn(r).contentClasses, t.value = !0;
-    }), (n, i) => (v(), L("div", {
+    return _t(() => {
+      o = An(r).contentClasses, t.value = !0;
+    }), (n, i) => (w(), L("div", {
       ref_key: "content",
       ref: r
     }, [
-      t.value ? (v(), L("div", {
+      t.value ? (w(), L("div", {
         key: 0,
-        class: R(T(o))
+        class: H(T(o))
       }, [
-        M(n.$slots, "default")
-      ], 2)) : W("", !0)
+        z(n.$slots, "default")
+      ], 2)) : U("", !0)
     ], 512));
   }
-}), Pn = "flex items-center p-5 w-full font-medium text-left text-gray-500 border border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800", An = "w-6 h-6 shrink-0";
-function Nn(e) {
-  const t = w(() => e.value.parentElement.parentElement.dataset.accordionId), r = w(() => e.value.parentElement.dataset.panelId), { accordionsStates: o } = Ze(), n = w(() => o[t.value]), i = w(() => n.value.panels[r.value]), s = w(() => Object.keys(i.value).length), u = w(() => i.value.order !== s.value - 1), c = w(() => u.value || n.value.flush && i.value.order === s.value - 1 && !i.value.isVisible), p = w(() => ne(
-    Pn,
+}), Dn = "flex items-center p-5 w-full font-medium text-left text-gray-500 border border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800", zn = "w-6 h-6 shrink-0";
+function On(e) {
+  const t = x(() => e.value.parentElement.parentElement.dataset.accordionId), r = x(() => e.value.parentElement.dataset.panelId), { accordionsStates: o } = ot(), n = x(() => o[t.value]), i = x(() => n.value.panels[r.value]), s = x(() => Object.keys(i.value).length), l = x(() => i.value.order !== s.value - 1), d = x(() => l.value || n.value.flush && i.value.order === s.value - 1 && !i.value.isVisible), p = x(() => se(
+    Dn,
     i.value.isVisible && "bg-gray-100 dark:bg-gray-800",
     i.value.order === 0 && !n.value.flush && "rounded-t-xl",
     i.value.order === 0 && n.value.flush && "border-t-0",
-    c.value && "border-b-0",
+    d.value && "border-b-0",
     n.value.flush && "border-x-0"
-  )), g = w(() => ne(An, i.value.isVisible && "rotate-180"));
+  )), g = x(() => se(zn, i.value.isVisible && "rotate-180"));
   return {
     headerClasses: p,
     arrowClasses: g
   };
 }
-const Dn = { class: "w-full" }, En = /* @__PURE__ */ j("path", {
+const En = { class: "w-full" }, Mn = /* @__PURE__ */ R("path", {
   "fill-rule": "evenodd",
   d: "M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-}, null, -1), zn = [
-  En
-], Mn = /* @__PURE__ */ K({
+}, null, -1), Bn = [
+  Mn
+], jn = /* @__PURE__ */ K({
   __name: "FwbAccordionHeader",
   setup(e) {
-    const t = oe(!1), r = oe(), o = w(() => r.value.parentElement.parentElement.dataset.accordionId), n = w(() => r.value.parentElement.dataset.panelId), { accordionsStates: i } = Ze(), s = w(() => i[o.value]), u = w(() => s.value.panels[n.value]);
-    let c, p;
+    const t = ie(!1), r = ie(), o = x(() => r.value.parentElement.parentElement.dataset.accordionId), n = x(() => r.value.parentElement.dataset.panelId), { accordionsStates: i } = ot(), s = x(() => i[o.value]), l = x(() => s.value.panels[n.value]);
+    let d, p;
     function g() {
-      const y = u.value.isVisible;
-      for (const C in s.value.panels) {
-        const _ = s.value.panels[C];
+      const y = l.value.isVisible;
+      for (const k in s.value.panels) {
+        const _ = s.value.panels[k];
         _.id !== n.value ? _.isVisible = !1 : _.isVisible = !y;
       }
     }
     function f() {
-      u.value.isVisible = !u.value.isVisible;
+      l.value.isVisible = !l.value.isVisible;
     }
-    function b() {
+    function m() {
       if (s.value.alwaysOpen)
         return f();
       g();
     }
-    return yt(() => {
-      const y = Nn(r);
-      c = y.headerClasses, p = y.arrowClasses, t.value = !0;
-    }), (y, C) => (v(), L("div", {
+    return _t(() => {
+      const y = On(r);
+      d = y.headerClasses, p = y.arrowClasses, t.value = !0;
+    }), (y, k) => (w(), L("div", {
       ref_key: "header",
       ref: r
     }, [
-      t.value ? (v(), L("button", {
+      t.value ? (w(), L("button", {
         key: 0,
         type: "button",
-        class: R(T(c)),
-        onClick: b
+        class: H(T(d)),
+        onClick: m
       }, [
-        j("span", Dn, [
-          M(y.$slots, "default")
+        R("span", En, [
+          z(y.$slots, "default")
         ]),
-        (v(), L("svg", {
+        (w(), L("svg", {
           "data-accordion-icon": "",
-          class: R(T(p)),
+          class: H(T(p)),
           fill: "currentColor",
           viewBox: "0 0 20 20",
           xmlns: "http://www.w3.org/2000/svg"
-        }, zn, 2))
-      ], 2)) : W("", !0)
+        }, Bn, 2))
+      ], 2)) : U("", !0)
     ], 512));
   }
-}), On = ["data-panel-id"], Bn = /* @__PURE__ */ K({
+}), Rn = ["data-panel-id"], Fn = /* @__PURE__ */ K({
   __name: "FwbAccordionPanel",
   setup(e) {
-    const { accordionsStates: t } = Ze(), r = Qr(), o = oe(), n = w(() => o.value ? o.value.parentElement.dataset.accordionId : null), i = w(() => t[n.value]);
-    return yt(() => {
-      var u, c;
-      const s = (c = Object.keys((u = i == null ? void 0 : i.value) == null ? void 0 : u.panels)) == null ? void 0 : c.length;
+    const { accordionsStates: t } = ot(), r = Xr(), o = ie(), n = x(() => o.value ? o.value.parentElement.dataset.accordionId : null), i = x(() => t[n.value]);
+    return _t(() => {
+      var l, d;
+      const s = (d = Object.keys((l = i == null ? void 0 : i.value) == null ? void 0 : l.panels)) == null ? void 0 : d.length;
       i.value.panels[r] = {
         id: r,
         order: s,
         isVisible: (i.value.openFirstItem && s === 0) ?? !1
       };
-    }), (s, u) => (v(), L("div", {
+    }), (s, l) => (w(), L("div", {
       ref_key: "panel",
       ref: o,
       "data-panel-id": T(r)
     }, [
-      n.value ? M(s.$slots, "default", { key: 0 }) : W("", !0)
-    ], 8, On));
+      n.value ? z(s.$slots, "default", { key: 0 }) : U("", !0)
+    ], 8, Rn));
   }
-}), Ot = (e) => ne(e);
-function jn(e) {
+}), Ft = (e) => se(e);
+function Hn(e) {
   return e && e.__esModule && Object.prototype.hasOwnProperty.call(e, "default") ? e.default : e;
 }
-var to = { exports: {} };
+var io = { exports: {} };
 /*!
 	Copyright (c) 2018 Jed Watson.
 	Licensed under the MIT License (MIT), see
@@ -2470,16 +2467,16 @@ var to = { exports: {} };
             o.push(i);
           else if (Array.isArray(i)) {
             if (i.length) {
-              var u = r.apply(null, i);
-              u && o.push(u);
+              var l = r.apply(null, i);
+              l && o.push(l);
             }
           } else if (s === "object") {
             if (i.toString !== Object.prototype.toString && !i.toString.toString().includes("[native code]")) {
               o.push(i.toString());
               continue;
             }
-            for (var c in i)
-              t.call(i, c) && i[c] && o.push(c);
+            for (var d in i)
+              t.call(i, d) && i[d] && o.push(d);
           }
         }
       }
@@ -2487,9 +2484,9 @@ var to = { exports: {} };
     }
     e.exports ? (r.default = r, e.exports = r) : window.classNames = r;
   })();
-})(to);
-var Fn = to.exports;
-const Rn = /* @__PURE__ */ jn(Fn), Hn = {
+})(io);
+var Vn = io.exports;
+const Wn = /* @__PURE__ */ Hn(Vn), Gn = {
   0: "w-0 h-0",
   0.5: "w-0.5 h-0.5",
   1: "w-1 h-1",
@@ -2506,7 +2503,7 @@ const Rn = /* @__PURE__ */ jn(Fn), Hn = {
   7: "w-7 h-7",
   8: "w-8 h-8",
   9: "w-9 h-9"
-}, Vn = {
+}, Un = {
   blue: "fill-blue-600",
   gray: "fill-gray-600 dark:fill-gray-300",
   green: "fill-green-500",
@@ -2516,41 +2513,41 @@ const Rn = /* @__PURE__ */ jn(Fn), Hn = {
   white: "fill-white",
   yellow: "fill-yellow-400"
 };
-function Un(e) {
-  const t = w(() => Hn[e.size.value]), r = w(() => Vn[e.color.value]), o = w(() => "text-gray-200 dark:text-gray-600"), n = w(() => "animate-spin");
-  return { spinnerClasses: w(() => Rn(
+function qn(e) {
+  const t = x(() => Gn[e.size.value]), r = x(() => Un[e.color.value]), o = x(() => "text-gray-200 dark:text-gray-600"), n = x(() => "animate-spin");
+  return { spinnerClasses: x(() => Wn(
     n.value,
     o.value,
     r.value,
     t.value
   )) };
 }
-const Gn = /* @__PURE__ */ j("path", {
+const Kn = /* @__PURE__ */ R("path", {
   d: "M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z",
   fill: "currentColor"
-}, null, -1), Wn = /* @__PURE__ */ j("path", {
+}, null, -1), Qn = /* @__PURE__ */ R("path", {
   d: "M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z",
   fill: "currentFill"
-}, null, -1), qn = [
-  Gn,
-  Wn
-], ot = /* @__PURE__ */ K({
+}, null, -1), Jn = [
+  Kn,
+  Qn
+], at = /* @__PURE__ */ K({
   __name: "FwbSpinner",
   props: {
     color: { default: "blue" },
     size: { default: "4" }
   },
   setup(e) {
-    const t = e, { spinnerClasses: r } = Un(ve(t));
-    return (o, n) => (v(), L("svg", {
-      class: R(T(r)),
+    const t = e, { spinnerClasses: r } = qn(Ce(t));
+    return (o, n) => (w(), L("svg", {
+      class: H(T(r)),
       fill: "none",
       role: "status",
       viewBox: "0 0 100 101",
       xmlns: "http://www.w3.org/2000/svg"
-    }, qn, 2));
+    }, Jn, 2));
   }
-}), ar = {
+}), cr = {
   default: {
     default: "text-white bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg dark:bg-blue-600 focus:outline-none dark:focus:ring-blue-800",
     blue: "text-white bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg dark:bg-blue-600 focus:outline-none dark:focus:ring-blue-800",
@@ -2575,7 +2572,7 @@ const Gn = /* @__PURE__ */ j("path", {
     purple: "hover:bg-purple-800 dark:hover:bg-purple-700",
     pink: "hover:bg-pink-800 dark:hover:bg-pink-700"
   }
-}, lr = {
+}, pr = {
   default: {
     dark: "text-gray-900 border border-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm text-center dark:border-gray-600 dark:text-gray-400 dark:focus:ring-gray-800",
     default: "text-blue-700 border border-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm text-center dark:border-blue-500 dark:text-blue-500 dark:focus:ring-blue-800",
@@ -2596,7 +2593,7 @@ const Gn = /* @__PURE__ */ j("path", {
     red: "hover:text-white hover:bg-red-800 dark:hover:text-white dark:hover:bg-red-600",
     yellow: "hover:text-white hover:bg-yellow-500 dark:hover:text-white dark:hover:bg-yellow-400"
   }
-}, ur = {
+}, hr = {
   hover: {
     "cyan-blue": "hover:bg-gradient-to-bl",
     "green-blue": "hover:bg-gradient-to-bl",
@@ -2631,7 +2628,7 @@ const Gn = /* @__PURE__ */ j("path", {
     red: "text-white bg-gradient-to-r from-red-500 via-red-600 to-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 rounded-lg",
     teal: "text-white bg-gradient-to-r from-teal-500 via-teal-600 to-teal-700 focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 rounded-lg"
   }
-}, dr = {
+}, fr = {
   default: {
     "cyan-blue": "relative inline-flex items-center justify-center overflow-hidden font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800",
     "green-blue": "relative inline-flex items-center justify-center overflow-hidden font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800",
@@ -2650,19 +2647,19 @@ const Gn = /* @__PURE__ */ j("path", {
     "red-yellow": "group-hover:from-red-200 group-hover:via-red-300 group-hover:to-yellow-200 dark:hover:text-gray-900",
     "teal-lime": "group-hover:from-teal-300 group-hover:to-lime-300 dark:hover:text-gray-900"
   }
-}, Kn = {
+}, Yn = {
   xs: "text-xs px-2 py-1",
   sm: "text-sm px-3 py-1.5",
   md: "text-sm px-4 py-2",
   lg: "text-base px-5 py-2.5",
   xl: "text-base px-6 py-3"
-}, Qn = {
+}, Zn = {
   xs: "text-xs p-1",
   sm: "text-sm p-1.5",
   md: "text-sm p-2",
   lg: "text-base p-2.5",
   xl: "text-base p-3"
-}, cr = {
+}, gr = {
   blue: "shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80",
   cyan: "shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80",
   green: "shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80",
@@ -2671,38 +2668,38 @@ const Gn = /* @__PURE__ */ j("path", {
   purple: "shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80",
   red: "shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80",
   teal: "shadow-lg shadow-teal-500/50 dark:shadow-lg dark:shadow-teal-800/80"
-}, At = ["blue", "green", "cyan", "teal", "lime", "red", "pink", "purple"], Jn = ["alternative", "light"];
-function Yn(e) {
-  const t = Vo(), r = w(() => e.square.value ? Qn[e.size.value] : Kn[e.size.value]), o = w(() => {
-    const i = !!e.gradient.value, s = !!e.color.value, u = e.outline.value;
-    let c = "", p = "";
-    if (i && u)
-      At.includes(e.gradient.value) ? console.warn(`cannot use outline prop with "${e.gradient.value}" gradient`) : (p = dr.default[e.gradient.value], e.disabled.value || (c = dr.hover[e.gradient.value]));
+}, Ot = ["blue", "green", "cyan", "teal", "lime", "red", "pink", "purple"], Xn = ["alternative", "light"];
+function ei(e) {
+  const t = Uo(), r = x(() => e.square.value ? Zn[e.size.value] : Yn[e.size.value]), o = x(() => {
+    const i = !!e.gradient.value, s = !!e.color.value, l = e.outline.value;
+    let d = "", p = "";
+    if (i && l)
+      Ot.includes(e.gradient.value) ? console.warn(`cannot use outline prop with "${e.gradient.value}" gradient`) : (p = fr.default[e.gradient.value], e.disabled.value || (d = fr.hover[e.gradient.value]));
     else if (i)
-      p = ur.default[e.gradient.value], e.disabled.value || (c = ur.hover[e.gradient.value]);
-    else if (s && u)
-      if (Jn.includes(e.color.value))
+      p = hr.default[e.gradient.value], e.disabled.value || (d = hr.hover[e.gradient.value]);
+    else if (s && l)
+      if (Xn.includes(e.color.value))
         console.warn(`cannot use outline prop with "${e.color.value}" color`);
       else {
         const f = e.color.value;
-        p = lr.default[f], e.disabled.value || (c = lr.hover[f]);
+        p = pr.default[f], e.disabled.value || (d = pr.hover[f]);
       }
     else {
       const f = e.color.value;
-      p = ar.default[f], e.disabled.value || (c = ar.hover[f]);
+      p = cr.default[f], e.disabled.value || (d = cr.hover[f]);
     }
     let g = "";
-    return e.shadow.value === "" ? e.gradient.value && At.includes(e.gradient.value) && (g = cr[e.gradient.value]) : typeof e.shadow.value == "string" && At.includes(e.shadow.value) && (g = cr[e.shadow.value]), [
+    return e.shadow.value === "" ? e.gradient.value && Ot.includes(e.gradient.value) && (g = gr[e.gradient.value]) : typeof e.shadow.value == "string" && Ot.includes(e.shadow.value) && (g = gr[e.shadow.value]), [
       p,
-      c,
+      d,
       g,
       e.pill.value && "!rounded-full",
       e.disabled.value && "cursor-not-allowed opacity-50",
-      i && u ? "p-0.5" : r.value,
+      i && l ? "p-0.5" : r.value,
       (t.prefix || t.suffix || e.loading.value) && "inline-flex items-center",
       e.class.value
     ].filter((f) => f).join(" ");
-  }), n = w(() => e.gradient.value && e.outline.value ? [
+  }), n = x(() => e.gradient.value && e.outline.value ? [
     "relative bg-white dark:bg-gray-900 rounded-md inline-flex items-center",
     r.value,
     e.disabled.value ? "" : "group-hover:bg-opacity-0 transition-all ease-in duration-75"
@@ -2712,32 +2709,32 @@ function Yn(e) {
     spanClasses: n.value
   };
 }
-function Zn(e) {
+function ti(e) {
   const t = {
     xs: "2.5",
     sm: "3",
     md: "4",
     lg: "5",
     xl: "6"
-  }, r = w(() => t[e.size.value]);
+  }, r = x(() => t[e.size.value]);
   return {
-    color: w(() => e.outline.value ? e.gradient.value ? e.gradient.value.includes("purple") ? "purple" : e.gradient.value.includes("blue") ? "blue" : e.gradient.value.includes("pink") ? "pink" : e.gradient.value.includes("red") ? "red" : "white" : ["alternative", "dark", "light"].includes(e.color.value) ? "white" : e.color.value === "default" ? "blue" : e.color.value : "white"),
+    color: x(() => e.outline.value ? e.gradient.value ? e.gradient.value.includes("purple") ? "purple" : e.gradient.value.includes("blue") ? "blue" : e.gradient.value.includes("pink") ? "pink" : e.gradient.value.includes("red") ? "red" : "white" : ["alternative", "dark", "light"].includes(e.color.value) ? "white" : e.color.value === "default" ? "blue" : e.color.value : "white"),
     size: r
   };
 }
-const Xn = {
+const ri = {
   key: 0,
   class: "mr-2"
-}, ei = {
+}, oi = {
   key: 0,
   class: "mr-2"
-}, ti = {
+}, ni = {
   key: 1,
   class: "ml-2"
-}, ri = {
+}, ii = {
   key: 1,
   class: "ml-2"
-}, oi = /* @__PURE__ */ K({
+}, si = /* @__PURE__ */ K({
   __name: "FwbButton",
   props: {
     class: { default: "" },
@@ -2755,103 +2752,103 @@ const Xn = {
     tag: { default: "a" }
   },
   setup(e) {
-    const t = e, r = w(() => Yn(ve(t))), o = w(() => Ot(r.value.wrapperClasses)), n = w(() => Ot(r.value.spanClasses)), i = w(() => t.outline && t.gradient), s = w(() => t.loading && t.loadingPosition === "prefix"), u = w(() => t.loading && t.loadingPosition === "suffix"), { color: c, size: p } = Zn(ve(t)), g = t.tag !== "a" ? dt(t.tag) : "a", f = t.href ? g : "button", b = t.tag === "router-link" || t.tag === "nuxt-link" ? "to" : "href";
-    return (y, C) => (v(), Q(bt(T(f)), Ye({
+    const t = e, r = x(() => ei(Ce(t))), o = x(() => Ft(r.value.wrapperClasses)), n = x(() => Ft(r.value.spanClasses)), i = x(() => t.outline && t.gradient), s = x(() => t.loading && t.loadingPosition === "prefix"), l = x(() => t.loading && t.loadingPosition === "suffix"), { color: d, size: p } = ti(Ce(t)), g = t.tag !== "a" ? ft(t.tag) : "a", f = t.href ? g : "button", m = t.tag === "router-link" || t.tag === "nuxt-link" ? "to" : "href";
+    return (y, k) => (w(), Q(xt(T(f)), rt({
       class: o.value,
-      [T(b) || ""]: y.href,
+      [T(m) || ""]: y.href,
       disabled: T(f) === "button" && y.disabled
     }), {
-      default: Y(() => [
-        !i.value && (y.$slots.prefix || s.value) ? (v(), L("div", Xn, [
-          s.value ? (v(), Q(ot, {
+      default: Z(() => [
+        !i.value && (y.$slots.prefix || s.value) ? (w(), L("div", ri, [
+          s.value ? (w(), Q(at, {
             key: 0,
-            color: T(c),
+            color: T(d),
             size: T(p)
-          }, null, 8, ["color", "size"])) : M(y.$slots, "prefix", { key: 1 })
-        ])) : W("", !0),
-        j("span", {
-          class: R(n.value)
+          }, null, 8, ["color", "size"])) : z(y.$slots, "prefix", { key: 1 })
+        ])) : U("", !0),
+        R("span", {
+          class: H(n.value)
         }, [
-          i.value && (y.$slots.prefix || s.value) ? (v(), L("span", ei, [
-            s.value ? (v(), Q(ot, {
+          i.value && (y.$slots.prefix || s.value) ? (w(), L("span", oi, [
+            s.value ? (w(), Q(at, {
               key: 0,
-              color: T(c),
+              color: T(d),
               size: T(p)
-            }, null, 8, ["color", "size"])) : M(y.$slots, "prefix", { key: 1 })
-          ])) : W("", !0),
-          M(y.$slots, "default"),
-          i.value && (y.$slots.suffix || u.value) ? (v(), L("span", ti, [
-            u.value ? (v(), Q(ot, {
+            }, null, 8, ["color", "size"])) : z(y.$slots, "prefix", { key: 1 })
+          ])) : U("", !0),
+          z(y.$slots, "default"),
+          i.value && (y.$slots.suffix || l.value) ? (w(), L("span", ni, [
+            l.value ? (w(), Q(at, {
               key: 0,
-              color: T(c),
+              color: T(d),
               size: T(p)
-            }, null, 8, ["color", "size"])) : M(y.$slots, "suffix", { key: 1 })
-          ])) : W("", !0)
+            }, null, 8, ["color", "size"])) : z(y.$slots, "suffix", { key: 1 })
+          ])) : U("", !0)
         ], 2),
-        !i.value && (y.$slots.suffix || u.value) ? (v(), L("div", ri, [
-          u.value ? (v(), Q(ot, {
+        !i.value && (y.$slots.suffix || l.value) ? (w(), L("div", ii, [
+          l.value ? (w(), Q(at, {
             key: 0,
-            color: T(c),
+            color: T(d),
             size: T(p)
-          }, null, 8, ["color", "size"])) : M(y.$slots, "suffix", { key: 1 })
-        ])) : W("", !0)
+          }, null, 8, ["color", "size"])) : z(y.$slots, "suffix", { key: 1 })
+        ])) : U("", !0)
       ]),
       _: 3
     }, 16, ["class", "disabled"]));
   }
 });
-var pr;
-const ro = typeof window < "u", ni = (e) => typeof e < "u", ii = (e) => typeof e == "function";
-ro && (pr = window == null ? void 0 : window.navigator) != null && pr.userAgent && /iP(ad|hone|od)/.test(window.navigator.userAgent);
-function si(e) {
+var mr;
+const so = typeof window < "u", ai = (e) => typeof e < "u", li = (e) => typeof e == "function";
+so && (mr = window == null ? void 0 : window.navigator) != null && mr.userAgent && /iP(ad|hone|od)/.test(window.navigator.userAgent);
+function ui(e) {
   return typeof e == "function" ? e() : T(e);
 }
-function ai(e) {
+function di(e) {
   return e;
 }
-function li(e) {
-  return qo() ? (Ko(e), !0) : !1;
+function ci(e) {
+  return Jo() ? (Yo(e), !0) : !1;
 }
-function ui(e, t, r = {}) {
+function pi(e, t, r = {}) {
   const {
     immediate: o = !0
-  } = r, n = oe(!1);
+  } = r, n = ie(!1);
   let i = null;
   function s() {
     i && (clearTimeout(i), i = null);
   }
-  function u() {
+  function l() {
     n.value = !1, s();
   }
-  function c(...p) {
+  function d(...p) {
     s(), n.value = !0, i = setTimeout(() => {
       n.value = !1, i = null, e(...p);
-    }, si(t));
+    }, ui(t));
   }
-  return o && (n.value = !0, ro && c()), li(u), {
+  return o && (n.value = !0, so && d()), ci(l), {
     isPending: n,
-    start: c,
-    stop: u
+    start: d,
+    stop: l
   };
 }
-function di(e) {
+function hi(e) {
   return JSON.parse(JSON.stringify(e));
 }
-const hr = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : typeof global < "u" ? global : typeof self < "u" ? self : {}, fr = "__vueuse_ssr_handlers__";
-hr[fr] = hr[fr] || {};
-var gr;
+const br = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : typeof global < "u" ? global : typeof self < "u" ? self : {}, yr = "__vueuse_ssr_handlers__";
+br[yr] = br[yr] || {};
+var vr;
 (function(e) {
   e.UP = "UP", e.RIGHT = "RIGHT", e.DOWN = "DOWN", e.LEFT = "LEFT", e.NONE = "NONE";
-})(gr || (gr = {}));
-var ci = Object.defineProperty, mr = Object.getOwnPropertySymbols, pi = Object.prototype.hasOwnProperty, hi = Object.prototype.propertyIsEnumerable, br = (e, t, r) => t in e ? ci(e, t, { enumerable: !0, configurable: !0, writable: !0, value: r }) : e[t] = r, fi = (e, t) => {
+})(vr || (vr = {}));
+var fi = Object.defineProperty, wr = Object.getOwnPropertySymbols, gi = Object.prototype.hasOwnProperty, mi = Object.prototype.propertyIsEnumerable, xr = (e, t, r) => t in e ? fi(e, t, { enumerable: !0, configurable: !0, writable: !0, value: r }) : e[t] = r, bi = (e, t) => {
   for (var r in t || (t = {}))
-    pi.call(t, r) && br(e, r, t[r]);
-  if (mr)
-    for (var r of mr(t))
-      hi.call(t, r) && br(e, r, t[r]);
+    gi.call(t, r) && xr(e, r, t[r]);
+  if (wr)
+    for (var r of wr(t))
+      mi.call(t, r) && xr(e, r, t[r]);
   return e;
 };
-const gi = {
+const yi = {
   easeInSine: [0.12, 0, 0.39, 0],
   easeOutSine: [0.61, 1, 0.88, 1],
   easeInOutSine: [0.37, 0, 0.63, 1],
@@ -2877,114 +2874,114 @@ const gi = {
   easeOutBack: [0.34, 1.56, 0.64, 1],
   easeInOutBack: [0.68, -0.6, 0.32, 1.6]
 };
-fi({
-  linear: ai
-}, gi);
-function oo(e, t, r, o = {}) {
+bi({
+  linear: di
+}, yi);
+function ao(e, t, r, o = {}) {
   var n, i, s;
   const {
-    clone: u = !1,
-    passive: c = !1,
+    clone: l = !1,
+    passive: d = !1,
     eventName: p,
     deep: g = !1,
     defaultValue: f
-  } = o, b = Uo(), y = r || (b == null ? void 0 : b.emit) || ((n = b == null ? void 0 : b.$emit) == null ? void 0 : n.bind(b)) || ((s = (i = b == null ? void 0 : b.proxy) == null ? void 0 : i.$emit) == null ? void 0 : s.bind(b == null ? void 0 : b.proxy));
-  let C = p;
-  t || (t = "modelValue"), C = p || C || `update:${t.toString()}`;
-  const _ = ($) => u ? ii(u) ? u($) : di($) : $, k = () => ni(e[t]) ? _(e[t]) : f;
-  if (c) {
-    const $ = k(), I = oe($);
-    return or(() => e[t], (z) => I.value = _(z)), or(I, (z) => {
-      (z !== e[t] || g) && y(C, z);
-    }, { deep: g }), I;
+  } = o, m = qo(), y = r || (m == null ? void 0 : m.emit) || ((n = m == null ? void 0 : m.$emit) == null ? void 0 : n.bind(m)) || ((s = (i = m == null ? void 0 : m.proxy) == null ? void 0 : i.$emit) == null ? void 0 : s.bind(m == null ? void 0 : m.proxy));
+  let k = p;
+  t || (t = "modelValue"), k = p || k || `update:${t.toString()}`;
+  const _ = (S) => l ? li(l) ? l(S) : hi(S) : S, I = () => ai(e[t]) ? _(e[t]) : f;
+  if (d) {
+    const S = I(), $ = ie(S);
+    return ar(() => e[t], (O) => $.value = _(O)), ar($, (O) => {
+      (O !== e[t] || g) && y(k, O);
+    }, { deep: g }), $;
   } else
-    return w({
+    return x({
       get() {
-        return k();
+        return I();
       },
-      set($) {
-        y(C, $);
+      set(S) {
+        y(k, S);
       }
     });
 }
-var mi = typeof global == "object" && global && global.Object === Object && global;
-const bi = mi;
-var yi = typeof self == "object" && self && self.Object === Object && self, vi = bi || yi || Function("return this")();
-const Wt = vi;
-var wi = Wt.Symbol;
-const we = wi;
-var no = Object.prototype, _i = no.hasOwnProperty, xi = no.toString, Re = we ? we.toStringTag : void 0;
-function Ci(e) {
-  var t = _i.call(e, Re), r = e[Re];
+var vi = typeof global == "object" && global && global.Object === Object && global;
+const wi = vi;
+var xi = typeof self == "object" && self && self.Object === Object && self, _i = wi || xi || Function("return this")();
+const Jt = _i;
+var Ci = Jt.Symbol;
+const ke = Ci;
+var lo = Object.prototype, ki = lo.hasOwnProperty, $i = lo.toString, Ue = ke ? ke.toStringTag : void 0;
+function Si(e) {
+  var t = ki.call(e, Ue), r = e[Ue];
   try {
-    e[Re] = void 0;
+    e[Ue] = void 0;
     var o = !0;
   } catch {
   }
-  var n = xi.call(e);
-  return o && (t ? e[Re] = r : delete e[Re]), n;
+  var n = $i.call(e);
+  return o && (t ? e[Ue] = r : delete e[Ue]), n;
 }
-var ki = Object.prototype, $i = ki.toString;
-function Ii(e) {
-  return $i.call(e);
+var Ii = Object.prototype, Ti = Ii.toString;
+function Pi(e) {
+  return Ti.call(e);
 }
-var Ti = "[object Null]", Si = "[object Undefined]", yr = we ? we.toStringTag : void 0;
-function qt(e) {
-  return e == null ? e === void 0 ? Si : Ti : yr && yr in Object(e) ? Ci(e) : Ii(e);
+var Li = "[object Null]", Ai = "[object Undefined]", _r = ke ? ke.toStringTag : void 0;
+function Yt(e) {
+  return e == null ? e === void 0 ? Ai : Li : _r && _r in Object(e) ? Si(e) : Pi(e);
 }
-function Kt(e) {
+function Zt(e) {
   return e != null && typeof e == "object";
 }
-var Li = "[object Symbol]";
-function Qt(e) {
-  return typeof e == "symbol" || Kt(e) && qt(e) == Li;
+var Ni = "[object Symbol]";
+function Xt(e) {
+  return typeof e == "symbol" || Zt(e) && Yt(e) == Ni;
 }
-function Pi(e, t) {
+function Di(e, t) {
   for (var r = -1, o = e == null ? 0 : e.length, n = Array(o); ++r < o; )
     n[r] = t(e[r], r, e);
   return n;
 }
-var Ai = Array.isArray;
-const Xe = Ai;
-var Ni = 1 / 0, vr = we ? we.prototype : void 0, wr = vr ? vr.toString : void 0;
-function io(e) {
+var zi = Array.isArray;
+const nt = zi;
+var Oi = 1 / 0, Cr = ke ? ke.prototype : void 0, kr = Cr ? Cr.toString : void 0;
+function uo(e) {
   if (typeof e == "string")
     return e;
-  if (Xe(e))
-    return Pi(e, io) + "";
-  if (Qt(e))
-    return wr ? wr.call(e) : "";
+  if (nt(e))
+    return Di(e, uo) + "";
+  if (Xt(e))
+    return kr ? kr.call(e) : "";
   var t = e + "";
-  return t == "0" && 1 / e == -Ni ? "-0" : t;
+  return t == "0" && 1 / e == -Oi ? "-0" : t;
 }
-function pt(e) {
+function mt(e) {
   var t = typeof e;
   return e != null && (t == "object" || t == "function");
 }
-function Di(e) {
+function Ei(e) {
   return e;
 }
-var Ei = "[object AsyncFunction]", zi = "[object Function]", Mi = "[object GeneratorFunction]", Oi = "[object Proxy]";
-function Bi(e) {
-  if (!pt(e))
+var Mi = "[object AsyncFunction]", Bi = "[object Function]", ji = "[object GeneratorFunction]", Ri = "[object Proxy]";
+function Fi(e) {
+  if (!mt(e))
     return !1;
-  var t = qt(e);
-  return t == zi || t == Mi || t == Ei || t == Oi;
+  var t = Yt(e);
+  return t == Bi || t == ji || t == Mi || t == Ri;
 }
-var ji = Wt["__core-js_shared__"];
-const Nt = ji;
-var _r = function() {
-  var e = /[^.]+$/.exec(Nt && Nt.keys && Nt.keys.IE_PROTO || "");
+var Hi = Jt["__core-js_shared__"];
+const Et = Hi;
+var $r = function() {
+  var e = /[^.]+$/.exec(Et && Et.keys && Et.keys.IE_PROTO || "");
   return e ? "Symbol(src)_1." + e : "";
 }();
-function Fi(e) {
-  return !!_r && _r in e;
-}
-var Ri = Function.prototype, Hi = Ri.toString;
 function Vi(e) {
+  return !!$r && $r in e;
+}
+var Wi = Function.prototype, Gi = Wi.toString;
+function Ui(e) {
   if (e != null) {
     try {
-      return Hi.call(e);
+      return Gi.call(e);
     } catch {
     }
     try {
@@ -2994,23 +2991,23 @@ function Vi(e) {
   }
   return "";
 }
-var Ui = /[\\^$.*+?()[\]{}|]/g, Gi = /^\[object .+?Constructor\]$/, Wi = Function.prototype, qi = Object.prototype, Ki = Wi.toString, Qi = qi.hasOwnProperty, Ji = RegExp(
-  "^" + Ki.call(Qi).replace(Ui, "\\$&").replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, "$1.*?") + "$"
+var qi = /[\\^$.*+?()[\]{}|]/g, Ki = /^\[object .+?Constructor\]$/, Qi = Function.prototype, Ji = Object.prototype, Yi = Qi.toString, Zi = Ji.hasOwnProperty, Xi = RegExp(
+  "^" + Yi.call(Zi).replace(qi, "\\$&").replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, "$1.*?") + "$"
 );
-function Yi(e) {
-  if (!pt(e) || Fi(e))
+function es(e) {
+  if (!mt(e) || Vi(e))
     return !1;
-  var t = Bi(e) ? Ji : Gi;
-  return t.test(Vi(e));
+  var t = Fi(e) ? Xi : Ki;
+  return t.test(Ui(e));
 }
-function Zi(e, t) {
+function ts(e, t) {
   return e == null ? void 0 : e[t];
 }
-function Jt(e, t) {
-  var r = Zi(e, t);
-  return Yi(r) ? r : void 0;
+function er(e, t) {
+  var r = ts(e, t);
+  return es(r) ? r : void 0;
 }
-function Xi(e, t, r) {
+function rs(e, t, r) {
   switch (r.length) {
     case 0:
       return e.call(t);
@@ -3023,223 +3020,223 @@ function Xi(e, t, r) {
   }
   return e.apply(t, r);
 }
-var es = 800, ts = 16, rs = Date.now;
-function os(e) {
+var os = 800, ns = 16, is = Date.now;
+function ss(e) {
   var t = 0, r = 0;
   return function() {
-    var o = rs(), n = ts - (o - r);
+    var o = is(), n = ns - (o - r);
     if (r = o, n > 0) {
-      if (++t >= es)
+      if (++t >= os)
         return arguments[0];
     } else
       t = 0;
     return e.apply(void 0, arguments);
   };
 }
-function ns(e) {
+function as(e) {
   return function() {
     return e;
   };
 }
-var is = function() {
+var ls = function() {
   try {
-    var e = Jt(Object, "defineProperty");
+    var e = er(Object, "defineProperty");
     return e({}, "", {}), e;
   } catch {
   }
 }();
-const ht = is;
-var ss = ht ? function(e, t) {
-  return ht(e, "toString", {
+const bt = ls;
+var us = bt ? function(e, t) {
+  return bt(e, "toString", {
     configurable: !0,
     enumerable: !1,
-    value: ns(t),
+    value: as(t),
     writable: !0
   });
-} : Di;
-const as = ss;
-var ls = os(as);
-const us = ls;
-var ds = 9007199254740991, cs = /^(?:0|[1-9]\d*)$/;
-function so(e, t) {
+} : Ei;
+const ds = us;
+var cs = ss(ds);
+const ps = cs;
+var hs = 9007199254740991, fs = /^(?:0|[1-9]\d*)$/;
+function co(e, t) {
   var r = typeof e;
-  return t = t ?? ds, !!t && (r == "number" || r != "symbol" && cs.test(e)) && e > -1 && e % 1 == 0 && e < t;
+  return t = t ?? hs, !!t && (r == "number" || r != "symbol" && fs.test(e)) && e > -1 && e % 1 == 0 && e < t;
 }
-function ps(e, t, r) {
-  t == "__proto__" && ht ? ht(e, t, {
+function gs(e, t, r) {
+  t == "__proto__" && bt ? bt(e, t, {
     configurable: !0,
     enumerable: !0,
     value: r,
     writable: !0
   }) : e[t] = r;
 }
-function ao(e, t) {
+function po(e, t) {
   return e === t || e !== e && t !== t;
 }
-var hs = Object.prototype, fs = hs.hasOwnProperty;
-function gs(e, t, r) {
+var ms = Object.prototype, bs = ms.hasOwnProperty;
+function ys(e, t, r) {
   var o = e[t];
-  (!(fs.call(e, t) && ao(o, r)) || r === void 0 && !(t in e)) && ps(e, t, r);
+  (!(bs.call(e, t) && po(o, r)) || r === void 0 && !(t in e)) && gs(e, t, r);
 }
-var xr = Math.max;
-function ms(e, t, r) {
-  return t = xr(t === void 0 ? e.length - 1 : t, 0), function() {
-    for (var o = arguments, n = -1, i = xr(o.length - t, 0), s = Array(i); ++n < i; )
+var Sr = Math.max;
+function vs(e, t, r) {
+  return t = Sr(t === void 0 ? e.length - 1 : t, 0), function() {
+    for (var o = arguments, n = -1, i = Sr(o.length - t, 0), s = Array(i); ++n < i; )
       s[n] = o[t + n];
     n = -1;
-    for (var u = Array(t + 1); ++n < t; )
-      u[n] = o[n];
-    return u[t] = r(s), Xi(e, this, u);
+    for (var l = Array(t + 1); ++n < t; )
+      l[n] = o[n];
+    return l[t] = r(s), rs(e, this, l);
   };
 }
-var bs = 9007199254740991;
-function ys(e) {
-  return typeof e == "number" && e > -1 && e % 1 == 0 && e <= bs;
+var ws = 9007199254740991;
+function xs(e) {
+  return typeof e == "number" && e > -1 && e % 1 == 0 && e <= ws;
 }
-var vs = "[object Arguments]";
-function Cr(e) {
-  return Kt(e) && qt(e) == vs;
+var _s = "[object Arguments]";
+function Ir(e) {
+  return Zt(e) && Yt(e) == _s;
 }
-var lo = Object.prototype, ws = lo.hasOwnProperty, _s = lo.propertyIsEnumerable, xs = Cr(/* @__PURE__ */ function() {
+var ho = Object.prototype, Cs = ho.hasOwnProperty, ks = ho.propertyIsEnumerable, $s = Ir(/* @__PURE__ */ function() {
   return arguments;
-}()) ? Cr : function(e) {
-  return Kt(e) && ws.call(e, "callee") && !_s.call(e, "callee");
+}()) ? Ir : function(e) {
+  return Zt(e) && Cs.call(e, "callee") && !ks.call(e, "callee");
 };
-const uo = xs;
-var Cs = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/, ks = /^\w*$/;
-function $s(e, t) {
-  if (Xe(e))
+const fo = $s;
+var Ss = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/, Is = /^\w*$/;
+function Ts(e, t) {
+  if (nt(e))
     return !1;
   var r = typeof e;
-  return r == "number" || r == "symbol" || r == "boolean" || e == null || Qt(e) ? !0 : ks.test(e) || !Cs.test(e) || t != null && e in Object(t);
+  return r == "number" || r == "symbol" || r == "boolean" || e == null || Xt(e) ? !0 : Is.test(e) || !Ss.test(e) || t != null && e in Object(t);
 }
-var Is = Jt(Object, "create");
-const qe = Is;
-function Ts() {
-  this.__data__ = qe ? qe(null) : {}, this.size = 0;
+var Ps = er(Object, "create");
+const Ze = Ps;
+function Ls() {
+  this.__data__ = Ze ? Ze(null) : {}, this.size = 0;
 }
-function Ss(e) {
+function As(e) {
   var t = this.has(e) && delete this.__data__[e];
   return this.size -= t ? 1 : 0, t;
 }
-var Ls = "__lodash_hash_undefined__", Ps = Object.prototype, As = Ps.hasOwnProperty;
-function Ns(e) {
+var Ns = "__lodash_hash_undefined__", Ds = Object.prototype, zs = Ds.hasOwnProperty;
+function Os(e) {
   var t = this.__data__;
-  if (qe) {
+  if (Ze) {
     var r = t[e];
-    return r === Ls ? void 0 : r;
+    return r === Ns ? void 0 : r;
   }
-  return As.call(t, e) ? t[e] : void 0;
+  return zs.call(t, e) ? t[e] : void 0;
 }
-var Ds = Object.prototype, Es = Ds.hasOwnProperty;
-function zs(e) {
+var Es = Object.prototype, Ms = Es.hasOwnProperty;
+function Bs(e) {
   var t = this.__data__;
-  return qe ? t[e] !== void 0 : Es.call(t, e);
+  return Ze ? t[e] !== void 0 : Ms.call(t, e);
 }
-var Ms = "__lodash_hash_undefined__";
-function Os(e, t) {
+var js = "__lodash_hash_undefined__";
+function Rs(e, t) {
   var r = this.__data__;
-  return this.size += this.has(e) ? 0 : 1, r[e] = qe && t === void 0 ? Ms : t, this;
+  return this.size += this.has(e) ? 0 : 1, r[e] = Ze && t === void 0 ? js : t, this;
 }
-function Ie(e) {
+function Ae(e) {
   var t = -1, r = e == null ? 0 : e.length;
   for (this.clear(); ++t < r; ) {
     var o = e[t];
     this.set(o[0], o[1]);
   }
 }
-Ie.prototype.clear = Ts;
-Ie.prototype.delete = Ss;
-Ie.prototype.get = Ns;
-Ie.prototype.has = zs;
-Ie.prototype.set = Os;
-function Bs() {
+Ae.prototype.clear = Ls;
+Ae.prototype.delete = As;
+Ae.prototype.get = Os;
+Ae.prototype.has = Bs;
+Ae.prototype.set = Rs;
+function Fs() {
   this.__data__ = [], this.size = 0;
 }
-function _t(e, t) {
+function $t(e, t) {
   for (var r = e.length; r--; )
-    if (ao(e[r][0], t))
+    if (po(e[r][0], t))
       return r;
   return -1;
 }
-var js = Array.prototype, Fs = js.splice;
-function Rs(e) {
-  var t = this.__data__, r = _t(t, e);
+var Hs = Array.prototype, Vs = Hs.splice;
+function Ws(e) {
+  var t = this.__data__, r = $t(t, e);
   if (r < 0)
     return !1;
   var o = t.length - 1;
-  return r == o ? t.pop() : Fs.call(t, r, 1), --this.size, !0;
+  return r == o ? t.pop() : Vs.call(t, r, 1), --this.size, !0;
 }
-function Hs(e) {
-  var t = this.__data__, r = _t(t, e);
+function Gs(e) {
+  var t = this.__data__, r = $t(t, e);
   return r < 0 ? void 0 : t[r][1];
 }
-function Vs(e) {
-  return _t(this.__data__, e) > -1;
+function Us(e) {
+  return $t(this.__data__, e) > -1;
 }
-function Us(e, t) {
-  var r = this.__data__, o = _t(r, e);
+function qs(e, t) {
+  var r = this.__data__, o = $t(r, e);
   return o < 0 ? (++this.size, r.push([e, t])) : r[o][1] = t, this;
 }
-function Me(e) {
+function Fe(e) {
   var t = -1, r = e == null ? 0 : e.length;
   for (this.clear(); ++t < r; ) {
     var o = e[t];
     this.set(o[0], o[1]);
   }
 }
-Me.prototype.clear = Bs;
-Me.prototype.delete = Rs;
-Me.prototype.get = Hs;
-Me.prototype.has = Vs;
-Me.prototype.set = Us;
-var Gs = Jt(Wt, "Map");
-const Ws = Gs;
-function qs() {
+Fe.prototype.clear = Fs;
+Fe.prototype.delete = Ws;
+Fe.prototype.get = Gs;
+Fe.prototype.has = Us;
+Fe.prototype.set = qs;
+var Ks = er(Jt, "Map");
+const Qs = Ks;
+function Js() {
   this.size = 0, this.__data__ = {
-    hash: new Ie(),
-    map: new (Ws || Me)(),
-    string: new Ie()
+    hash: new Ae(),
+    map: new (Qs || Fe)(),
+    string: new Ae()
   };
 }
-function Ks(e) {
+function Ys(e) {
   var t = typeof e;
   return t == "string" || t == "number" || t == "symbol" || t == "boolean" ? e !== "__proto__" : e === null;
 }
-function xt(e, t) {
+function St(e, t) {
   var r = e.__data__;
-  return Ks(t) ? r[typeof t == "string" ? "string" : "hash"] : r.map;
+  return Ys(t) ? r[typeof t == "string" ? "string" : "hash"] : r.map;
 }
-function Qs(e) {
-  var t = xt(this, e).delete(e);
+function Zs(e) {
+  var t = St(this, e).delete(e);
   return this.size -= t ? 1 : 0, t;
 }
-function Js(e) {
-  return xt(this, e).get(e);
+function Xs(e) {
+  return St(this, e).get(e);
 }
-function Ys(e) {
-  return xt(this, e).has(e);
+function ea(e) {
+  return St(this, e).has(e);
 }
-function Zs(e, t) {
-  var r = xt(this, e), o = r.size;
+function ta(e, t) {
+  var r = St(this, e), o = r.size;
   return r.set(e, t), this.size += r.size == o ? 0 : 1, this;
 }
-function Se(e) {
+function De(e) {
   var t = -1, r = e == null ? 0 : e.length;
   for (this.clear(); ++t < r; ) {
     var o = e[t];
     this.set(o[0], o[1]);
   }
 }
-Se.prototype.clear = qs;
-Se.prototype.delete = Qs;
-Se.prototype.get = Js;
-Se.prototype.has = Ys;
-Se.prototype.set = Zs;
-var Xs = "Expected a function";
-function Yt(e, t) {
+De.prototype.clear = Js;
+De.prototype.delete = Zs;
+De.prototype.get = Xs;
+De.prototype.has = ea;
+De.prototype.set = ta;
+var ra = "Expected a function";
+function tr(e, t) {
   if (typeof e != "function" || t != null && typeof t != "function")
-    throw new TypeError(Xs);
+    throw new TypeError(ra);
   var r = function() {
     var o = arguments, n = t ? t.apply(this, o) : o[0], i = r.cache;
     if (i.has(n))
@@ -3247,148 +3244,148 @@ function Yt(e, t) {
     var s = e.apply(this, o);
     return r.cache = i.set(n, s) || i, s;
   };
-  return r.cache = new (Yt.Cache || Se)(), r;
+  return r.cache = new (tr.Cache || De)(), r;
 }
-Yt.Cache = Se;
-var ea = 500;
-function ta(e) {
-  var t = Yt(e, function(o) {
-    return r.size === ea && r.clear(), o;
+tr.Cache = De;
+var oa = 500;
+function na(e) {
+  var t = tr(e, function(o) {
+    return r.size === oa && r.clear(), o;
   }), r = t.cache;
   return t;
 }
-var ra = /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g, oa = /\\(\\)?/g, na = ta(function(e) {
+var ia = /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g, sa = /\\(\\)?/g, aa = na(function(e) {
   var t = [];
-  return e.charCodeAt(0) === 46 && t.push(""), e.replace(ra, function(r, o, n, i) {
-    t.push(n ? i.replace(oa, "$1") : o || r);
+  return e.charCodeAt(0) === 46 && t.push(""), e.replace(ia, function(r, o, n, i) {
+    t.push(n ? i.replace(sa, "$1") : o || r);
   }), t;
 });
-const ia = na;
-function sa(e) {
-  return e == null ? "" : io(e);
+const la = aa;
+function ua(e) {
+  return e == null ? "" : uo(e);
 }
-function Ct(e, t) {
-  return Xe(e) ? e : $s(e, t) ? [e] : ia(sa(e));
+function It(e, t) {
+  return nt(e) ? e : Ts(e, t) ? [e] : la(ua(e));
 }
-var aa = 1 / 0;
-function Zt(e) {
-  if (typeof e == "string" || Qt(e))
+var da = 1 / 0;
+function rr(e) {
+  if (typeof e == "string" || Xt(e))
     return e;
   var t = e + "";
-  return t == "0" && 1 / e == -aa ? "-0" : t;
+  return t == "0" && 1 / e == -da ? "-0" : t;
 }
-function la(e, t) {
-  t = Ct(t, e);
+function ca(e, t) {
+  t = It(t, e);
   for (var r = 0, o = t.length; e != null && r < o; )
-    e = e[Zt(t[r++])];
+    e = e[rr(t[r++])];
   return r && r == o ? e : void 0;
 }
-function ua(e, t) {
+function pa(e, t) {
   for (var r = -1, o = t.length, n = e.length; ++r < o; )
     e[n + r] = t[r];
   return e;
 }
-var kr = we ? we.isConcatSpreadable : void 0;
-function da(e) {
-  return Xe(e) || uo(e) || !!(kr && e && e[kr]);
+var Tr = ke ? ke.isConcatSpreadable : void 0;
+function ha(e) {
+  return nt(e) || fo(e) || !!(Tr && e && e[Tr]);
 }
-function co(e, t, r, o, n) {
+function go(e, t, r, o, n) {
   var i = -1, s = e.length;
-  for (r || (r = da), n || (n = []); ++i < s; ) {
-    var u = e[i];
-    t > 0 && r(u) ? t > 1 ? co(u, t - 1, r, o, n) : ua(n, u) : o || (n[n.length] = u);
+  for (r || (r = ha), n || (n = []); ++i < s; ) {
+    var l = e[i];
+    t > 0 && r(l) ? t > 1 ? go(l, t - 1, r, o, n) : pa(n, l) : o || (n[n.length] = l);
   }
   return n;
 }
-function ca(e) {
+function fa(e) {
   var t = e == null ? 0 : e.length;
-  return t ? co(e, 1) : [];
+  return t ? go(e, 1) : [];
 }
-function pa(e) {
-  return us(ms(e, void 0, ca), e + "");
+function ga(e) {
+  return ps(vs(e, void 0, fa), e + "");
 }
-function ha(e, t) {
+function ma(e, t) {
   return e != null && t in Object(e);
 }
-function fa(e, t, r) {
-  t = Ct(t, e);
+function ba(e, t, r) {
+  t = It(t, e);
   for (var o = -1, n = t.length, i = !1; ++o < n; ) {
-    var s = Zt(t[o]);
+    var s = rr(t[o]);
     if (!(i = e != null && r(e, s)))
       break;
     e = e[s];
   }
-  return i || ++o != n ? i : (n = e == null ? 0 : e.length, !!n && ys(n) && so(s, n) && (Xe(e) || uo(e)));
+  return i || ++o != n ? i : (n = e == null ? 0 : e.length, !!n && xs(n) && co(s, n) && (nt(e) || fo(e)));
 }
-function ga(e, t) {
-  return e != null && fa(e, t, ha);
+function ya(e, t) {
+  return e != null && ba(e, t, ma);
 }
-function ma(e, t, r, o) {
-  if (!pt(e))
+function va(e, t, r, o) {
+  if (!mt(e))
     return e;
-  t = Ct(t, e);
-  for (var n = -1, i = t.length, s = i - 1, u = e; u != null && ++n < i; ) {
-    var c = Zt(t[n]), p = r;
-    if (c === "__proto__" || c === "constructor" || c === "prototype")
+  t = It(t, e);
+  for (var n = -1, i = t.length, s = i - 1, l = e; l != null && ++n < i; ) {
+    var d = rr(t[n]), p = r;
+    if (d === "__proto__" || d === "constructor" || d === "prototype")
       return e;
     if (n != s) {
-      var g = u[c];
-      p = o ? o(g, c, u) : void 0, p === void 0 && (p = pt(g) ? g : so(t[n + 1]) ? [] : {});
+      var g = l[d];
+      p = o ? o(g, d, l) : void 0, p === void 0 && (p = mt(g) ? g : co(t[n + 1]) ? [] : {});
     }
-    gs(u, c, p), u = u[c];
+    ys(l, d, p), l = l[d];
   }
   return e;
 }
-function ba(e, t, r) {
+function wa(e, t, r) {
   for (var o = -1, n = t.length, i = {}; ++o < n; ) {
-    var s = t[o], u = la(e, s);
-    r(u, s) && ma(i, Ct(s, e), u);
+    var s = t[o], l = ca(e, s);
+    r(l, s) && va(i, It(s, e), l);
   }
   return i;
 }
-function ya(e, t) {
-  return ba(e, t, function(r, o) {
-    return ga(e, o);
+function xa(e, t) {
+  return wa(e, t, function(r, o) {
+    return ya(e, o);
   });
 }
-var va = pa(function(e, t) {
-  return e == null ? {} : ya(e, t);
+var _a = ga(function(e, t) {
+  return e == null ? {} : xa(e, t);
 });
-const wa = va;
-function Bt(e, t = !0, r = []) {
+const Ca = _a;
+function Ht(e, t = !0, r = []) {
   return e.forEach((o) => {
     if (o !== null) {
       if (typeof o != "object") {
-        (typeof o == "string" || typeof o == "number") && r.push(st(String(o)));
+        (typeof o == "string" || typeof o == "number") && r.push(dt(String(o)));
         return;
       }
       if (Array.isArray(o)) {
-        Bt(o, t, r);
+        Ht(o, t, r);
         return;
       }
-      if (o.type === De) {
+      if (o.type === Be) {
         if (o.children === null)
           return;
-        Array.isArray(o.children) && Bt(o.children, t, r);
+        Array.isArray(o.children) && Ht(o.children, t, r);
       } else
-        o.type !== Oo && r.push(o);
+        o.type !== Ro && r.push(o);
     }
   }), r;
 }
-function _a(e, t = "default", r = void 0) {
+function ka(e, t = "default", r = void 0) {
   const o = e[t];
   if (!o)
     return console.warn("getFirstSlotVNode", `slot[${t}] is empty`), null;
-  const n = Bt(o(r));
+  const n = Ht(o(r));
   return n.length === 1 ? n[0] : (console.warn("getFirstSlotVNode", `slot[${t}] should have exactly one child`), null);
 }
-const xa = {
+const $a = {
   focus: ["onFocus", "onBlur"],
   click: ["onClick"],
   hover: ["onMouseenter", "onMouseleave"]
 };
-function Ca(e, t) {
-  Object.entries(xa).forEach(([, r]) => {
+function Sa(e, t) {
+  Object.entries($a).forEach(([, r]) => {
     r.forEach((o) => {
       e.props ? e.props = Object.assign({}, e.props) : e.props = {};
       const n = e.props[o], i = t[o];
@@ -3435,12 +3432,12 @@ K({
       onMouseleave: this.handleMouseLeave,
       onFocus: this.handleFocus,
       onBlur: this.handleBlur
-    }, r = _a(e, "default"), o = [
+    }, r = ka(e, "default"), o = [
       t
     ];
     return r != null && r.props && o.push(
-      wa(r.props, "onClick", "onMouseenter", "onMouseleave", "onFocus", "onBlur")
-    ), r && Ca(
+      Ca(r.props, "onClick", "onMouseenter", "onMouseleave", "onFocus", "onBlur")
+    ), r && Sa(
       r,
       {
         onBlur: (n) => {
@@ -3478,15 +3475,15 @@ K({
   }
 });
 (/* @__PURE__ */ new Date()).getFullYear();
-const ka = {
+const Ia = {
   border: (e) => e.substring(0, e.lastIndexOf("-"))
-}, $a = (e, t = ka) => {
+}, Ta = (e, t = Ia) => {
   const r = Object.keys(t).find((o) => e.includes(o));
   return r ? t[r](e) : e.substring(0, e.indexOf("-"));
 };
-function at(...e) {
+function ct(...e) {
   return e.filter((t) => t).reduce((t, r) => {
-    const o = Array.isArray(r) ? Array.from(r).map((p) => p.split(" ")).flat() : r.split(" "), n = o.map((p) => $a(p)), i = n.filter((p) => !t.types.includes(p)), s = [...n.filter((p) => t.types.includes(p)), ...i], u = [.../* @__PURE__ */ new Set([...t.types, ...s])], c = u.map((p) => {
+    const o = Array.isArray(r) ? Array.from(r).map((p) => p.split(" ")).flat() : r.split(" "), n = o.map((p) => Ta(p)), i = n.filter((p) => !t.types.includes(p)), s = [...n.filter((p) => t.types.includes(p)), ...i], l = [.../* @__PURE__ */ new Set([...t.types, ...s])], d = l.map((p) => {
       if (s.includes(p)) {
         const f = n.indexOf(p);
         if (f >= 0)
@@ -3496,12 +3493,12 @@ function at(...e) {
       return g >= 0 && t.classes[g] || "";
     }).filter((p) => !!p);
     return {
-      types: u,
-      classes: c
+      types: l,
+      classes: d
     };
   }, { types: [], classes: [] }).classes.join(" ");
 }
-const Ia = "flowbite-themable-injection-key", Pe = {
+const Pa = "flowbite-themable-injection-key", Oe = {
   blue: {
     background: "bg-blue-700 dark:bg-blue-600",
     disabled: "",
@@ -3543,54 +3540,54 @@ const Ia = "flowbite-themable-injection-key", Pe = {
     focus: "focus:ring-red-300 dark:focus:ring-red-900"
   }
 };
-function Ta(e) {
-  const t = Qo(Ia, oe(null)), r = w(() => e || t.value), o = w(() => !!(t != null && t.value)), n = w(
-    () => r.value ? Pe[r.value].background : ""
-  ), i = w(
-    () => r.value ? Pe[r.value].border : ""
-  ), s = w(() => (t == null ? void 0 : t.value) || void 0), u = w(
-    () => r.value ? Pe[r.value].disabled : ""
-  ), c = w(
-    () => r.value ? Pe[r.value].focus : ""
-  ), p = w(
-    () => r.value ? Pe[r.value].hover : ""
-  ), g = w(
-    () => r.value ? Pe[r.value].text : ""
+function La(e) {
+  const t = Zo(Pa, ie(null)), r = x(() => e || t.value), o = x(() => !!(t != null && t.value)), n = x(
+    () => r.value ? Oe[r.value].background : ""
+  ), i = x(
+    () => r.value ? Oe[r.value].border : ""
+  ), s = x(() => (t == null ? void 0 : t.value) || void 0), l = x(
+    () => r.value ? Oe[r.value].disabled : ""
+  ), d = x(
+    () => r.value ? Oe[r.value].focus : ""
+  ), p = x(
+    () => r.value ? Oe[r.value].hover : ""
+  ), g = x(
+    () => r.value ? Oe[r.value].text : ""
   );
   return {
     backgroundClasses: n,
     borderClasses: i,
     color: s,
-    disabledClasses: u,
-    focusClasses: c,
+    disabledClasses: l,
+    focusClasses: d,
     hoverClasses: p,
     isActive: o,
     textClasses: g
   };
 }
-const Sa = {
+const Aa = {
   danger: "text-red-500 bg-red-100 dark:bg-red-800 dark:text-red-200",
   empty: "",
   success: "text-green-500 bg-green-100 dark:bg-green-800 dark:text-green-200",
   warning: "text-orange-500 bg-orange-100 dark:bg-orange-700 dark:text-orange-200"
-}, La = {
+}, Na = {
   center: "items-center",
   end: "items-end",
   start: "items-start"
-}, $r = "flex w-full max-w-xs p-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800", Ir = "text-sm font-normal";
-function Pa(e) {
-  const t = w(() => Sa[e.type.value]), r = w(() => {
-    const n = La[e.alignment.value];
-    return e.divide.value ? at($r, "dark:divide-gray-700 divide-x divide-gray-200", n) : at($r, n);
-  }), o = w(() => e.type.value !== "empty" && e.divide.value ? at(Ir, "pl-3") : Ir);
+}, Pr = "flex w-full max-w-xs p-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800", Lr = "text-sm font-normal";
+function Da(e) {
+  const t = x(() => Aa[e.type.value]), r = x(() => {
+    const n = Na[e.alignment.value];
+    return e.divide.value ? ct(Pr, "dark:divide-gray-700 divide-x divide-gray-200", n) : ct(Pr, n);
+  }), o = x(() => e.type.value !== "empty" && e.divide.value ? ct(Lr, "pl-3") : Lr);
   return {
     typeClasses: t,
     wrapperClasses: r,
     contentClasses: o
   };
 }
-function Aa(e) {
-  var c;
+function za(e) {
+  var d;
   const {
     backgroundClasses: t,
     borderClasses: r,
@@ -3598,18 +3595,18 @@ function Aa(e) {
     focusClasses: n,
     hoverClasses: i,
     isActive: s,
-    textClasses: u
-  } = Ta((c = e.theme) == null ? void 0 : c.value);
+    textClasses: l
+  } = La((d = e.theme) == null ? void 0 : d.value);
   return {
-    classes: w(() => {
+    classes: x(() => {
       if (!s.value)
         return "";
       const p = [];
-      return e.apply.value.includes("text") && p.push(u.value), e.apply.value.includes("border") && p.push(r.value), e.apply.value.includes("background") && p.push(t.value), e.apply.value.includes("hover") && p.push(i.value), e.apply.value.includes("disabled") && p.push(o.value), e.apply.value.includes("focus") && p.push(n.value), p.join(" ");
+      return e.apply.value.includes("text") && p.push(l.value), e.apply.value.includes("border") && p.push(r.value), e.apply.value.includes("background") && p.push(t.value), e.apply.value.includes("hover") && p.push(i.value), e.apply.value.includes("disabled") && p.push(o.value), e.apply.value.includes("focus") && p.push(n.value), p.join(" ");
     })
   };
 }
-const Na = /* @__PURE__ */ K({
+const Oa = /* @__PURE__ */ K({
   __name: "FlowbiteThemableChild",
   props: {
     apply: {
@@ -3626,70 +3623,70 @@ const Na = /* @__PURE__ */ K({
     }
   },
   setup(e) {
-    const t = e, r = Ut(), { classes: o } = Aa(ve(t)), n = w(() => r.class || "");
-    return (i, s) => (v(), Q(bt(e.tag), {
-      class: R(T(at)(n.value, T(o)))
+    const t = e, r = Kt(), { classes: o } = za(Ce(t)), n = x(() => r.class || "");
+    return (i, s) => (w(), Q(xt(e.tag), {
+      class: H(T(ct)(n.value, T(o)))
     }, {
-      default: Y(() => [
-        M(i.$slots, "default")
+      default: Z(() => [
+        z(i.$slots, "default")
       ]),
       _: 3
     }, 8, ["class"]));
   }
-}), Da = {
+}), Ea = {
   key: 1,
   "aria-hidden": "true",
   class: "w-5 h-5",
   fill: "currentColor",
   viewBox: "0 0 20 20",
   xmlns: "http://www.w3.org/2000/svg"
-}, Ea = /* @__PURE__ */ j("path", {
+}, Ma = /* @__PURE__ */ R("path", {
   "clip-rule": "evenodd",
   d: "M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z",
   "fill-rule": "evenodd"
-}, null, -1), za = [
-  Ea
-], Ma = {
+}, null, -1), Ba = [
+  Ma
+], ja = {
   key: 2,
   "aria-hidden": "true",
   class: "w-5 h-5",
   fill: "currentColor",
   viewBox: "0 0 20 20",
   xmlns: "http://www.w3.org/2000/svg"
-}, Oa = /* @__PURE__ */ j("path", {
+}, Ra = /* @__PURE__ */ R("path", {
   "clip-rule": "evenodd",
   d: "M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z",
   "fill-rule": "evenodd"
-}, null, -1), Ba = [
-  Oa
-], ja = {
+}, null, -1), Fa = [
+  Ra
+], Ha = {
   key: 3,
   "aria-hidden": "true",
   class: "w-5 h-5",
   fill: "currentColor",
   viewBox: "0 0 20 20",
   xmlns: "http://www.w3.org/2000/svg"
-}, Fa = /* @__PURE__ */ j("path", {
+}, Va = /* @__PURE__ */ R("path", {
   "clip-rule": "evenodd",
   d: "M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z",
   "fill-rule": "evenodd"
-}, null, -1), Ra = [
-  Fa
-], Ha = /* @__PURE__ */ j("span", { class: "sr-only" }, "Close", -1), Va = /* @__PURE__ */ j("svg", {
+}, null, -1), Wa = [
+  Va
+], Ga = /* @__PURE__ */ R("span", { class: "sr-only" }, "Close", -1), Ua = /* @__PURE__ */ R("svg", {
   class: "w-5 h-5",
   fill: "currentColor",
   viewBox: "0 0 20 20",
   xmlns: "http://www.w3.org/2000/svg"
 }, [
-  /* @__PURE__ */ j("path", {
+  /* @__PURE__ */ R("path", {
     "clip-rule": "evenodd",
     d: "M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z",
     "fill-rule": "evenodd"
   })
-], -1), Ua = [
-  Ha,
-  Va
-], Tr = /* @__PURE__ */ K({
+], -1), qa = [
+  Ga,
+  Ua
+], Ar = /* @__PURE__ */ K({
   __name: "FwbToast",
   props: {
     type: {
@@ -3711,50 +3708,50 @@ const Na = /* @__PURE__ */ K({
   },
   emits: ["close"],
   setup(e, { emit: t }) {
-    const r = e, o = oe(!0), {
+    const r = e, o = ie(!0), {
       typeClasses: n,
       wrapperClasses: i,
       contentClasses: s
-    } = Pa(ve(r)), u = () => {
+    } = Da(Ce(r)), l = () => {
       t("close"), o.value = !1;
     };
-    return (c, p) => o.value ? (v(), L("div", {
+    return (d, p) => o.value ? (w(), L("div", {
       key: 0,
       id: "toast-default",
-      class: R(T(i)),
+      class: H(T(i)),
       role: "alert"
     }, [
-      e.type !== "empty" || c.$slots.icon ? (v(), Q(Na, {
+      e.type !== "empty" || d.$slots.icon ? (w(), Q(Oa, {
         key: 0,
         apply: ["background", "text"],
-        class: R(["inline-flex flex-shrink-0 justify-center items-center w-8 h-8 rounded-lg", T(n)])
+        class: H(["inline-flex flex-shrink-0 justify-center items-center w-8 h-8 rounded-lg", T(n)])
       }, {
-        default: Y(() => [
-          c.$slots.icon ? M(c.$slots, "icon", {
+        default: Z(() => [
+          d.$slots.icon ? z(d.$slots, "icon", {
             key: 0,
-            class: R({ "ml-3": e.type !== "empty" })
-          }) : e.type === "success" ? (v(), L("svg", Da, za)) : e.type === "danger" ? (v(), L("svg", Ma, Ba)) : e.type === "warning" ? (v(), L("svg", ja, Ra)) : W("", !0)
+            class: H({ "ml-3": e.type !== "empty" })
+          }) : e.type === "success" ? (w(), L("svg", Ea, Ba)) : e.type === "danger" ? (w(), L("svg", ja, Fa)) : e.type === "warning" ? (w(), L("svg", Ha, Wa)) : U("", !0)
         ]),
         _: 3
-      }, 8, ["class"])) : W("", !0),
-      j("div", {
-        class: R([T(s), { "ml-3": c.$slots.icon || e.type !== "empty" }])
+      }, 8, ["class"])) : U("", !0),
+      R("div", {
+        class: H([T(s), { "ml-3": d.$slots.icon || e.type !== "empty" }])
       }, [
-        M(c.$slots, "default")
+        z(d.$slots, "default")
       ], 2),
-      e.closable ? (v(), L("button", {
+      e.closable ? (w(), L("button", {
         key: 1,
         "aria-label": "Close",
         class: "border-none ml-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700",
         type: "button",
-        onClick: u
-      }, Ua)) : W("", !0)
-    ], 2)) : W("", !0);
+        onClick: l
+      }, qa)) : U("", !0)
+    ], 2)) : U("", !0);
   }
-}), Ga = "flowbite-toast-injection-key";
+}), Ka = "flowbite-toast-injection-key";
 K({
   components: {
-    FwbToast: Tr
+    FwbToast: Ar
   },
   props: {
     transition: {
@@ -3763,8 +3760,8 @@ K({
     }
   },
   setup() {
-    const e = oe([]), t = (i, s) => {
-      ui(() => n(i), s);
+    const e = ie([]), t = (i, s) => {
+      pi(() => n(i), s);
     }, r = (i) => {
       const s = parseInt(((/* @__PURE__ */ new Date()).getTime() * Math.random()).toString()).toString();
       return e.value.push({
@@ -3777,10 +3774,10 @@ K({
       const i = e.value[e.value.length - 1].id;
       return e.value.pop(), i;
     }, n = (i) => {
-      const s = e.value.findIndex((u) => u.id === i);
+      const s = e.value.findIndex((l) => l.id === i);
       return s >= 0 && e.value.splice(s, 1), s >= 0;
     };
-    return No(Ga, {
+    return Oo(Ka, {
       add: r,
       pop: o,
       remove: n
@@ -3791,11 +3788,11 @@ K({
   },
   render() {
     const { $props: e, $slots: t, toasts: r, removeToast: o } = this;
-    return tt("div", {}, [
+    return it("div", {}, [
       t.default ? t.default() : null,
       // rendering default slot
-      tt(
-        Do,
+      it(
+        Eo,
         {
           name: e.transition,
           tag: "div",
@@ -3803,7 +3800,7 @@ K({
         },
         {
           default: () => r.map(
-            (n) => n.component ? tt(
+            (n) => n.component ? it(
               n.component,
               {
                 key: n.id,
@@ -3811,8 +3808,8 @@ K({
                 ...n.componentProps ? n.componentProps : {}
               },
               () => n.text
-            ) : tt(
-              Tr,
+            ) : it(
+              Ar,
               {
                 closable: !0,
                 type: n.type,
@@ -3827,23 +3824,23 @@ K({
     ]);
   }
 });
-function ae(e) {
+function ue(e) {
   return e.split("-")[1];
 }
-function Xt(e) {
+function or(e) {
   return e === "y" ? "height" : "width";
 }
-function ue(e) {
+function he(e) {
   return e.split("-")[0];
 }
-function Oe(e) {
-  return ["top", "bottom"].includes(ue(e)) ? "x" : "y";
+function He(e) {
+  return ["top", "bottom"].includes(he(e)) ? "x" : "y";
 }
-function Sr(e, t, r) {
+function Nr(e, t, r) {
   let { reference: o, floating: n } = e;
-  const i = o.x + o.width / 2 - n.width / 2, s = o.y + o.height / 2 - n.height / 2, u = Oe(t), c = Xt(u), p = o[c] / 2 - n[c] / 2, g = u === "x";
+  const i = o.x + o.width / 2 - n.width / 2, s = o.y + o.height / 2 - n.height / 2, l = He(t), d = or(l), p = o[d] / 2 - n[d] / 2, g = l === "x";
   let f;
-  switch (ue(t)) {
+  switch (he(t)) {
     case "top":
       f = { x: i, y: o.y - n.height };
       break;
@@ -3859,397 +3856,397 @@ function Sr(e, t, r) {
     default:
       f = { x: o.x, y: o.y };
   }
-  switch (ae(t)) {
+  switch (ue(t)) {
     case "start":
-      f[u] -= p * (r && g ? -1 : 1);
+      f[l] -= p * (r && g ? -1 : 1);
       break;
     case "end":
-      f[u] += p * (r && g ? -1 : 1);
+      f[l] += p * (r && g ? -1 : 1);
   }
   return f;
 }
-const Wa = async (e, t, r) => {
-  const { placement: o = "bottom", strategy: n = "absolute", middleware: i = [], platform: s } = r, u = i.filter(Boolean), c = await (s.isRTL == null ? void 0 : s.isRTL(t));
-  let p = await s.getElementRects({ reference: e, floating: t, strategy: n }), { x: g, y: f } = Sr(p, o, c), b = o, y = {}, C = 0;
-  for (let _ = 0; _ < u.length; _++) {
-    const { name: k, fn: $ } = u[_], { x: I, y: z, data: V, reset: U } = await $({ x: g, y: f, initialPlacement: o, placement: b, strategy: n, middlewareData: y, rects: p, platform: s, elements: { reference: e, floating: t } });
-    g = I ?? g, f = z ?? f, y = { ...y, [k]: { ...y[k], ...V } }, U && C <= 50 && (C++, typeof U == "object" && (U.placement && (b = U.placement), U.rects && (p = U.rects === !0 ? await s.getElementRects({ reference: e, floating: t, strategy: n }) : U.rects), { x: g, y: f } = Sr(p, b, c)), _ = -1);
+const Qa = async (e, t, r) => {
+  const { placement: o = "bottom", strategy: n = "absolute", middleware: i = [], platform: s } = r, l = i.filter(Boolean), d = await (s.isRTL == null ? void 0 : s.isRTL(t));
+  let p = await s.getElementRects({ reference: e, floating: t, strategy: n }), { x: g, y: f } = Nr(p, o, d), m = o, y = {}, k = 0;
+  for (let _ = 0; _ < l.length; _++) {
+    const { name: I, fn: S } = l[_], { x: $, y: O, data: V, reset: W } = await S({ x: g, y: f, initialPlacement: o, placement: m, strategy: n, middlewareData: y, rects: p, platform: s, elements: { reference: e, floating: t } });
+    g = $ ?? g, f = O ?? f, y = { ...y, [I]: { ...y[I], ...V } }, W && k <= 50 && (k++, typeof W == "object" && (W.placement && (m = W.placement), W.rects && (p = W.rects === !0 ? await s.getElementRects({ reference: e, floating: t, strategy: n }) : W.rects), { x: g, y: f } = Nr(p, m, d)), _ = -1);
   }
-  return { x: g, y: f, placement: b, strategy: n, middlewareData: y };
+  return { x: g, y: f, placement: m, strategy: n, middlewareData: y };
 };
-function Le(e, t) {
+function ze(e, t) {
   return typeof e == "function" ? e(t) : e;
 }
-function po(e) {
+function mo(e) {
   return typeof e != "number" ? function(t) {
     return { top: 0, right: 0, bottom: 0, left: 0, ...t };
   }(e) : { top: e, right: e, bottom: e, left: e };
 }
-function He(e) {
+function qe(e) {
   return { ...e, top: e.y, left: e.x, right: e.x + e.width, bottom: e.y + e.height };
 }
-async function kt(e, t) {
+async function Tt(e, t) {
   var r;
   t === void 0 && (t = {});
-  const { x: o, y: n, platform: i, rects: s, elements: u, strategy: c } = e, { boundary: p = "clippingAncestors", rootBoundary: g = "viewport", elementContext: f = "floating", altBoundary: b = !1, padding: y = 0 } = Le(t, e), C = po(y), _ = u[b ? f === "floating" ? "reference" : "floating" : f], k = He(await i.getClippingRect({ element: (r = await (i.isElement == null ? void 0 : i.isElement(_))) == null || r ? _ : _.contextElement || await (i.getDocumentElement == null ? void 0 : i.getDocumentElement(u.floating)), boundary: p, rootBoundary: g, strategy: c })), $ = f === "floating" ? { ...s.floating, x: o, y: n } : s.reference, I = await (i.getOffsetParent == null ? void 0 : i.getOffsetParent(u.floating)), z = await (i.isElement == null ? void 0 : i.isElement(I)) && await (i.getScale == null ? void 0 : i.getScale(I)) || { x: 1, y: 1 }, V = He(i.convertOffsetParentRelativeRectToViewportRelativeRect ? await i.convertOffsetParentRelativeRectToViewportRelativeRect({ rect: $, offsetParent: I, strategy: c }) : $);
-  return { top: (k.top - V.top + C.top) / z.y, bottom: (V.bottom - k.bottom + C.bottom) / z.y, left: (k.left - V.left + C.left) / z.x, right: (V.right - k.right + C.right) / z.x };
+  const { x: o, y: n, platform: i, rects: s, elements: l, strategy: d } = e, { boundary: p = "clippingAncestors", rootBoundary: g = "viewport", elementContext: f = "floating", altBoundary: m = !1, padding: y = 0 } = ze(t, e), k = mo(y), _ = l[m ? f === "floating" ? "reference" : "floating" : f], I = qe(await i.getClippingRect({ element: (r = await (i.isElement == null ? void 0 : i.isElement(_))) == null || r ? _ : _.contextElement || await (i.getDocumentElement == null ? void 0 : i.getDocumentElement(l.floating)), boundary: p, rootBoundary: g, strategy: d })), S = f === "floating" ? { ...s.floating, x: o, y: n } : s.reference, $ = await (i.getOffsetParent == null ? void 0 : i.getOffsetParent(l.floating)), O = await (i.isElement == null ? void 0 : i.isElement($)) && await (i.getScale == null ? void 0 : i.getScale($)) || { x: 1, y: 1 }, V = qe(i.convertOffsetParentRelativeRectToViewportRelativeRect ? await i.convertOffsetParentRelativeRectToViewportRelativeRect({ rect: S, offsetParent: $, strategy: d }) : S);
+  return { top: (I.top - V.top + k.top) / O.y, bottom: (V.bottom - I.bottom + k.bottom) / O.y, left: (I.left - V.left + k.left) / O.x, right: (V.right - I.right + k.right) / O.x };
 }
-const Ke = Math.min, Ce = Math.max;
-function jt(e, t, r) {
-  return Ce(e, Ke(t, r));
+const Xe = Math.min, Te = Math.max;
+function Vt(e, t, r) {
+  return Te(e, Xe(t, r));
 }
-const qa = (e) => ({ name: "arrow", options: e, async fn(t) {
-  const { x: r, y: o, placement: n, rects: i, platform: s, elements: u } = t, { element: c, padding: p = 0 } = Le(e, t) || {};
-  if (c == null)
+const Ja = (e) => ({ name: "arrow", options: e, async fn(t) {
+  const { x: r, y: o, placement: n, rects: i, platform: s, elements: l } = t, { element: d, padding: p = 0 } = ze(e, t) || {};
+  if (d == null)
     return {};
-  const g = po(p), f = { x: r, y: o }, b = Oe(n), y = Xt(b), C = await s.getDimensions(c), _ = b === "y", k = _ ? "top" : "left", $ = _ ? "bottom" : "right", I = _ ? "clientHeight" : "clientWidth", z = i.reference[y] + i.reference[b] - f[b] - i.floating[y], V = f[b] - i.reference[b], U = await (s.getOffsetParent == null ? void 0 : s.getOffsetParent(c));
-  let D = U ? U[I] : 0;
-  D && await (s.isElement == null ? void 0 : s.isElement(U)) || (D = u.floating[I] || i.floating[y]);
-  const q = z / 2 - V / 2, Z = D / 2 - C[y] / 2 - 1, X = Ke(g[k], Z), H = Ke(g[$], Z), F = X, A = D - C[y] - H, l = D / 2 - C[y] / 2 + q, a = jt(F, l, A), d = ae(n) != null && l != a && i.reference[y] / 2 - (l < F ? X : H) - C[y] / 2 < 0 ? l < F ? F - l : A - l : 0;
-  return { [b]: f[b] - d, data: { [b]: a, centerOffset: l - a + d } };
-} }), Ka = ["top", "right", "bottom", "left"], Lr = Ka.reduce((e, t) => e.concat(t, t + "-start", t + "-end"), []), Qa = { left: "right", right: "left", bottom: "top", top: "bottom" };
-function ft(e) {
-  return e.replace(/left|right|bottom|top/g, (t) => Qa[t]);
+  const g = mo(p), f = { x: r, y: o }, m = He(n), y = or(m), k = await s.getDimensions(d), _ = m === "y", I = _ ? "top" : "left", S = _ ? "bottom" : "right", $ = _ ? "clientHeight" : "clientWidth", O = i.reference[y] + i.reference[m] - f[m] - i.floating[y], V = f[m] - i.reference[m], W = await (s.getOffsetParent == null ? void 0 : s.getOffsetParent(d));
+  let F = W ? W[$] : 0;
+  F && await (s.isElement == null ? void 0 : s.isElement(W)) || (F = l.floating[$] || i.floating[y]);
+  const J = O / 2 - V / 2, X = F / 2 - k[y] / 2 - 1, ee = Xe(g[I], X), D = Xe(g[S], X), M = ee, A = F - k[y] - D, j = F / 2 - k[y] / 2 + J, C = Vt(M, j, A), te = ue(n) != null && j != C && i.reference[y] / 2 - (j < M ? ee : D) - k[y] / 2 < 0 ? j < M ? M - j : A - j : 0;
+  return { [m]: f[m] - te, data: { [m]: C, centerOffset: j - C + te } };
+} }), Ya = ["top", "right", "bottom", "left"], Dr = Ya.reduce((e, t) => e.concat(t, t + "-start", t + "-end"), []), Za = { left: "right", right: "left", bottom: "top", top: "bottom" };
+function yt(e) {
+  return e.replace(/left|right|bottom|top/g, (t) => Za[t]);
 }
-function ho(e, t, r) {
+function bo(e, t, r) {
   r === void 0 && (r = !1);
-  const o = ae(e), n = Oe(e), i = Xt(n);
+  const o = ue(e), n = He(e), i = or(n);
   let s = n === "x" ? o === (r ? "end" : "start") ? "right" : "left" : o === "start" ? "bottom" : "top";
-  return t.reference[i] > t.floating[i] && (s = ft(s)), { main: s, cross: ft(s) };
+  return t.reference[i] > t.floating[i] && (s = yt(s)), { main: s, cross: yt(s) };
 }
-const Ja = { start: "end", end: "start" };
-function lt(e) {
-  return e.replace(/start|end/g, (t) => Ja[t]);
+const Xa = { start: "end", end: "start" };
+function pt(e) {
+  return e.replace(/start|end/g, (t) => Xa[t]);
 }
-const Ya = function(e) {
+const el = function(e) {
   return e === void 0 && (e = {}), { name: "autoPlacement", options: e, async fn(t) {
     var r, o, n;
-    const { rects: i, middlewareData: s, placement: u, platform: c, elements: p } = t, { crossAxis: g = !1, alignment: f, allowedPlacements: b = Lr, autoAlignment: y = !0, ...C } = Le(e, t), _ = f !== void 0 || b === Lr ? function(H, F, A) {
-      return (H ? [...A.filter((l) => ae(l) === H), ...A.filter((l) => ae(l) !== H)] : A.filter((l) => ue(l) === l)).filter((l) => !H || ae(l) === H || !!F && lt(l) !== l);
-    }(f || null, y, b) : b, k = await kt(t, C), $ = ((r = s.autoPlacement) == null ? void 0 : r.index) || 0, I = _[$];
-    if (I == null)
+    const { rects: i, middlewareData: s, placement: l, platform: d, elements: p } = t, { crossAxis: g = !1, alignment: f, allowedPlacements: m = Dr, autoAlignment: y = !0, ...k } = ze(e, t), _ = f !== void 0 || m === Dr ? function(D, M, A) {
+      return (D ? [...A.filter((j) => ue(j) === D), ...A.filter((j) => ue(j) !== D)] : A.filter((j) => he(j) === j)).filter((j) => !D || ue(j) === D || !!M && pt(j) !== j);
+    }(f || null, y, m) : m, I = await Tt(t, k), S = ((r = s.autoPlacement) == null ? void 0 : r.index) || 0, $ = _[S];
+    if ($ == null)
       return {};
-    const { main: z, cross: V } = ho(I, i, await (c.isRTL == null ? void 0 : c.isRTL(p.floating)));
-    if (u !== I)
+    const { main: O, cross: V } = bo($, i, await (d.isRTL == null ? void 0 : d.isRTL(p.floating)));
+    if (l !== $)
       return { reset: { placement: _[0] } };
-    const U = [k[ue(I)], k[z], k[V]], D = [...((o = s.autoPlacement) == null ? void 0 : o.overflows) || [], { placement: I, overflows: U }], q = _[$ + 1];
-    if (q)
-      return { data: { index: $ + 1, overflows: D }, reset: { placement: q } };
-    const Z = D.map((H) => {
-      const F = ae(H.placement);
-      return [H.placement, F && g ? H.overflows.slice(0, 2).reduce((A, l) => A + l, 0) : H.overflows[0], H.overflows];
-    }).sort((H, F) => H[1] - F[1]), X = ((n = Z.filter((H) => H[2].slice(0, ae(H[0]) ? 2 : 3).every((F) => F <= 0))[0]) == null ? void 0 : n[0]) || Z[0][0];
-    return X !== u ? { data: { index: $ + 1, overflows: D }, reset: { placement: X } } : {};
+    const W = [I[he($)], I[O], I[V]], F = [...((o = s.autoPlacement) == null ? void 0 : o.overflows) || [], { placement: $, overflows: W }], J = _[S + 1];
+    if (J)
+      return { data: { index: S + 1, overflows: F }, reset: { placement: J } };
+    const X = F.map((D) => {
+      const M = ue(D.placement);
+      return [D.placement, M && g ? D.overflows.slice(0, 2).reduce((A, j) => A + j, 0) : D.overflows[0], D.overflows];
+    }).sort((D, M) => D[1] - M[1]), ee = ((n = X.filter((D) => D[2].slice(0, ue(D[0]) ? 2 : 3).every((M) => M <= 0))[0]) == null ? void 0 : n[0]) || X[0][0];
+    return ee !== l ? { data: { index: S + 1, overflows: F }, reset: { placement: ee } } : {};
   } };
-}, Za = function(e) {
+}, tl = function(e) {
   return e === void 0 && (e = {}), { name: "flip", options: e, async fn(t) {
     var r;
-    const { placement: o, middlewareData: n, rects: i, initialPlacement: s, platform: u, elements: c } = t, { mainAxis: p = !0, crossAxis: g = !0, fallbackPlacements: f, fallbackStrategy: b = "bestFit", fallbackAxisSideDirection: y = "none", flipAlignment: C = !0, ..._ } = Le(e, t), k = ue(o), $ = ue(s) === s, I = await (u.isRTL == null ? void 0 : u.isRTL(c.floating)), z = f || ($ || !C ? [ft(s)] : function(F) {
-      const A = ft(F);
-      return [lt(F), A, lt(A)];
+    const { placement: o, middlewareData: n, rects: i, initialPlacement: s, platform: l, elements: d } = t, { mainAxis: p = !0, crossAxis: g = !0, fallbackPlacements: f, fallbackStrategy: m = "bestFit", fallbackAxisSideDirection: y = "none", flipAlignment: k = !0, ..._ } = ze(e, t), I = he(o), S = he(s) === s, $ = await (l.isRTL == null ? void 0 : l.isRTL(d.floating)), O = f || (S || !k ? [yt(s)] : function(M) {
+      const A = yt(M);
+      return [pt(M), A, pt(A)];
     }(s));
-    f || y === "none" || z.push(...function(F, A, l, a) {
-      const d = ae(F);
-      let h = function(m, x, E) {
-        const N = ["left", "right"], S = ["right", "left"], J = ["top", "bottom"], ee = ["bottom", "top"];
-        switch (m) {
+    f || y === "none" || O.push(...function(M, A, j, C) {
+      const te = ue(M);
+      let a = function(u, c, h) {
+        const b = ["left", "right"], v = ["right", "left"], N = ["top", "bottom"], P = ["bottom", "top"];
+        switch (u) {
           case "top":
           case "bottom":
-            return E ? x ? S : N : x ? N : S;
+            return h ? c ? v : b : c ? b : v;
           case "left":
           case "right":
-            return x ? J : ee;
+            return c ? N : P;
           default:
             return [];
         }
-      }(ue(F), l === "start", a);
-      return d && (h = h.map((m) => m + "-" + d), A && (h = h.concat(h.map(lt)))), h;
-    }(s, C, y, I));
-    const V = [s, ...z], U = await kt(t, _), D = [];
-    let q = ((r = n.flip) == null ? void 0 : r.overflows) || [];
-    if (p && D.push(U[k]), g) {
-      const { main: F, cross: A } = ho(o, i, I);
-      D.push(U[F], U[A]);
+      }(he(M), j === "start", C);
+      return te && (a = a.map((u) => u + "-" + te), A && (a = a.concat(a.map(pt)))), a;
+    }(s, k, y, $));
+    const V = [s, ...O], W = await Tt(t, _), F = [];
+    let J = ((r = n.flip) == null ? void 0 : r.overflows) || [];
+    if (p && F.push(W[I]), g) {
+      const { main: M, cross: A } = bo(o, i, $);
+      F.push(W[M], W[A]);
     }
-    if (q = [...q, { placement: o, overflows: D }], !D.every((F) => F <= 0)) {
-      var Z, X;
-      const F = (((Z = n.flip) == null ? void 0 : Z.index) || 0) + 1, A = V[F];
+    if (J = [...J, { placement: o, overflows: F }], !F.every((M) => M <= 0)) {
+      var X, ee;
+      const M = (((X = n.flip) == null ? void 0 : X.index) || 0) + 1, A = V[M];
       if (A)
-        return { data: { index: F, overflows: q }, reset: { placement: A } };
-      let l = (X = q.filter((a) => a.overflows[0] <= 0).sort((a, d) => a.overflows[1] - d.overflows[1])[0]) == null ? void 0 : X.placement;
-      if (!l)
-        switch (b) {
+        return { data: { index: M, overflows: J }, reset: { placement: A } };
+      let j = (ee = J.filter((C) => C.overflows[0] <= 0).sort((C, te) => C.overflows[1] - te.overflows[1])[0]) == null ? void 0 : ee.placement;
+      if (!j)
+        switch (m) {
           case "bestFit": {
-            var H;
-            const a = (H = q.map((d) => [d.placement, d.overflows.filter((h) => h > 0).reduce((h, m) => h + m, 0)]).sort((d, h) => d[1] - h[1])[0]) == null ? void 0 : H[0];
-            a && (l = a);
+            var D;
+            const C = (D = J.map((te) => [te.placement, te.overflows.filter((a) => a > 0).reduce((a, u) => a + u, 0)]).sort((te, a) => te[1] - a[1])[0]) == null ? void 0 : D[0];
+            C && (j = C);
             break;
           }
           case "initialPlacement":
-            l = s;
+            j = s;
         }
-      if (o !== l)
-        return { reset: { placement: l } };
+      if (o !== j)
+        return { reset: { placement: j } };
     }
     return {};
   } };
-}, Xa = function(e) {
+}, rl = function(e) {
   return e === void 0 && (e = 0), { name: "offset", options: e, async fn(t) {
     const { x: r, y: o } = t, n = await async function(i, s) {
-      const { placement: u, platform: c, elements: p } = i, g = await (c.isRTL == null ? void 0 : c.isRTL(p.floating)), f = ue(u), b = ae(u), y = Oe(u) === "x", C = ["left", "top"].includes(f) ? -1 : 1, _ = g && y ? -1 : 1, k = Le(s, i);
-      let { mainAxis: $, crossAxis: I, alignmentAxis: z } = typeof k == "number" ? { mainAxis: k, crossAxis: 0, alignmentAxis: null } : { mainAxis: 0, crossAxis: 0, alignmentAxis: null, ...k };
-      return b && typeof z == "number" && (I = b === "end" ? -1 * z : z), y ? { x: I * _, y: $ * C } : { x: $ * C, y: I * _ };
+      const { placement: l, platform: d, elements: p } = i, g = await (d.isRTL == null ? void 0 : d.isRTL(p.floating)), f = he(l), m = ue(l), y = He(l) === "x", k = ["left", "top"].includes(f) ? -1 : 1, _ = g && y ? -1 : 1, I = ze(s, i);
+      let { mainAxis: S, crossAxis: $, alignmentAxis: O } = typeof I == "number" ? { mainAxis: I, crossAxis: 0, alignmentAxis: null } : { mainAxis: 0, crossAxis: 0, alignmentAxis: null, ...I };
+      return m && typeof O == "number" && ($ = m === "end" ? -1 * O : O), y ? { x: $ * _, y: S * k } : { x: S * k, y: $ * _ };
     }(t, e);
     return { x: r + n.x, y: o + n.y, data: n };
   } };
 };
-function el(e) {
+function ol(e) {
   return e === "x" ? "y" : "x";
 }
-const tl = function(e) {
+const nl = function(e) {
   return e === void 0 && (e = {}), { name: "shift", options: e, async fn(t) {
-    const { x: r, y: o, placement: n } = t, { mainAxis: i = !0, crossAxis: s = !1, limiter: u = { fn: (k) => {
-      let { x: $, y: I } = k;
-      return { x: $, y: I };
-    } }, ...c } = Le(e, t), p = { x: r, y: o }, g = await kt(t, c), f = Oe(ue(n)), b = el(f);
-    let y = p[f], C = p[b];
+    const { x: r, y: o, placement: n } = t, { mainAxis: i = !0, crossAxis: s = !1, limiter: l = { fn: (I) => {
+      let { x: S, y: $ } = I;
+      return { x: S, y: $ };
+    } }, ...d } = ze(e, t), p = { x: r, y: o }, g = await Tt(t, d), f = He(he(n)), m = ol(f);
+    let y = p[f], k = p[m];
     if (i) {
-      const k = f === "y" ? "bottom" : "right";
-      y = jt(y + g[f === "y" ? "top" : "left"], y, y - g[k]);
+      const I = f === "y" ? "bottom" : "right";
+      y = Vt(y + g[f === "y" ? "top" : "left"], y, y - g[I]);
     }
     if (s) {
-      const k = b === "y" ? "bottom" : "right";
-      C = jt(C + g[b === "y" ? "top" : "left"], C, C - g[k]);
+      const I = m === "y" ? "bottom" : "right";
+      k = Vt(k + g[m === "y" ? "top" : "left"], k, k - g[I]);
     }
-    const _ = u.fn({ ...t, [f]: y, [b]: C });
+    const _ = l.fn({ ...t, [f]: y, [m]: k });
     return { ..._, data: { x: _.x - r, y: _.y - o } };
   } };
-}, rl = function(e) {
+}, il = function(e) {
   return e === void 0 && (e = {}), { name: "size", options: e, async fn(t) {
     const { placement: r, rects: o, platform: n, elements: i } = t, { apply: s = () => {
-    }, ...u } = Le(e, t), c = await kt(t, u), p = ue(r), g = ae(r), f = Oe(r) === "x", { width: b, height: y } = o.floating;
-    let C, _;
-    p === "top" || p === "bottom" ? (C = p, _ = g === (await (n.isRTL == null ? void 0 : n.isRTL(i.floating)) ? "start" : "end") ? "left" : "right") : (_ = p, C = g === "end" ? "top" : "bottom");
-    const k = y - c[C], $ = b - c[_], I = !t.middlewareData.shift;
-    let z = k, V = $;
+    }, ...l } = ze(e, t), d = await Tt(t, l), p = he(r), g = ue(r), f = He(r) === "x", { width: m, height: y } = o.floating;
+    let k, _;
+    p === "top" || p === "bottom" ? (k = p, _ = g === (await (n.isRTL == null ? void 0 : n.isRTL(i.floating)) ? "start" : "end") ? "left" : "right") : (_ = p, k = g === "end" ? "top" : "bottom");
+    const I = y - d[k], S = m - d[_], $ = !t.middlewareData.shift;
+    let O = I, V = S;
     if (f) {
-      const D = b - c.left - c.right;
-      V = g || I ? Ke($, D) : D;
+      const F = m - d.left - d.right;
+      V = g || $ ? Xe(S, F) : F;
     } else {
-      const D = y - c.top - c.bottom;
-      z = g || I ? Ke(k, D) : D;
+      const F = y - d.top - d.bottom;
+      O = g || $ ? Xe(I, F) : F;
     }
-    if (I && !g) {
-      const D = Ce(c.left, 0), q = Ce(c.right, 0), Z = Ce(c.top, 0), X = Ce(c.bottom, 0);
-      f ? V = b - 2 * (D !== 0 || q !== 0 ? D + q : Ce(c.left, c.right)) : z = y - 2 * (Z !== 0 || X !== 0 ? Z + X : Ce(c.top, c.bottom));
+    if ($ && !g) {
+      const F = Te(d.left, 0), J = Te(d.right, 0), X = Te(d.top, 0), ee = Te(d.bottom, 0);
+      f ? V = m - 2 * (F !== 0 || J !== 0 ? F + J : Te(d.left, d.right)) : O = y - 2 * (X !== 0 || ee !== 0 ? X + ee : Te(d.top, d.bottom));
     }
-    await s({ ...t, availableWidth: V, availableHeight: z });
-    const U = await n.getDimensions(i.floating);
-    return b !== U.width || y !== U.height ? { reset: { rects: !0 } } : {};
+    await s({ ...t, availableWidth: V, availableHeight: O });
+    const W = await n.getDimensions(i.floating);
+    return m !== W.width || y !== W.height ? { reset: { rects: !0 } } : {};
   } };
 };
-function ie(e) {
+function ae(e) {
   var t;
   return ((t = e.ownerDocument) == null ? void 0 : t.defaultView) || window;
 }
-function de(e) {
-  return ie(e).getComputedStyle(e);
+function fe(e) {
+  return ae(e).getComputedStyle(e);
 }
-const Pr = Math.min, Ve = Math.max, gt = Math.round;
-function fo(e) {
-  const t = de(e);
+const zr = Math.min, Ke = Math.max, vt = Math.round;
+function yo(e) {
+  const t = fe(e);
   let r = parseFloat(t.width), o = parseFloat(t.height);
-  const n = e.offsetWidth, i = e.offsetHeight, s = gt(r) !== n || gt(o) !== i;
+  const n = e.offsetWidth, i = e.offsetHeight, s = vt(r) !== n || vt(o) !== i;
   return s && (r = n, o = i), { width: r, height: o, fallback: s };
 }
-function _e(e) {
-  return mo(e) ? (e.nodeName || "").toLowerCase() : "";
+function $e(e) {
+  return wo(e) ? (e.nodeName || "").toLowerCase() : "";
 }
-let nt;
-function go() {
-  if (nt)
-    return nt;
+let lt;
+function vo() {
+  if (lt)
+    return lt;
   const e = navigator.userAgentData;
-  return e && Array.isArray(e.brands) ? (nt = e.brands.map((t) => t.brand + "/" + t.version).join(" "), nt) : navigator.userAgent;
+  return e && Array.isArray(e.brands) ? (lt = e.brands.map((t) => t.brand + "/" + t.version).join(" "), lt) : navigator.userAgent;
 }
-function ce(e) {
-  return e instanceof ie(e).HTMLElement;
+function ge(e) {
+  return e instanceof ae(e).HTMLElement;
 }
-function be(e) {
-  return e instanceof ie(e).Element;
+function xe(e) {
+  return e instanceof ae(e).Element;
 }
-function mo(e) {
-  return e instanceof ie(e).Node;
+function wo(e) {
+  return e instanceof ae(e).Node;
 }
-function Ar(e) {
-  return typeof ShadowRoot > "u" ? !1 : e instanceof ie(e).ShadowRoot || e instanceof ShadowRoot;
+function Or(e) {
+  return typeof ShadowRoot > "u" ? !1 : e instanceof ae(e).ShadowRoot || e instanceof ShadowRoot;
 }
-function $t(e) {
-  const { overflow: t, overflowX: r, overflowY: o, display: n } = de(e);
+function Pt(e) {
+  const { overflow: t, overflowX: r, overflowY: o, display: n } = fe(e);
   return /auto|scroll|overlay|hidden|clip/.test(t + o + r) && !["inline", "contents"].includes(n);
 }
-function ol(e) {
-  return ["table", "td", "th"].includes(_e(e));
+function sl(e) {
+  return ["table", "td", "th"].includes($e(e));
 }
-function Ft(e) {
-  const t = /firefox/i.test(go()), r = de(e), o = r.backdropFilter || r.WebkitBackdropFilter;
+function Wt(e) {
+  const t = /firefox/i.test(vo()), r = fe(e), o = r.backdropFilter || r.WebkitBackdropFilter;
   return r.transform !== "none" || r.perspective !== "none" || !!o && o !== "none" || t && r.willChange === "filter" || t && !!r.filter && r.filter !== "none" || ["transform", "perspective"].some((n) => r.willChange.includes(n)) || ["paint", "layout", "strict", "content"].some((n) => {
     const i = r.contain;
     return i != null && i.includes(n);
   });
 }
-function bo() {
-  return !/^((?!chrome|android).)*safari/i.test(go());
+function xo() {
+  return !/^((?!chrome|android).)*safari/i.test(vo());
 }
-function er(e) {
-  return ["html", "body", "#document"].includes(_e(e));
-}
-function yo(e) {
-  return be(e) ? e : e.contextElement;
-}
-const vo = { x: 1, y: 1 };
-function Ne(e) {
-  const t = yo(e);
-  if (!ce(t))
-    return vo;
-  const r = t.getBoundingClientRect(), { width: o, height: n, fallback: i } = fo(t);
-  let s = (i ? gt(r.width) : r.width) / o, u = (i ? gt(r.height) : r.height) / n;
-  return s && Number.isFinite(s) || (s = 1), u && Number.isFinite(u) || (u = 1), { x: s, y: u };
-}
-function Qe(e, t, r, o) {
-  var n, i;
-  t === void 0 && (t = !1), r === void 0 && (r = !1);
-  const s = e.getBoundingClientRect(), u = yo(e);
-  let c = vo;
-  t && (o ? be(o) && (c = Ne(o)) : c = Ne(e));
-  const p = u ? ie(u) : window, g = !bo() && r;
-  let f = (s.left + (g && ((n = p.visualViewport) == null ? void 0 : n.offsetLeft) || 0)) / c.x, b = (s.top + (g && ((i = p.visualViewport) == null ? void 0 : i.offsetTop) || 0)) / c.y, y = s.width / c.x, C = s.height / c.y;
-  if (u) {
-    const _ = ie(u), k = o && be(o) ? ie(o) : o;
-    let $ = _.frameElement;
-    for (; $ && o && k !== _; ) {
-      const I = Ne($), z = $.getBoundingClientRect(), V = getComputedStyle($);
-      z.x += ($.clientLeft + parseFloat(V.paddingLeft)) * I.x, z.y += ($.clientTop + parseFloat(V.paddingTop)) * I.y, f *= I.x, b *= I.y, y *= I.x, C *= I.y, f += z.x, b += z.y, $ = ie($).frameElement;
-    }
-  }
-  return { width: y, height: C, top: b, right: f + y, bottom: b + C, left: f, x: f, y: b };
-}
-function ye(e) {
-  return ((mo(e) ? e.ownerDocument : e.document) || window.document).documentElement;
-}
-function It(e) {
-  return be(e) ? { scrollLeft: e.scrollLeft, scrollTop: e.scrollTop } : { scrollLeft: e.pageXOffset, scrollTop: e.pageYOffset };
-}
-function wo(e) {
-  return Qe(ye(e)).left + It(e).scrollLeft;
-}
-function Je(e) {
-  if (_e(e) === "html")
-    return e;
-  const t = e.assignedSlot || e.parentNode || Ar(e) && e.host || ye(e);
-  return Ar(t) ? t.host : t;
+function nr(e) {
+  return ["html", "body", "#document"].includes($e(e));
 }
 function _o(e) {
-  const t = Je(e);
-  return er(t) ? t.ownerDocument.body : ce(t) && $t(t) ? t : _o(t);
+  return xe(e) ? e : e.contextElement;
 }
-function mt(e, t) {
+const Co = { x: 1, y: 1 };
+function Me(e) {
+  const t = _o(e);
+  if (!ge(t))
+    return Co;
+  const r = t.getBoundingClientRect(), { width: o, height: n, fallback: i } = yo(t);
+  let s = (i ? vt(r.width) : r.width) / o, l = (i ? vt(r.height) : r.height) / n;
+  return s && Number.isFinite(s) || (s = 1), l && Number.isFinite(l) || (l = 1), { x: s, y: l };
+}
+function et(e, t, r, o) {
+  var n, i;
+  t === void 0 && (t = !1), r === void 0 && (r = !1);
+  const s = e.getBoundingClientRect(), l = _o(e);
+  let d = Co;
+  t && (o ? xe(o) && (d = Me(o)) : d = Me(e));
+  const p = l ? ae(l) : window, g = !xo() && r;
+  let f = (s.left + (g && ((n = p.visualViewport) == null ? void 0 : n.offsetLeft) || 0)) / d.x, m = (s.top + (g && ((i = p.visualViewport) == null ? void 0 : i.offsetTop) || 0)) / d.y, y = s.width / d.x, k = s.height / d.y;
+  if (l) {
+    const _ = ae(l), I = o && xe(o) ? ae(o) : o;
+    let S = _.frameElement;
+    for (; S && o && I !== _; ) {
+      const $ = Me(S), O = S.getBoundingClientRect(), V = getComputedStyle(S);
+      O.x += (S.clientLeft + parseFloat(V.paddingLeft)) * $.x, O.y += (S.clientTop + parseFloat(V.paddingTop)) * $.y, f *= $.x, m *= $.y, y *= $.x, k *= $.y, f += O.x, m += O.y, S = ae(S).frameElement;
+    }
+  }
+  return { width: y, height: k, top: m, right: f + y, bottom: m + k, left: f, x: f, y: m };
+}
+function _e(e) {
+  return ((wo(e) ? e.ownerDocument : e.document) || window.document).documentElement;
+}
+function Lt(e) {
+  return xe(e) ? { scrollLeft: e.scrollLeft, scrollTop: e.scrollTop } : { scrollLeft: e.pageXOffset, scrollTop: e.pageYOffset };
+}
+function ko(e) {
+  return et(_e(e)).left + Lt(e).scrollLeft;
+}
+function tt(e) {
+  if ($e(e) === "html")
+    return e;
+  const t = e.assignedSlot || e.parentNode || Or(e) && e.host || _e(e);
+  return Or(t) ? t.host : t;
+}
+function $o(e) {
+  const t = tt(e);
+  return nr(t) ? t.ownerDocument.body : ge(t) && Pt(t) ? t : $o(t);
+}
+function wt(e, t) {
   var r;
   t === void 0 && (t = []);
-  const o = _o(e), n = o === ((r = e.ownerDocument) == null ? void 0 : r.body), i = ie(o);
-  return n ? t.concat(i, i.visualViewport || [], $t(o) ? o : []) : t.concat(o, mt(o));
+  const o = $o(e), n = o === ((r = e.ownerDocument) == null ? void 0 : r.body), i = ae(o);
+  return n ? t.concat(i, i.visualViewport || [], Pt(o) ? o : []) : t.concat(o, wt(o));
 }
-function Nr(e, t, r) {
-  return t === "viewport" ? He(function(o, n) {
-    const i = ie(o), s = ye(o), u = i.visualViewport;
-    let c = s.clientWidth, p = s.clientHeight, g = 0, f = 0;
-    if (u) {
-      c = u.width, p = u.height;
-      const b = bo();
-      (b || !b && n === "fixed") && (g = u.offsetLeft, f = u.offsetTop);
+function Er(e, t, r) {
+  return t === "viewport" ? qe(function(o, n) {
+    const i = ae(o), s = _e(o), l = i.visualViewport;
+    let d = s.clientWidth, p = s.clientHeight, g = 0, f = 0;
+    if (l) {
+      d = l.width, p = l.height;
+      const m = xo();
+      (m || !m && n === "fixed") && (g = l.offsetLeft, f = l.offsetTop);
     }
-    return { width: c, height: p, x: g, y: f };
-  }(e, r)) : be(t) ? He(function(o, n) {
-    const i = Qe(o, !0, n === "fixed"), s = i.top + o.clientTop, u = i.left + o.clientLeft, c = ce(o) ? Ne(o) : { x: 1, y: 1 };
-    return { width: o.clientWidth * c.x, height: o.clientHeight * c.y, x: u * c.x, y: s * c.y };
-  }(t, r)) : He(function(o) {
-    const n = ye(o), i = It(o), s = o.ownerDocument.body, u = Ve(n.scrollWidth, n.clientWidth, s.scrollWidth, s.clientWidth), c = Ve(n.scrollHeight, n.clientHeight, s.scrollHeight, s.clientHeight);
-    let p = -i.scrollLeft + wo(o);
+    return { width: d, height: p, x: g, y: f };
+  }(e, r)) : xe(t) ? qe(function(o, n) {
+    const i = et(o, !0, n === "fixed"), s = i.top + o.clientTop, l = i.left + o.clientLeft, d = ge(o) ? Me(o) : { x: 1, y: 1 };
+    return { width: o.clientWidth * d.x, height: o.clientHeight * d.y, x: l * d.x, y: s * d.y };
+  }(t, r)) : qe(function(o) {
+    const n = _e(o), i = Lt(o), s = o.ownerDocument.body, l = Ke(n.scrollWidth, n.clientWidth, s.scrollWidth, s.clientWidth), d = Ke(n.scrollHeight, n.clientHeight, s.scrollHeight, s.clientHeight);
+    let p = -i.scrollLeft + ko(o);
     const g = -i.scrollTop;
-    return de(s).direction === "rtl" && (p += Ve(n.clientWidth, s.clientWidth) - u), { width: u, height: c, x: p, y: g };
-  }(ye(e)));
+    return fe(s).direction === "rtl" && (p += Ke(n.clientWidth, s.clientWidth) - l), { width: l, height: d, x: p, y: g };
+  }(_e(e)));
 }
-function Dr(e) {
-  return ce(e) && de(e).position !== "fixed" ? e.offsetParent : null;
+function Mr(e) {
+  return ge(e) && fe(e).position !== "fixed" ? e.offsetParent : null;
 }
-function Er(e) {
-  const t = ie(e);
-  let r = Dr(e);
-  for (; r && ol(r) && de(r).position === "static"; )
-    r = Dr(r);
-  return r && (_e(r) === "html" || _e(r) === "body" && de(r).position === "static" && !Ft(r)) ? t : r || function(o) {
-    let n = Je(o);
-    for (; ce(n) && !er(n); ) {
-      if (Ft(n))
+function Br(e) {
+  const t = ae(e);
+  let r = Mr(e);
+  for (; r && sl(r) && fe(r).position === "static"; )
+    r = Mr(r);
+  return r && ($e(r) === "html" || $e(r) === "body" && fe(r).position === "static" && !Wt(r)) ? t : r || function(o) {
+    let n = tt(o);
+    for (; ge(n) && !nr(n); ) {
+      if (Wt(n))
         return n;
-      n = Je(n);
+      n = tt(n);
     }
     return null;
   }(e) || t;
 }
-function nl(e, t, r) {
-  const o = ce(t), n = ye(t), i = Qe(e, !0, r === "fixed", t);
+function al(e, t, r) {
+  const o = ge(t), n = _e(t), i = et(e, !0, r === "fixed", t);
   let s = { scrollLeft: 0, scrollTop: 0 };
-  const u = { x: 0, y: 0 };
+  const l = { x: 0, y: 0 };
   if (o || !o && r !== "fixed")
-    if ((_e(t) !== "body" || $t(n)) && (s = It(t)), ce(t)) {
-      const c = Qe(t, !0);
-      u.x = c.x + t.clientLeft, u.y = c.y + t.clientTop;
+    if (($e(t) !== "body" || Pt(n)) && (s = Lt(t)), ge(t)) {
+      const d = et(t, !0);
+      l.x = d.x + t.clientLeft, l.y = d.y + t.clientTop;
     } else
-      n && (u.x = wo(n));
-  return { x: i.left + s.scrollLeft - u.x, y: i.top + s.scrollTop - u.y, width: i.width, height: i.height };
+      n && (l.x = ko(n));
+  return { x: i.left + s.scrollLeft - l.x, y: i.top + s.scrollTop - l.y, width: i.width, height: i.height };
 }
-const il = { getClippingRect: function(e) {
+const ll = { getClippingRect: function(e) {
   let { element: t, boundary: r, rootBoundary: o, strategy: n } = e;
   const i = r === "clippingAncestors" ? function(p, g) {
     const f = g.get(p);
     if (f)
       return f;
-    let b = mt(p).filter((k) => be(k) && _e(k) !== "body"), y = null;
-    const C = de(p).position === "fixed";
-    let _ = C ? Je(p) : p;
-    for (; be(_) && !er(_); ) {
-      const k = de(_), $ = Ft(_);
-      (C ? $ || y : $ || k.position !== "static" || !y || !["absolute", "fixed"].includes(y.position)) ? y = k : b = b.filter((I) => I !== _), _ = Je(_);
+    let m = wt(p).filter((I) => xe(I) && $e(I) !== "body"), y = null;
+    const k = fe(p).position === "fixed";
+    let _ = k ? tt(p) : p;
+    for (; xe(_) && !nr(_); ) {
+      const I = fe(_), S = Wt(_);
+      (k ? S || y : S || I.position !== "static" || !y || !["absolute", "fixed"].includes(y.position)) ? y = I : m = m.filter(($) => $ !== _), _ = tt(_);
     }
-    return g.set(p, b), b;
-  }(t, this._c) : [].concat(r), s = [...i, o], u = s[0], c = s.reduce((p, g) => {
-    const f = Nr(t, g, n);
-    return p.top = Ve(f.top, p.top), p.right = Pr(f.right, p.right), p.bottom = Pr(f.bottom, p.bottom), p.left = Ve(f.left, p.left), p;
-  }, Nr(t, u, n));
-  return { width: c.right - c.left, height: c.bottom - c.top, x: c.left, y: c.top };
+    return g.set(p, m), m;
+  }(t, this._c) : [].concat(r), s = [...i, o], l = s[0], d = s.reduce((p, g) => {
+    const f = Er(t, g, n);
+    return p.top = Ke(f.top, p.top), p.right = zr(f.right, p.right), p.bottom = zr(f.bottom, p.bottom), p.left = Ke(f.left, p.left), p;
+  }, Er(t, l, n));
+  return { width: d.right - d.left, height: d.bottom - d.top, x: d.left, y: d.top };
 }, convertOffsetParentRelativeRectToViewportRelativeRect: function(e) {
   let { rect: t, offsetParent: r, strategy: o } = e;
-  const n = ce(r), i = ye(r);
+  const n = ge(r), i = _e(r);
   if (r === i)
     return t;
-  let s = { scrollLeft: 0, scrollTop: 0 }, u = { x: 1, y: 1 };
-  const c = { x: 0, y: 0 };
-  if ((n || !n && o !== "fixed") && ((_e(r) !== "body" || $t(i)) && (s = It(r)), ce(r))) {
-    const p = Qe(r);
-    u = Ne(r), c.x = p.x + r.clientLeft, c.y = p.y + r.clientTop;
+  let s = { scrollLeft: 0, scrollTop: 0 }, l = { x: 1, y: 1 };
+  const d = { x: 0, y: 0 };
+  if ((n || !n && o !== "fixed") && (($e(r) !== "body" || Pt(i)) && (s = Lt(r)), ge(r))) {
+    const p = et(r);
+    l = Me(r), d.x = p.x + r.clientLeft, d.y = p.y + r.clientTop;
   }
-  return { width: t.width * u.x, height: t.height * u.y, x: t.x * u.x - s.scrollLeft * u.x + c.x, y: t.y * u.y - s.scrollTop * u.y + c.y };
-}, isElement: be, getDimensions: function(e) {
-  return ce(e) ? fo(e) : e.getBoundingClientRect();
-}, getOffsetParent: Er, getDocumentElement: ye, getScale: Ne, async getElementRects(e) {
+  return { width: t.width * l.x, height: t.height * l.y, x: t.x * l.x - s.scrollLeft * l.x + d.x, y: t.y * l.y - s.scrollTop * l.y + d.y };
+}, isElement: xe, getDimensions: function(e) {
+  return ge(e) ? yo(e) : e.getBoundingClientRect();
+}, getOffsetParent: Br, getDocumentElement: _e, getScale: Me, async getElementRects(e) {
   let { reference: t, floating: r, strategy: o } = e;
-  const n = this.getOffsetParent || Er, i = this.getDimensions;
-  return { reference: nl(t, await n(r), o), floating: { x: 0, y: 0, ...await i(r) } };
-}, getClientRects: (e) => Array.from(e.getClientRects()), isRTL: (e) => de(e).direction === "rtl" }, sl = (e, t, r) => {
-  const o = /* @__PURE__ */ new Map(), n = { platform: il, ...r }, i = { ...n.platform, _c: o };
-  return Wa(e, t, { ...n, platform: i });
-}, $e = {
+  const n = this.getOffsetParent || Br, i = this.getDimensions;
+  return { reference: al(t, await n(r), o), floating: { x: 0, y: 0, ...await i(r) } };
+}, getClientRects: (e) => Array.from(e.getClientRects()), isRTL: (e) => fe(e).direction === "rtl" }, ul = (e, t, r) => {
+  const o = /* @__PURE__ */ new Map(), n = { platform: ll, ...r }, i = { ...n.platform, _c: o };
+  return Qa(e, t, { ...n, platform: i });
+}, Le = {
   // Disable popper components
   disabled: !1,
   // Default position offset along main axis (px)
@@ -4324,96 +4321,96 @@ const il = { getClippingRect: function(e) {
     }
   }
 };
-function Rt(e, t) {
-  let r = $e.themes[e] || {}, o;
+function Gt(e, t) {
+  let r = Le.themes[e] || {}, o;
   do
-    o = r[t], typeof o > "u" ? r.$extend ? r = $e.themes[r.$extend] || {} : (r = null, o = $e[t]) : r = null;
+    o = r[t], typeof o > "u" ? r.$extend ? r = Le.themes[r.$extend] || {} : (r = null, o = Le[t]) : r = null;
   while (r);
   return o;
 }
-function al(e) {
+function dl(e) {
   const t = [e];
-  let r = $e.themes[e] || {};
+  let r = Le.themes[e] || {};
   do
-    r.$extend && !r.$resetCss ? (t.push(r.$extend), r = $e.themes[r.$extend] || {}) : r = null;
+    r.$extend && !r.$resetCss ? (t.push(r.$extend), r = Le.themes[r.$extend] || {}) : r = null;
   while (r);
   return t.map((o) => `v-popper--theme-${o}`);
 }
-function zr(e) {
+function jr(e) {
   const t = [e];
-  let r = $e.themes[e] || {};
+  let r = Le.themes[e] || {};
   do
-    r.$extend ? (t.push(r.$extend), r = $e.themes[r.$extend] || {}) : r = null;
+    r.$extend ? (t.push(r.$extend), r = Le.themes[r.$extend] || {}) : r = null;
   while (r);
   return t;
 }
-let Ee = !1;
+let je = !1;
 if (typeof window < "u") {
-  Ee = !1;
+  je = !1;
   try {
     const e = Object.defineProperty({}, "passive", {
       get() {
-        Ee = !0;
+        je = !0;
       }
     });
     window.addEventListener("test", null, e);
   } catch {
   }
 }
-let xo = !1;
-typeof window < "u" && typeof navigator < "u" && (xo = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream);
-const ll = ["auto", "top", "bottom", "left", "right"].reduce((e, t) => e.concat([
+let So = !1;
+typeof window < "u" && typeof navigator < "u" && (So = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream);
+const cl = ["auto", "top", "bottom", "left", "right"].reduce((e, t) => e.concat([
   t,
   `${t}-start`,
   `${t}-end`
-]), []), Mr = {
+]), []), Rr = {
   hover: "mouseenter",
   focus: "focus",
   click: "click",
   touch: "touchstart",
   pointer: "pointerdown"
-}, Or = {
+}, Fr = {
   hover: "mouseleave",
   focus: "blur",
   click: "click",
   touch: "touchend",
   pointer: "pointerup"
 };
-function Br(e, t) {
+function Hr(e, t) {
   const r = e.indexOf(t);
   r !== -1 && e.splice(r, 1);
 }
-function Dt() {
+function Mt() {
   return new Promise((e) => requestAnimationFrame(() => {
     requestAnimationFrame(e);
   }));
 }
-const le = [];
-let xe = null;
-const jr = {};
-function Fr(e) {
-  let t = jr[e];
-  return t || (t = jr[e] = []), t;
+const de = [];
+let Ie = null;
+const Vr = {};
+function Wr(e) {
+  let t = Vr[e];
+  return t || (t = Vr[e] = []), t;
 }
-let Ht = function() {
+let Ut = function() {
 };
-typeof window < "u" && (Ht = window.Element);
+typeof window < "u" && (Ut = window.Element);
 function B(e) {
   return function(t) {
-    return Rt(t.theme, e);
+    return Gt(t.theme, e);
   };
 }
-const Et = "__floating-vue__popper", Co = () => K({
+const Bt = "__floating-vue__popper", Io = () => K({
   name: "VPopper",
   provide() {
     return {
-      [Et]: {
+      [Bt]: {
         parentPopper: this
       }
     };
   },
   inject: {
-    [Et]: { default: null }
+    [Bt]: { default: null }
   },
   props: {
     theme: {
@@ -4455,7 +4452,7 @@ const Et = "__floating-vue__popper", Co = () => K({
     placement: {
       type: String,
       default: B("placement"),
-      validator: (e) => ll.includes(e)
+      validator: (e) => cl.includes(e)
     },
     delay: {
       type: [String, Number, Object],
@@ -4494,11 +4491,11 @@ const Et = "__floating-vue__popper", Co = () => K({
       default: B("popperHideTriggers")
     },
     container: {
-      type: [String, Object, Ht, Boolean],
+      type: [String, Object, Ut, Boolean],
       default: B("container")
     },
     boundary: {
-      type: [String, Ht],
+      type: [String, Ut],
       default: B("boundary")
     },
     strategy: {
@@ -4656,7 +4653,7 @@ const Et = "__floating-vue__popper", Co = () => K({
     },
     parentPopper() {
       var e;
-      return (e = this[Et]) == null ? void 0 : e.parentPopper;
+      return (e = this[Bt]) == null ? void 0 : e.parentPopper;
     },
     hasPopperShowTriggerHover() {
       var e, t;
@@ -4744,29 +4741,29 @@ const Et = "__floating-vue__popper", Co = () => K({
         strategy: this.strategy,
         middleware: []
       };
-      (this.distance || this.skidding) && e.middleware.push(Xa({
+      (this.distance || this.skidding) && e.middleware.push(rl({
         mainAxis: this.distance,
         crossAxis: this.skidding
       }));
       const t = this.placement.startsWith("auto");
-      if (t ? e.middleware.push(Ya({
+      if (t ? e.middleware.push(el({
         alignment: this.placement.split("-")[1] ?? ""
-      })) : e.placement = this.placement, this.preventOverflow && (this.shift && e.middleware.push(tl({
+      })) : e.placement = this.placement, this.preventOverflow && (this.shift && e.middleware.push(nl({
         padding: this.overflowPadding,
         boundary: this.boundary,
         crossAxis: this.shiftCrossAxis
-      })), !t && this.flip && e.middleware.push(Za({
+      })), !t && this.flip && e.middleware.push(tl({
         padding: this.overflowPadding,
         boundary: this.boundary
-      }))), e.middleware.push(qa({
+      }))), e.middleware.push(Ja({
         element: this.$_arrowNode,
         padding: this.arrowPadding
       })), this.arrowOverflow && e.middleware.push({
         name: "arrowOverflow",
         fn: ({ placement: o, rects: n, middlewareData: i }) => {
           let s;
-          const { centerOffset: u } = i.arrow;
-          return o.startsWith("top") || o.startsWith("bottom") ? s = Math.abs(u) > n.reference.width / 2 : s = Math.abs(u) > n.reference.height / 2, {
+          const { centerOffset: l } = i.arrow;
+          return o.startsWith("top") || o.startsWith("bottom") ? s = Math.abs(l) > n.reference.width / 2 : s = Math.abs(l) > n.reference.height / 2, {
             data: {
               overflow: s
             }
@@ -4777,11 +4774,11 @@ const Et = "__floating-vue__popper", Co = () => K({
         e.middleware.push({
           name: "autoSize",
           fn: ({ rects: n, placement: i, middlewareData: s }) => {
-            var u;
-            if ((u = s.autoSize) != null && u.skip)
+            var l;
+            if ((l = s.autoSize) != null && l.skip)
               return {};
-            let c, p;
-            return i.startsWith("top") || i.startsWith("bottom") ? c = n.reference.width : p = n.reference.height, this.$_innerNode.style[o === "min" ? "minWidth" : o === "max" ? "maxWidth" : "width"] = c != null ? `${c}px` : null, this.$_innerNode.style[o === "min" ? "minHeight" : o === "max" ? "maxHeight" : "height"] = p != null ? `${p}px` : null, {
+            let d, p;
+            return i.startsWith("top") || i.startsWith("bottom") ? d = n.reference.width : p = n.reference.height, this.$_innerNode.style[o === "min" ? "minWidth" : o === "max" ? "maxWidth" : "width"] = d != null ? `${d}px` : null, this.$_innerNode.style[o === "min" ? "minHeight" : o === "max" ? "maxHeight" : "height"] = p != null ? `${p}px` : null, {
               data: {
                 skip: !0
               },
@@ -4792,14 +4789,14 @@ const Et = "__floating-vue__popper", Co = () => K({
           }
         });
       }
-      (this.autoMaxSize || this.autoBoundaryMaxSize) && (this.$_innerNode.style.maxWidth = null, this.$_innerNode.style.maxHeight = null, e.middleware.push(rl({
+      (this.autoMaxSize || this.autoBoundaryMaxSize) && (this.$_innerNode.style.maxWidth = null, this.$_innerNode.style.maxHeight = null, e.middleware.push(il({
         boundary: this.boundary,
         padding: this.overflowPadding,
         apply: ({ availableWidth: o, availableHeight: n }) => {
           this.$_innerNode.style.maxWidth = o != null ? `${o}px` : null, this.$_innerNode.style.maxHeight = n != null ? `${n}px` : null;
         }
       })));
-      const r = await sl(this.$_referenceNode, this.$_popperNode, e);
+      const r = await ul(this.$_referenceNode, this.$_popperNode, e);
       Object.assign(this.result, {
         x: r.x,
         y: r.y,
@@ -4812,8 +4809,8 @@ const Et = "__floating-vue__popper", Co = () => K({
       });
     },
     $_scheduleShow(e = null, t = !1) {
-      if (this.$_updateParentShownChildren(!0), this.$_hideInProgress = !1, clearTimeout(this.$_scheduleTimer), xe && this.instantMove && xe.instantMove && xe !== this.parentPopper) {
-        xe.$_applyHide(!0), this.$_applyShow(!0);
+      if (this.$_updateParentShownChildren(!0), this.$_hideInProgress = !1, clearTimeout(this.$_scheduleTimer), Ie && this.instantMove && Ie.instantMove && Ie !== this.parentPopper) {
+        Ie.$_applyHide(!0), this.$_applyShow(!0);
         return;
       }
       t ? this.$_applyShow() : this.$_scheduleTimer = setTimeout(this.$_applyShow.bind(this), this.$_computeDelay("show"));
@@ -4823,16 +4820,16 @@ const Et = "__floating-vue__popper", Co = () => K({
         this.$_pendingHide = !0;
         return;
       }
-      this.$_updateParentShownChildren(!1), this.$_hideInProgress = !0, clearTimeout(this.$_scheduleTimer), this.isShown && (xe = this), t ? this.$_applyHide() : this.$_scheduleTimer = setTimeout(this.$_applyHide.bind(this), this.$_computeDelay("hide"));
+      this.$_updateParentShownChildren(!1), this.$_hideInProgress = !0, clearTimeout(this.$_scheduleTimer), this.isShown && (Ie = this), t ? this.$_applyHide() : this.$_scheduleTimer = setTimeout(this.$_applyHide.bind(this), this.$_computeDelay("hide"));
     },
     $_computeDelay(e) {
       const t = this.delay;
       return parseInt(t && t[e] || t || 0);
     },
     async $_applyShow(e = !1) {
-      clearTimeout(this.$_disposeTimer), clearTimeout(this.$_scheduleTimer), this.skipTransition = e, !this.isShown && (this.$_ensureTeleport(), await Dt(), await this.$_computePosition(), await this.$_applyShowEffect(), this.positioningDisabled || this.$_registerEventListeners([
-        ...mt(this.$_referenceNode),
-        ...mt(this.$_popperNode)
+      clearTimeout(this.$_disposeTimer), clearTimeout(this.$_scheduleTimer), this.skipTransition = e, !this.isShown && (this.$_ensureTeleport(), await Mt(), await this.$_computePosition(), await this.$_applyShowEffect(), this.positioningDisabled || this.$_registerEventListeners([
+        ...wt(this.$_referenceNode),
+        ...wt(this.$_popperNode)
       ], "scroll", () => {
         this.$_computePosition();
       }));
@@ -4851,13 +4848,13 @@ const Et = "__floating-vue__popper", Co = () => K({
       const e = this.showGroup;
       if (e) {
         let t;
-        for (let r = 0; r < le.length; r++)
-          t = le[r], t.showGroup !== e && (t.hide(), t.$emit("close-group"));
+        for (let r = 0; r < de.length; r++)
+          t = de[r], t.showGroup !== e && (t.hide(), t.$emit("close-group"));
       }
-      le.push(this), document.body.classList.add("v-popper--some-open");
-      for (const t of zr(this.theme))
-        Fr(t).push(this), document.body.classList.add(`v-popper--some-open--${t}`);
-      this.$emit("apply-show"), this.classes.showFrom = !0, this.classes.showTo = !1, this.classes.hideFrom = !1, this.classes.hideTo = !1, await Dt(), this.classes.showFrom = !1, this.classes.showTo = !0, this.noAutoFocus || this.$_popperNode.focus();
+      de.push(this), document.body.classList.add("v-popper--some-open");
+      for (const t of jr(this.theme))
+        Wr(t).push(this), document.body.classList.add(`v-popper--some-open--${t}`);
+      this.$emit("apply-show"), this.classes.showFrom = !0, this.classes.showTo = !1, this.classes.hideFrom = !1, this.classes.hideTo = !1, await Mt(), this.classes.showFrom = !1, this.classes.showTo = !0, this.noAutoFocus || this.$_popperNode.focus();
     },
     async $_applyHide(e = !1) {
       if (this.shownChildren.size > 0) {
@@ -4866,19 +4863,19 @@ const Et = "__floating-vue__popper", Co = () => K({
       }
       if (clearTimeout(this.$_scheduleTimer), !this.isShown)
         return;
-      this.skipTransition = e, Br(le, this), le.length === 0 && document.body.classList.remove("v-popper--some-open");
-      for (const r of zr(this.theme)) {
-        const o = Fr(r);
-        Br(o, this), o.length === 0 && document.body.classList.remove(`v-popper--some-open--${r}`);
+      this.skipTransition = e, Hr(de, this), de.length === 0 && document.body.classList.remove("v-popper--some-open");
+      for (const r of jr(this.theme)) {
+        const o = Wr(r);
+        Hr(o, this), o.length === 0 && document.body.classList.remove(`v-popper--some-open--${r}`);
       }
-      xe === this && (xe = null), this.isShown = !1, this.$_applyAttrsToTarget({
+      Ie === this && (Ie = null), this.isShown = !1, this.$_applyAttrsToTarget({
         "aria-describedby": void 0,
         "data-popper-shown": void 0
       }), clearTimeout(this.$_disposeTimer);
       const t = this.disposeTimeout;
       t !== null && (this.$_disposeTimer = setTimeout(() => {
         this.$_popperNode && (this.$_detachPopperNode(), this.isMounted = !1);
-      }, t)), this.$_removeEventListeners("scroll"), this.$emit("apply-hide"), this.classes.showFrom = !1, this.classes.showTo = !1, this.classes.hideFrom = !0, this.classes.hideTo = !1, await Dt(), this.classes.hideFrom = !1, this.classes.hideTo = !0;
+      }, t)), this.$_removeEventListeners("scroll"), this.$emit("apply-hide"), this.classes.showFrom = !1, this.classes.showTo = !1, this.classes.hideFrom = !0, this.classes.hideTo = !1, await Mt(), this.classes.hideFrom = !1, this.classes.hideTo = !0;
     },
     $_autoShowHide() {
       this.shown ? this.show() : this.hide();
@@ -4895,22 +4892,22 @@ const Et = "__floating-vue__popper", Co = () => K({
       const e = (r) => {
         this.isShown && !this.$_hideInProgress || (r.usedByTooltip = !0, !this.$_preventShow && this.show({ event: r }));
       };
-      this.$_registerTriggerListeners(this.$_targetNodes, Mr, this.triggers, this.showTriggers, e), this.$_registerTriggerListeners([this.$_popperNode], Mr, this.popperTriggers, this.popperShowTriggers, e);
+      this.$_registerTriggerListeners(this.$_targetNodes, Rr, this.triggers, this.showTriggers, e), this.$_registerTriggerListeners([this.$_popperNode], Rr, this.popperTriggers, this.popperShowTriggers, e);
       const t = (r) => {
         r.usedByTooltip || this.hide({ event: r });
       };
-      this.$_registerTriggerListeners(this.$_targetNodes, Or, this.triggers, this.hideTriggers, t), this.$_registerTriggerListeners([this.$_popperNode], Or, this.popperTriggers, this.popperHideTriggers, t);
+      this.$_registerTriggerListeners(this.$_targetNodes, Fr, this.triggers, this.hideTriggers, t), this.$_registerTriggerListeners([this.$_popperNode], Fr, this.popperTriggers, this.popperHideTriggers, t);
     },
     $_registerEventListeners(e, t, r) {
-      this.$_events.push({ targetNodes: e, eventType: t, handler: r }), e.forEach((o) => o.addEventListener(t, r, Ee ? {
+      this.$_events.push({ targetNodes: e, eventType: t, handler: r }), e.forEach((o) => o.addEventListener(t, r, je ? {
         passive: !0
       } : void 0));
     },
     $_registerTriggerListeners(e, t, r, o, n) {
       let i = r;
       o != null && (i = typeof o == "function" ? o(i) : o), i.forEach((s) => {
-        const u = t[s];
-        u && this.$_registerEventListeners(e, u, n);
+        const l = t[s];
+        l && this.$_registerEventListeners(e, l, n);
       });
     },
     $_removeEventListeners(e) {
@@ -4951,12 +4948,12 @@ const Et = "__floating-vue__popper", Co = () => K({
     },
     $_isAimingPopper() {
       const e = this.$_referenceNode.getBoundingClientRect();
-      if (Ue >= e.left && Ue <= e.right && Ge >= e.top && Ge <= e.bottom) {
-        const t = this.$_popperNode.getBoundingClientRect(), r = Ue - fe, o = Ge - ge, n = t.left + t.width / 2 - fe + (t.top + t.height / 2) - ge + t.width + t.height, i = fe + r * n, s = ge + o * n;
-        return it(fe, ge, i, s, t.left, t.top, t.left, t.bottom) || // Left edge
-        it(fe, ge, i, s, t.left, t.top, t.right, t.top) || // Top edge
-        it(fe, ge, i, s, t.right, t.top, t.right, t.bottom) || // Right edge
-        it(fe, ge, i, s, t.left, t.bottom, t.right, t.bottom);
+      if (Qe >= e.left && Qe <= e.right && Je >= e.top && Je <= e.bottom) {
+        const t = this.$_popperNode.getBoundingClientRect(), r = Qe - ye, o = Je - ve, n = t.left + t.width / 2 - ye + (t.top + t.height / 2) - ve + t.width + t.height, i = ye + r * n, s = ve + o * n;
+        return ut(ye, ve, i, s, t.left, t.top, t.left, t.bottom) || // Left edge
+        ut(ye, ve, i, s, t.left, t.top, t.right, t.top) || // Top edge
+        ut(ye, ve, i, s, t.right, t.top, t.right, t.bottom) || // Right edge
+        ut(ye, ve, i, s, t.left, t.bottom, t.right, t.bottom);
       }
       return !1;
     }
@@ -4965,16 +4962,16 @@ const Et = "__floating-vue__popper", Co = () => K({
     return this.$slots.default(this.slotData);
   }
 });
-typeof document < "u" && typeof window < "u" && (xo ? (document.addEventListener("touchstart", Rr, Ee ? {
+typeof document < "u" && typeof window < "u" && (So ? (document.addEventListener("touchstart", Gr, je ? {
   passive: !0,
   capture: !0
-} : !0), document.addEventListener("touchend", dl, Ee ? {
+} : !0), document.addEventListener("touchend", hl, je ? {
   passive: !0,
   capture: !0
-} : !0)) : (window.addEventListener("mousedown", Rr, !0), window.addEventListener("click", ul, !0)), window.addEventListener("resize", hl));
-function Rr(e) {
-  for (let t = 0; t < le.length; t++) {
-    const r = le[t];
+} : !0)) : (window.addEventListener("mousedown", Gr, !0), window.addEventListener("click", pl, !0)), window.addEventListener("resize", ml));
+function Gr(e) {
+  for (let t = 0; t < de.length; t++) {
+    const r = de[t];
     try {
       const o = r.popperNode();
       r.$_mouseDownContains = o.contains(e.target);
@@ -4982,28 +4979,28 @@ function Rr(e) {
     }
   }
 }
-function ul(e) {
-  ko(e);
+function pl(e) {
+  To(e);
 }
-function dl(e) {
-  ko(e, !0);
+function hl(e) {
+  To(e, !0);
 }
-function ko(e, t = !1) {
+function To(e, t = !1) {
   const r = {};
-  for (let o = le.length - 1; o >= 0; o--) {
-    const n = le[o];
+  for (let o = de.length - 1; o >= 0; o--) {
+    const n = de[o];
     try {
-      const i = n.$_containsGlobalTarget = cl(n, e);
+      const i = n.$_containsGlobalTarget = fl(n, e);
       n.$_pendingHide = !1, requestAnimationFrame(() => {
-        if (n.$_pendingHide = !1, !r[n.randomId] && Hr(n, i, e)) {
+        if (n.$_pendingHide = !1, !r[n.randomId] && Ur(n, i, e)) {
           if (n.$_handleGlobalClose(e, t), !e.closeAllPopover && e.closePopover && i) {
-            let u = n.parentPopper;
-            for (; u; )
-              r[u.randomId] = !0, u = u.parentPopper;
+            let l = n.parentPopper;
+            for (; l; )
+              r[l.randomId] = !0, l = l.parentPopper;
             return;
           }
           let s = n.parentPopper;
-          for (; s && Hr(s, s.$_containsGlobalTarget, e); )
+          for (; s && Ur(s, s.$_containsGlobalTarget, e); )
             s.$_handleGlobalClose(e, t), s = s.parentPopper;
         }
       });
@@ -5011,54 +5008,54 @@ function ko(e, t = !1) {
     }
   }
 }
-function cl(e, t) {
+function fl(e, t) {
   const r = e.popperNode();
   return e.$_mouseDownContains || r.contains(t.target);
 }
-function Hr(e, t, r) {
-  return r.closeAllPopover || r.closePopover && t || pl(e, r) && !t;
+function Ur(e, t, r) {
+  return r.closeAllPopover || r.closePopover && t || gl(e, r) && !t;
 }
-function pl(e, t) {
+function gl(e, t) {
   if (typeof e.autoHide == "function") {
     const r = e.autoHide(t);
     return e.lastAutoHide = r, r;
   }
   return e.autoHide;
 }
-function hl(e) {
-  for (let t = 0; t < le.length; t++)
-    le[t].$_computePosition(e);
+function ml(e) {
+  for (let t = 0; t < de.length; t++)
+    de[t].$_computePosition(e);
 }
-let fe = 0, ge = 0, Ue = 0, Ge = 0;
+let ye = 0, ve = 0, Qe = 0, Je = 0;
 typeof window < "u" && window.addEventListener("mousemove", (e) => {
-  fe = Ue, ge = Ge, Ue = e.clientX, Ge = e.clientY;
-}, Ee ? {
+  ye = Qe, ve = Je, Qe = e.clientX, Je = e.clientY;
+}, je ? {
   passive: !0
 } : void 0);
-function it(e, t, r, o, n, i, s, u) {
-  const c = ((s - n) * (t - i) - (u - i) * (e - n)) / ((u - i) * (r - e) - (s - n) * (o - t)), p = ((r - e) * (t - i) - (o - t) * (e - n)) / ((u - i) * (r - e) - (s - n) * (o - t));
-  return c >= 0 && c <= 1 && p >= 0 && p <= 1;
+function ut(e, t, r, o, n, i, s, l) {
+  const d = ((s - n) * (t - i) - (l - i) * (e - n)) / ((l - i) * (r - e) - (s - n) * (o - t)), p = ((r - e) * (t - i) - (o - t) * (e - n)) / ((l - i) * (r - e) - (s - n) * (o - t));
+  return d >= 0 && d <= 1 && p >= 0 && p <= 1;
 }
-const fl = {
-  extends: Co()
-}, tr = (e, t) => {
+const bl = {
+  extends: Io()
+}, ir = (e, t) => {
   const r = e.__vccOpts || e;
   for (const [o, n] of t)
     r[o] = n;
   return r;
 };
-function gl(e, t, r, o, n, i) {
-  return v(), L("div", {
+function yl(e, t, r, o, n, i) {
+  return w(), L("div", {
     ref: "reference",
-    class: R(["v-popper", {
+    class: H(["v-popper", {
       "v-popper--shown": e.slotData.isShown
     }])
   }, [
-    M(e.$slots, "default", Ye(wt(e.slotData)))
+    z(e.$slots, "default", rt(kt(e.slotData)))
   ], 2);
 }
-const ml = /* @__PURE__ */ tr(fl, [["render", gl]]);
-function bl() {
+const vl = /* @__PURE__ */ ir(bl, [["render", yl]]);
+function wl() {
   var e = window.navigator.userAgent, t = e.indexOf("MSIE ");
   if (t > 0)
     return parseInt(e.substring(t + 5, e.indexOf(".", t)), 10);
@@ -5070,11 +5067,11 @@ function bl() {
   var n = e.indexOf("Edge/");
   return n > 0 ? parseInt(e.substring(n + 5, e.indexOf(".", n)), 10) : -1;
 }
-let ut;
-function Vt() {
-  Vt.init || (Vt.init = !0, ut = bl() !== -1);
+let ht;
+function qt() {
+  qt.init || (qt.init = !0, ht = wl() !== -1);
 }
-var Tt = {
+var At = {
   name: "ResizeObserver",
   props: {
     emitOnMount: {
@@ -5094,11 +5091,11 @@ var Tt = {
     "notify"
   ],
   mounted() {
-    Vt(), Mo(() => {
+    qt(), jo(() => {
       this._w = this.$el.offsetWidth, this._h = this.$el.offsetHeight, this.emitOnMount && this.emitSize();
     });
     const e = document.createElement("object");
-    this._resizeObject = e, e.setAttribute("aria-hidden", "true"), e.setAttribute("tabindex", -1), e.onload = this.addResizeHandlers, e.type = "text/html", ut && this.$el.appendChild(e), e.data = "about:blank", ut || this.$el.appendChild(e);
+    this._resizeObject = e, e.setAttribute("aria-hidden", "true"), e.setAttribute("tabindex", -1), e.onload = this.addResizeHandlers, e.type = "text/html", ht && this.$el.appendChild(e), e.data = "about:blank", ht || this.$el.appendChild(e);
   },
   beforeUnmount() {
     this.removeResizeHandlers();
@@ -5117,34 +5114,34 @@ var Tt = {
       this._resizeObject.contentDocument.defaultView.addEventListener("resize", this.compareAndNotify), this.compareAndNotify();
     },
     removeResizeHandlers() {
-      this._resizeObject && this._resizeObject.onload && (!ut && this._resizeObject.contentDocument && this._resizeObject.contentDocument.defaultView.removeEventListener("resize", this.compareAndNotify), this.$el.removeChild(this._resizeObject), this._resizeObject.onload = null, this._resizeObject = null);
+      this._resizeObject && this._resizeObject.onload && (!ht && this._resizeObject.contentDocument && this._resizeObject.contentDocument.defaultView.removeEventListener("resize", this.compareAndNotify), this.$el.removeChild(this._resizeObject), this._resizeObject.onload = null, this._resizeObject = null);
     }
   }
 };
-const yl = /* @__PURE__ */ Go("data-v-b329ee4c");
-Eo("data-v-b329ee4c");
-const vl = {
+const xl = /* @__PURE__ */ Ko("data-v-b329ee4c");
+Mo("data-v-b329ee4c");
+const _l = {
   class: "resize-observer",
   tabindex: "-1"
 };
-zo();
-const wl = /* @__PURE__ */ yl((e, t, r, o, n, i) => (v(), Q("div", vl)));
-Tt.render = wl;
-Tt.__scopeId = "data-v-b329ee4c";
-Tt.__file = "src/components/ResizeObserver.vue";
-const $o = (e = "theme") => ({
+Bo();
+const Cl = /* @__PURE__ */ xl((e, t, r, o, n, i) => (w(), Q("div", _l)));
+At.render = Cl;
+At.__scopeId = "data-v-b329ee4c";
+At.__file = "src/components/ResizeObserver.vue";
+const Po = (e = "theme") => ({
   computed: {
     themeClass() {
-      return al(this[e]);
+      return dl(this[e]);
     }
   }
-}), _l = K({
+}), kl = K({
   name: "VPopperContent",
   components: {
-    ResizeObserver: Tt
+    ResizeObserver: At
   },
   mixins: [
-    $o()
+    Po()
   ],
   props: {
     popperId: String,
@@ -5166,19 +5163,19 @@ const $o = (e = "theme") => ({
       return e != null && !isNaN(e) ? `${e}px` : null;
     }
   }
-}), xl = ["id", "aria-hidden", "tabindex", "data-popper-placement"], Cl = {
+}), $l = ["id", "aria-hidden", "tabindex", "data-popper-placement"], Sl = {
   ref: "inner",
   class: "v-popper__inner"
-}, kl = /* @__PURE__ */ j("div", { class: "v-popper__arrow-outer" }, null, -1), $l = /* @__PURE__ */ j("div", { class: "v-popper__arrow-inner" }, null, -1), Il = [
-  kl,
-  $l
+}, Il = /* @__PURE__ */ R("div", { class: "v-popper__arrow-outer" }, null, -1), Tl = /* @__PURE__ */ R("div", { class: "v-popper__arrow-inner" }, null, -1), Pl = [
+  Il,
+  Tl
 ];
-function Tl(e, t, r, o, n, i) {
-  const s = dt("ResizeObserver");
-  return v(), L("div", {
+function Ll(e, t, r, o, n, i) {
+  const s = ft("ResizeObserver");
+  return w(), L("div", {
     id: e.popperId,
     ref: "popover",
-    class: R(["v-popper__popper", [
+    class: H(["v-popper__popper", [
       e.themeClass,
       e.classes.popperClass,
       {
@@ -5193,48 +5190,48 @@ function Tl(e, t, r, o, n, i) {
         "v-popper__popper--no-positioning": !e.result
       }
     ]]),
-    style: Lt(e.result ? {
+    style: Dt(e.result ? {
       position: e.result.strategy,
       transform: `translate3d(${Math.round(e.result.x)}px,${Math.round(e.result.y)}px,0)`
     } : void 0),
     "aria-hidden": e.shown ? "false" : "true",
     tabindex: e.autoHide ? 0 : void 0,
     "data-popper-placement": e.result ? e.result.placement : void 0,
-    onKeyup: t[2] || (t[2] = Wo((u) => e.autoHide && e.$emit("hide"), ["esc"]))
+    onKeyup: t[2] || (t[2] = Qo((l) => e.autoHide && e.$emit("hide"), ["esc"]))
   }, [
-    j("div", {
+    R("div", {
       class: "v-popper__backdrop",
-      onClick: t[0] || (t[0] = (u) => e.autoHide && e.$emit("hide"))
+      onClick: t[0] || (t[0] = (l) => e.autoHide && e.$emit("hide"))
     }),
-    j("div", {
+    R("div", {
       class: "v-popper__wrapper",
-      style: Lt(e.result ? {
+      style: Dt(e.result ? {
         transformOrigin: e.result.transformOrigin
       } : void 0)
     }, [
-      j("div", Cl, [
-        e.mounted ? (v(), L(De, { key: 0 }, [
-          j("div", null, [
-            M(e.$slots, "default")
+      R("div", Sl, [
+        e.mounted ? (w(), L(Be, { key: 0 }, [
+          R("div", null, [
+            z(e.$slots, "default")
           ]),
-          e.handleResize ? (v(), Q(s, {
+          e.handleResize ? (w(), Q(s, {
             key: 0,
-            onNotify: t[1] || (t[1] = (u) => e.$emit("resize", u))
-          })) : W("", !0)
-        ], 64)) : W("", !0)
+            onNotify: t[1] || (t[1] = (l) => e.$emit("resize", l))
+          })) : U("", !0)
+        ], 64)) : U("", !0)
       ], 512),
-      j("div", {
+      R("div", {
         ref: "arrow",
         class: "v-popper__arrow-container",
-        style: Lt(e.result ? {
+        style: Dt(e.result ? {
           left: e.toPx(e.result.arrow.x),
           top: e.toPx(e.result.arrow.y)
         } : void 0)
-      }, Il, 4)
+      }, Pl, 4)
     ], 4)
-  ], 46, xl);
+  ], 46, $l);
 }
-const Io = /* @__PURE__ */ tr(_l, [["render", Tl]]), To = {
+const Lo = /* @__PURE__ */ ir(kl, [["render", Ll]]), Ao = {
   methods: {
     show(...e) {
       return this.$refs.popper.show(...e);
@@ -5249,15 +5246,15 @@ const Io = /* @__PURE__ */ tr(_l, [["render", Tl]]), To = {
       return this.$refs.popper.onResize(...e);
     }
   }
-}, Sl = K({
+}, Al = K({
   name: "VPopperWrapper",
   components: {
-    Popper: ml,
-    PopperContent: Io
+    Popper: vl,
+    PopperContent: Lo
   },
   mixins: [
-    To,
-    $o("finalTheme")
+    Ao,
+    Po("finalTheme")
   ],
   props: {
     theme: {
@@ -5276,53 +5273,53 @@ const Io = /* @__PURE__ */ tr(_l, [["render", Tl]]), To = {
     }
   }
 });
-function Ll(e, t, r, o, n, i) {
-  const s = dt("PopperContent"), u = dt("Popper");
-  return v(), Q(u, {
+function Nl(e, t, r, o, n, i) {
+  const s = ft("PopperContent"), l = ft("Popper");
+  return w(), Q(l, {
     ref: "popper",
     theme: e.finalTheme,
     "target-nodes": e.getTargetNodes,
     "popper-node": () => e.$refs.popperContent.$el,
-    class: R([
+    class: H([
       e.themeClass
     ])
   }, {
-    default: Y(({
-      popperId: c,
+    default: Z(({
+      popperId: d,
       isShown: p,
       shouldMountContent: g,
       skipTransition: f,
-      autoHide: b,
+      autoHide: m,
       show: y,
-      hide: C,
+      hide: k,
       handleResize: _,
-      onResize: k,
-      classes: $,
-      result: I
+      onResize: I,
+      classes: S,
+      result: $
     }) => [
-      M(e.$slots, "default", {
+      z(e.$slots, "default", {
         shown: p,
         show: y,
-        hide: C
+        hide: k
       }),
-      We(s, {
+      Ye(s, {
         ref: "popperContent",
-        "popper-id": c,
+        "popper-id": d,
         theme: e.finalTheme,
         shown: p,
         mounted: g,
         "skip-transition": f,
-        "auto-hide": b,
+        "auto-hide": m,
         "handle-resize": _,
-        classes: $,
-        result: I,
-        onHide: C,
-        onResize: k
+        classes: S,
+        result: $,
+        onHide: k,
+        onResize: I
       }, {
-        default: Y(() => [
-          M(e.$slots, "popper", {
+        default: Z(() => [
+          z(e.$slots, "popper", {
             shown: p,
-            hide: C
+            hide: k
           })
         ]),
         _: 2
@@ -5331,24 +5328,24 @@ function Ll(e, t, r, o, n, i) {
     _: 3
   }, 8, ["theme", "target-nodes", "popper-node", "class"]);
 }
-const rr = /* @__PURE__ */ tr(Sl, [["render", Ll]]);
+const sr = /* @__PURE__ */ ir(Al, [["render", Nl]]);
 ({
-  ...rr
+  ...sr
 });
 ({
-  ...rr
+  ...sr
 });
 ({
-  ...rr
+  ...sr
 });
 K({
   name: "VTooltipDirective",
   components: {
-    Popper: Co(),
-    PopperContent: Io
+    Popper: Io(),
+    PopperContent: Lo
   },
   mixins: [
-    To
+    Ao
   ],
   inheritAttrs: !1,
   props: {
@@ -5358,7 +5355,7 @@ K({
     },
     html: {
       type: Boolean,
-      default: (e) => Rt(e.theme, "html")
+      default: (e) => Gt(e.theme, "html")
     },
     content: {
       type: [String, Number, Function],
@@ -5366,7 +5363,7 @@ K({
     },
     loadingContent: {
       type: String,
-      default: (e) => Rt(e.theme, "loadingContent")
+      default: (e) => Gt(e.theme, "loadingContent")
     },
     targetNodes: {
       type: Function,
@@ -5422,42 +5419,42 @@ K({
     }
   }
 });
-const Ae = {
+const Ee = {
   Success: "success",
   Error: "error"
-}, Pl = "block mb-2 text-sm font-medium", Al = "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", Nl = "cursor-not-allowed bg-gray-100", Dl = {
+}, Dl = "block mb-2 text-sm font-medium", zl = "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", Ol = "cursor-not-allowed bg-gray-100", El = {
   lg: "p-4",
   md: "p-2.5 text-sm",
   sm: "p-2 text-sm"
-}, El = "bg-green-50 border-green-500 dark:border-green-500 text-green-900 dark:text-green-400 placeholder-green-700 dark:placeholder-green-500 focus:ring-green-500 focus:border-green-500", zl = "bg-red-50 border-red-500 text-red-900 placeholder-red-700 focus:ring-red-500 focus:border-red-500 dark:text-red-500 dark:placeholder-red-500 dark:border-red-500";
-function Ml(e) {
-  const t = w(() => {
-    const o = e.validationStatus.value, n = o === Ae.Success ? El : o === Ae.Error ? zl : "";
-    return ne(
-      Al,
+}, Ml = "bg-green-50 border-green-500 dark:border-green-500 text-green-900 dark:text-green-400 placeholder-green-700 dark:placeholder-green-500 focus:ring-green-500 focus:border-green-500", Bl = "bg-red-50 border-red-500 text-red-900 placeholder-red-700 focus:ring-red-500 focus:border-red-500 dark:text-red-500 dark:placeholder-red-500 dark:border-red-500";
+function jl(e) {
+  const t = x(() => {
+    const o = e.validationStatus.value, n = o === Ee.Success ? Ml : o === Ee.Error ? Bl : "";
+    return se(
+      zl,
       n,
-      Dl[e.size.value],
-      e.disabled.value ? Nl : ""
+      El[e.size.value],
+      e.disabled.value ? Ol : ""
     );
-  }), r = w(() => {
-    const o = e.validationStatus.value, n = o === Ae.Success ? "text-green-700 dark:text-green-500" : o === Ae.Error ? "text-red-700 dark:text-red-500" : "text-gray-900 dark:text-white";
-    return ne(Pl, n);
+  }), r = x(() => {
+    const o = e.validationStatus.value, n = o === Ee.Success ? "text-green-700 dark:text-green-500" : o === Ee.Error ? "text-red-700 dark:text-red-500" : "text-gray-900 dark:text-white";
+    return se(Dl, n);
   });
   return {
     inputClasses: t,
     labelClasses: r
   };
 }
-const Ol = { class: "flex relative" }, Bl = {
+const Rl = { class: "flex relative" }, Fl = {
   key: 0,
   class: "w-10 flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none overflow-hidden"
-}, jl = ["disabled", "type", "required"], Fl = {
+}, Hl = ["disabled", "type", "required"], Vl = {
   key: 1,
   class: "absolute right-2.5 bottom-2.5"
-}, Rl = {
+}, Wl = {
   key: 2,
   class: "mt-2 text-sm text-gray-500 dark:text-gray-400"
-}, Hl = /* @__PURE__ */ K({
+}, Gl = /* @__PURE__ */ K({
   __name: "FwbInput",
   props: {
     disabled: { type: Boolean, default: !1 },
@@ -5469,80 +5466,80 @@ const Ol = { class: "flex relative" }, Bl = {
     validationStatus: { default: void 0 }
   },
   setup(e) {
-    const t = e, r = oo(t, "modelValue"), { inputClasses: o, labelClasses: n } = Ml(ve(t)), i = w(() => ne(
+    const t = e, r = ao(t, "modelValue"), { inputClasses: o, labelClasses: n } = jl(Ce(t)), i = x(() => se(
       "mt-2 text-sm",
-      t.validationStatus === Ae.Success ? "text-green-600 dark:text-green-500" : "",
-      t.validationStatus === Ae.Error ? "text-red-600 dark:text-red-500" : ""
+      t.validationStatus === Ee.Success ? "text-green-600 dark:text-green-500" : "",
+      t.validationStatus === Ee.Error ? "text-red-600 dark:text-red-500" : ""
     ));
-    return (s, u) => (v(), L("div", null, [
-      s.label ? (v(), L("label", {
+    return (s, l) => (w(), L("div", null, [
+      s.label ? (w(), L("label", {
         key: 0,
-        class: R(T(n))
-      }, re(s.label), 3)) : W("", !0),
-      j("div", Ol, [
-        s.$slots.prefix ? (v(), L("div", Bl, [
-          M(s.$slots, "prefix")
-        ])) : W("", !0),
-        vt(j("input", ze(s.$attrs, {
-          "onUpdate:modelValue": u[0] || (u[0] = (c) => Gr(r) ? r.value = c : null),
+        class: H(T(n))
+      }, ne(s.label), 3)) : U("", !0),
+      R("div", Rl, [
+        s.$slots.prefix ? (w(), L("div", Fl, [
+          z(s.$slots, "prefix")
+        ])) : U("", !0),
+        Ct(R("input", Re(s.$attrs, {
+          "onUpdate:modelValue": l[0] || (l[0] = (d) => Qr(r) ? r.value = d : null),
           disabled: s.disabled,
           type: s.type,
           required: s.required,
           class: [T(o), s.$slots.prefix ? "pl-10" : ""]
-        }), null, 16, jl), [
-          [Bo, T(r)]
+        }), null, 16, Hl), [
+          [Fo, T(r)]
         ]),
-        s.$slots.suffix ? (v(), L("div", Fl, [
-          M(s.$slots, "suffix")
-        ])) : W("", !0)
+        s.$slots.suffix ? (w(), L("div", Vl, [
+          z(s.$slots, "suffix")
+        ])) : U("", !0)
       ]),
-      s.$slots.validationMessage ? (v(), L("p", {
+      s.$slots.validationMessage ? (w(), L("p", {
         key: 1,
-        class: R(i.value)
+        class: H(i.value)
       }, [
-        M(s.$slots, "validationMessage")
-      ], 2)) : W("", !0),
-      s.$slots.helper ? (v(), L("p", Rl, [
-        M(s.$slots, "helper")
-      ])) : W("", !0)
+        z(s.$slots, "validationMessage")
+      ], 2)) : U("", !0),
+      s.$slots.helper ? (w(), L("p", Wl, [
+        z(s.$slots, "helper")
+      ])) : U("", !0)
     ]));
   }
-}), me = {
+}), we = {
   Success: "success",
   Error: "error"
-}, Vl = "block mb-2 text-sm font-medium", Ul = "w-full text-gray-900 bg-gray-50 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500", Gl = "cursor-not-allowed bg-gray-100", Wl = "bg-transparent dark:bg-transparent border-b-2 border-gray-200 appearance-none dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer", ql = {
+}, Ul = "block mb-2 text-sm font-medium", ql = "w-full text-gray-900 bg-gray-50 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500", Kl = "cursor-not-allowed bg-gray-100", Ql = "bg-transparent dark:bg-transparent border-b-2 border-gray-200 appearance-none dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer", Jl = {
   lg: "p-4",
   md: "p-2.5 text-sm",
   sm: "p-2 text-sm"
-}, Kl = "bg-green-50 border-green-500 dark:border-green-500 text-green-900 dark:text-green-400 placeholder-green-700 dark:placeholder-green-500 focus:ring-green-500 focus:border-green-500", Ql = "bg-red-50 border-red-500 text-red-900 placeholder-red-700 focus:ring-red-500 focus:border-red-500 dark:text-red-500 dark:placeholder-red-500 dark:border-red-500";
-function Jl(e) {
-  const t = w(() => {
-    const o = e.validationStatus.value, n = o === me.Success ? Kl : o === me.Error ? Ql : "", i = o === me.Success ? "focus:border-green-500" : o === me.Error ? "focus:border-red-500" : "";
-    return ne(
-      Ul,
+}, Yl = "bg-green-50 border-green-500 dark:border-green-500 text-green-900 dark:text-green-400 placeholder-green-700 dark:placeholder-green-500 focus:ring-green-500 focus:border-green-500", Zl = "bg-red-50 border-red-500 text-red-900 placeholder-red-700 focus:ring-red-500 focus:border-red-500 dark:text-red-500 dark:placeholder-red-500 dark:border-red-500";
+function Xl(e) {
+  const t = x(() => {
+    const o = e.validationStatus.value, n = o === we.Success ? Yl : o === we.Error ? Zl : "", i = o === we.Success ? "focus:border-green-500" : o === we.Error ? "focus:border-red-500" : "";
+    return se(
+      ql,
       n,
-      ql[e.size.value],
-      e.disabled.value && Gl,
-      e.underline.value ? Wl : "border border-gray-300 rounded-lg",
+      Jl[e.size.value],
+      e.disabled.value && Kl,
+      e.underline.value ? Ql : "border border-gray-300 rounded-lg",
       e.underline.value && i
     );
-  }), r = w(() => {
-    const o = e.validationStatus.value, n = o === me.Success ? "text-green-700 dark:text-green-500" : o === me.Error ? "text-red-700 dark:text-red-500" : "text-gray-900 dark:text-white";
-    return ne(Vl, n);
+  }), r = x(() => {
+    const o = e.validationStatus.value, n = o === we.Success ? "text-green-700 dark:text-green-500" : o === we.Error ? "text-red-700 dark:text-red-500" : "text-gray-900 dark:text-white";
+    return se(Ul, n);
   });
   return {
     selectClasses: t,
     labelClasses: r
   };
 }
-const Yl = ["disabled"], Zl = {
+const eu = ["disabled"], tu = {
   disabled: "",
   selected: "",
   value: ""
-}, Xl = ["value"], eu = {
+}, ru = ["value"], ou = {
   key: 1,
   class: "mt-2 text-sm text-gray-500 dark:text-gray-400"
-}, tu = /* @__PURE__ */ K({
+}, nu = /* @__PURE__ */ K({
   __name: "FwbSelect",
   props: {
     modelValue: { default: "" },
@@ -5556,47 +5553,47 @@ const Yl = ["disabled"], Zl = {
   },
   emits: ["update:modelValue"],
   setup(e, { emit: t }) {
-    const r = e, o = oo(r, "modelValue", t), { selectClasses: n, labelClasses: i } = Jl(ve(r)), s = w(() => ne(
+    const r = e, o = ao(r, "modelValue", t), { selectClasses: n, labelClasses: i } = Xl(Ce(r)), s = x(() => se(
       "mt-2 text-sm",
-      r.validationStatus === me.Success ? "text-green-600 dark:text-green-500" : "",
-      r.validationStatus === me.Error ? "text-red-600 dark:text-red-500" : ""
+      r.validationStatus === we.Success ? "text-green-600 dark:text-green-500" : "",
+      r.validationStatus === we.Error ? "text-red-600 dark:text-red-500" : ""
     ));
-    return (u, c) => (v(), L("div", null, [
-      j("label", null, [
-        u.label ? (v(), L("span", {
+    return (l, d) => (w(), L("div", null, [
+      R("label", null, [
+        l.label ? (w(), L("span", {
           key: 0,
-          class: R(T(i))
-        }, re(u.label), 3)) : W("", !0),
-        vt(j("select", {
-          "onUpdate:modelValue": c[0] || (c[0] = (p) => Gr(o) ? o.value = p : null),
-          disabled: u.disabled,
-          class: R(T(n))
+          class: H(T(i))
+        }, ne(l.label), 3)) : U("", !0),
+        Ct(R("select", {
+          "onUpdate:modelValue": d[0] || (d[0] = (p) => Qr(o) ? o.value = p : null),
+          disabled: l.disabled,
+          class: H(T(n))
         }, [
-          j("option", Zl, re(u.placeholder), 1),
-          (v(!0), L(De, null, Wr(u.options, (p, g) => (v(), L("option", {
+          R("option", tu, ne(l.placeholder), 1),
+          (w(!0), L(Be, null, Jr(l.options, (p, g) => (w(), L("option", {
             key: g,
             value: p.value
-          }, re(p.name), 9, Xl))), 128))
-        ], 10, Yl), [
-          [jo, T(o)]
+          }, ne(p.name), 9, ru))), 128))
+        ], 10, eu), [
+          [Ho, T(o)]
         ])
       ]),
-      u.$slots.validationMessage ? (v(), L("p", {
+      l.$slots.validationMessage ? (w(), L("p", {
         key: 0,
-        class: R(s.value)
+        class: H(s.value)
       }, [
-        M(u.$slots, "validationMessage")
-      ], 2)) : W("", !0),
-      u.$slots.helper ? (v(), L("p", eu, [
-        M(u.$slots, "helper")
-      ])) : W("", !0)
+        z(l.$slots, "validationMessage")
+      ], 2)) : U("", !0),
+      l.$slots.helper ? (w(), L("p", ou, [
+        z(l.$slots, "helper")
+      ])) : U("", !0)
     ]));
   }
-}), ru = "w-fit relative inline-flex items-center cursor-pointer", ou = 'bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[""] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600', nu = "ml-3 text-sm font-medium text-gray-900 dark:text-gray-300", iu = {
+}), iu = "w-fit relative inline-flex items-center cursor-pointer", su = 'bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[""] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600', au = "ml-3 text-sm font-medium text-gray-900 dark:text-gray-300", lu = {
   lg: "w-14 h-7 after:top-0.5 after:left-[4px] after:h-6 after:w-6",
   md: "w-11 h-6 after:top-[2px] after:left-[2px] after:h-5 after:w-5",
   sm: "w-9 h-5 after:top-[2px] after:left-[2px] after:h-4 after:w-4"
-}, su = {
+}, uu = {
   red: "peer-focus:ring-red-300 dark:peer-focus:ring-red-800 peer-checked:bg-red-600",
   green: "peer-focus:ring-green-300 dark:peer-focus:ring-green-800 peer-checked:bg-green-600",
   purple: "peer-focus:ring-purple-300 dark:peer-focus:ring-purple-800 peer-checked:bg-purple-600",
@@ -5604,8 +5601,8 @@ const Yl = ["disabled"], Zl = {
   teal: "peer-focus:ring-teal-300 dark:peer-focus:ring-teal-800 peer-checked:bg-teal-600",
   orange: "peer-focus:ring-orange-300 dark:peer-focus:ring-orange-800 peer-checked:bg-orange-500"
 };
-function au(e) {
-  const t = w(() => ru), r = w(() => ou), o = w(() => iu[e.size.value]), n = w(() => su[e.color.value]), i = w(() => nu);
+function du(e) {
+  const t = x(() => iu), r = x(() => su), o = x(() => lu[e.size.value]), n = x(() => uu[e.color.value]), i = x(() => au);
   return {
     labelClasses: t,
     toggleSize: o,
@@ -5614,7 +5611,7 @@ function au(e) {
     toggleBallClasses: i
   };
 }
-const lu = ["disabled"], Vr = /* @__PURE__ */ K({
+const cu = ["disabled"], qr = /* @__PURE__ */ K({
   __name: "FwbToggle",
   props: {
     color: { default: "" },
@@ -5625,7 +5622,7 @@ const lu = ["disabled"], Vr = /* @__PURE__ */ K({
   },
   emits: ["update:modelValue"],
   setup(e, { emit: t }) {
-    const r = e, o = w({
+    const r = e, o = x({
       get() {
         return r.modelValue;
       },
@@ -5636,43 +5633,43 @@ const lu = ["disabled"], Vr = /* @__PURE__ */ K({
       labelClasses: n,
       toggleSize: i,
       toggleClasses: s,
-      toggleColor: u,
-      toggleBallClasses: c
-    } = au(ve(r));
-    return (p, g) => (v(), L("label", {
-      class: R(T(n))
+      toggleColor: l,
+      toggleBallClasses: d
+    } = du(Ce(r));
+    return (p, g) => (w(), L("label", {
+      class: H(T(n))
     }, [
-      vt(j("input", {
+      Ct(R("input", {
         "onUpdate:modelValue": g[0] || (g[0] = (f) => o.value = f),
         disabled: p.disabled,
         class: "sr-only peer",
         type: "checkbox"
-      }, null, 8, lu), [
-        [Fo, o.value]
+      }, null, 8, cu), [
+        [Vo, o.value]
       ]),
-      j("span", {
-        class: R([T(s), T(i), T(u)])
+      R("span", {
+        class: H([T(s), T(i), T(l)])
       }, null, 2),
-      j("span", {
-        class: R(T(c))
-      }, re(p.label), 3)
+      R("span", {
+        class: H(T(d))
+      }, ne(p.label), 3)
     ], 2));
   }
-}), uu = ["href"], du = /* @__PURE__ */ K({
+}), pu = ["href"], hu = /* @__PURE__ */ K({
   __name: "FwbA",
   props: {
     href: { default: "" },
     color: { default: "text-primary-600 dark:text-primary-500" }
   },
   setup(e) {
-    return (t, r) => (v(), L("a", {
+    return (t, r) => (w(), L("a", {
       href: t.href,
-      class: R([t.color, "inline-flex items-center hover:underline"])
+      class: H([t.color, "inline-flex items-center hover:underline"])
     }, [
-      M(t.$slots, "default")
-    ], 10, uu));
+      z(t.$slots, "default")
+    ], 10, pu));
   }
-}), cu = /* @__PURE__ */ K({
+}), fu = /* @__PURE__ */ K({
   inheritAttrs: !1,
   __name: "FwbHeading",
   props: {
@@ -5688,42 +5685,42 @@ const lu = ["disabled"], Vr = /* @__PURE__ */ K({
       h4: "text-2xl font-bold",
       h5: "text-xl font-bold",
       h6: "text-lg font-bold"
-    }, o = Ut(), n = ne(
+    }, o = Kt(), n = se(
       "w-full",
       r[t.tag],
       t.color,
       t.customSize,
       o.class
     ), i = t.tag;
-    return (s, u) => (v(), Q(bt(T(i)), ze(s.$attrs, { class: T(n) }), {
-      default: Y(() => [
-        M(s.$slots, "default")
+    return (s, l) => (w(), Q(xt(T(i)), Re(s.$attrs, { class: T(n) }), {
+      default: Z(() => [
+        z(s.$slots, "default")
       ]),
       _: 3
     }, 16, ["class"]));
   }
-}), pu = "mb-3 last:mb-0 text-gray-900 dark:text-white leading-normal", hu = /* @__PURE__ */ K({
+}), gu = "mb-3 last:mb-0 text-gray-900 dark:text-white leading-normal", mu = /* @__PURE__ */ K({
   __name: "FwbP",
   props: {
     class: { default: "" }
   },
   setup(e) {
-    const t = e, r = w(() => Ot([
-      pu,
+    const t = e, r = x(() => Ft([
+      gu,
       t.class
     ]));
-    return (o, n) => (v(), L("p", {
-      class: R(r.value)
+    return (o, n) => (w(), L("p", {
+      class: H(r.value)
     }, [
-      M(o.$slots, "default")
+      z(o.$slots, "default")
     ], 2));
   }
-}), Be = (e, t) => {
+}), Ve = (e, t) => {
   const r = e.__vccOpts || e;
   for (const [o, n] of t)
     r[o] = n;
   return r;
-}, fu = {
+}, bu = {
   __name: "TwcButton",
   props: {
     flat: {
@@ -5740,20 +5737,20 @@ const lu = ["disabled"], Vr = /* @__PURE__ */ K({
     }
   },
   setup(e) {
-    const t = e, r = w(() => {
+    const t = e, r = x(() => {
       let o = "TwcButton text-base";
       return t.flat ? `${o}border-0 bg-transparent text-gray-800 hover:bg-transparent focus:ring-0` : t.icon ? `${o}border-0 bg-transparent text-gray-800 hover:bg-gray-300 p-2` : t.link ? `${o}border-0 bg-transparent text-gray-800 hover:bg-transparent hover:underline p-0 text-blue-700` : o;
     });
-    return (o, n) => (v(), Q(T(oi), ze(o.$props, { class: r.value }), {
-      default: Y(() => [
-        M(o.$slots, "default", {}, void 0, !0)
+    return (o, n) => (w(), Q(T(si), Re(o.$props, { class: r.value }), {
+      default: Z(() => [
+        z(o.$slots, "default", {}, void 0, !0)
       ]),
       _: 3
     }, 16, ["class"]));
   }
-}, Nu = /* @__PURE__ */ Be(fu, [["__scopeId", "data-v-9c0172c8"]]), gu = { class: "flex justify-between" }, mu = { class: "font-semibold" }, bu = { class: "font-semibold" }, yu = { class: "flex flex-col" }, Ur = "font-light text-xs -mt-1", vu = {
+}, zu = /* @__PURE__ */ Ve(bu, [["__scopeId", "data-v-9c0172c8"]]), yu = { class: "flex justify-between" }, vu = { class: "font-semibold" }, wu = { class: "font-semibold" }, xu = { class: "flex flex-col" }, Kr = "font-light text-xs -mt-1", _u = {
   __name: "TwcToggle",
-  props: /* @__PURE__ */ ct({
+  props: /* @__PURE__ */ gt({
     label: {
       type: String,
       default: ""
@@ -5786,84 +5783,84 @@ const lu = ["disabled"], Vr = /* @__PURE__ */ K({
     },
     modelModifiers: {}
   }),
-  emits: /* @__PURE__ */ ct(["change", "click"], ["update:modelValue"]),
+  emits: /* @__PURE__ */ gt(["change", "click"], ["update:modelValue"]),
   setup(e, { emit: t }) {
-    const r = t, o = qr(e, "modelValue");
+    const r = t, o = Yr(e, "modelValue");
     function n() {
       r("click");
     }
-    return (i, s) => (v(), L("div", null, [
-      j("div", gu, [
-        i.$props.reverse ? (v(), L(De, { key: 0 }, [
-          j("label", mu, re(i.$props.label), 1),
-          We(T(Vr), {
+    return (i, s) => (w(), L("div", null, [
+      R("div", yu, [
+        i.$props.reverse ? (w(), L(Be, { key: 0 }, [
+          R("label", vu, ne(i.$props.label), 1),
+          Ye(T(qr), {
             modelValue: o.value,
-            "onUpdate:modelValue": s[0] || (s[0] = (u) => o.value = u),
+            "onUpdate:modelValue": s[0] || (s[0] = (l) => o.value = l),
             class: "TwcToggle -mr-3",
             disabled: i.$props.disabled,
             onClick: n
           }, null, 8, ["modelValue", "disabled"])
-        ], 64)) : (v(), L(De, { key: 1 }, [
-          We(T(Vr), {
+        ], 64)) : (w(), L(Be, { key: 1 }, [
+          Ye(T(qr), {
             modelValue: o.value,
-            "onUpdate:modelValue": s[1] || (s[1] = (u) => o.value = u),
+            "onUpdate:modelValue": s[1] || (s[1] = (l) => o.value = l),
             class: "TwcToggle",
             disabled: i.$props.disabled,
             onClick: n
           }, null, 8, ["modelValue", "disabled"]),
-          j("label", bu, re(i.$props.label), 1)
+          R("label", wu, ne(i.$props.label), 1)
         ], 64))
       ]),
-      j("div", yu, [
-        i.$props.hint ? (v(), L("label", {
+      R("div", xu, [
+        i.$props.hint ? (w(), L("label", {
           key: 0,
-          class: R(`${Ur} text-gray-500`)
-        }, re(i.$props.hint), 3)) : W("", !0),
-        i.$props.errorMessage ? (v(), L("label", {
+          class: H(`${Kr} text-gray-500`)
+        }, ne(i.$props.hint), 3)) : U("", !0),
+        i.$props.errorMessage ? (w(), L("label", {
           key: 1,
-          class: R(`${Ur} text-red-500`)
-        }, re(i.$props.errorMessage), 3)) : W("", !0)
+          class: H(`${Kr} text-red-500`)
+        }, ne(i.$props.errorMessage), 3)) : U("", !0)
       ])
     ]));
   }
-}, Du = /* @__PURE__ */ Be(vu, [["__scopeId", "data-v-c43f0be6"]]), Eu = {
+}, Ou = /* @__PURE__ */ Ve(_u, [["__scopeId", "data-v-c43f0be6"]]), Eu = {
   __name: "TwcHeading",
   setup(e) {
-    return (t, r) => (v(), Q(T(cu), Ye(wt(t.$props)), {
-      default: Y(() => [
-        M(t.$slots, "default")
+    return (t, r) => (w(), Q(T(fu), rt(kt(t.$props)), {
+      default: Z(() => [
+        z(t.$slots, "default")
       ]),
       _: 3
     }, 16));
   }
-}, wu = {
+}, Cu = {
   __name: "TwcInput",
   setup(e) {
-    return (t, r) => (v(), Q(T(Hl), ze(t.$props, { class: "TwcInput" }), Kr({ _: 2 }, [
+    return (t, r) => (w(), Q(T(Gl), Re(t.$props, { class: "TwcInput" }), Zr({ _: 2 }, [
       t.$slots.helper ? {
         name: "helper",
-        fn: Y(() => [
-          M(t.$slots, "helper", {}, void 0, !0)
+        fn: Z(() => [
+          z(t.$slots, "helper", {}, void 0, !0)
         ]),
         key: "0"
       } : void 0,
       t.$slots.prefix ? {
         name: "prefix",
-        fn: Y(() => [
-          M(t.$slots, "prefix", {}, void 0, !0)
+        fn: Z(() => [
+          z(t.$slots, "prefix", {}, void 0, !0)
         ]),
         key: "1"
       } : void 0,
       t.$slots.suffix ? {
         name: "suffix",
-        fn: Y(() => [
-          M(t.$slots, "suffix", {}, void 0, !0)
+        fn: Z(() => [
+          z(t.$slots, "suffix", {}, void 0, !0)
         ]),
         key: "2"
       } : void 0
     ]), 1040));
   }
-}, zu = /* @__PURE__ */ Be(wu, [["__scopeId", "data-v-9a366333"]]), Mu = {
+}, Mu = /* @__PURE__ */ Ve(Cu, [["__scopeId", "data-v-9a366333"]]), Bu = {
   __name: "TwcLabel",
   props: {
     class: {
@@ -5876,1441 +5873,1700 @@ const lu = ["disabled"], Vr = /* @__PURE__ */ K({
     function r() {
       return `block text-sm font-medium ${t.class}`;
     }
-    return (o, n) => (v(), L("label", {
-      class: R(r())
+    return (o, n) => (w(), L("label", {
+      class: H(r())
     }, [
-      M(o.$slots, "default")
+      z(o.$slots, "default")
     ], 2));
   }
-}, Ou = {
+}, ju = {
   __name: "TwcLink",
   setup(e) {
-    return (t, r) => (v(), Q(T(du), Ye(wt(t.$props)), {
-      default: Y(() => [
-        M(t.$slots, "default")
+    return (t, r) => (w(), Q(T(hu), rt(kt(t.$props)), {
+      default: Z(() => [
+        z(t.$slots, "default")
       ]),
       _: 3
     }, 16));
   }
-}, Bu = {
+}, Ru = {
   __name: "TwcParagraph",
   setup(e) {
-    return (t, r) => (v(), Q(T(hu), Ye(wt(t.$props)), {
-      default: Y(() => [
-        M(t.$slots, "default")
+    return (t, r) => (w(), Q(T(mu), rt(kt(t.$props)), {
+      default: Z(() => [
+        z(t.$slots, "default")
       ]),
       _: 3
     }, 16));
   }
-}, _u = {
+}, ku = {
   __name: "TwcSelect",
   setup(e) {
-    return (t, r) => (v(), Q(T(tu), ze(t.$props, { class: "TwcSelect" }), Kr({ _: 2 }, [
+    return (t, r) => (w(), Q(T(nu), Re(t.$props, { class: "TwcSelect" }), Zr({ _: 2 }, [
       t.$slots.helper ? {
         name: "helper",
-        fn: Y(() => [
-          M(t.$slots, "helper", {}, void 0, !0)
+        fn: Z(() => [
+          z(t.$slots, "helper", {}, void 0, !0)
         ]),
         key: "0"
       } : void 0
     ]), 1040));
   }
-}, ju = /* @__PURE__ */ Be(_u, [["__scopeId", "data-v-dab28e77"]]);
-function xu(e) {
+}, Fu = /* @__PURE__ */ Ve(ku, [["__scopeId", "data-v-dab28e77"]]);
+function $u(e) {
   return e && e.__esModule && Object.prototype.hasOwnProperty.call(e, "default") ? e.default : e;
 }
-var So = { exports: {} };
+var No = { exports: {} };
 (function(e) {
   (function(t) {
     e.exports ? e.exports = t() : window.intlTelInput = t();
   })(() => {
     var t = (() => {
-      var r = Object.defineProperty, o = Object.getOwnPropertyDescriptor, n = Object.getOwnPropertyNames, i = Object.prototype.hasOwnProperty, s = (l, a) => {
-        for (var d in a)
-          r(l, d, { get: a[d], enumerable: !0 });
-      }, u = (l, a, d, h) => {
-        if (a && typeof a == "object" || typeof a == "function")
-          for (let m of n(a))
-            !i.call(l, m) && m !== d && r(l, m, { get: () => a[m], enumerable: !(h = o(a, m)) || h.enumerable });
-        return l;
-      }, c = (l) => u(r({}, "__esModule", { value: !0 }), l), p = {};
+      var r = Object.defineProperty, o = Object.getOwnPropertyDescriptor, n = Object.getOwnPropertyNames, i = Object.prototype.hasOwnProperty, s = (a, u) => {
+        for (var c in u)
+          r(a, c, { get: u[c], enumerable: !0 });
+      }, l = (a, u, c, h) => {
+        if (u && typeof u == "object" || typeof u == "function")
+          for (let b of n(u))
+            !i.call(a, b) && b !== c && r(a, b, { get: () => u[b], enumerable: !(h = o(u, b)) || h.enumerable });
+        return a;
+      }, d = (a) => l(r({}, "__esModule", { value: !0 }), a), p = {};
       s(p, {
-        Iti: () => Z,
-        default: () => A
+        Iti: () => A,
+        default: () => te
       });
       var g = [
         [
-          "Afghanistan",
           "af",
+          // Afghanistan
           "93"
         ],
         [
-          "Albania",
+          "ax",
+          // Åland Islands
+          "358",
+          1,
+          ["18"]
+        ],
+        [
           "al",
+          // Albania
           "355"
         ],
         [
-          "Algeria",
           "dz",
+          // Algeria
           "213"
         ],
         [
-          "American Samoa",
           "as",
+          // American Samoa
           "1",
           5,
           ["684"]
         ],
         [
-          "Andorra",
           "ad",
+          // Andorra
           "376"
         ],
         [
-          "Angola",
           "ao",
+          // Angola
           "244"
         ],
         [
-          "Anguilla",
           "ai",
+          // Anguilla
           "1",
           6,
           ["264"]
         ],
         [
-          "Antigua & Barbuda",
           "ag",
+          // Antigua and Barbuda
           "1",
           7,
           ["268"]
         ],
         [
-          "Argentina",
           "ar",
+          // Argentina
           "54"
         ],
         [
-          "Armenia",
           "am",
+          // Armenia
           "374"
         ],
         [
-          "Aruba",
           "aw",
+          // Aruba
           "297"
         ],
         [
-          "Ascension Island",
           "ac",
+          // Ascension Island
           "247"
         ],
         [
-          "Australia",
           "au",
+          // Australia
           "61",
           0
         ],
         [
-          "Austria",
           "at",
+          // Austria
           "43"
         ],
         [
-          "Azerbaijan",
           "az",
+          // Azerbaijan
           "994"
         ],
         [
-          "Bahamas",
           "bs",
+          // Bahamas
           "1",
           8,
           ["242"]
         ],
         [
-          "Bahrain",
           "bh",
+          // Bahrain
           "973"
         ],
         [
-          "Bangladesh",
           "bd",
+          // Bangladesh
           "880"
         ],
         [
-          "Barbados",
           "bb",
+          // Barbados
           "1",
           9,
           ["246"]
         ],
         [
-          "Belarus",
           "by",
+          // Belarus
           "375"
         ],
         [
-          "Belgium",
           "be",
+          // Belgium
           "32"
         ],
         [
-          "Belize",
           "bz",
+          // Belize
           "501"
         ],
         [
-          "Benin",
           "bj",
+          // Benin
           "229"
         ],
         [
-          "Bermuda",
           "bm",
+          // Bermuda
           "1",
           10,
           ["441"]
         ],
         [
-          "Bhutan",
           "bt",
+          // Bhutan
           "975"
         ],
         [
-          "Bolivia",
           "bo",
+          // Bolivia
           "591"
         ],
         [
-          "Bosnia & Herzegovina",
           "ba",
+          // Bosnia and Herzegovina
           "387"
         ],
         [
-          "Botswana",
           "bw",
+          // Botswana
           "267"
         ],
         [
-          "Brazil",
           "br",
+          // Brazil
           "55"
         ],
         [
-          "British Indian Ocean Territory",
           "io",
+          // British Indian Ocean Territory
           "246"
         ],
         [
-          "British Virgin Islands",
           "vg",
+          // British Virgin Islands
           "1",
           11,
           ["284"]
         ],
         [
-          "Brunei",
           "bn",
+          // Brunei
           "673"
         ],
         [
-          "Bulgaria",
           "bg",
+          // Bulgaria
           "359"
         ],
         [
-          "Burkina Faso",
           "bf",
+          // Burkina Faso
           "226"
         ],
         [
-          "Burundi",
           "bi",
+          // Burundi
           "257"
         ],
         [
-          "Cambodia",
           "kh",
+          // Cambodia
           "855"
         ],
         [
-          "Cameroon",
           "cm",
+          // Cameroon
           "237"
         ],
         [
-          "Canada",
           "ca",
+          // Canada
           "1",
           1,
-          ["204", "226", "236", "249", "250", "263", "289", "306", "343", "354", "365", "367", "368", "382", "387", "403", "416", "418", "428", "431", "437", "438", "450", "584", "468", "474", "506", "514", "519", "548", "579", "581", "584", "587", "604", "613", "639", "647", "672", "683", "705", "709", "742", "753", "778", "780", "782", "807", "819", "825", "867", "873", "902", "905"]
+          ["204", "226", "236", "249", "250", "263", "289", "306", "343", "354", "365", "367", "368", "382", "387", "403", "416", "418", "428", "431", "437", "438", "450", "584", "468", "474", "506", "514", "519", "548", "579", "581", "584", "587", "604", "613", "639", "647", "672", "683", "705", "709", "742", "753", "778", "780", "782", "807", "819", "825", "867", "873", "879", "902", "905"]
         ],
         [
-          "Cape Verde",
           "cv",
+          // Cape Verde
           "238"
         ],
         [
-          "Caribbean Netherlands",
           "bq",
+          // Caribbean Netherlands
           "599",
           1,
           ["3", "4", "7"]
         ],
         [
-          "Cayman Islands",
           "ky",
+          // Cayman Islands
           "1",
           12,
           ["345"]
         ],
         [
-          "Central African Republic",
           "cf",
+          // Central African Republic
           "236"
         ],
         [
-          "Chad",
           "td",
+          // Chad
           "235"
         ],
         [
-          "Chile",
           "cl",
+          // Chile
           "56"
         ],
         [
-          "China",
           "cn",
+          // China
           "86"
         ],
         [
-          "Christmas Island",
           "cx",
+          // Christmas Island
           "61",
           2,
           ["89164"]
         ],
         [
-          "Cocos (Keeling) Islands",
           "cc",
+          // Cocos (Keeling) Islands
           "61",
           1,
           ["89162"]
         ],
         [
-          "Colombia",
           "co",
+          // Colombia
           "57"
         ],
         [
-          "Comoros",
           "km",
+          // Comoros
           "269"
         ],
         [
-          "Congo - Brazzaville",
           "cg",
+          // Congo (Brazzaville)
           "242"
         ],
         [
-          "Congo - Kinshasa",
           "cd",
+          // Congo (Kinshasa)
           "243"
         ],
         [
-          "Cook Islands",
           "ck",
+          // Cook Islands
           "682"
         ],
         [
-          "Costa Rica",
           "cr",
+          // Costa Rica
           "506"
         ],
         [
-          "Côte d’Ivoire",
           "ci",
+          // Côte d'Ivoire
           "225"
         ],
         [
-          "Croatia",
           "hr",
+          // Croatia
           "385"
         ],
         [
-          "Cuba",
           "cu",
+          // Cuba
           "53"
         ],
         [
-          "Curaçao",
           "cw",
+          // Curaçao
           "599",
           0
         ],
         [
-          "Cyprus",
           "cy",
+          // Cyprus
           "357"
         ],
         [
-          "Czech Republic",
           "cz",
+          // Czech Republic
           "420"
         ],
         [
-          "Denmark",
           "dk",
+          // Denmark
           "45"
         ],
         [
-          "Djibouti",
           "dj",
+          // Djibouti
           "253"
         ],
         [
-          "Dominica",
           "dm",
+          // Dominica
           "1",
           13,
           ["767"]
         ],
         [
-          "Dominican Republic",
           "do",
+          // Dominican Republic
           "1",
           2,
           ["809", "829", "849"]
         ],
         [
-          "Ecuador",
           "ec",
+          // Ecuador
           "593"
         ],
         [
-          "Egypt",
           "eg",
+          // Egypt
           "20"
         ],
         [
-          "El Salvador",
           "sv",
+          // El Salvador
           "503"
         ],
         [
-          "Equatorial Guinea",
           "gq",
+          // Equatorial Guinea
           "240"
         ],
         [
-          "Eritrea",
           "er",
+          // Eritrea
           "291"
         ],
         [
-          "Estonia",
           "ee",
+          // Estonia
           "372"
         ],
         [
-          "Eswatini",
           "sz",
+          // Eswatini
           "268"
         ],
         [
-          "Ethiopia",
           "et",
+          // Ethiopia
           "251"
         ],
         [
-          "Falkland Islands",
           "fk",
+          // Falkland Islands (Malvinas)
           "500"
         ],
         [
-          "Faroe Islands",
           "fo",
+          // Faroe Islands
           "298"
         ],
         [
-          "Fiji",
           "fj",
+          // Fiji
           "679"
         ],
         [
-          "Finland",
           "fi",
+          // Finland
           "358",
           0
         ],
         [
-          "France",
           "fr",
+          // France
           "33"
         ],
         [
-          "French Guiana",
           "gf",
+          // French Guiana
           "594"
         ],
         [
-          "French Polynesia",
           "pf",
+          // French Polynesia
           "689"
         ],
         [
-          "Gabon",
           "ga",
+          // Gabon
           "241"
         ],
         [
-          "Gambia",
           "gm",
+          // Gambia
           "220"
         ],
         [
-          "Georgia",
           "ge",
+          // Georgia
           "995"
         ],
         [
-          "Germany",
           "de",
+          // Germany
           "49"
         ],
         [
-          "Ghana",
           "gh",
+          // Ghana
           "233"
         ],
         [
-          "Gibraltar",
           "gi",
+          // Gibraltar
           "350"
         ],
         [
-          "Greece",
           "gr",
+          // Greece
           "30"
         ],
         [
-          "Greenland",
           "gl",
+          // Greenland
           "299"
         ],
         [
-          "Grenada",
           "gd",
+          // Grenada
           "1",
           14,
           ["473"]
         ],
         [
-          "Guadeloupe",
           "gp",
+          // Guadeloupe
           "590",
           0
         ],
         [
-          "Guam",
           "gu",
+          // Guam
           "1",
           15,
           ["671"]
         ],
         [
-          "Guatemala",
           "gt",
+          // Guatemala
           "502"
         ],
         [
-          "Guernsey",
           "gg",
+          // Guernsey
           "44",
           1,
           ["1481", "7781", "7839", "7911"]
         ],
         [
-          "Guinea",
           "gn",
+          // Guinea
           "224"
         ],
         [
-          "Guinea-Bissau",
           "gw",
+          // Guinea-Bissau
           "245"
         ],
         [
-          "Guyana",
           "gy",
+          // Guyana
           "592"
         ],
         [
-          "Haiti",
           "ht",
+          // Haiti
           "509"
         ],
         [
-          "Honduras",
           "hn",
+          // Honduras
           "504"
         ],
         [
-          "Hong Kong",
           "hk",
+          // Hong Kong SAR China
           "852"
         ],
         [
-          "Hungary",
           "hu",
+          // Hungary
           "36"
         ],
         [
-          "Iceland",
           "is",
+          // Iceland
           "354"
         ],
         [
-          "India",
           "in",
+          // India
           "91"
         ],
         [
-          "Indonesia",
           "id",
+          // Indonesia
           "62"
         ],
         [
-          "Iran",
           "ir",
+          // Iran
           "98"
         ],
         [
-          "Iraq",
           "iq",
+          // Iraq
           "964"
         ],
         [
-          "Ireland",
           "ie",
+          // Ireland
           "353"
         ],
         [
-          "Isle of Man",
           "im",
+          // Isle of Man
           "44",
           2,
           ["1624", "74576", "7524", "7924", "7624"]
         ],
         [
-          "Israel",
           "il",
+          // Israel
           "972"
         ],
         [
-          "Italy",
           "it",
+          // Italy
           "39",
           0
         ],
         [
-          "Jamaica",
           "jm",
+          // Jamaica
           "1",
           4,
           ["876", "658"]
         ],
         [
-          "Japan",
           "jp",
+          // Japan
           "81"
         ],
         [
-          "Jersey",
           "je",
+          // Jersey
           "44",
           3,
           ["1534", "7509", "7700", "7797", "7829", "7937"]
         ],
         [
-          "Jordan",
           "jo",
+          // Jordan
           "962"
         ],
         [
-          "Kazakhstan",
           "kz",
+          // Kazakhstan
           "7",
           1,
           ["33", "7"]
         ],
         [
-          "Kenya",
           "ke",
+          // Kenya
           "254"
         ],
         [
-          "Kiribati",
           "ki",
+          // Kiribati
           "686"
         ],
         [
-          "Kosovo",
           "xk",
+          // Kosovo
           "383"
         ],
         [
-          "Kuwait",
           "kw",
+          // Kuwait
           "965"
         ],
         [
-          "Kyrgyzstan",
           "kg",
+          // Kyrgyzstan
           "996"
         ],
         [
-          "Laos",
           "la",
+          // Laos
           "856"
         ],
         [
-          "Latvia",
           "lv",
+          // Latvia
           "371"
         ],
         [
-          "Lebanon",
           "lb",
+          // Lebanon
           "961"
         ],
         [
-          "Lesotho",
           "ls",
+          // Lesotho
           "266"
         ],
         [
-          "Liberia",
           "lr",
+          // Liberia
           "231"
         ],
         [
-          "Libya",
           "ly",
+          // Libya
           "218"
         ],
         [
-          "Liechtenstein",
           "li",
+          // Liechtenstein
           "423"
         ],
         [
-          "Lithuania",
           "lt",
+          // Lithuania
           "370"
         ],
         [
-          "Luxembourg",
           "lu",
+          // Luxembourg
           "352"
         ],
         [
-          "Macau",
           "mo",
+          // Macao SAR China
           "853"
         ],
         [
-          "Madagascar",
           "mg",
+          // Madagascar
           "261"
         ],
         [
-          "Malawi",
           "mw",
+          // Malawi
           "265"
         ],
         [
-          "Malaysia",
           "my",
+          // Malaysia
           "60"
         ],
         [
-          "Maldives",
           "mv",
+          // Maldives
           "960"
         ],
         [
-          "Mali",
           "ml",
+          // Mali
           "223"
         ],
         [
-          "Malta",
           "mt",
+          // Malta
           "356"
         ],
         [
-          "Marshall Islands",
           "mh",
+          // Marshall Islands
           "692"
         ],
         [
-          "Martinique",
           "mq",
+          // Martinique
           "596"
         ],
         [
-          "Mauritania",
           "mr",
+          // Mauritania
           "222"
         ],
         [
-          "Mauritius",
           "mu",
+          // Mauritius
           "230"
         ],
         [
-          "Mayotte",
           "yt",
+          // Mayotte
           "262",
           1,
           ["269", "639"]
         ],
         [
-          "Mexico",
           "mx",
+          // Mexico
           "52"
         ],
         [
-          "Micronesia",
           "fm",
+          // Micronesia
           "691"
         ],
         [
-          "Moldova",
           "md",
+          // Moldova
           "373"
         ],
         [
-          "Monaco",
           "mc",
+          // Monaco
           "377"
         ],
         [
-          "Mongolia",
           "mn",
+          // Mongolia
           "976"
         ],
         [
-          "Montenegro",
           "me",
+          // Montenegro
           "382"
         ],
         [
-          "Montserrat",
           "ms",
+          // Montserrat
           "1",
           16,
           ["664"]
         ],
         [
-          "Morocco",
           "ma",
+          // Morocco
           "212",
           0
         ],
         [
-          "Mozambique",
           "mz",
+          // Mozambique
           "258"
         ],
         [
-          "Myanmar (Burma)",
           "mm",
+          // Myanmar (Burma)
           "95"
         ],
         [
-          "Namibia",
           "na",
+          // Namibia
           "264"
         ],
         [
-          "Nauru",
           "nr",
+          // Nauru
           "674"
         ],
         [
-          "Nepal",
           "np",
+          // Nepal
           "977"
         ],
         [
-          "Netherlands",
           "nl",
+          // Netherlands
           "31"
         ],
         [
-          "New Caledonia",
           "nc",
+          // New Caledonia
           "687"
         ],
         [
-          "New Zealand",
           "nz",
+          // New Zealand
           "64"
         ],
         [
-          "Nicaragua",
           "ni",
+          // Nicaragua
           "505"
         ],
         [
-          "Niger",
           "ne",
+          // Niger
           "227"
         ],
         [
-          "Nigeria",
           "ng",
+          // Nigeria
           "234"
         ],
         [
-          "Niue",
           "nu",
+          // Niue
           "683"
         ],
         [
-          "Norfolk Island",
           "nf",
+          // Norfolk Island
           "672"
         ],
         [
-          "North Korea",
           "kp",
+          // North Korea
           "850"
         ],
         [
-          "North Macedonia",
           "mk",
+          // North Macedonia
           "389"
         ],
         [
-          "Northern Mariana Islands",
           "mp",
+          // Northern Mariana Islands
           "1",
           17,
           ["670"]
         ],
         [
-          "Norway",
           "no",
+          // Norway
           "47",
           0
         ],
         [
-          "Oman",
           "om",
+          // Oman
           "968"
         ],
         [
-          "Pakistan",
           "pk",
+          // Pakistan
           "92"
         ],
         [
-          "Palau",
           "pw",
+          // Palau
           "680"
         ],
         [
-          "Palestine",
           "ps",
+          // Palestinian Territories
           "970"
         ],
         [
-          "Panama",
           "pa",
+          // Panama
           "507"
         ],
         [
-          "Papua New Guinea",
           "pg",
+          // Papua New Guinea
           "675"
         ],
         [
-          "Paraguay",
           "py",
+          // Paraguay
           "595"
         ],
         [
-          "Peru",
           "pe",
+          // Peru
           "51"
         ],
         [
-          "Philippines",
           "ph",
+          // Philippines
           "63"
         ],
         [
-          "Poland",
           "pl",
+          // Poland
           "48"
         ],
         [
-          "Portugal",
           "pt",
+          // Portugal
           "351"
         ],
         [
-          "Puerto Rico",
           "pr",
+          // Puerto Rico
           "1",
           3,
           ["787", "939"]
         ],
         [
-          "Qatar",
           "qa",
+          // Qatar
           "974"
         ],
         [
-          "Réunion",
           "re",
+          // Réunion
           "262",
           0
         ],
         [
-          "Romania",
           "ro",
+          // Romania
           "40"
         ],
         [
-          "Russia",
           "ru",
+          // Russia
           "7",
           0
         ],
         [
-          "Rwanda",
           "rw",
+          // Rwanda
           "250"
         ],
         [
-          "Samoa",
           "ws",
+          // Samoa
           "685"
         ],
         [
-          "San Marino",
           "sm",
+          // San Marino
           "378"
         ],
         [
-          "São Tomé & Príncipe",
           "st",
+          // São Tomé & Príncipe
           "239"
         ],
         [
-          "Saudi Arabia",
           "sa",
+          // Saudi Arabia
           "966"
         ],
         [
-          "Senegal",
           "sn",
+          // Senegal
           "221"
         ],
         [
-          "Serbia",
           "rs",
+          // Serbia
           "381"
         ],
         [
-          "Seychelles",
           "sc",
+          // Seychelles
           "248"
         ],
         [
-          "Sierra Leone",
           "sl",
+          // Sierra Leone
           "232"
         ],
         [
-          "Singapore",
           "sg",
+          // Singapore
           "65"
         ],
         [
-          "Sint Maarten",
           "sx",
+          // Sint Maarten
           "1",
           21,
           ["721"]
         ],
         [
-          "Slovakia",
           "sk",
+          // Slovakia
           "421"
         ],
         [
-          "Slovenia",
           "si",
+          // Slovenia
           "386"
         ],
         [
-          "Solomon Islands",
           "sb",
+          // Solomon Islands
           "677"
         ],
         [
-          "Somalia",
           "so",
+          // Somalia
           "252"
         ],
         [
-          "South Africa",
           "za",
+          // South Africa
           "27"
         ],
         [
-          "South Korea",
           "kr",
+          // South Korea
           "82"
         ],
         [
-          "South Sudan",
           "ss",
+          // South Sudan
           "211"
         ],
         [
-          "Spain",
           "es",
+          // Spain
           "34"
         ],
         [
-          "Sri Lanka",
           "lk",
+          // Sri Lanka
           "94"
         ],
         [
-          "St Barthélemy",
           "bl",
+          // St. Barthélemy
           "590",
           1
         ],
         [
-          "St Helena",
           "sh",
+          // St. Helena
           "290"
         ],
         [
-          "St Kitts & Nevis",
           "kn",
+          // St. Kitts & Nevis
           "1",
           18,
           ["869"]
         ],
         [
-          "St Lucia",
           "lc",
+          // St. Lucia
           "1",
           19,
           ["758"]
         ],
         [
-          "St Martin",
           "mf",
+          // St. Martin
           "590",
           2
         ],
         [
-          "St Pierre & Miquelon",
           "pm",
+          // St. Pierre & Miquelon
           "508"
         ],
         [
-          "St Vincent & Grenadines",
           "vc",
+          // St. Vincent & Grenadines
           "1",
           20,
           ["784"]
         ],
         [
-          "Sudan",
           "sd",
+          // Sudan
           "249"
         ],
         [
-          "Suriname",
           "sr",
+          // Suriname
           "597"
         ],
         [
-          "Svalbard & Jan Mayen",
           "sj",
+          // Svalbard & Jan Mayen
           "47",
           1,
           ["79"]
         ],
         [
-          "Sweden",
           "se",
+          // Sweden
           "46"
         ],
         [
-          "Switzerland",
           "ch",
+          // Switzerland
           "41"
         ],
         [
-          "Syria",
           "sy",
+          // Syria
           "963"
         ],
         [
-          "Taiwan",
           "tw",
+          // Taiwan
           "886"
         ],
         [
-          "Tajikistan",
           "tj",
+          // Tajikistan
           "992"
         ],
         [
-          "Tanzania",
           "tz",
+          // Tanzania
           "255"
         ],
         [
-          "Thailand",
           "th",
+          // Thailand
           "66"
         ],
         [
-          "Timor-Leste",
           "tl",
+          // Timor-Leste
           "670"
         ],
         [
-          "Togo",
           "tg",
+          // Togo
           "228"
         ],
         [
-          "Tokelau",
           "tk",
+          // Tokelau
           "690"
         ],
         [
-          "Tonga",
           "to",
+          // Tonga
           "676"
         ],
         [
-          "Trinidad & Tobago",
           "tt",
+          // Trinidad & Tobago
           "1",
           22,
           ["868"]
         ],
         [
-          "Tunisia",
           "tn",
+          // Tunisia
           "216"
         ],
         [
-          "Turkey",
           "tr",
+          // Turkey
           "90"
         ],
         [
-          "Turkmenistan",
           "tm",
+          // Turkmenistan
           "993"
         ],
         [
-          "Turks & Caicos Islands",
           "tc",
+          // Turks & Caicos Islands
           "1",
           23,
           ["649"]
         ],
         [
-          "Tuvalu",
           "tv",
+          // Tuvalu
           "688"
         ],
         [
-          "Uganda",
           "ug",
+          // Uganda
           "256"
         ],
         [
-          "Ukraine",
           "ua",
+          // Ukraine
           "380"
         ],
         [
-          "United Arab Emirates",
           "ae",
+          // United Arab Emirates
           "971"
         ],
         [
-          "United Kingdom",
           "gb",
+          // United Kingdom
           "44",
           0
         ],
         [
-          "United States",
           "us",
+          // United States
           "1",
           0
         ],
         [
-          "Uruguay",
           "uy",
+          // Uruguay
           "598"
         ],
         [
-          "US Virgin Islands",
           "vi",
+          // U.S. Virgin Islands
           "1",
           24,
           ["340"]
         ],
         [
-          "Uzbekistan",
           "uz",
+          // Uzbekistan
           "998"
         ],
         [
-          "Vanuatu",
           "vu",
+          // Vanuatu
           "678"
         ],
         [
-          "Vatican City",
           "va",
+          // Vatican City
           "39",
           1,
           ["06698"]
         ],
         [
-          "Venezuela",
           "ve",
+          // Venezuela
           "58"
         ],
         [
-          "Vietnam",
           "vn",
+          // Vietnam
           "84"
         ],
         [
-          "Wallis & Futuna",
           "wf",
+          // Wallis & Futuna
           "681"
         ],
         [
-          "Western Sahara",
           "eh",
+          // Western Sahara
           "212",
           1,
           ["5288", "5289"]
         ],
         [
-          "Yemen",
           "ye",
+          // Yemen
           "967"
         ],
         [
-          "Zambia",
           "zm",
+          // Zambia
           "260"
         ],
         [
-          "Zimbabwe",
           "zw",
+          // Zimbabwe
           "263"
-        ],
-        [
-          "Åland Islands",
-          "ax",
-          "358",
-          1,
-          ["18"]
         ]
       ], f = [];
-      for (let l = 0; l < g.length; l++) {
-        const a = g[l];
-        f[l] = {
-          name: a[0],
-          iso2: a[1],
-          dialCode: a[2],
-          priority: a[3] || 0,
-          areaCodes: a[4] || null,
+      for (let a = 0; a < g.length; a++) {
+        const u = g[a];
+        f[a] = {
+          name: "",
+          // this is now populated in the plugin
+          iso2: u[0],
+          dialCode: u[1],
+          priority: u[2] || 0,
+          areaCodes: u[3] || null,
           nodeById: {}
         };
       }
-      var b = f, y = 0, C = {
-        // whether or not to allow the dropdown
+      var m = f, y = {
+        ad: "Andorra",
+        ae: "United Arab Emirates",
+        af: "Afghanistan",
+        ag: "Antigua & Barbuda",
+        ai: "Anguilla",
+        al: "Albania",
+        am: "Armenia",
+        ao: "Angola",
+        ar: "Argentina",
+        as: "American Samoa",
+        at: "Austria",
+        au: "Australia",
+        aw: "Aruba",
+        ax: "Åland Islands",
+        az: "Azerbaijan",
+        ba: "Bosnia & Herzegovina",
+        bb: "Barbados",
+        bd: "Bangladesh",
+        be: "Belgium",
+        bf: "Burkina Faso",
+        bg: "Bulgaria",
+        bh: "Bahrain",
+        bi: "Burundi",
+        bj: "Benin",
+        bl: "St. Barthélemy",
+        bm: "Bermuda",
+        bn: "Brunei",
+        bo: "Bolivia",
+        bq: "Caribbean Netherlands",
+        br: "Brazil",
+        bs: "Bahamas",
+        bt: "Bhutan",
+        bw: "Botswana",
+        by: "Belarus",
+        bz: "Belize",
+        ca: "Canada",
+        cc: "Cocos (Keeling) Islands",
+        cd: "Congo - Kinshasa",
+        cf: "Central African Republic",
+        cg: "Congo - Brazzaville",
+        ch: "Switzerland",
+        ci: "Côte d’Ivoire",
+        ck: "Cook Islands",
+        cl: "Chile",
+        cm: "Cameroon",
+        cn: "China",
+        co: "Colombia",
+        cr: "Costa Rica",
+        cu: "Cuba",
+        cv: "Cape Verde",
+        cw: "Curaçao",
+        cx: "Christmas Island",
+        cy: "Cyprus",
+        cz: "Czechia",
+        de: "Germany",
+        dj: "Djibouti",
+        dk: "Denmark",
+        dm: "Dominica",
+        do: "Dominican Republic",
+        dz: "Algeria",
+        ec: "Ecuador",
+        ee: "Estonia",
+        eg: "Egypt",
+        eh: "Western Sahara",
+        er: "Eritrea",
+        es: "Spain",
+        et: "Ethiopia",
+        fi: "Finland",
+        fj: "Fiji",
+        fk: "Falkland Islands",
+        fm: "Micronesia",
+        fo: "Faroe Islands",
+        fr: "France",
+        ga: "Gabon",
+        gb: "United Kingdom",
+        gd: "Grenada",
+        ge: "Georgia",
+        gf: "French Guiana",
+        gg: "Guernsey",
+        gh: "Ghana",
+        gi: "Gibraltar",
+        gl: "Greenland",
+        gm: "Gambia",
+        gn: "Guinea",
+        gp: "Guadeloupe",
+        gq: "Equatorial Guinea",
+        gr: "Greece",
+        gt: "Guatemala",
+        gu: "Guam",
+        gw: "Guinea-Bissau",
+        gy: "Guyana",
+        hk: "Hong Kong SAR China",
+        hn: "Honduras",
+        hr: "Croatia",
+        ht: "Haiti",
+        hu: "Hungary",
+        id: "Indonesia",
+        ie: "Ireland",
+        il: "Israel",
+        im: "Isle of Man",
+        in: "India",
+        io: "British Indian Ocean Territory",
+        iq: "Iraq",
+        ir: "Iran",
+        is: "Iceland",
+        it: "Italy",
+        je: "Jersey",
+        jm: "Jamaica",
+        jo: "Jordan",
+        jp: "Japan",
+        ke: "Kenya",
+        kg: "Kyrgyzstan",
+        kh: "Cambodia",
+        ki: "Kiribati",
+        km: "Comoros",
+        kn: "St. Kitts & Nevis",
+        kp: "North Korea",
+        kr: "South Korea",
+        kw: "Kuwait",
+        ky: "Cayman Islands",
+        kz: "Kazakhstan",
+        la: "Laos",
+        lb: "Lebanon",
+        lc: "St. Lucia",
+        li: "Liechtenstein",
+        lk: "Sri Lanka",
+        lr: "Liberia",
+        ls: "Lesotho",
+        lt: "Lithuania",
+        lu: "Luxembourg",
+        lv: "Latvia",
+        ly: "Libya",
+        ma: "Morocco",
+        mc: "Monaco",
+        md: "Moldova",
+        me: "Montenegro",
+        mf: "St. Martin",
+        mg: "Madagascar",
+        mh: "Marshall Islands",
+        mk: "North Macedonia",
+        ml: "Mali",
+        mm: "Myanmar (Burma)",
+        mn: "Mongolia",
+        mo: "Macao SAR China",
+        mp: "Northern Mariana Islands",
+        mq: "Martinique",
+        mr: "Mauritania",
+        ms: "Montserrat",
+        mt: "Malta",
+        mu: "Mauritius",
+        mv: "Maldives",
+        mw: "Malawi",
+        mx: "Mexico",
+        my: "Malaysia",
+        mz: "Mozambique",
+        na: "Namibia",
+        nc: "New Caledonia",
+        ne: "Niger",
+        nf: "Norfolk Island",
+        ng: "Nigeria",
+        ni: "Nicaragua",
+        nl: "Netherlands",
+        no: "Norway",
+        np: "Nepal",
+        nr: "Nauru",
+        nu: "Niue",
+        nz: "New Zealand",
+        om: "Oman",
+        pa: "Panama",
+        pe: "Peru",
+        pf: "French Polynesia",
+        pg: "Papua New Guinea",
+        ph: "Philippines",
+        pk: "Pakistan",
+        pl: "Poland",
+        pm: "St. Pierre & Miquelon",
+        pr: "Puerto Rico",
+        ps: "Palestinian Territories",
+        pt: "Portugal",
+        pw: "Palau",
+        py: "Paraguay",
+        qa: "Qatar",
+        re: "Réunion",
+        ro: "Romania",
+        rs: "Serbia",
+        ru: "Russia",
+        rw: "Rwanda",
+        sa: "Saudi Arabia",
+        sb: "Solomon Islands",
+        sc: "Seychelles",
+        sd: "Sudan",
+        se: "Sweden",
+        sg: "Singapore",
+        sh: "St. Helena",
+        si: "Slovenia",
+        sj: "Svalbard & Jan Mayen",
+        sk: "Slovakia",
+        sl: "Sierra Leone",
+        sm: "San Marino",
+        sn: "Senegal",
+        so: "Somalia",
+        sr: "Suriname",
+        ss: "South Sudan",
+        st: "São Tomé & Príncipe",
+        sv: "El Salvador",
+        sx: "Sint Maarten",
+        sy: "Syria",
+        sz: "Eswatini",
+        tc: "Turks & Caicos Islands",
+        td: "Chad",
+        tg: "Togo",
+        th: "Thailand",
+        tj: "Tajikistan",
+        tk: "Tokelau",
+        tl: "Timor-Leste",
+        tm: "Turkmenistan",
+        tn: "Tunisia",
+        to: "Tonga",
+        tr: "Turkey",
+        tt: "Trinidad & Tobago",
+        tv: "Tuvalu",
+        tw: "Taiwan",
+        tz: "Tanzania",
+        ua: "Ukraine",
+        ug: "Uganda",
+        us: "United States",
+        uy: "Uruguay",
+        uz: "Uzbekistan",
+        va: "Vatican City",
+        vc: "St. Vincent & Grenadines",
+        ve: "Venezuela",
+        vg: "British Virgin Islands",
+        vi: "U.S. Virgin Islands",
+        vn: "Vietnam",
+        vu: "Vanuatu",
+        wf: "Wallis & Futuna",
+        ws: "Samoa",
+        ye: "Yemen",
+        yt: "Mayotte",
+        za: "South Africa",
+        zm: "Zambia",
+        zw: "Zimbabwe"
+      }, k = y, _ = {
+        selectedCountryAriaLabel: "Selected country",
+        noCountrySelected: "No country selected",
+        countryListAriaLabel: "List of countries",
+        searchPlaceholder: "Search",
+        zeroSearchResults: "No results found",
+        oneSearchResult: "1 result found",
+        multipleSearchResults: "${count} results found",
+        // additional countries (not supported by country-list library)
+        ac: "Ascension Island",
+        xk: "Kosovo"
+      }, I = _, S = { ...k, ...I }, $ = S;
+      for (let a = 0; a < m.length; a++)
+        m[a].name = $[m[a].iso2];
+      var O = 0, V = {
+        //* Whether or not to allow the dropdown.
         allowDropdown: !0,
-        // add a placeholder in the input with an example number for the selected country
+        //* Add a placeholder in the input with an example number for the selected country.
         autoPlaceholder: "polite",
-        // add a country search input at the top of the dropdown
-        countrySearch: !0,
-        // modify the parentClass
+        //* Modify the parentClass.
         containerClass: "",
-        // modify the auto placeholder
+        //* The order of the countries in the dropdown. Defaults to alphabetical.
+        countryOrder: null,
+        //* Add a country search input at the top of the dropdown.
+        countrySearch: !0,
+        //* Modify the auto placeholder.
         customPlaceholder: null,
-        // append menu to specified element
+        //* Append menu to specified element.
         dropdownContainer: null,
-        // don't display these countries
+        //* Don't display these countries.
         excludeCountries: [],
-        // fix the dropdown width to the input width (rather than being as wide as the longest country name)
+        //* Fix the dropdown width to the input width (rather than being as wide as the longest country name).
         fixDropdownWidth: !0,
-        // format the number as the user types
+        //* Format the number as the user types
         formatAsYouType: !0,
-        // format the input value during initialisation and on setNumber
+        //* Format the input value during initialisation and on setNumber.
         formatOnDisplay: !0,
-        // geoIp lookup function
+        //* geoIp lookup function.
         geoIpLookup: null,
-        // inject a hidden input with the name returned from this function, and on submit, populate it with the result of getNumber
+        //* Inject a hidden input with the name returned from this function, and on submit, populate it with the result of getNumber.
         hiddenInput: null,
-        // internationalise the plugin text e.g. search input placeholder, country names
+        //* Internationalise the plugin text e.g. search input placeholder, country names.
         i18n: {},
-        // initial country
+        //* Initial country.
         initialCountry: "",
-        // national vs international formatting for numbers e.g. placeholders and displaying existing numbers
+        //* National vs international formatting for numbers e.g. placeholders and displaying existing numbers.
         nationalMode: !0,
-        // display only these countries
+        //* Display only these countries.
         onlyCountries: [],
-        // number type to use for placeholders
+        //* Number type to use for placeholders.
         placeholderNumberType: "MOBILE",
-        // the countries at the top of the list
-        preferredCountries: [],
-        // option to hide the flags - must be used with showSelectedDialCode, or allowDropdown=false
+        //* Show flags - for both the selected country, and in the country dropdown
         showFlags: !0,
-        // display the international dial code next to the selected flag
-        showSelectedDialCode: !1,
-        // only allow certain chars e.g. a plus followed by numeric digits, and cap at max valid length
+        //* Display the international dial code next to the selected flag.
+        separateDialCode: !1,
+        //* Only allow certain chars e.g. a plus followed by numeric digits, and cap at max valid length.
         strictMode: !1,
-        // use full screen popup instead of dropdown for country list
+        //* Use full screen popup instead of dropdown for country list.
         useFullscreenPopup: typeof navigator < "u" && typeof window < "u" ? (
-          // we cannot just test screen size as some smartphones/website meta tags will report desktop
-          // resolutions
-          // Note: to target Android Mobiles (and not Tablets), we must find 'Android' and 'Mobile'
+          //* We cannot just test screen size as some smartphones/website meta tags will report desktop resolutions.
+          //* Note: to target Android Mobiles (and not Tablets), we must find 'Android' and 'Mobile'
           /Android.+Mobile|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
             navigator.userAgent
           ) || window.innerWidth <= 500
         ) : !1,
-        // specify the path to the libphonenumber script to enable validation/formatting
-        utilsScript: ""
-      }, _ = [
+        //* Specify the path to the libphonenumber script to enable validation/formatting.
+        utilsScript: "",
+        //* The number type to enforce during validation.
+        validationNumberType: "MOBILE"
+      }, W = [
         "800",
         "822",
         "833",
@@ -7328,650 +7584,598 @@ var So = { exports: {} };
         "887",
         "888",
         "889"
-      ], k = (l) => l.replace(/\D/g, ""), $ = (l = "") => l.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase(), I = (l, a, d) => {
-        d && !l.classList.contains(a) ? l.classList.add(a) : !d && l.classList.contains(a) && l.classList.remove(a);
-      }, z = (l) => {
-        const a = k(l);
-        if (a.charAt(0) === "1") {
-          const d = a.substr(1, 3);
-          return _.indexOf(d) !== -1;
+      ], F = (a) => a.replace(/\D/g, ""), J = (a = "") => a.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase(), X = (a) => {
+        const u = F(a);
+        if (u.charAt(0) === "1") {
+          const c = u.substr(1, 3);
+          return W.indexOf(c) !== -1;
         }
         return !1;
-      }, V = (l, a) => l.name < a.name ? -1 : l.name > a.name ? 1 : 0, U = (l, a, d, h) => {
-        if (d === 0 && !h)
+      }, ee = (a, u, c, h) => {
+        if (c === 0 && !h)
           return 0;
-        let m = 0;
-        for (let x = 0; x < a.length; x++) {
-          if (/[+0-9]/.test(a[x]) && m++, m === l && !h)
-            return x + 1;
-          if (h && m === l + 1)
-            return x;
+        let b = 0;
+        for (let v = 0; v < u.length; v++) {
+          if (/[+0-9]/.test(u[v]) && b++, b === a && !h)
+            return v + 1;
+          if (h && b === a + 1)
+            return v;
         }
-        return a.length;
-      }, D = (l, a, d) => {
-        const h = document.createElement(l);
-        return a && Object.entries(a).forEach(([m, x]) => h.setAttribute(m, x)), d && d.appendChild(h), h;
-      }, q = (l) => {
-        const { instances: a } = window.intlTelInputGlobals;
-        Object.values(a).forEach((d) => d[l]());
-      }, Z = class {
-        constructor(l, a = {}) {
-          // can't be private as it's called from intlTelInput convenience wrapper
-          P(this, "id");
-          // not private!
-          P(this, "promise");
-          // private
-          P(this, "telInput");
-          P(this, "activeItem");
-          P(this, "highlightedItem");
-          P(this, "options");
-          P(this, "hadInitialPlaceholder");
-          P(this, "isRTL");
-          P(this, "selectedCountryData");
-          P(this, "countries");
-          P(this, "dialCodeMaxLen");
-          P(this, "dialCodeToIso2Map");
-          P(this, "dialCodes");
-          P(this, "preferredCountries");
-          P(this, "countryContainer");
-          P(this, "selectedCountry");
-          P(this, "selectedCountryInner");
-          P(this, "selectedCountryA11yText");
-          P(this, "selectedDialCode");
-          P(this, "dropdownArrow");
-          P(this, "dropdownContent");
-          P(this, "searchInput");
-          P(this, "searchResultsA11yText");
-          P(this, "countryList");
-          P(this, "dropdown");
-          P(this, "hiddenInput");
-          P(this, "hiddenInputCountry");
-          P(this, "maxCoreNumberLength");
-          P(this, "defaultCountry");
-          P(this, "_handleHiddenInputSubmit");
-          P(this, "_handleLabelClick");
-          P(this, "_handleClickSelectedCountry");
-          P(this, "_handleCountryContainerKeydown");
-          P(this, "_handleInputEvent");
-          P(this, "_handleKeydownEvent");
-          P(this, "_handleWindowScroll");
-          P(this, "_handleMouseoverCountryList");
-          P(this, "_handleClickCountryList");
-          P(this, "_handleClickOffToClose");
-          P(this, "_handleKeydownOnDropdown");
-          P(this, "_handleSearchChange");
-          P(this, "resolveAutoCountryPromise");
-          P(this, "rejectAutoCountryPromise");
-          P(this, "resolveUtilsScriptPromise");
-          P(this, "rejectUtilsScriptPromise");
-          this.id = y++, this.telInput = l, this.activeItem = null, this.highlightedItem = null, this.options = Object.assign({}, C, a), this.hadInitialPlaceholder = !!l.getAttribute("placeholder");
+        return u.length;
+      }, D = (a, u, c) => {
+        const h = document.createElement(a);
+        return u && Object.entries(u).forEach(([b, v]) => h.setAttribute(b, v)), c && c.appendChild(h), h;
+      }, M = (a) => {
+        const { instances: u } = C;
+        Object.values(u).forEach((c) => c[a]());
+      }, A = class {
+        constructor(a, u = {}) {
+          this.id = O++, this.telInput = a, this.highlightedItem = null, this.options = Object.assign({}, V, u), this.hadInitialPlaceholder = !!a.getAttribute("placeholder");
         }
-        // can't be private as it's called from intlTelInput convenience wrapper
+        //* Can't be private as it's called from intlTelInput convenience wrapper.
         _init() {
-          this.options.useFullscreenPopup && (this.options.fixDropdownWidth = !1), this.options.countrySearch && !this.options.useFullscreenPopup && (this.options.fixDropdownWidth = !0);
-          const l = this.options.allowDropdown && !this.options.showSelectedDialCode;
-          !this.options.showFlags && l && (this.options.showFlags = !0), this.options.useFullscreenPopup && !this.options.dropdownContainer && (this.options.dropdownContainer = document.body), this.isRTL = !!this.telInput.closest("[dir=rtl]");
-          const a = new Promise((h, m) => {
-            this.resolveAutoCountryPromise = h, this.rejectAutoCountryPromise = m;
-          }), d = new Promise((h, m) => {
-            this.resolveUtilsScriptPromise = h, this.rejectUtilsScriptPromise = m;
+          this.options.useFullscreenPopup && (this.options.fixDropdownWidth = !1), this.options.onlyCountries.length === 1 && (this.options.initialCountry = this.options.onlyCountries[0]), this.options.separateDialCode && (this.options.nationalMode = !1), this.options.allowDropdown && !this.options.showFlags && !this.options.separateDialCode && (this.options.nationalMode = !1), this.options.useFullscreenPopup && !this.options.dropdownContainer && (this.options.dropdownContainer = document.body), this.isAndroid = typeof navigator < "u" ? /Android/i.test(navigator.userAgent) : !1, this.isRTL = !!this.telInput.closest("[dir=rtl]");
+          const a = this.options.allowDropdown || this.options.separateDialCode;
+          this.showSelectedCountryOnLeft = this.isRTL ? !a : a, this.options.separateDialCode && (this.isRTL ? this.originalPaddingRight = this.telInput.style.paddingRight : this.originalPaddingLeft = this.telInput.style.paddingLeft), this.options.i18n = { ...$, ...this.options.i18n };
+          const u = new Promise((h, b) => {
+            this.resolveAutoCountryPromise = h, this.rejectAutoCountryPromise = b;
+          }), c = new Promise((h, b) => {
+            this.resolveUtilsScriptPromise = h, this.rejectUtilsScriptPromise = b;
           });
-          this.promise = Promise.all([a, d]), this.selectedCountryData = {}, this._processCountryData(), this._generateMarkup(), this._setInitialState(), this._initListeners(), this._initRequests();
+          this.promise = Promise.all([u, c]), this.selectedCountryData = {}, this._processCountryData(), this._generateMarkup(), this._setInitialState(), this._initListeners(), this._initRequests();
         }
         //********************
         //*  PRIVATE METHODS
         //********************
-        // prepare all of the country data, including onlyCountries, excludeCountries and
-        // preferredCountries options
+        //* Prepare all of the country data, including onlyCountries, excludeCountries, countryOrder options.
         _processCountryData() {
-          this._processAllCountries(), this._processDialCodes(), this._processPreferredCountries(), this._translateCountryNames(), (this.options.onlyCountries.length || this.options.i18n) && this.countries.sort(V);
+          this._processAllCountries(), this._processDialCodes(), this._translateCountryNames(), this._sortCountries();
         }
-        // add a dial code to this.dialCodeToIso2Map
-        _addToDialCodeMap(l, a, d) {
-          a.length > this.dialCodeMaxLen && (this.dialCodeMaxLen = a.length), this.dialCodeToIso2Map.hasOwnProperty(a) || (this.dialCodeToIso2Map[a] = []);
-          for (let m = 0; m < this.dialCodeToIso2Map[a].length; m++)
-            if (this.dialCodeToIso2Map[a][m] === l)
+        //* Sort countries by countryOrder option (if present), then name.
+        _sortCountries() {
+          this.options.countryOrder && (this.options.countryOrder = this.options.countryOrder.map((a) => a.toLowerCase())), this.countries.sort((a, u) => {
+            const { countryOrder: c } = this.options;
+            if (c) {
+              const h = c.indexOf(a.iso2), b = c.indexOf(u.iso2), v = h > -1, N = b > -1;
+              if (v || N)
+                return v && N ? h - b : v ? -1 : 1;
+            }
+            return a.name.localeCompare(u.name);
+          });
+        }
+        //* Add a dial code to this.dialCodeToIso2Map.
+        _addToDialCodeMap(a, u, c) {
+          u.length > this.dialCodeMaxLen && (this.dialCodeMaxLen = u.length), this.dialCodeToIso2Map.hasOwnProperty(u) || (this.dialCodeToIso2Map[u] = []);
+          for (let b = 0; b < this.dialCodeToIso2Map[u].length; b++)
+            if (this.dialCodeToIso2Map[u][b] === a)
               return;
-          const h = d !== void 0 ? d : this.dialCodeToIso2Map[a].length;
-          this.dialCodeToIso2Map[a][h] = l;
+          const h = c !== void 0 ? c : this.dialCodeToIso2Map[u].length;
+          this.dialCodeToIso2Map[u][h] = a;
         }
-        // process onlyCountries or excludeCountries array if present
+        //* Process onlyCountries or excludeCountries array if present.
         _processAllCountries() {
-          const { onlyCountries: l, excludeCountries: a } = this.options;
-          if (l.length) {
-            const d = l.map(
+          const { onlyCountries: a, excludeCountries: u } = this.options;
+          if (a.length) {
+            const c = a.map(
               (h) => h.toLowerCase()
             );
-            this.countries = b.filter(
-              (h) => d.indexOf(h.iso2) > -1
+            this.countries = m.filter(
+              (h) => c.indexOf(h.iso2) > -1
             );
-          } else if (a.length) {
-            const d = a.map(
+          } else if (u.length) {
+            const c = u.map(
               (h) => h.toLowerCase()
             );
-            this.countries = b.filter(
-              (h) => d.indexOf(h.iso2) === -1
+            this.countries = m.filter(
+              (h) => c.indexOf(h.iso2) === -1
             );
           } else
-            this.countries = b;
+            this.countries = m;
         }
-        // Translate Countries by object literal provided on config
+        //* Translate Countries by object literal provided on config.
         _translateCountryNames() {
-          for (let l = 0; l < this.countries.length; l++) {
-            const a = this.countries[l].iso2.toLowerCase();
-            this.options.i18n.hasOwnProperty(a) && (this.countries[l].name = this.options.i18n[a]);
+          for (let a = 0; a < this.countries.length; a++) {
+            const u = this.countries[a].iso2.toLowerCase();
+            this.options.i18n.hasOwnProperty(u) && (this.countries[a].name = this.options.i18n[u]);
           }
         }
-        // generate this.dialCodes and this.dialCodeToIso2Map
+        //* Generate this.dialCodes and this.dialCodeToIso2Map.
         _processDialCodes() {
           this.dialCodes = {}, this.dialCodeMaxLen = 0, this.dialCodeToIso2Map = {};
-          for (let l = 0; l < this.countries.length; l++) {
-            const a = this.countries[l];
-            this.dialCodes[a.dialCode] || (this.dialCodes[a.dialCode] = !0), this._addToDialCodeMap(a.iso2, a.dialCode, a.priority);
+          for (let a = 0; a < this.countries.length; a++) {
+            const u = this.countries[a];
+            this.dialCodes[u.dialCode] || (this.dialCodes[u.dialCode] = !0), this._addToDialCodeMap(u.iso2, u.dialCode, u.priority);
           }
-          for (let l = 0; l < this.countries.length; l++) {
-            const a = this.countries[l];
-            if (a.areaCodes) {
-              const d = this.dialCodeToIso2Map[a.dialCode][0];
-              for (let h = 0; h < a.areaCodes.length; h++) {
-                const m = a.areaCodes[h];
-                for (let x = 1; x < m.length; x++) {
-                  const E = a.dialCode + m.substr(0, x);
-                  this._addToDialCodeMap(d, E), this._addToDialCodeMap(a.iso2, E);
+          for (let a = 0; a < this.countries.length; a++) {
+            const u = this.countries[a];
+            if (u.areaCodes) {
+              const c = this.dialCodeToIso2Map[u.dialCode][0];
+              for (let h = 0; h < u.areaCodes.length; h++) {
+                const b = u.areaCodes[h];
+                for (let v = 1; v < b.length; v++) {
+                  const N = u.dialCode + b.substr(0, v);
+                  this._addToDialCodeMap(c, N), this._addToDialCodeMap(u.iso2, N);
                 }
-                this._addToDialCodeMap(a.iso2, a.dialCode + m);
+                this._addToDialCodeMap(u.iso2, u.dialCode + b);
               }
             }
           }
         }
-        // process preferred countries - iterate through the preferences, fetching the country data for
-        // each one
-        _processPreferredCountries() {
-          this.preferredCountries = [];
-          for (let l = 0; l < this.options.preferredCountries.length; l++) {
-            const a = this.options.preferredCountries[l].toLowerCase(), d = this._getCountryData(a, !0);
-            d && this.preferredCountries.push(d);
-          }
-        }
-        // generate all of the markup for the plugin: the selected country overlay, and the dropdown
+        //* Generate all of the markup for the plugin: the selected country overlay, and the dropdown.
         _generateMarkup() {
-          var et;
+          var Se;
           this.telInput.classList.add("iti__tel-input"), !this.telInput.hasAttribute("autocomplete") && !(this.telInput.form && this.telInput.form.hasAttribute("autocomplete")) && this.telInput.setAttribute("autocomplete", "off");
           const {
-            allowDropdown: l,
-            showSelectedDialCode: a,
-            showFlags: d,
+            allowDropdown: a,
+            separateDialCode: u,
+            showFlags: c,
             containerClass: h,
-            hiddenInput: m,
-            dropdownContainer: x,
-            fixDropdownWidth: E,
-            useFullscreenPopup: N,
-            countrySearch: S,
-            i18n: J
+            hiddenInput: b,
+            dropdownContainer: v,
+            fixDropdownWidth: N,
+            useFullscreenPopup: P,
+            countrySearch: re,
+            i18n: q
           } = this.options;
-          let ee = "iti";
-          l && (ee += " iti--allow-dropdown"), a && (ee += " iti--show-selected-dial-code"), d && (ee += " iti--show-flags"), h && (ee += ` ${h}`), N || (ee += " iti--inline-dropdown");
-          const te = D("div", { class: ee });
-          if ((et = this.telInput.parentNode) == null || et.insertBefore(te, this.telInput), (d || a) && (this.countryContainer = D(
-            "div",
-            { class: "iti__country-container" },
-            te
-          ), this.selectedCountry = D(
-            "button",
-            {
-              type: "button",
-              class: "iti__selected-country",
-              ...l && {
-                "aria-expanded": "false",
-                "aria-label": this.options.i18n.selectedCountryAriaLabel || "Selected country",
-                "aria-haspopup": S ? "true" : "listbox",
-                "aria-controls": S ? `iti-${this.id}__dropdown-content` : `iti-${this.id}__country-listbox`,
-                ...S ? { role: "combobox" } : {}
-              }
-            },
-            this.countryContainer
-          ), this.selectedCountryInner = D("div", null, this.selectedCountry), this.selectedCountryA11yText = D(
-            "span",
-            { class: "iti__a11y-text" },
-            this.selectedCountryInner
-          )), te.appendChild(this.telInput), this.selectedCountry && this.telInput.disabled && this.selectedCountry.setAttribute("aria-disabled", "true"), a && (this.selectedDialCode = D(
-            "div",
-            { class: "iti__selected-dial-code" },
-            this.selectedCountry
-          )), l) {
-            this.telInput.disabled || this.selectedCountry.setAttribute("tabindex", "0"), this.dropdownArrow = D(
+          let oe = "iti";
+          a && (oe += " iti--allow-dropdown"), c && (oe += " iti--show-flags"), h && (oe += ` ${h}`), P || (oe += " iti--inline-dropdown");
+          const Y = D("div", { class: oe });
+          if ((Se = this.telInput.parentNode) == null || Se.insertBefore(Y, this.telInput), a || c || u) {
+            this.countryContainer = D(
               "div",
-              { class: "iti__arrow", "aria-hidden": "true" },
-              this.selectedCountry
-            );
-            const St = E ? "" : "iti--flexible-dropdown-width";
-            if (this.dropdownContent = D("div", {
-              id: `iti-${this.id}__dropdown-content`,
-              class: `iti__dropdown-content iti__hide ${St}`
-            }), S && (this.searchInput = D(
-              "input",
+              { class: "iti__country-container" },
+              Y
+            ), this.showSelectedCountryOnLeft ? this.countryContainer.style.left = "0px" : this.countryContainer.style.right = "0px", a ? (this.selectedCountry = D(
+              "button",
               {
-                type: "text",
-                class: "iti__search-input",
-                placeholder: J.searchPlaceholder || "Search",
-                role: "combobox",
-                "aria-expanded": "true",
-                "aria-label": J.searchPlaceholder || "Search",
-                "aria-controls": `iti-${this.id}__country-listbox`,
-                "aria-autocomplete": "list",
-                autocomplete: "off"
+                type: "button",
+                class: "iti__selected-country",
+                "aria-expanded": "false",
+                "aria-label": this.options.i18n.selectedCountryAriaLabel,
+                "aria-haspopup": "true",
+                "aria-controls": `iti-${this.id}__dropdown-content`,
+                role: "combobox"
               },
-              this.dropdownContent
-            ), this.searchResultsA11yText = D(
+              this.countryContainer
+            ), this.telInput.disabled && this.selectedCountry.setAttribute("disabled", "true")) : this.selectedCountry = D(
+              "div",
+              { class: "iti__selected-country" },
+              this.countryContainer
+            );
+            const ce = D("div", { class: "iti__selected-country-primary" }, this.selectedCountry);
+            if (this.selectedCountryInner = D("div", { class: "iti__flag" }, ce), this.selectedCountryA11yText = D(
               "span",
               { class: "iti__a11y-text" },
-              this.dropdownContent
-            )), this.countryList = D(
-              "ul",
-              {
-                class: "iti__country-list",
-                id: `iti-${this.id}__country-listbox`,
-                role: "listbox",
-                "aria-label": J.countryListAriaLabel || "List of countries"
-              },
-              this.dropdownContent
-            ), this.preferredCountries.length && !S && (this._appendListItems(this.preferredCountries, "iti__preferred", !0), D(
-              "li",
-              {
-                class: "iti__divider",
-                "aria-hidden": "true"
-              },
-              this.countryList
-            )), this._appendListItems(this.countries, "iti__standard"), S && this._updateSearchResultsText(), x) {
-              let pe = "iti iti--container";
-              N ? pe += " iti--fullscreen-popup" : pe += " iti--inline-dropdown", S && (pe += " iti--country-search"), this.dropdown = D("div", { class: pe }), this.dropdown.appendChild(this.dropdownContent);
-            } else
-              this.countryContainer.appendChild(this.dropdownContent);
+              this.selectedCountryInner
+            ), a && (this.dropdownArrow = D(
+              "div",
+              { class: "iti__arrow", "aria-hidden": "true" },
+              ce
+            )), u && (this.selectedDialCode = D(
+              "div",
+              { class: "iti__selected-dial-code" },
+              this.selectedCountry
+            )), a) {
+              const pe = N ? "" : "iti--flexible-dropdown-width";
+              if (this.dropdownContent = D("div", {
+                id: `iti-${this.id}__dropdown-content`,
+                class: `iti__dropdown-content iti__hide ${pe}`
+              }), re && (this.searchInput = D(
+                "input",
+                {
+                  type: "text",
+                  class: "iti__search-input",
+                  placeholder: q.searchPlaceholder,
+                  role: "combobox",
+                  "aria-expanded": "true",
+                  "aria-label": q.searchPlaceholder,
+                  "aria-controls": `iti-${this.id}__country-listbox`,
+                  "aria-autocomplete": "list",
+                  autocomplete: "off"
+                },
+                this.dropdownContent
+              ), this.searchResultsA11yText = D(
+                "span",
+                { class: "iti__a11y-text" },
+                this.dropdownContent
+              )), this.countryList = D(
+                "ul",
+                {
+                  class: "iti__country-list",
+                  id: `iti-${this.id}__country-listbox`,
+                  role: "listbox",
+                  "aria-label": q.countryListAriaLabel
+                },
+                this.dropdownContent
+              ), this._appendListItems(), re && this._updateSearchResultsText(), v) {
+                let me = "iti iti--container";
+                P ? me += " iti--fullscreen-popup" : me += " iti--inline-dropdown", this.dropdown = D("div", { class: me }), this.dropdown.appendChild(this.dropdownContent);
+              } else
+                this.countryContainer.appendChild(this.dropdownContent);
+            }
           }
-          if (m) {
-            const St = this.telInput.getAttribute("name") || "", pe = m(St);
+          if (Y.appendChild(this.telInput), this._updateInputPadding(), b) {
+            const ce = this.telInput.getAttribute("name") || "", pe = b(ce);
             pe.phone && (this.hiddenInput = D("input", {
               type: "hidden",
               name: pe.phone
-            }), te.appendChild(this.hiddenInput)), pe.country && (this.hiddenInputCountry = D("input", {
+            }), Y.appendChild(this.hiddenInput)), pe.country && (this.hiddenInputCountry = D("input", {
               type: "hidden",
               name: pe.country
-            }), te.appendChild(this.hiddenInputCountry));
+            }), Y.appendChild(this.hiddenInputCountry));
           }
         }
-        // for each of the passed countries: add a country <li> to the countryList <ul> container
-        _appendListItems(l, a, d) {
-          for (let h = 0; h < l.length; h++) {
-            const m = l[h], x = d ? "-preferred" : "", E = D(
+        //* For each country: add a country list item <li> to the countryList <ul> container.
+        _appendListItems() {
+          for (let a = 0; a < this.countries.length; a++) {
+            const u = this.countries[a], c = a === 0 ? "iti__highlight" : "", h = D(
               "li",
               {
-                id: `iti-${this.id}__item-${m.iso2}${x}`,
-                class: `iti__country ${a}`,
+                id: `iti-${this.id}__item-${u.iso2}`,
+                class: `iti__country ${c}`,
                 tabindex: "-1",
                 role: "option",
-                "data-dial-code": m.dialCode,
-                "data-country-code": m.iso2,
+                "data-dial-code": u.dialCode,
+                "data-country-code": u.iso2,
                 "aria-selected": "false"
               },
               this.countryList
             );
-            m.nodeById[this.id] = E;
-            let N = "";
-            this.options.showFlags && (N += `<div class='iti__flag-box'><div class='iti__flag iti__${m.iso2}'></div></div>`), N += `<span class='iti__country-name'>${m.name}</span>`, N += `<span class='iti__dial-code'>+${m.dialCode}</span>`, E.insertAdjacentHTML("beforeend", N);
+            u.nodeById[this.id] = h;
+            let b = "";
+            this.options.showFlags && (b += `<div class='iti__flag iti__${u.iso2}'></div>`), b += `<span class='iti__country-name'>${u.name}</span>`, b += `<span class='iti__dial-code'>+${u.dialCode}</span>`, h.insertAdjacentHTML("beforeend", b);
           }
         }
-        // set the initial state of the input value and the selected country by:
-        // 1. extracting a dial code from the given number
-        // 2. using explicit initialCountry
-        // 3. picking the first preferred country
-        // 4. picking the first country
-        _setInitialState(l = !1) {
-          const a = this.telInput.getAttribute("value"), d = this.telInput.value, m = a && a.charAt(0) === "+" && (!d || d.charAt(0) !== "+") ? a : d, x = this._getDialCode(m), E = z(m), { initialCountry: N } = this.options;
-          if (x && !E)
-            this._updateCountryFromNumber(m);
-          else if (N !== "auto" || l) {
-            const S = N ? N.toLowerCase() : "";
-            S && this._getCountryData(S, !0) ? this._setCountry(S) : x && E ? this._setCountry("us") : this._setCountry();
+        //* Set the initial state of the input value and the selected country by:
+        //* 1. Extracting a dial code from the given number
+        //* 2. Using explicit initialCountry
+        _setInitialState(a = !1) {
+          const u = this.telInput.getAttribute("value"), c = this.telInput.value, b = u && u.charAt(0) === "+" && (!c || c.charAt(0) !== "+") ? u : c, v = this._getDialCode(b), N = X(b), { initialCountry: P, geoIpLookup: re } = this.options, q = P === "auto" && re;
+          if (v && !N)
+            this._updateCountryFromNumber(b);
+          else if (!q || a) {
+            const oe = P ? P.toLowerCase() : "";
+            oe && this._getCountryData(oe, !0) ? this._setCountry(oe) : v && N ? this._setCountry("us") : this._setCountry();
           }
-          m && this._updateValFromNumber(m);
+          b && this._updateValFromNumber(b);
         }
-        // initialise the main event listeners: input keyup, and click selected country
+        //* Initialise the main event listeners: input keyup, and click selected country.
         _initListeners() {
           this._initTelInputListeners(), this.options.allowDropdown && this._initDropdownListeners(), (this.hiddenInput || this.hiddenInputCountry) && this.telInput.form && this._initHiddenInputListener();
         }
-        // update hidden input on form submit
+        //* Update hidden input on form submit.
         _initHiddenInputListener() {
-          var l;
+          var a;
           this._handleHiddenInputSubmit = () => {
             this.hiddenInput && (this.hiddenInput.value = this.getNumber()), this.hiddenInputCountry && (this.hiddenInputCountry.value = this.getSelectedCountryData().iso2 || "");
-          }, (l = this.telInput.form) == null || l.addEventListener(
+          }, (a = this.telInput.form) == null || a.addEventListener(
             "submit",
             this._handleHiddenInputSubmit
           );
         }
-        // initialise the dropdown listeners
+        //* initialise the dropdown listeners.
         _initDropdownListeners() {
-          this._handleLabelClick = (a) => {
-            this.dropdownContent.classList.contains("iti__hide") ? this.telInput.focus() : a.preventDefault();
+          this._handleLabelClick = (u) => {
+            this.dropdownContent.classList.contains("iti__hide") ? this.telInput.focus() : u.preventDefault();
           };
-          const l = this.telInput.closest("label");
-          l && l.addEventListener("click", this._handleLabelClick), this._handleClickSelectedCountry = () => {
+          const a = this.telInput.closest("label");
+          a && a.addEventListener("click", this._handleLabelClick), this._handleClickSelectedCountry = () => {
             this.dropdownContent.classList.contains("iti__hide") && !this.telInput.disabled && !this.telInput.readOnly && this._openDropdown();
-          }, this.selectedCountry.addEventListener("click", this._handleClickSelectedCountry), this._handleCountryContainerKeydown = (a) => {
-            this.dropdownContent.classList.contains("iti__hide") && ["ArrowUp", "ArrowDown", " ", "Enter"].includes(a.key) && (a.preventDefault(), a.stopPropagation(), this._openDropdown()), a.key === "Tab" && this._closeDropdown();
+          }, this.selectedCountry.addEventListener("click", this._handleClickSelectedCountry), this._handleCountryContainerKeydown = (u) => {
+            this.dropdownContent.classList.contains("iti__hide") && ["ArrowUp", "ArrowDown", " ", "Enter"].includes(u.key) && (u.preventDefault(), u.stopPropagation(), this._openDropdown()), u.key === "Tab" && this._closeDropdown();
           }, this.countryContainer.addEventListener(
             "keydown",
             this._handleCountryContainerKeydown
           );
         }
-        // init many requests: utils script / geo ip lookup
+        //* Init many requests: utils script / geo ip lookup.
         _initRequests() {
-          this.options.utilsScript && !window.intlTelInputUtils ? window.intlTelInputGlobals.documentReady() ? window.intlTelInputGlobals.loadUtils(this.options.utilsScript) : window.addEventListener("load", () => {
-            window.intlTelInputGlobals.loadUtils(this.options.utilsScript);
-          }) : this.resolveUtilsScriptPromise(), this.options.initialCountry === "auto" && !this.selectedCountryData.iso2 ? this._loadAutoCountry() : this.resolveAutoCountryPromise();
+          const { utilsScript: a, initialCountry: u, geoIpLookup: c } = this.options;
+          a && !C.utils ? C.documentReady() ? C.loadUtils(a) : window.addEventListener("load", () => {
+            C.loadUtils(a);
+          }) : this.resolveUtilsScriptPromise(), u === "auto" && c && !this.selectedCountryData.iso2 ? this._loadAutoCountry() : this.resolveAutoCountryPromise();
         }
-        // perform the geo ip lookup
+        //* Perform the geo ip lookup.
         _loadAutoCountry() {
-          window.intlTelInputGlobals.autoCountry ? this.handleAutoCountry() : window.intlTelInputGlobals.startedLoadingAutoCountry || (window.intlTelInputGlobals.startedLoadingAutoCountry = !0, typeof this.options.geoIpLookup == "function" && this.options.geoIpLookup(
-            (l = "") => {
-              const a = l.toLowerCase();
-              a && this._getCountryData(a, !0) ? (window.intlTelInputGlobals.autoCountry = a, setTimeout(() => q("handleAutoCountry"))) : (this._setInitialState(!0), q("rejectAutoCountryPromise"));
+          C.autoCountry ? this.handleAutoCountry() : C.startedLoadingAutoCountry || (C.startedLoadingAutoCountry = !0, typeof this.options.geoIpLookup == "function" && this.options.geoIpLookup(
+            (a = "") => {
+              const u = a.toLowerCase();
+              u && this._getCountryData(u, !0) ? (C.autoCountry = u, setTimeout(() => M("handleAutoCountry"))) : (this._setInitialState(!0), M("rejectAutoCountryPromise"));
             },
             () => {
-              this._setInitialState(!0), q("rejectAutoCountryPromise");
+              this._setInitialState(!0), M("rejectAutoCountryPromise");
             }
           ));
         }
-        // initialize the tel input listeners
+        _openDropdownWithPlus() {
+          this._openDropdown(), this.searchInput.value = "+", this._filterCountries("", !0);
+        }
+        //* Initialize the tel input listeners.
         _initTelInputListeners() {
-          const { strictMode: l, formatAsYouType: a } = this.options;
-          let d = !1;
-          this._handleInputEvent = (h) => {
-            this._updateCountryFromNumber(this.telInput.value) && this._triggerCountryChange();
-            const m = h && h.data && /[^+0-9]/.test(h.data), x = h && h.inputType === "insertFromPaste" && this.telInput.value;
-            if (m || x && !l ? d = !0 : /[^+0-9]/.test(this.telInput.value) || (d = !1), a && !d) {
-              const E = this.telInput.selectionStart || 0, S = this.telInput.value.substring(0, E).replace(/[^+0-9]/g, "").length, J = h && h.inputType === "deleteContentForward", ee = this._formatNumberAsYouType(), te = U(S, ee, E, J);
-              this.telInput.value = ee, this.telInput.setSelectionRange(te, te);
+          const { strictMode: a, formatAsYouType: u, separateDialCode: c, formatOnDisplay: h, allowDropdown: b, countrySearch: v } = this.options;
+          let N = !1;
+          new RegExp("\\p{L}", "u").test(this.telInput.value) && (N = !0), this._handleInputEvent = (P) => {
+            if (this.isAndroid && (P == null ? void 0 : P.data) === "+" && c && b && v) {
+              const Y = this.telInput.selectionStart || 0, Se = this.telInput.value.substring(0, Y - 1), ce = this.telInput.value.substring(Y);
+              this.telInput.value = Se + ce, this._openDropdownWithPlus();
+              return;
             }
-          }, this.telInput.addEventListener("input", this._handleInputEvent), l && (this._handleKeydownEvent = (h) => {
-            if (h.key.length === 1 && !h.altKey && !h.ctrlKey && !h.metaKey) {
-              const m = this.telInput.selectionStart === 0 && h.key === "+", x = /^[0-9]$/.test(h.key), E = m || x, N = this._getFullNumber(), S = window.intlTelInputUtils.getCoreNumber(N, this.selectedCountryData.iso2), J = this.maxCoreNumberLength && S.length >= this.maxCoreNumberLength;
-              (!E || J) && h.preventDefault();
+            this._updateCountryFromNumber(this.telInput.value) && this._triggerCountryChange();
+            const re = (P == null ? void 0 : P.data) && /[^+0-9]/.test(P.data), q = (P == null ? void 0 : P.inputType) === "insertFromPaste" && this.telInput.value;
+            re || q && !a ? N = !0 : /[^+0-9]/.test(this.telInput.value) || (N = !1);
+            const oe = (P == null ? void 0 : P.detail) && P.detail.isSetNumber && !h;
+            if (u && !N && !oe) {
+              const Y = this.telInput.selectionStart || 0, ce = this.telInput.value.substring(0, Y).replace(/[^+0-9]/g, "").length, pe = (P == null ? void 0 : P.inputType) === "deleteContentForward", me = this._formatNumberAsYouType(), Nt = ee(ce, me, Y, pe);
+              this.telInput.value = me, this.telInput.setSelectionRange(Nt, Nt);
+            }
+          }, this.telInput.addEventListener("input", this._handleInputEvent), (a || c) && (this._handleKeydownEvent = (P) => {
+            if (P.key && P.key.length === 1 && !P.altKey && !P.ctrlKey && !P.metaKey) {
+              if (c && b && v && P.key === "+") {
+                P.preventDefault(), this._openDropdownWithPlus();
+                return;
+              }
+              if (a) {
+                const re = this.telInput.selectionStart === 0 && P.key === "+", q = /^[0-9]$/.test(P.key), oe = c ? q : re || q, Y = this._getFullNumber(), Se = C.utils.getCoreNumber(Y, this.selectedCountryData.iso2), ce = this.maxCoreNumberLength && Se.length >= this.maxCoreNumberLength, pe = this.telInput.value.substring(this.telInput.selectionStart, this.telInput.selectionEnd), me = /\d/.test(pe), Do = (this.telInput.selectionStart || 0) === this.telInput.value.length;
+                (!oe || ce && !me && Do) && P.preventDefault();
+              }
             }
           }, this.telInput.addEventListener("keydown", this._handleKeydownEvent));
         }
-        // adhere to the input's maxlength attr
-        _cap(l) {
-          const a = parseInt(this.telInput.getAttribute("maxlength") || "", 10);
-          return a && l.length > a ? l.substr(0, a) : l;
+        //* Adhere to the input's maxlength attr.
+        _cap(a) {
+          const u = parseInt(this.telInput.getAttribute("maxlength") || "", 10);
+          return u && a.length > u ? a.substr(0, u) : a;
         }
-        // trigger a custom event on the input
-        _trigger(l) {
-          const a = new Event(l, {
+        //* Trigger a custom event on the input.
+        _trigger(a, u = {}) {
+          const c = new CustomEvent(a, {
             bubbles: !0,
-            cancelable: !0
+            cancelable: !0,
+            detail: u
           });
-          this.telInput.dispatchEvent(a);
+          this.telInput.dispatchEvent(c);
         }
-        // open the dropdown
+        //* Open the dropdown.
         _openDropdown() {
-          const { fixDropdownWidth: l, countrySearch: a } = this.options;
-          if (l && (this.dropdownContent.style.width = `${this.telInput.offsetWidth}px`), this.dropdownContent.classList.remove("iti__hide"), this.selectedCountry.setAttribute("aria-expanded", "true"), this._setDropdownPosition(), this.activeItem && !a)
-            this._highlightListItem(this.activeItem, !1), this._scrollTo(this.activeItem, !0);
-          else {
-            const d = this.countryList.firstElementChild;
-            d && (this._highlightListItem(d, !1), this.countryList.scrollTop = 0), a && this.searchInput.focus();
+          const { fixDropdownWidth: a, countrySearch: u } = this.options;
+          if (a && (this.dropdownContent.style.width = `${this.telInput.offsetWidth}px`), this.dropdownContent.classList.remove("iti__hide"), this.selectedCountry.setAttribute("aria-expanded", "true"), this._setDropdownPosition(), u) {
+            const c = this.countryList.firstElementChild;
+            c && (this._highlightListItem(c, !1), this.countryList.scrollTop = 0), this.searchInput.focus();
           }
           this._bindDropdownListeners(), this.dropdownArrow.classList.add("iti__arrow--up"), this._trigger("open:countrydropdown");
         }
-        // decide if should position dropdown above or below input (depends on position within viewport, and scroll)
+        //* Set the dropdown position
         _setDropdownPosition() {
           if (this.options.dropdownContainer && this.options.dropdownContainer.appendChild(this.dropdown), !this.options.useFullscreenPopup) {
-            const l = this.telInput.getBoundingClientRect(), a = document.documentElement.scrollTop, d = l.top + a, h = this.dropdownContent.offsetHeight, m = d + this.telInput.offsetHeight + h < a + window.innerHeight, x = d - h > a, E = !this.options.countrySearch && !m && x;
-            if (I(
-              this.dropdownContent,
-              "iti__dropdown-content--dropup",
-              E
-            ), this.options.dropdownContainer) {
-              const N = E ? 0 : this.telInput.offsetHeight;
-              this.dropdown.style.top = `${d + N}px`, this.dropdown.style.left = `${l.left + document.body.scrollLeft}px`, this._handleWindowScroll = () => this._closeDropdown(), window.addEventListener("scroll", this._handleWindowScroll);
-            }
+            const a = this.telInput.getBoundingClientRect(), u = this.telInput.offsetHeight;
+            this.options.dropdownContainer && (this.dropdown.style.top = `${a.top + u}px`, this.dropdown.style.left = `${a.left}px`, this._handleWindowScroll = () => this._closeDropdown(), window.addEventListener("scroll", this._handleWindowScroll));
           }
         }
-        // we only bind dropdown listeners when the dropdown is open
+        //* We only bind dropdown listeners when the dropdown is open.
         _bindDropdownListeners() {
           this._handleMouseoverCountryList = (h) => {
-            var x;
-            const m = (x = h.target) == null ? void 0 : x.closest(".iti__country");
-            m && this._highlightListItem(m, !1);
+            var v;
+            const b = (v = h.target) == null ? void 0 : v.closest(".iti__country");
+            b && this._highlightListItem(b, !1);
           }, this.countryList.addEventListener(
             "mouseover",
             this._handleMouseoverCountryList
           ), this._handleClickCountryList = (h) => {
-            var x;
-            const m = (x = h.target) == null ? void 0 : x.closest(".iti__country");
-            m && this._selectListItem(m);
+            var v;
+            const b = (v = h.target) == null ? void 0 : v.closest(".iti__country");
+            b && this._selectListItem(b);
           }, this.countryList.addEventListener("click", this._handleClickCountryList);
-          let l = !0;
+          let a = !0;
           this._handleClickOffToClose = () => {
-            l || this._closeDropdown(), l = !1;
+            a || this._closeDropdown(), a = !1;
           }, document.documentElement.addEventListener(
             "click",
             this._handleClickOffToClose
           );
-          let a = "", d = null;
+          let u = "", c = null;
           if (this._handleKeydownOnDropdown = (h) => {
-            ["ArrowUp", "ArrowDown", "Enter", "Escape"].includes(h.key) && (h.preventDefault(), h.stopPropagation(), h.key === "ArrowUp" || h.key === "ArrowDown" ? this._handleUpDownKey(h.key) : h.key === "Enter" ? this._handleEnterKey() : h.key === "Escape" && this._closeDropdown()), !this.options.countrySearch && /^[a-zA-ZÀ-ÿа-яА-Я ]$/.test(h.key) && (h.stopPropagation(), d && clearTimeout(d), a += h.key.toLowerCase(), this._searchForCountry(a), d = setTimeout(() => {
-              a = "";
+            ["ArrowUp", "ArrowDown", "Enter", "Escape"].includes(h.key) && (h.preventDefault(), h.stopPropagation(), h.key === "ArrowUp" || h.key === "ArrowDown" ? this._handleUpDownKey(h.key) : h.key === "Enter" ? this._handleEnterKey() : h.key === "Escape" && this._closeDropdown()), !this.options.countrySearch && /^[a-zA-ZÀ-ÿа-яА-Я ]$/.test(h.key) && (h.stopPropagation(), c && clearTimeout(c), u += h.key.toLowerCase(), this._searchForCountry(u), c = setTimeout(() => {
+              u = "";
             }, 1e3));
           }, document.addEventListener("keydown", this._handleKeydownOnDropdown), this.options.countrySearch) {
             const h = () => {
-              const x = this.searchInput.value.trim();
-              x ? this._filterCountries(x) : this._filterCountries("", !0);
+              const v = this.searchInput.value.trim();
+              v ? this._filterCountries(v) : this._filterCountries("", !0);
             };
-            let m = null;
+            let b = null;
             this._handleSearchChange = () => {
-              m && clearTimeout(m), m = setTimeout(() => {
-                h(), m = null;
+              b && clearTimeout(b), b = setTimeout(() => {
+                h(), b = null;
               }, 100);
-            }, this.searchInput.addEventListener("input", this._handleSearchChange), this.searchInput.addEventListener("click", (x) => x.stopPropagation());
+            }, this.searchInput.addEventListener("input", this._handleSearchChange), this.searchInput.addEventListener("click", (v) => v.stopPropagation());
           }
         }
-        _filterCountries(l, a = !1) {
-          let d = !0;
-          this.countryList.innerHTML = "";
-          const h = $(l);
-          for (let m = 0; m < this.countries.length; m++) {
-            const x = this.countries[m], E = $(x.name), N = `+${x.dialCode}`;
-            if (a || E.includes(h) || N.includes(h) || x.iso2.includes(h)) {
-              const S = x.nodeById[this.id];
-              S && this.countryList.appendChild(S), d && (this._highlightListItem(S, !1), d = !1);
-            }
-          }
-          this.countryList.scrollTop = 0, this._updateSearchResultsText();
-        }
-        // update search results text (for a11y)
-        _updateSearchResultsText() {
-          const { i18n: l } = this.options, a = this.countryList.childElementCount;
-          let d;
-          a === 0 ? d = l.zeroSearchResults || "No results found" : a === 1 ? d = l.oneSearchResult || "1 result found" : d = l.multipleSearchResults ? l.multipleSearchResults.replace("${count}", a.toString()) : `${a} results found`, this.searchResultsA11yText.textContent = d;
-        }
-        // highlight the next/prev item in the list (and ensure it is visible)
-        _handleUpDownKey(l) {
-          var d, h;
-          let a = l === "ArrowUp" ? (d = this.highlightedItem) == null ? void 0 : d.previousElementSibling : (h = this.highlightedItem) == null ? void 0 : h.nextElementSibling;
-          if (a ? a.classList.contains("iti__divider") && (a = l === "ArrowUp" ? a.previousElementSibling : a.nextElementSibling) : this.countryList.childElementCount > 1 && (a = l === "ArrowUp" ? this.countryList.lastElementChild : this.countryList.firstElementChild), a) {
-            this._scrollTo(a, !1);
-            const m = !this.options.countrySearch;
-            this._highlightListItem(a, m);
-          }
-        }
-        // select the currently highlighted item
-        _handleEnterKey() {
-          this.highlightedItem && this._selectListItem(this.highlightedItem);
-        }
-        // find the first list item whose name starts with the query string
-        _searchForCountry(l) {
-          for (let a = 0; a < this.countries.length; a++) {
-            const d = this.countries[a];
-            if (d.name.substr(0, l.length).toLowerCase() === l) {
-              const m = d.nodeById[this.id];
-              this._highlightListItem(m, !1), this._scrollTo(m, !0);
+        //* Hidden search (countrySearch disabled): Find the first list item whose name starts with the query string.
+        _searchForCountry(a) {
+          for (let u = 0; u < this.countries.length; u++) {
+            const c = this.countries[u];
+            if (c.name.substr(0, a.length).toLowerCase() === a) {
+              const b = c.nodeById[this.id];
+              this._highlightListItem(b, !1), this._scrollTo(b);
               break;
             }
           }
         }
-        // update the input's value to the given val (format first if possible)
-        // NOTE: this is called from _setInitialState, handleUtils and setNumber
-        _updateValFromNumber(l) {
-          let a = l;
-          if (this.options.formatOnDisplay && window.intlTelInputUtils && this.selectedCountryData) {
-            const d = this.options.nationalMode || a.charAt(0) !== "+" && !this.options.showSelectedDialCode, { NATIONAL: h, INTERNATIONAL: m } = window.intlTelInputUtils.numberFormat, x = d ? h : m;
-            a = window.intlTelInputUtils.formatNumber(
-              a,
+        //* Country search enabled: Filter the countries according to the search query.
+        _filterCountries(a, u = !1) {
+          let c = !0;
+          this.countryList.innerHTML = "";
+          const h = J(a);
+          for (let b = 0; b < this.countries.length; b++) {
+            const v = this.countries[b], N = J(v.name), P = v.name.split(/[^a-zA-ZÀ-ÿа-яА-Я]/).map((q) => q[0]).join("").toLowerCase(), re = `+${v.dialCode}`;
+            if (u || N.includes(h) || re.includes(h) || v.iso2.includes(h) || P.includes(h)) {
+              const q = v.nodeById[this.id];
+              q && this.countryList.appendChild(q), c && (this._highlightListItem(q, !1), c = !1);
+            }
+          }
+          c && this._highlightListItem(null, !1), this.countryList.scrollTop = 0, this._updateSearchResultsText();
+        }
+        //* Update search results text (for a11y).
+        _updateSearchResultsText() {
+          const { i18n: a } = this.options, u = this.countryList.childElementCount;
+          let c;
+          u === 0 ? c = a.zeroSearchResults : u === 1 ? c = a.oneSearchResult : c = a.multipleSearchResults.replace("${count}", u.toString()), this.searchResultsA11yText.textContent = c;
+        }
+        //* Highlight the next/prev item in the list (and ensure it is visible).
+        _handleUpDownKey(a) {
+          var c, h;
+          let u = a === "ArrowUp" ? (c = this.highlightedItem) == null ? void 0 : c.previousElementSibling : (h = this.highlightedItem) == null ? void 0 : h.nextElementSibling;
+          !u && this.countryList.childElementCount > 1 && (u = a === "ArrowUp" ? this.countryList.lastElementChild : this.countryList.firstElementChild), u && (this._scrollTo(u), this._highlightListItem(u, !1));
+        }
+        //* Select the currently highlighted item.
+        _handleEnterKey() {
+          this.highlightedItem && this._selectListItem(this.highlightedItem);
+        }
+        //* Update the input's value to the given val (format first if possible)
+        //* NOTE: this is called from _setInitialState, handleUtils and setNumber.
+        _updateValFromNumber(a) {
+          let u = a;
+          if (this.options.formatOnDisplay && C.utils && this.selectedCountryData) {
+            const c = this.options.nationalMode || u.charAt(0) !== "+" && !this.options.separateDialCode, { NATIONAL: h, INTERNATIONAL: b } = C.utils.numberFormat, v = c ? h : b;
+            u = C.utils.formatNumber(
+              u,
               this.selectedCountryData.iso2,
-              x
+              v
             );
           }
-          a = this._beforeSetNumber(a), this.telInput.value = a;
+          u = this._beforeSetNumber(u), this.telInput.value = u;
         }
-        // check if need to select a new country based on the given number
-        // Note: called from _setInitialState, keyup handler, setNumber
-        _updateCountryFromNumber(l) {
-          const a = l.indexOf("+");
-          let d = a ? l.substring(a) : l;
+        //* Check if need to select a new country based on the given number
+        //* Note: called from _setInitialState, keyup handler, setNumber.
+        _updateCountryFromNumber(a) {
+          const u = a.indexOf("+");
+          let c = u ? a.substring(u) : a;
           const h = this.selectedCountryData.dialCode;
-          d && h === "1" && d.charAt(0) !== "+" && (d.charAt(0) !== "1" && (d = `1${d}`), d = `+${d}`), this.options.showSelectedDialCode && h && d.charAt(0) !== "+" && (d = `+${h}${d}`);
-          const x = this._getDialCode(d, !0), E = k(d);
-          let N = null;
-          if (x) {
-            const S = this.dialCodeToIso2Map[k(x)], J = S.indexOf(this.selectedCountryData.iso2) !== -1 && E.length <= x.length - 1;
-            if (!(h === "1" && z(E)) && !J) {
-              for (let te = 0; te < S.length; te++)
-                if (S[te]) {
-                  N = S[te];
+          c && h === "1" && c.charAt(0) !== "+" && (c.charAt(0) !== "1" && (c = `1${c}`), c = `+${c}`), this.options.separateDialCode && h && c.charAt(0) !== "+" && (c = `+${h}${c}`);
+          const v = this._getDialCode(c, !0), N = F(c);
+          let P = null;
+          if (v) {
+            const re = this.dialCodeToIso2Map[F(v)], q = re.indexOf(this.selectedCountryData.iso2) !== -1 && N.length <= v.length - 1;
+            if (!(h === "1" && X(N)) && !q) {
+              for (let Y = 0; Y < re.length; Y++)
+                if (re[Y]) {
+                  P = re[Y];
                   break;
                 }
             }
           } else
-            d.charAt(0) === "+" && E.length ? N = "" : (!d || d === "+") && !this.selectedCountryData.iso2 && (N = this.defaultCountry);
-          return N !== null ? this._setCountry(N) : !1;
+            c.charAt(0) === "+" && N.length ? P = "" : (!c || c === "+") && !this.selectedCountryData.iso2 && (P = this.defaultCountry);
+          return P !== null ? this._setCountry(P) : !1;
         }
-        // remove highlighting from other list items and highlight the given item
-        _highlightListItem(l, a) {
-          const d = this.highlightedItem;
-          d && (d.classList.remove("iti__highlight"), d.setAttribute("aria-selected", "false")), this.highlightedItem = l, this.highlightedItem.classList.add("iti__highlight"), this.highlightedItem.setAttribute("aria-selected", "true"), this.selectedCountry.setAttribute(
-            "aria-activedescendant",
-            l.getAttribute("id") || ""
-          ), this.options.countrySearch && this.searchInput.setAttribute(
-            "aria-activedescendant",
-            l.getAttribute("id") || ""
-          ), a && this.highlightedItem.focus();
+        //* Remove highlighting from other list items and highlight the given item.
+        _highlightListItem(a, u) {
+          const c = this.highlightedItem;
+          if (c && (c.classList.remove("iti__highlight"), c.setAttribute("aria-selected", "false")), this.highlightedItem = a, this.highlightedItem) {
+            this.highlightedItem.classList.add("iti__highlight"), this.highlightedItem.setAttribute("aria-selected", "true");
+            const h = this.highlightedItem.getAttribute("id") || "";
+            this.selectedCountry.setAttribute("aria-activedescendant", h), this.options.countrySearch && this.searchInput.setAttribute("aria-activedescendant", h);
+          }
+          u && this.highlightedItem.focus();
         }
-        // find the country data for the given iso2 code
-        // the ignoreOnlyCountriesOption is only used during init() while parsing the onlyCountries array
-        _getCountryData(l, a) {
-          for (let d = 0; d < this.countries.length; d++)
-            if (this.countries[d].iso2 === l)
-              return this.countries[d];
-          if (a)
+        //* Find the country data for the given iso2 code
+        //* the ignoreOnlyCountriesOption is only used during init() while parsing the onlyCountries array
+        _getCountryData(a, u) {
+          for (let c = 0; c < this.countries.length; c++)
+            if (this.countries[c].iso2 === a)
+              return this.countries[c];
+          if (u)
             return null;
-          throw new Error(`No country data for '${l}'`);
+          throw new Error(`No country data for '${a}'`);
         }
-        // update the selected country, dial code (if showSelectedDialCode), placeholder, title, and active list item
-        // Note: called from _setInitialState, _updateCountryFromNumber, _selectListItem, setCountry
-        _setCountry(l) {
-          const { allowDropdown: a, showSelectedDialCode: d, showFlags: h, countrySearch: m, i18n: x } = this.options, E = this.selectedCountryData.iso2 ? this.selectedCountryData : {};
-          if (this.selectedCountryData = l ? this._getCountryData(l, !1) || {} : {}, this.selectedCountryData.iso2 && (this.defaultCountry = this.selectedCountryData.iso2), this.selectedCountryInner) {
-            let N = "", S = "";
-            l ? h && (N = `iti__flag iti__${l}`, S = `${this.selectedCountryData.name} +${this.selectedCountryData.dialCode}`) : (N = "iti__flag iti__globe", S = x.noCountrySelected || "No country selected"), this.selectedCountryInner.className = N, this.selectedCountryA11yText.textContent = S;
+        //* Update the selected country, dial code (if separateDialCode), placeholder, title, and active list item.
+        //* Note: called from _setInitialState, _updateCountryFromNumber, _selectListItem, setCountry.
+        _setCountry(a) {
+          const { separateDialCode: u, showFlags: c, i18n: h } = this.options, b = this.selectedCountryData.iso2 ? this.selectedCountryData : {};
+          if (this.selectedCountryData = a ? this._getCountryData(a, !1) || {} : {}, this.selectedCountryData.iso2 && (this.defaultCountry = this.selectedCountryData.iso2), this.selectedCountryInner) {
+            let v = "", N = "";
+            a && c ? (v = `iti__flag iti__${a}`, N = `${this.selectedCountryData.name} +${this.selectedCountryData.dialCode}`) : (v = "iti__flag iti__globe", N = h.noCountrySelected), this.selectedCountryInner.className = v, this.selectedCountryA11yText.textContent = N;
           }
-          if (this._setSelectedCountryTitleAttribute(l, d), d) {
-            const N = this.selectedCountryData.dialCode ? `+${this.selectedCountryData.dialCode}` : "";
-            this.selectedDialCode.innerHTML = N;
-            const S = this.selectedCountry.offsetWidth || this._getHiddenSelectedCountryWidth();
-            this.isRTL ? this.telInput.style.paddingRight = `${S + 6}px` : this.telInput.style.paddingLeft = `${S + 6}px`;
+          if (this._setSelectedCountryTitleAttribute(a, u), u) {
+            const v = this.selectedCountryData.dialCode ? `+${this.selectedCountryData.dialCode}` : "";
+            this.selectedDialCode.innerHTML = v, this._updateInputPadding();
           }
-          if (this._updatePlaceholder(), this._updateMaxLength(), a && !m) {
-            const N = this.activeItem;
-            if (N && (N.classList.remove("iti__active"), N.setAttribute("aria-selected", "false")), l) {
-              const S = this.countryList.querySelector(
-                `#iti-${this.id}__item-${l}-preferred`
-              ) || this.countryList.querySelector(
-                `#iti-${this.id}__item-${l}`
-              );
-              S && (S.setAttribute("aria-selected", "true"), S.classList.add("iti__active"), this.activeItem = S);
-            }
-          }
-          return E.iso2 !== l;
+          return this._updatePlaceholder(), this._updateMaxLength(), b.iso2 !== a;
         }
-        // update the maximum valid number length for the currently selected country
+        //* Update the input padding to make space for the selected country/dial code.
+        _updateInputPadding() {
+          if (this.selectedCountry) {
+            const u = (this.selectedCountry.offsetWidth || this._getHiddenSelectedCountryWidth()) + 6;
+            this.showSelectedCountryOnLeft ? this.telInput.style.paddingLeft = `${u}px` : this.telInput.style.paddingRight = `${u}px`;
+          }
+        }
+        //* Update the maximum valid number length for the currently selected country.
         _updateMaxLength() {
-          if (this.options.strictMode && window.intlTelInputUtils)
+          const { strictMode: a, placeholderNumberType: u, validationNumberType: c } = this.options;
+          if (a && C.utils)
             if (this.selectedCountryData.iso2) {
-              const l = window.intlTelInputUtils.numberType[this.options.placeholderNumberType];
-              let a = window.intlTelInputUtils.getExampleNumber(
+              const h = C.utils.numberType[u];
+              let b = C.utils.getExampleNumber(
                 this.selectedCountryData.iso2,
                 !1,
-                l,
+                h,
                 !0
-              ), d = a;
-              for (; window.intlTelInputUtils.isPossibleNumber(a, this.selectedCountryData.iso2); )
-                d = a, a += "0";
-              const h = window.intlTelInputUtils.getCoreNumber(d, this.selectedCountryData.iso2);
-              this.maxCoreNumberLength = h.length;
+              ), v = b;
+              for (; C.utils.isPossibleNumber(b, this.selectedCountryData.iso2, c); )
+                v = b, b += "0";
+              const N = C.utils.getCoreNumber(v, this.selectedCountryData.iso2);
+              this.maxCoreNumberLength = N.length;
             } else
               this.maxCoreNumberLength = null;
         }
-        _setSelectedCountryTitleAttribute(l = null, a) {
+        _setSelectedCountryTitleAttribute(a = null, u) {
           if (!this.selectedCountry)
             return;
-          let d;
-          l && !a ? d = `${this.selectedCountryData.name}: +${this.selectedCountryData.dialCode}` : l ? d = this.selectedCountryData.name : d = "Unknown", this.selectedCountry.setAttribute("title", d);
+          let c;
+          a && !u ? c = `${this.selectedCountryData.name}: +${this.selectedCountryData.dialCode}` : a ? c = this.selectedCountryData.name : c = "Unknown", this.selectedCountry.setAttribute("title", c);
         }
-        // when the input is in a hidden container during initialisation, we must inject some markup
-        // into the end of the DOM to calculate the correct offsetWidth
-        // NOTE: this is only used when showSelectedDialCode is enabled, so countryContainer and selectedCountry
-        // will definitely exist
+        //* When the input is in a hidden container during initialisation, we must inject some markup
+        //* into the end of the DOM to calculate the correct offsetWidth.
+        //* NOTE: this is only used when separateDialCode is enabled, so countryContainer and selectedCountry
+        //* will definitely exist.
         _getHiddenSelectedCountryWidth() {
           if (this.telInput.parentNode) {
-            const l = this.telInput.parentNode.cloneNode(!1);
-            l.style.visibility = "hidden", document.body.appendChild(l);
-            const a = this.countryContainer.cloneNode();
-            l.appendChild(a);
-            const d = this.selectedCountry.cloneNode(!0);
-            a.appendChild(d);
-            const h = d.offsetWidth;
-            return document.body.removeChild(l), h;
+            const a = this.telInput.parentNode.cloneNode(!1);
+            a.style.visibility = "hidden", document.body.appendChild(a);
+            const u = this.countryContainer.cloneNode();
+            a.appendChild(u);
+            const c = this.selectedCountry.cloneNode(!0);
+            u.appendChild(c);
+            const h = c.offsetWidth;
+            return document.body.removeChild(a), h;
           }
           return 0;
         }
-        // update the input placeholder to an example number from the currently selected country
+        //* Update the input placeholder to an example number from the currently selected country.
         _updatePlaceholder() {
           const {
-            autoPlaceholder: l,
-            placeholderNumberType: a,
-            nationalMode: d,
+            autoPlaceholder: a,
+            placeholderNumberType: u,
+            nationalMode: c,
             customPlaceholder: h
-          } = this.options, m = l === "aggressive" || !this.hadInitialPlaceholder && l === "polite";
-          if (window.intlTelInputUtils && m) {
-            const x = window.intlTelInputUtils.numberType[a];
-            let E = this.selectedCountryData.iso2 ? window.intlTelInputUtils.getExampleNumber(
+          } = this.options, b = a === "aggressive" || !this.hadInitialPlaceholder && a === "polite";
+          if (C.utils && b) {
+            const v = C.utils.numberType[u];
+            let N = this.selectedCountryData.iso2 ? C.utils.getExampleNumber(
               this.selectedCountryData.iso2,
-              d,
-              x
+              c,
+              v
             ) : "";
-            E = this._beforeSetNumber(E), typeof h == "function" && (E = h(E, this.selectedCountryData)), this.telInput.setAttribute("placeholder", E);
+            N = this._beforeSetNumber(N), typeof h == "function" && (N = h(N, this.selectedCountryData)), this.telInput.setAttribute("placeholder", N);
           }
         }
-        // called when the user selects a list item from the dropdown
-        _selectListItem(l) {
-          const a = this._setCountry(
-            l.getAttribute("data-country-code")
+        //* Called when the user selects a list item from the dropdown.
+        _selectListItem(a) {
+          const u = this._setCountry(
+            a.getAttribute("data-country-code")
           );
-          this._closeDropdown(), this._updateDialCode(l.getAttribute("data-dial-code")), this.telInput.focus(), a && this._triggerCountryChange();
+          this._closeDropdown(), this._updateDialCode(a.getAttribute("data-dial-code")), this.telInput.focus(), u && this._triggerCountryChange();
         }
-        // close the dropdown and unbind any listeners
+        //* Close the dropdown and unbind any listeners.
         _closeDropdown() {
           this.dropdownContent.classList.add("iti__hide"), this.selectedCountry.setAttribute("aria-expanded", "false"), this.selectedCountry.removeAttribute("aria-activedescendant"), this.highlightedItem && this.highlightedItem.setAttribute("aria-selected", "false"), this.options.countrySearch && this.searchInput.removeAttribute("aria-activedescendant"), this.dropdownArrow.classList.remove("iti__arrow--up"), document.removeEventListener("keydown", this._handleKeydownOnDropdown), this.options.countrySearch && this.searchInput.removeEventListener("input", this._handleSearchChange), document.documentElement.removeEventListener(
             "click",
@@ -7981,42 +8185,39 @@ var So = { exports: {} };
             this._handleMouseoverCountryList
           ), this.countryList.removeEventListener("click", this._handleClickCountryList), this.options.dropdownContainer && (this.options.useFullscreenPopup || window.removeEventListener("scroll", this._handleWindowScroll), this.dropdown.parentNode && this.dropdown.parentNode.removeChild(this.dropdown)), this._trigger("close:countrydropdown");
         }
-        // check if an element is visible within it's container, else scroll until it is
-        _scrollTo(l, a) {
-          const d = this.countryList, h = document.documentElement.scrollTop, m = d.offsetHeight, x = d.getBoundingClientRect().top + h, E = x + m, N = l.offsetHeight, S = l.getBoundingClientRect().top + h, J = S + N;
-          let ee = S - x + d.scrollTop;
-          const te = m / 2 - N / 2;
-          if (S < x)
-            a && (ee -= te), d.scrollTop = ee;
-          else if (J > E) {
-            a && (ee += te);
-            const et = m - N;
-            d.scrollTop = ee - et;
+        //* Check if an element is visible within it's container, else scroll until it is.
+        _scrollTo(a) {
+          const u = this.countryList, c = document.documentElement.scrollTop, h = u.offsetHeight, b = u.getBoundingClientRect().top + c, v = b + h, N = a.offsetHeight, P = a.getBoundingClientRect().top + c, re = P + N, q = P - b + u.scrollTop;
+          if (P < b)
+            u.scrollTop = q;
+          else if (re > v) {
+            const oe = h - N;
+            u.scrollTop = q - oe;
           }
         }
-        // replace any existing dial code with the new one
-        // Note: called from _selectListItem and setCountry
-        _updateDialCode(l) {
-          const a = this.telInput.value, d = `+${l}`;
+        //* Replace any existing dial code with the new one
+        //* Note: called from _selectListItem and setCountry
+        _updateDialCode(a) {
+          const u = this.telInput.value, c = `+${a}`;
           let h;
-          if (a.charAt(0) === "+") {
-            const m = this._getDialCode(a);
-            m ? h = a.replace(m, d) : h = d, this.telInput.value = h;
+          if (u.charAt(0) === "+") {
+            const b = this._getDialCode(u);
+            b ? h = u.replace(b, c) : h = c, this.telInput.value = h;
           }
         }
-        // try and extract a valid international dial code from a full telephone number
-        // Note: returns the raw string inc plus character and any whitespace/dots etc
-        _getDialCode(l, a) {
-          let d = "";
-          if (l.charAt(0) === "+") {
+        //* Try and extract a valid international dial code from a full telephone number.
+        //* Note: returns the raw string inc plus character and any whitespace/dots etc.
+        _getDialCode(a, u) {
+          let c = "";
+          if (a.charAt(0) === "+") {
             let h = "";
-            for (let m = 0; m < l.length; m++) {
-              const x = l.charAt(m);
-              if (!isNaN(parseInt(x, 10))) {
-                if (h += x, a)
-                  this.dialCodeToIso2Map[h] && (d = l.substr(0, m + 1));
+            for (let b = 0; b < a.length; b++) {
+              const v = a.charAt(b);
+              if (!isNaN(parseInt(v, 10))) {
+                if (h += v, u)
+                  this.dialCodeToIso2Map[h] && (c = a.substr(0, b + 1));
                 else if (this.dialCodes[h]) {
-                  d = l.substr(0, m + 1);
+                  c = a.substr(0, b + 1);
                   break;
                 }
                 if (h.length === this.dialCodeMaxLen)
@@ -8024,56 +8225,56 @@ var So = { exports: {} };
               }
             }
           }
-          return d;
+          return c;
         }
-        // get the input val, adding the dial code if showSelectedDialCode is enabled
+        //* Get the input val, adding the dial code if separateDialCode is enabled.
         _getFullNumber() {
-          const l = this.telInput.value.trim(), { dialCode: a } = this.selectedCountryData;
-          let d;
-          const h = k(l);
-          return this.options.showSelectedDialCode && !this.options.nationalMode && l.charAt(0) !== "+" && a && h ? d = `+${a}` : d = "", d + l;
+          const a = this.telInput.value.trim(), { dialCode: u } = this.selectedCountryData;
+          let c;
+          const h = F(a);
+          return this.options.separateDialCode && a.charAt(0) !== "+" && u && h ? c = `+${u}` : c = "", c + a;
         }
-        // remove the dial code if showSelectedDialCode is enabled
-        // also cap the length if the input has a maxlength attribute
-        _beforeSetNumber(l) {
-          let a = l;
-          if (this.options.showSelectedDialCode) {
-            let d = this._getDialCode(a);
-            if (d) {
-              d = `+${this.selectedCountryData.dialCode}`;
-              const h = a[d.length] === " " || a[d.length] === "-" ? d.length + 1 : d.length;
-              a = a.substr(h);
+        //* Remove the dial code if separateDialCode is enabled also cap the length if the input has a maxlength attribute
+        _beforeSetNumber(a) {
+          let u = a;
+          if (this.options.separateDialCode) {
+            let c = this._getDialCode(u);
+            if (c) {
+              c = `+${this.selectedCountryData.dialCode}`;
+              const h = u[c.length] === " " || u[c.length] === "-" ? c.length + 1 : c.length;
+              u = u.substr(h);
             }
           }
-          return this._cap(a);
+          return this._cap(u);
         }
-        // trigger the 'countrychange' event
+        //* Trigger the 'countrychange' event.
         _triggerCountryChange() {
           this._trigger("countrychange");
         }
-        // format the number as the user types
+        //* Format the number as the user types.
         _formatNumberAsYouType() {
-          const l = this._getFullNumber(), a = window.intlTelInputUtils ? window.intlTelInputUtils.formatNumberAsYouType(l, this.selectedCountryData.iso2) : l, { dialCode: d } = this.selectedCountryData;
-          return this.options.showSelectedDialCode && !this.options.nationalMode && this.telInput.value.charAt(0) !== "+" && a.includes(`+${d}`) ? (a.split(`+${d}`)[1] || "").trim() : a;
+          const a = this._getFullNumber(), u = C.utils ? C.utils.formatNumberAsYouType(a, this.selectedCountryData.iso2) : a, { dialCode: c } = this.selectedCountryData;
+          return this.options.separateDialCode && this.telInput.value.charAt(0) !== "+" && u.includes(`+${c}`) ? (u.split(`+${c}`)[1] || "").trim() : u;
         }
         //**************************
         //*  SECRET PUBLIC METHODS
         //**************************
-        // this is called when the geoip call returns
+        //* This is called when the geoip call returns.
         handleAutoCountry() {
-          this.options.initialCountry === "auto" && window.intlTelInputGlobals.autoCountry && (this.defaultCountry = window.intlTelInputGlobals.autoCountry, this.telInput.value || this.setCountry(this.defaultCountry), this.resolveAutoCountryPromise());
+          this.options.initialCountry === "auto" && C.autoCountry && (this.defaultCountry = C.autoCountry, this.selectedCountryData.iso2 || this.selectedCountryInner.classList.contains("iti__globe") || this.setCountry(this.defaultCountry), this.resolveAutoCountryPromise());
         }
-        // this is called when the utils request completes
+        //* This is called when the utils request completes.
         handleUtils() {
-          window.intlTelInputUtils && (this.telInput.value && this._updateValFromNumber(this.telInput.value), this.selectedCountryData.iso2 && (this._updatePlaceholder(), this._updateMaxLength())), this.resolveUtilsScriptPromise();
+          C.utils && (this.telInput.value && this._updateValFromNumber(this.telInput.value), this.selectedCountryData.iso2 && (this._updatePlaceholder(), this._updateMaxLength())), this.resolveUtilsScriptPromise();
         }
         //********************
         //*  PUBLIC METHODS
         //********************
-        // remove plugin
+        //* Remove plugin.
         destroy() {
-          var d, h;
-          if (this.options.allowDropdown) {
+          var b, v;
+          const { allowDropdown: a, separateDialCode: u } = this.options;
+          if (a) {
             this._closeDropdown(), this.selectedCountry.removeEventListener(
               "click",
               this._handleClickSelectedCountry
@@ -8081,118 +8282,138 @@ var So = { exports: {} };
               "keydown",
               this._handleCountryContainerKeydown
             );
-            const m = this.telInput.closest("label");
-            m && m.removeEventListener("click", this._handleLabelClick);
+            const N = this.telInput.closest("label");
+            N && N.removeEventListener("click", this._handleLabelClick);
           }
-          const { form: l } = this.telInput;
-          this._handleHiddenInputSubmit && l && l.removeEventListener("submit", this._handleHiddenInputSubmit), this.telInput.removeEventListener("input", this._handleInputEvent), this._handleKeydownEvent && this.telInput.removeEventListener("keydown", this._handleKeydownEvent), this.telInput.removeAttribute("data-intl-tel-input-id");
-          const a = this.telInput.parentNode;
-          (d = a == null ? void 0 : a.parentNode) == null || d.insertBefore(this.telInput, a), (h = a == null ? void 0 : a.parentNode) == null || h.removeChild(a), delete window.intlTelInputGlobals.instances[this.id];
+          const { form: c } = this.telInput;
+          this._handleHiddenInputSubmit && c && c.removeEventListener("submit", this._handleHiddenInputSubmit), this.telInput.removeEventListener("input", this._handleInputEvent), this._handleKeydownEvent && this.telInput.removeEventListener("keydown", this._handleKeydownEvent), this.telInput.removeAttribute("data-intl-tel-input-id"), u && (this.isRTL ? this.telInput.style.paddingRight = this.originalPaddingRight : this.telInput.style.paddingLeft = this.originalPaddingLeft);
+          const h = this.telInput.parentNode;
+          (b = h == null ? void 0 : h.parentNode) == null || b.insertBefore(this.telInput, h), (v = h == null ? void 0 : h.parentNode) == null || v.removeChild(h), delete C.instances[this.id];
         }
-        // get the extension from the current number
+        //* Get the extension from the current number.
         getExtension() {
-          return window.intlTelInputUtils ? window.intlTelInputUtils.getExtension(
+          return C.utils ? C.utils.getExtension(
             this._getFullNumber(),
             this.selectedCountryData.iso2
           ) : "";
         }
-        // format the number to the given format
-        getNumber(l) {
-          if (window.intlTelInputUtils) {
-            const { iso2: a } = this.selectedCountryData;
-            return window.intlTelInputUtils.formatNumber(
+        //* Format the number to the given format.
+        getNumber(a) {
+          if (C.utils) {
+            const { iso2: u } = this.selectedCountryData;
+            return C.utils.formatNumber(
               this._getFullNumber(),
-              a,
-              l
+              u,
+              a
             );
           }
           return "";
         }
-        // get the type of the entered number e.g. landline/mobile
+        //* Get the type of the entered number e.g. landline/mobile.
         getNumberType() {
-          return window.intlTelInputUtils ? window.intlTelInputUtils.getNumberType(
+          return C.utils ? C.utils.getNumberType(
             this._getFullNumber(),
             this.selectedCountryData.iso2
           ) : -99;
         }
-        // get the country data for the currently selected country
+        //* Get the country data for the currently selected country.
         getSelectedCountryData() {
           return this.selectedCountryData;
         }
-        // get the validation error
+        //* Get the validation error.
         getValidationError() {
-          if (window.intlTelInputUtils) {
-            const { iso2: l } = this.selectedCountryData;
-            return window.intlTelInputUtils.getValidationError(this._getFullNumber(), l);
+          if (C.utils) {
+            const { iso2: a } = this.selectedCountryData;
+            return C.utils.getValidationError(this._getFullNumber(), a);
           }
           return -99;
         }
-        // validate the input val - assumes the global function isPossibleNumber (from utilsScript)
-        isValidNumber(l = !0) {
-          const a = this._getFullNumber();
-          return new RegExp("\\p{L}", "u").test(a) ? !1 : window.intlTelInputUtils ? window.intlTelInputUtils.isPossibleNumber(a, this.selectedCountryData.iso2, l) : null;
+        //* Validate the input val
+        isValidNumber() {
+          if (!this.selectedCountryData.iso2)
+            return !1;
+          const a = this._getFullNumber(), u = a.search(new RegExp("\\p{L}", "u"));
+          if (u > -1) {
+            const c = a.substring(0, u), h = this._utilsIsPossibleNumber(c), b = this._utilsIsPossibleNumber(a);
+            return h && b;
+          }
+          return this._utilsIsPossibleNumber(a);
         }
-        // validate the input val (precise) - assumes the global function isValidNumber (from utilsScript)
+        _utilsIsPossibleNumber(a) {
+          return C.utils ? C.utils.isPossibleNumber(a, this.selectedCountryData.iso2, this.options.validationNumberType) : null;
+        }
+        //* Validate the input val (precise)
         isValidNumberPrecise() {
-          const l = this._getFullNumber();
-          return new RegExp("\\p{L}", "u").test(l) ? !1 : window.intlTelInputUtils ? window.intlTelInputUtils.isValidNumber(l, this.selectedCountryData.iso2) : null;
+          if (!this.selectedCountryData.iso2)
+            return !1;
+          const a = this._getFullNumber(), u = a.search(new RegExp("\\p{L}", "u"));
+          if (u > -1) {
+            const c = a.substring(0, u), h = this._utilsIsValidNumber(c), b = this._utilsIsValidNumber(a);
+            return h && b;
+          }
+          return this._utilsIsValidNumber(a);
         }
-        // update the selected country, and update the input val accordingly
-        setCountry(l) {
-          const a = l.toLowerCase();
-          this.selectedCountryData.iso2 !== a && (this._setCountry(a), this._updateDialCode(this.selectedCountryData.dialCode), this._triggerCountryChange());
+        _utilsIsValidNumber(a) {
+          return C.utils ? C.utils.isValidNumber(a, this.selectedCountryData.iso2) : null;
         }
-        // set the input value and update the country
-        setNumber(l) {
-          const a = this._updateCountryFromNumber(l);
-          this._updateValFromNumber(l), a && this._triggerCountryChange();
+        //* Update the selected country, and update the input val accordingly.
+        setCountry(a) {
+          const u = a == null ? void 0 : a.toLowerCase(), c = this.selectedCountryData.iso2;
+          (a && u !== c || !a && c) && (this._setCountry(u), this._updateDialCode(this.selectedCountryData.dialCode), this._triggerCountryChange());
         }
-        // set the placeholder number typ
-        setPlaceholderNumberType(l) {
-          this.options.placeholderNumberType = l, this._updatePlaceholder();
+        //* Set the input value and update the country.
+        setNumber(a) {
+          const u = this._updateCountryFromNumber(a);
+          this._updateValFromNumber(a), u && this._triggerCountryChange(), this._trigger("input", { isSetNumber: !0 });
         }
-      }, X = (l, a, d) => {
-        const h = document.createElement("script");
-        h.onload = () => {
-          q("handleUtils"), a && a();
-        }, h.onerror = () => {
-          q("rejectUtilsScriptPromise"), d && d();
-        }, h.className = "iti-load-utils", h.async = !0, h.src = l, document.body.appendChild(h);
-      }, H = (l) => !window.intlTelInputUtils && !window.intlTelInputGlobals.startedLoadingUtilsScript ? (window.intlTelInputGlobals.startedLoadingUtilsScript = !0, new Promise(
-        (a, d) => X(l, a, d)
-      )) : null;
-      if (typeof window == "object") {
-        const l = {
-          defaults: C,
-          // using a global like this allows us to mock it in the tests
+        //* Set the placeholder number typ
+        setPlaceholderNumberType(a) {
+          this.options.placeholderNumberType = a, this._updatePlaceholder();
+        }
+        setDisabled(a) {
+          this.telInput.disabled = a, a ? this.selectedCountry.setAttribute("disabled", "true") : this.selectedCountry.removeAttribute("disabled");
+        }
+      }, j = (a) => !C.utils && !C.startedLoadingUtilsScript ? (C.startedLoadingUtilsScript = !0, new Promise((u, c) => {
+        import(
+          /* webpackIgnore: true */
+          /* @vite-ignore */
+          a
+        ).then(({ default: h }) => {
+          C.utils = h, M("handleUtils"), u(!0);
+        }).catch(() => {
+          M("rejectUtilsScriptPromise"), c();
+        });
+      })) : null, C = Object.assign(
+        (a, u) => {
+          const c = new A(a, u);
+          return c._init(), a.setAttribute("data-intl-tel-input-id", c.id.toString()), C.instances[c.id] = c, c;
+        },
+        {
+          defaults: V,
+          //* Using a static var like this allows us to mock it in the tests.
           documentReady: () => document.readyState === "complete",
-          // get the country data object
-          getCountryData: () => b,
-          // a getter for the plugin instance
+          //* Get the country data object.
+          getCountryData: () => m,
+          //* A getter for the plugin instance.
           getInstance: (a) => {
-            const d = a.getAttribute("data-intl-tel-input-id");
-            return d ? l.instances[d] : null;
+            const u = a.getAttribute("data-intl-tel-input-id");
+            return u ? C.instances[u] : null;
           },
-          // a map from instance ID to instance object
+          //* A map from instance ID to instance object.
           instances: {},
-          loadUtils: H,
-          version: "21.0.4"
-        };
-        window.intlTelInputGlobals = l;
-      }
-      var F = (l, a) => {
-        const d = new Z(l, a);
-        return d._init(), l.setAttribute("data-intl-tel-input-id", d.id.toString()), window.intlTelInputGlobals.instances[d.id] = d, d;
-      }, A = F;
-      return c(p);
+          loadUtils: j,
+          version: "24.4.0"
+        }
+      ), te = C;
+      return d(p);
     })();
     return t.default;
   });
-})(So);
-var Cu = So.exports;
-const ku = /* @__PURE__ */ xu(Cu), $u = ["placeholder", "data-testid"], Fu = {
+})(No);
+var Su = No.exports;
+const Iu = /* @__PURE__ */ $u(Su), Tu = ["placeholder", "data-testid"], Hu = {
   __name: "TwcPhoneInput",
-  props: /* @__PURE__ */ ct({
+  props: /* @__PURE__ */ gt({
     ipInfoKey: {
       type: String,
       default: ""
@@ -8216,45 +8437,46 @@ const ku = /* @__PURE__ */ xu(Cu), $u = ["placeholder", "data-testid"], Fu = {
     },
     modelModifiers: {}
   }),
-  emits: /* @__PURE__ */ ct(["change", "update:modelValue"], ["update:modelValue"]),
+  emits: /* @__PURE__ */ gt(["change", "update:modelValue"], ["update:modelValue"]),
   setup(e, { emit: t }) {
-    const r = oe(null), o = oe(null), n = oe(!1), i = qr(e, "modelValue"), s = e, u = t;
-    function c() {
-      n.value = o.value.isValidNumber(), n.value ? u("change", r.value.value, !0, o.value.getNumber()) : u("change", r.value.value, !1);
+    const r = ie(null), o = ie(null), n = ie(!1), i = Yr(e, "modelValue"), s = e, l = t;
+    function d() {
+      n.value = o.value.isValidNumber(), n.value ? l("change", r.value.value, !0, o.value.getNumber()) : l("change", r.value.value, !1);
     }
-    const p = w(() => {
+    const p = x(() => {
       let g = "TwcPhoneInput mt-1 !text-base bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-sm iti__tel-input";
       return n.value && (g += " border-green-500 focus:border-green-500 focus:outline-green-500 focus:ring-green-500 bg-green-50"), s.displayError && (g += " border-red-500 focus:border-red-500 focus:outline-red-500 bg-red-50"), g;
     });
-    return yt(() => {
+    return _t(() => {
       const g = (f) => {
         localStorage != null && localStorage.getItem("ipCountry") ? f(localStorage.getItem("ipCountry")) : s.ipInfoKey ? fetch(`https://ipinfo.io/json?token=${s.ipInfoKey}`, {
           headers: { Accept: "application/json" }
-        }).then((b) => b.json()).then((b) => {
-          f(b.country), localStorage == null || localStorage.setItem("ipCountry", b.country);
+        }).then((m) => m.json()).then((m) => {
+          f(m.country), localStorage == null || localStorage.setItem("ipCountry", m.country);
         }).catch(() => {
           f("US");
         }) : f("US");
       };
-      o.value = ku(r.value, {
+      o.value = Iu(r.value, {
         initialCountry: "auto",
         geoIpLookup: g,
-        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/19.5.7/js/utils.js"
+        autoPlaceholder: "off",
+        utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@24.4.0/build/js/utils.js"
       });
-    }), (g, f) => vt((v(), L("input", {
-      "onUpdate:modelValue": f[0] || (f[0] = (b) => i.value = b),
+    }), (g, f) => Ct((w(), L("input", {
+      "onUpdate:modelValue": f[0] || (f[0] = (m) => i.value = m),
       ref_key: "phoneInput",
       ref: r,
       type: "tel",
       placeholder: g.$props.placeholder,
-      class: R(p.value),
+      class: H(p.value),
       "data-testid": g.$props.dataTestid,
-      onInput: c
-    }, null, 42, $u)), [
-      [Jo, i.value]
+      onInput: d
+    }, null, 42, Tu)), [
+      [Xo, i.value]
     ]);
   }
-}, Ru = {
+}, Vu = {
   __name: "TwcSpinner",
   props: {
     color: {
@@ -8286,12 +8508,12 @@ const ku = /* @__PURE__ */ xu(Cu), $u = ["placeholder", "data-testid"], Fu = {
           return "!animate-[spin_0.75s_linear_infinite]";
       }
     }
-    return (o, n) => (v(), L("div", {
-      class: R(`h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-surface ${r()} ${t.color} ${t.class}`),
+    return (o, n) => (w(), L("div", {
+      class: H(`h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-surface ${r()} ${t.color} ${t.class}`),
       role: "status"
     }, null, 2));
   }
-}, Hu = {
+}, Wu = {
   __name: "TwcIcon",
   props: {
     type: {
@@ -8324,24 +8546,24 @@ const ku = /* @__PURE__ */ xu(Cu), $u = ["placeholder", "data-testid"], Fu = {
     function r() {
       return t.custom ? `fa-kit fa-${t.icon} fa-${t.size}` : `${t.sharp ? "fa-sharp " : ""}fa-${t.type} fa-${t.icon} fa-${t.size}`;
     }
-    return (o, n) => (v(), L("i", {
-      class: R(`${r()} ${t.class}`)
+    return (o, n) => (w(), L("i", {
+      class: H(`${r()} ${t.class}`)
     }, null, 2));
   }
-}, Iu = {
+}, Pu = {
   __name: "TwcAccordionTable",
   setup(e) {
-    return (t, r) => (v(), Q(T(Zo), { class: "TwcAccordionTable" }, {
-      default: Y(() => [
-        M(t.$slots, "default", {}, void 0, !0)
+    return (t, r) => (w(), Q(T(tn), { class: "TwcAccordionTable" }, {
+      default: Z(() => [
+        z(t.$slots, "default", {}, void 0, !0)
       ]),
       _: 3
     }));
   }
-}, Vu = /* @__PURE__ */ Be(Iu, [["__scopeId", "data-v-7d937965"]]), Tu = { class: "flex" }, Su = {
+}, Gu = /* @__PURE__ */ Ve(Pu, [["__scopeId", "data-v-7d937965"]]), Lu = { class: "flex" }, Au = {
   key: 0,
   class: "flex-1 mr-5"
-}, Lu = {
+}, Nu = {
   __name: "TwcAccordionTableRow",
   props: {
     data: {
@@ -8351,25 +8573,25 @@ const ku = /* @__PURE__ */ xu(Cu), $u = ["placeholder", "data-testid"], Fu = {
     }
   },
   setup(e) {
-    return (t, r) => (v(), Q(T(Bn), { class: "TwcAccordionTableRow" }, {
-      default: Y(() => [
-        We(T(Mn), null, {
-          default: Y(() => [
-            j("div", Tu, [
-              (v(!0), L(De, null, Wr(e.data, (o, n) => (v(), L("div", {
+    return (t, r) => (w(), Q(T(Fn), { class: "TwcAccordionTableRow" }, {
+      default: Z(() => [
+        Ye(T(jn), null, {
+          default: Z(() => [
+            R("div", Lu, [
+              (w(!0), L(Be, null, Jr(e.data, (o, n) => (w(), L("div", {
                 key: n,
                 class: "flex-1 self-center first:font-bold uppercase"
-              }, re(o), 1))), 128)),
-              t.$slots.action ? (v(), L("div", Su, [
-                M(t.$slots, "action", {}, void 0, !0)
-              ])) : W("", !0)
+              }, ne(o), 1))), 128)),
+              t.$slots.action ? (w(), L("div", Au, [
+                z(t.$slots, "action", {}, void 0, !0)
+              ])) : U("", !0)
             ])
           ]),
           _: 3
         }),
-        We(T(Ln), null, {
-          default: Y(() => [
-            M(t.$slots, "default", {}, void 0, !0)
+        Ye(T(Nn), null, {
+          default: Z(() => [
+            z(t.$slots, "default", {}, void 0, !0)
           ]),
           _: 3
         })
@@ -8377,19 +8599,19 @@ const ku = /* @__PURE__ */ xu(Cu), $u = ["placeholder", "data-testid"], Fu = {
       _: 3
     }));
   }
-}, Uu = /* @__PURE__ */ Be(Lu, [["__scopeId", "data-v-3a028803"]]);
+}, Uu = /* @__PURE__ */ Ve(Nu, [["__scopeId", "data-v-3a028803"]]);
 export {
-  Vu as TwcAccordionTable,
+  Gu as TwcAccordionTable,
   Uu as TwcAccordionTableRow,
-  Nu as TwcButton,
+  zu as TwcButton,
   Eu as TwcHeading,
-  Hu as TwcIcon,
-  zu as TwcInput,
-  Mu as TwcLabel,
-  Ou as TwcLink,
-  Bu as TwcParagraph,
-  Fu as TwcPhoneInput,
-  ju as TwcSelect,
-  Ru as TwcSpinner,
-  Du as TwcToggle
+  Wu as TwcIcon,
+  Mu as TwcInput,
+  Bu as TwcLabel,
+  ju as TwcLink,
+  Ru as TwcParagraph,
+  Hu as TwcPhoneInput,
+  Fu as TwcSelect,
+  Vu as TwcSpinner,
+  Ou as TwcToggle
 };
