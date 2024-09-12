@@ -89,7 +89,7 @@ onMounted(() => {
     initialCountry: "auto",
     geoIpLookup: getIp,
     autoPlaceholder: 'off',
-    utilsScript: 'https://cdn.jsdelivr.net/npm/intl-tel-input@24.4.0/build/js/utils.js'
+    utilsScript: process.env.NODE_ENV == 'test' ? '' : 'https://cdn.jsdelivr.net/npm/intl-tel-input@24.4.0/build/js/utils.js'
   })
 })
 </script>
