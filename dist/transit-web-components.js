@@ -1,106 +1,82 @@
-import { reactive as zo, defineComponent as K, useAttrs as Kt, openBlock as w, createElementBlock as L, mergeProps as Re, unref as T, createTextVNode as dt, toDisplayString as ne, createBlock as Q, resolveDynamicComponent as xt, normalizeClass as H, withCtx as Z, ref as ie, provide as Eo, h as it, TransitionGroup as Oo, pushScopeId as Mo, popScopeId as Bo, toRefs as Ce, renderSlot as z, createCommentVNode as U, createElementVNode as R, nextTick as jo, onMounted as _t, computed as x, resolveComponent as ft, normalizeProps as rt, Fragment as Be, Comment as Ro, withDirectives as Ct, isRef as Qr, vModelDynamic as Fo, renderList as Jr, vModelSelect as Ho, vModelCheckbox as Vo, onBeforeMount as Wo, onBeforeUnmount as Go, useSlots as Uo, getCurrentInstance as qo, watch as ar, guardReactiveProps as kt, withScopeId as Ko, normalizeStyle as Dt, withKeys as Qo, createVNode as Ye, getCurrentScope as Jo, onScopeDispose as Yo, inject as Zo, mergeModels as gt, useModel as Yr, createSlots as Zr, vModelText as Xo } from "vue";
-let Xr = (e = 21) => crypto.getRandomValues(new Uint8Array(e)).reduce((t, r) => (r &= 63, r < 36 ? t += r.toString(36) : r < 62 ? t += (r - 26).toString(36).toUpperCase() : r > 62 ? t += "-" : t += "_", t), "");
-const zt = zo({});
-function ot(e, t) {
-  return Wo(() => {
-    e && (zt[e] = {
-      id: e,
-      flush: (t == null ? void 0 : t.flush) ?? !1,
-      alwaysOpen: (t == null ? void 0 : t.alwaysOpen) ?? !1,
-      openFirstItem: (t == null ? void 0 : t.openFirstItem) ?? !0,
-      panels: {}
-    });
-  }), Go(() => {
-    e && delete zt[e];
-  }), {
-    accordionsStates: zt
-  };
-}
-const en = ["data-accordion-id"], tn = /* @__PURE__ */ K({
-  __name: "FwbAccordion",
-  props: {
-    alwaysOpen: { type: Boolean, default: !1 },
-    openFirstItem: { type: Boolean, default: !0 },
-    flush: { type: Boolean, default: !1 }
+import { reactive as Yo, defineComponent as Z, useAttrs as or, createElementBlock as N, openBlock as x, mergeProps as Oe, unref as A, createTextVNode as yt, createBlock as ee, toDisplayString as de, resolveDynamicComponent as St, normalizeClass as H, withCtx as ie, h as dt, TransitionGroup as Jo, ref as ae, provide as Zo, pushScopeId as Qo, popScopeId as Xo, toRefs as Ie, createCommentVNode as Y, createElementVNode as U, renderSlot as j, nextTick as uo, Fragment as We, Comment as en, computed as v, normalizeProps as lt, guardReactiveProps as Tt, resolveComponent as vt, createVNode as tt, shallowRef as tn, readonly as rn, inject as on, toValue as nn, getCurrentScope as sn, onScopeDispose as an, withScopeId as ln, withKeys as un, normalizeStyle as Ot, watch as Ut, onMounted as It, mergeModels as rt, useModel as nr, withDirectives as At, vModelDynamic as dn, isRef as cn, renderList as co, vModelSelect as pn, vModelCheckbox as hn, onBeforeMount as fn, onBeforeUnmount as gn, useSlots as mn, getCurrentInstance as yn, createSlots as po, vModelText as bn } from "vue";
+const vn = "useandom-26T198340PX75pxJACKVERYMINDBUSHWOLF_GQZbfghjklqvwyzrict";
+let ho = (e = 21) => {
+  let t = "", r = crypto.getRandomValues(new Uint8Array(e |= 0));
+  for (; e--; )
+    t += vn[r[e] & 63];
+  return t;
+};
+const ct = Yo({}), Pt = (e, t) => (fn(() => {
+  e && (ct[e] = {
+    id: e,
+    collapsed: t?.collapsed ?? !1,
+    flushed: t?.flushed ?? !1,
+    persistent: t?.persistent ?? !1,
+    panels: []
+  });
+}), gn(() => {
+  e && delete ct[e];
+}), {
+  accordionStates: ct,
+  getAccordionState: ({ element: r }) => {
+    const o = r.value && r.value.closest("[data-accordion-id]")?.dataset.accordionId;
+    return o ? ct[o] : null;
   },
-  setup(e) {
-    const t = e, r = Xr();
-    return ot(r, { ...t }), (o, n) => (w(), L("div", { "data-accordion-id": T(r) }, [
-      z(o.$slots, "default")
-    ], 8, en));
-  }
-});
-function rn() {
-  for (var e = 0, t, r, o = ""; e < arguments.length; )
-    (t = arguments[e++]) && (r = eo(t)) && (o && (o += " "), o += r);
-  return o;
-}
-function eo(e) {
-  if (typeof e == "string")
-    return e;
-  for (var t, r = "", o = 0; o < e.length; o++)
-    e[o] && (t = eo(e[o])) && (r && (r += " "), r += t);
-  return r;
-}
-var Qt = "-";
-function on(e) {
-  var t = sn(e), r = e.conflictingClassGroups, o = e.conflictingClassGroupModifiers, n = o === void 0 ? {} : o;
-  function i(l) {
-    var d = l.split(Qt);
-    return d[0] === "" && d.length !== 1 && d.shift(), to(d, t) || nn(l);
-  }
-  function s(l, d) {
-    var p = r[l] || [];
-    return d && n[l] ? [].concat(p, n[l]) : p;
-  }
+  getAccordionPanelState: ({ accordionState: r, panelId: o }) => r?.value.panels.find((n) => n.id === o) ?? null
+}), ir = "-", wn = (e) => {
+  const t = kn(e), {
+    conflictingClassGroups: r,
+    conflictingClassGroupModifiers: o
+  } = e;
   return {
-    getClassGroupId: i,
-    getConflictingClassGroupIds: s
+    getClassGroupId: (n) => {
+      const i = n.split(ir);
+      return i[0] === "" && i.length !== 1 && i.shift(), fo(i, t) || xn(n);
+    },
+    getConflictingClassGroupIds: (n, i) => {
+      const s = r[n] || [];
+      return i && o[n] ? [...s, ...o[n]] : s;
+    }
   };
-}
-function to(e, t) {
-  var s;
+}, fo = (e, t) => {
   if (e.length === 0)
     return t.classGroupId;
-  var r = e[0], o = t.nextPart.get(r), n = o ? to(e.slice(1), o) : void 0;
+  const r = e[0], o = t.nextPart.get(r), n = o ? fo(e.slice(1), o) : void 0;
   if (n)
     return n;
-  if (t.validators.length !== 0) {
-    var i = e.join(Qt);
-    return (s = t.validators.find(function(l) {
-      var d = l.validator;
-      return d(i);
-    })) == null ? void 0 : s.classGroupId;
-  }
-}
-var lr = /^\[(.+)\]$/;
-function nn(e) {
-  if (lr.test(e)) {
-    var t = lr.exec(e)[1], r = t == null ? void 0 : t.substring(0, t.indexOf(":"));
+  if (t.validators.length === 0)
+    return;
+  const i = e.join(ir);
+  return t.validators.find(({
+    validator: s
+  }) => s(i))?.classGroupId;
+}, vr = /^\[(.+)\]$/, xn = (e) => {
+  if (vr.test(e)) {
+    const t = vr.exec(e)[1], r = t?.substring(0, t.indexOf(":"));
     if (r)
       return "arbitrary.." + r;
   }
-}
-function sn(e) {
-  var t = e.theme, r = e.prefix, o = {
+}, kn = (e) => {
+  const {
+    theme: t,
+    classGroups: r
+  } = e, o = {
     nextPart: /* @__PURE__ */ new Map(),
     validators: []
-  }, n = ln(Object.entries(e.classGroups), r);
-  return n.forEach(function(i) {
-    var s = i[0], l = i[1];
-    jt(l, o, s, t);
-  }), o;
-}
-function jt(e, t, r, o) {
-  e.forEach(function(n) {
+  };
+  for (const n in r)
+    qt(r[n], o, n, t);
+  return o;
+}, qt = (e, t, r, o) => {
+  e.forEach((n) => {
     if (typeof n == "string") {
-      var i = n === "" ? t : ur(t, n);
+      const i = n === "" ? t : wr(t, n);
       i.classGroupId = r;
       return;
     }
     if (typeof n == "function") {
-      if (an(n)) {
-        jt(n(o), t, r, o);
+      if (_n(n)) {
+        qt(n(o), t, r, o);
         return;
       }
       t.validators.push({
@@ -109,297 +85,277 @@ function jt(e, t, r, o) {
       });
       return;
     }
-    Object.entries(n).forEach(function(s) {
-      var l = s[0], d = s[1];
-      jt(d, ur(t, l), r, o);
+    Object.entries(n).forEach(([i, s]) => {
+      qt(s, wr(t, i), r, o);
     });
   });
-}
-function ur(e, t) {
-  var r = e;
-  return t.split(Qt).forEach(function(o) {
+}, wr = (e, t) => {
+  let r = e;
+  return t.split(ir).forEach((o) => {
     r.nextPart.has(o) || r.nextPart.set(o, {
       nextPart: /* @__PURE__ */ new Map(),
       validators: []
     }), r = r.nextPart.get(o);
   }), r;
-}
-function an(e) {
-  return e.isThemeGetter;
-}
-function ln(e, t) {
-  return t ? e.map(function(r) {
-    var o = r[0], n = r[1], i = n.map(function(s) {
-      return typeof s == "string" ? t + s : typeof s == "object" ? Object.fromEntries(Object.entries(s).map(function(l) {
-        var d = l[0], p = l[1];
-        return [t + d, p];
-      })) : s;
-    });
-    return [o, i];
-  }) : e;
-}
-function un(e) {
+}, _n = (e) => e.isThemeGetter, Cn = (e) => {
   if (e < 1)
     return {
-      get: function() {
+      get: () => {
       },
-      set: function() {
+      set: () => {
       }
     };
-  var t = 0, r = /* @__PURE__ */ new Map(), o = /* @__PURE__ */ new Map();
-  function n(i, s) {
+  let t = 0, r = /* @__PURE__ */ new Map(), o = /* @__PURE__ */ new Map();
+  const n = (i, s) => {
     r.set(i, s), t++, t > e && (t = 0, o = r, r = /* @__PURE__ */ new Map());
-  }
+  };
   return {
-    get: function(i) {
-      var s = r.get(i);
+    get(i) {
+      let s = r.get(i);
       if (s !== void 0)
         return s;
       if ((s = o.get(i)) !== void 0)
         return n(i, s), s;
     },
-    set: function(i, s) {
+    set(i, s) {
       r.has(i) ? r.set(i, s) : n(i, s);
     }
   };
-}
-var ro = "!";
-function dn(e) {
-  var t = e.separator || ":", r = t.length === 1, o = t[0], n = t.length;
-  return function(i) {
-    for (var s = [], l = 0, d = 0, p, g = 0; g < i.length; g++) {
-      var f = i[g];
-      if (l === 0) {
-        if (f === o && (r || i.slice(g, g + n) === t)) {
-          s.push(i.slice(d, g)), d = g + n;
+}, Kt = "!", Yt = ":", $n = Yt.length, Sn = (e) => {
+  const {
+    prefix: t,
+    experimentalParseClassName: r
+  } = e;
+  let o = (n) => {
+    const i = [];
+    let s = 0, u = 0, p = 0, c;
+    for (let w = 0; w < n.length; w++) {
+      let S = n[w];
+      if (s === 0 && u === 0) {
+        if (S === Yt) {
+          i.push(n.slice(p, w)), p = w + $n;
           continue;
         }
-        if (f === "/") {
-          p = g;
+        if (S === "/") {
+          c = w;
           continue;
         }
       }
-      f === "[" ? l++ : f === "]" && l--;
+      S === "[" ? s++ : S === "]" ? s-- : S === "(" ? u++ : S === ")" && u--;
     }
-    var m = s.length === 0 ? i : i.substring(d), y = m.startsWith(ro), k = y ? m.substring(1) : m, _ = p && p > d ? p - d : void 0;
+    const f = i.length === 0 ? n : n.substring(p), g = Tn(f), b = g !== f, y = c && c > p ? c - p : void 0;
     return {
-      modifiers: s,
-      hasImportantModifier: y,
-      baseClassName: k,
-      maybePostfixModifierPosition: _
+      modifiers: i,
+      hasImportantModifier: b,
+      baseClassName: g,
+      maybePostfixModifierPosition: y
     };
   };
-}
-function cn(e) {
-  if (e.length <= 1)
-    return e;
-  var t = [], r = [];
-  return e.forEach(function(o) {
-    var n = o[0] === "[";
-    n ? (t.push.apply(t, r.sort().concat([o])), r = []) : r.push(o);
-  }), t.push.apply(t, r.sort()), t;
-}
-function pn(e) {
-  return {
-    cache: un(e.cacheSize),
-    splitModifiers: dn(e),
-    ...on(e)
-  };
-}
-var hn = /\s+/;
-function fn(e, t) {
-  var r = t.splitModifiers, o = t.getClassGroupId, n = t.getConflictingClassGroupIds, i = /* @__PURE__ */ new Set();
-  return e.trim().split(hn).map(function(s) {
-    var l = r(s), d = l.modifiers, p = l.hasImportantModifier, g = l.baseClassName, f = l.maybePostfixModifierPosition, m = o(f ? g.substring(0, f) : g), y = !!f;
-    if (!m) {
-      if (!f)
-        return {
-          isTailwindClass: !1,
-          originalClassName: s
-        };
-      if (m = o(g), !m)
-        return {
-          isTailwindClass: !1,
-          originalClassName: s
-        };
-      y = !1;
-    }
-    var k = cn(d).join(":"), _ = p ? k + ro : k;
-    return {
-      isTailwindClass: !0,
-      modifierId: _,
-      classGroupId: m,
-      originalClassName: s,
-      hasPostfixModifier: y
+  if (t) {
+    const n = t + Yt, i = o;
+    o = (s) => s.startsWith(n) ? i(s.substring(n.length)) : {
+      isExternal: !0,
+      modifiers: [],
+      hasImportantModifier: !1,
+      baseClassName: s,
+      maybePostfixModifierPosition: void 0
     };
-  }).reverse().filter(function(s) {
-    if (!s.isTailwindClass)
-      return !0;
-    var l = s.modifierId, d = s.classGroupId, p = s.hasPostfixModifier, g = l + d;
-    return i.has(g) ? !1 : (i.add(g), n(d, p).forEach(function(f) {
-      return i.add(l + f);
-    }), !0);
-  }).reverse().map(function(s) {
-    return s.originalClassName;
-  }).join(" ");
-}
-function gn() {
-  for (var e = arguments.length, t = new Array(e), r = 0; r < e; r++)
-    t[r] = arguments[r];
-  var o, n, i, s = l;
-  function l(p) {
-    var g = t[0], f = t.slice(1), m = f.reduce(function(y, k) {
-      return k(y);
-    }, g());
-    return o = pn(m), n = o.cache.get, i = o.cache.set, s = d, d(p);
   }
-  function d(p) {
-    var g = n(p);
-    if (g)
-      return g;
-    var f = fn(p, o);
-    return i(p, f), f;
+  if (r) {
+    const n = o;
+    o = (i) => r({
+      className: i,
+      parseClassName: n
+    });
+  }
+  return o;
+}, Tn = (e) => e.endsWith(Kt) ? e.substring(0, e.length - 1) : e.startsWith(Kt) ? e.substring(1) : e, In = (e) => {
+  const t = Object.fromEntries(e.orderSensitiveModifiers.map((r) => [r, !0]));
+  return (r) => {
+    if (r.length <= 1)
+      return r;
+    const o = [];
+    let n = [];
+    return r.forEach((i) => {
+      i[0] === "[" || t[i] ? (o.push(...n.sort(), i), n = []) : n.push(i);
+    }), o.push(...n.sort()), o;
+  };
+}, An = (e) => ({
+  cache: Cn(e.cacheSize),
+  parseClassName: Sn(e),
+  sortModifiers: In(e),
+  ...wn(e)
+}), Pn = /\s+/, Ln = (e, t) => {
+  const {
+    parseClassName: r,
+    getClassGroupId: o,
+    getConflictingClassGroupIds: n,
+    sortModifiers: i
+  } = t, s = [], u = e.trim().split(Pn);
+  let p = "";
+  for (let c = u.length - 1; c >= 0; c -= 1) {
+    const f = u[c], {
+      isExternal: g,
+      modifiers: b,
+      hasImportantModifier: y,
+      baseClassName: w,
+      maybePostfixModifierPosition: S
+    } = r(f);
+    if (g) {
+      p = f + (p.length > 0 ? " " + p : p);
+      continue;
+    }
+    let L = !!S, P = o(L ? w.substring(0, S) : w);
+    if (!P) {
+      if (!L) {
+        p = f + (p.length > 0 ? " " + p : p);
+        continue;
+      }
+      if (P = o(w), !P) {
+        p = f + (p.length > 0 ? " " + p : p);
+        continue;
+      }
+      L = !1;
+    }
+    const z = i(b).join(":"), D = y ? z + Kt : z, W = D + P;
+    if (s.includes(W))
+      continue;
+    s.push(W);
+    const G = n(P, L);
+    for (let q = 0; q < G.length; ++q) {
+      const J = G[q];
+      s.push(D + J);
+    }
+    p = f + (p.length > 0 ? " " + p : p);
+  }
+  return p;
+};
+function Nn() {
+  let e = 0, t, r, o = "";
+  for (; e < arguments.length; )
+    (t = arguments[e++]) && (r = go(t)) && (o && (o += " "), o += r);
+  return o;
+}
+const go = (e) => {
+  if (typeof e == "string")
+    return e;
+  let t, r = "";
+  for (let o = 0; o < e.length; o++)
+    e[o] && (t = go(e[o])) && (r && (r += " "), r += t);
+  return r;
+};
+function zn(e, ...t) {
+  let r, o, n, i = s;
+  function s(p) {
+    const c = t.reduce((f, g) => g(f), e());
+    return r = An(c), o = r.cache.get, n = r.cache.set, i = u, u(p);
+  }
+  function u(p) {
+    const c = o(p);
+    if (c)
+      return c;
+    const f = Ln(p, r);
+    return n(p, f), f;
   }
   return function() {
-    return s(rn.apply(null, arguments));
+    return i(Nn.apply(null, arguments));
   };
 }
-function G(e) {
-  var t = function(r) {
-    return r[e] || [];
-  };
+const ne = (e) => {
+  const t = (r) => r[e] || [];
   return t.isThemeGetter = !0, t;
-}
-var oo = /^\[(?:([a-z-]+):)?(.+)\]$/i, mn = /^\d+\/\d+$/, bn = /* @__PURE__ */ new Set(["px", "full", "screen"]), yn = /^(\d+(\.\d+)?)?(xs|sm|md|lg|xl)$/, vn = /\d+(%|px|r?em|[sdl]?v([hwib]|min|max)|pt|pc|in|cm|mm|cap|ch|ex|r?lh|cq(w|h|i|b|min|max))|\b(calc|min|max|clamp)\(.+\)|^0$/, wn = /^-?((\d+)?\.?(\d+)[a-z]+|0)_-?((\d+)?\.?(\d+)[a-z]+|0)/;
-function le(e) {
-  return Pe(e) || bn.has(e) || mn.test(e) || Rt(e);
-}
-function Rt(e) {
-  return Ne(e, "length", Sn);
-}
-function xn(e) {
-  return Ne(e, "size", no);
-}
-function _n(e) {
-  return Ne(e, "position", no);
-}
-function Cn(e) {
-  return Ne(e, "url", In);
-}
-function st(e) {
-  return Ne(e, "number", Pe);
-}
-function Pe(e) {
-  return !Number.isNaN(Number(e));
-}
-function kn(e) {
-  return e.endsWith("%") && Pe(e.slice(0, -1));
-}
-function We(e) {
-  return dr(e) || Ne(e, "number", dr);
-}
-function O(e) {
-  return oo.test(e);
-}
-function Ge() {
-  return !0;
-}
-function be(e) {
-  return yn.test(e);
-}
-function $n(e) {
-  return Ne(e, "", Tn);
-}
-function Ne(e, t, r) {
-  var o = oo.exec(e);
-  return o ? o[1] ? o[1] === t : r(o[2]) : !1;
-}
-function Sn(e) {
-  return vn.test(e);
-}
-function no() {
-  return !1;
-}
-function In(e) {
-  return e.startsWith("url(");
-}
-function dr(e) {
-  return Number.isInteger(Number(e));
-}
-function Tn(e) {
-  return wn.test(e);
-}
-function Pn() {
-  var e = G("colors"), t = G("spacing"), r = G("blur"), o = G("brightness"), n = G("borderColor"), i = G("borderRadius"), s = G("borderSpacing"), l = G("borderWidth"), d = G("contrast"), p = G("grayscale"), g = G("hueRotate"), f = G("invert"), m = G("gap"), y = G("gradientColorStops"), k = G("gradientColorStopPositions"), _ = G("inset"), I = G("margin"), S = G("opacity"), $ = G("padding"), E = G("saturate"), V = G("scale"), W = G("sepia"), F = G("skew"), J = G("space"), X = G("translate"), ee = function() {
-    return ["auto", "contain", "none"];
-  }, D = function() {
-    return ["auto", "hidden", "clip", "visible", "scroll"];
-  }, M = function() {
-    return ["auto", O, t];
-  }, A = function() {
-    return [O, t];
-  }, j = function() {
-    return ["", le];
-  }, C = function() {
-    return ["auto", Pe, O];
-  }, te = function() {
-    return ["bottom", "center", "left", "left-bottom", "left-top", "right", "right-bottom", "right-top", "top"];
-  }, a = function() {
-    return ["solid", "dashed", "dotted", "double", "none"];
-  }, u = function() {
-    return ["normal", "multiply", "screen", "overlay", "darken", "lighten", "color-dodge", "color-burn", "hard-light", "soft-light", "difference", "exclusion", "hue", "saturation", "color", "luminosity", "plus-lighter"];
-  }, c = function() {
-    return ["start", "end", "center", "between", "around", "evenly", "stretch"];
-  }, h = function() {
-    return ["", "0", O];
-  }, b = function() {
-    return ["auto", "avoid", "all", "avoid-page", "page", "left", "right", "column"];
-  }, v = function() {
-    return [Pe, st];
-  }, N = function() {
-    return [Pe, O];
-  };
+}, mo = /^\[(?:(\w[\w-]*):)?(.+)\]$/i, yo = /^\((?:(\w[\w-]*):)?(.+)\)$/i, Dn = /^\d+\/\d+$/, Mn = /^(\d+(\.\d+)?)?(xs|sm|md|lg|xl)$/, En = /\d+(%|px|r?em|[sdl]?v([hwib]|min|max)|pt|pc|in|cm|mm|cap|ch|ex|r?lh|cq(w|h|i|b|min|max))|\b(calc|min|max|clamp)\(.+\)|^0$/, Bn = /^(rgba?|hsla?|hwb|(ok)?(lab|lch))\(.+\)$/, On = /^(inset_)?-?((\d+)?\.?(\d+)[a-z]+|0)_-?((\d+)?\.?(\d+)[a-z]+|0)/, jn = /^(url|image|image-set|cross-fade|element|(repeating-)?(linear|radial|conic)-gradient)\(.+\)$/, Fe = (e) => Dn.test(e), B = (e) => !!e && !Number.isNaN(Number(e)), xe = (e) => !!e && Number.isInteger(Number(e)), jt = (e) => e.endsWith("%") && B(e.slice(0, -1)), ve = (e) => Mn.test(e), Rn = () => !0, Fn = (e) => (
+  // `colorFunctionRegex` check is necessary because color functions can have percentages in them which which would be incorrectly classified as lengths.
+  // For example, `hsl(0 0% 0%)` would be classified as a length without this check.
+  // I could also use lookbehind assertion in `lengthUnitRegex` but that isn't supported widely enough.
+  En.test(e) && !Bn.test(e)
+), bo = () => !1, Hn = (e) => On.test(e), Vn = (e) => jn.test(e), Wn = (e) => !_(e) && !C(e), Gn = (e) => Ge(e, xo, bo), _ = (e) => mo.test(e), Le = (e) => Ge(e, ko, Fn), Rt = (e) => Ge(e, Jn, B), xr = (e) => Ge(e, vo, bo), Un = (e) => Ge(e, wo, Vn), pt = (e) => Ge(e, _o, Hn), C = (e) => yo.test(e), Ye = (e) => Ue(e, ko), qn = (e) => Ue(e, Zn), kr = (e) => Ue(e, vo), Kn = (e) => Ue(e, xo), Yn = (e) => Ue(e, wo), ht = (e) => Ue(e, _o, !0), Ge = (e, t, r) => {
+  const o = mo.exec(e);
+  return o ? o[1] ? t(o[1]) : r(o[2]) : !1;
+}, Ue = (e, t, r = !1) => {
+  const o = yo.exec(e);
+  return o ? o[1] ? t(o[1]) : r : !1;
+}, vo = (e) => e === "position" || e === "percentage", wo = (e) => e === "image" || e === "url", xo = (e) => e === "length" || e === "size" || e === "bg-size", ko = (e) => e === "length", Jn = (e) => e === "number", Zn = (e) => e === "family-name", _o = (e) => e === "shadow", Qn = () => {
+  const e = ne("color"), t = ne("font"), r = ne("text"), o = ne("font-weight"), n = ne("tracking"), i = ne("leading"), s = ne("breakpoint"), u = ne("container"), p = ne("spacing"), c = ne("radius"), f = ne("shadow"), g = ne("inset-shadow"), b = ne("text-shadow"), y = ne("drop-shadow"), w = ne("blur"), S = ne("perspective"), L = ne("aspect"), P = ne("ease"), z = ne("animate"), D = () => ["auto", "avoid", "all", "avoid-page", "page", "left", "right", "column"], W = () => [
+    "center",
+    "top",
+    "bottom",
+    "left",
+    "right",
+    "top-left",
+    // Deprecated since Tailwind CSS v4.1.0, see https://github.com/tailwindlabs/tailwindcss/pull/17378
+    "left-top",
+    "top-right",
+    // Deprecated since Tailwind CSS v4.1.0, see https://github.com/tailwindlabs/tailwindcss/pull/17378
+    "right-top",
+    "bottom-right",
+    // Deprecated since Tailwind CSS v4.1.0, see https://github.com/tailwindlabs/tailwindcss/pull/17378
+    "right-bottom",
+    "bottom-left",
+    // Deprecated since Tailwind CSS v4.1.0, see https://github.com/tailwindlabs/tailwindcss/pull/17378
+    "left-bottom"
+  ], G = () => [...W(), C, _], q = () => ["auto", "hidden", "clip", "visible", "scroll"], J = () => ["auto", "contain", "none"], T = () => [C, _, p], V = () => [Fe, "full", "auto", ...T()], O = () => [xe, "none", "subgrid", C, _], te = () => ["auto", {
+    span: ["full", xe, C, _]
+  }, xe, C, _], Q = () => [xe, "auto", C, _], ue = () => ["auto", "min", "max", "fr", C, _], k = () => ["start", "end", "center", "between", "around", "evenly", "stretch", "baseline", "center-safe", "end-safe"], le = () => ["start", "end", "center", "stretch", "center-safe", "end-safe"], a = () => ["auto", ...T()], l = () => [Fe, "auto", "full", "dvw", "dvh", "lvw", "lvh", "svw", "svh", "min", "max", "fit", ...T()], d = () => [e, C, _], h = () => [...W(), kr, xr, {
+    position: [C, _]
+  }], m = () => ["no-repeat", {
+    repeat: ["", "x", "y", "space", "round"]
+  }], $ = () => ["auto", "cover", "contain", Kn, Gn, {
+    size: [C, _]
+  }], M = () => [jt, Ye, Le], I = () => [
+    // Deprecated since Tailwind CSS v4.0.0
+    "",
+    "none",
+    "full",
+    c,
+    C,
+    _
+  ], R = () => ["", B, Ye, Le], K = () => ["solid", "dashed", "dotted", "double"], X = () => ["normal", "multiply", "screen", "overlay", "darken", "lighten", "color-dodge", "color-burn", "hard-light", "soft-light", "difference", "exclusion", "hue", "saturation", "color", "luminosity"], E = () => [B, jt, kr, xr], ce = () => [
+    // Deprecated since Tailwind CSS v4.0.0
+    "",
+    "none",
+    w,
+    C,
+    _
+  ], re = () => ["none", B, C, _], oe = () => ["none", B, C, _], we = () => [B, C, _], be = () => [Fe, "full", ...T()];
   return {
     cacheSize: 500,
     theme: {
-      colors: [Ge],
-      spacing: [le],
-      blur: ["none", "", be, O],
-      brightness: v(),
-      borderColor: [e],
-      borderRadius: ["none", "", "full", be, O],
-      borderSpacing: A(),
-      borderWidth: j(),
-      contrast: v(),
-      grayscale: h(),
-      hueRotate: N(),
-      invert: h(),
-      gap: A(),
-      gradientColorStops: [e],
-      gradientColorStopPositions: [kn, Rt],
-      inset: M(),
-      margin: M(),
-      opacity: v(),
-      padding: A(),
-      saturate: v(),
-      scale: v(),
-      sepia: h(),
-      skew: N(),
-      space: A(),
-      translate: A()
+      animate: ["spin", "ping", "pulse", "bounce"],
+      aspect: ["video"],
+      blur: [ve],
+      breakpoint: [ve],
+      color: [Rn],
+      container: [ve],
+      "drop-shadow": [ve],
+      ease: ["in", "out", "in-out"],
+      font: [Wn],
+      "font-weight": ["thin", "extralight", "light", "normal", "medium", "semibold", "bold", "extrabold", "black"],
+      "inset-shadow": [ve],
+      leading: ["none", "tight", "snug", "normal", "relaxed", "loose"],
+      perspective: ["dramatic", "near", "normal", "midrange", "distant", "none"],
+      radius: [ve],
+      shadow: [ve],
+      spacing: ["px", B],
+      text: [ve],
+      "text-shadow": [ve],
+      tracking: ["tighter", "tight", "normal", "wide", "wider", "widest"]
     },
     classGroups: {
-      // Layout
+      // --------------
+      // --- Layout ---
+      // --------------
       /**
        * Aspect Ratio
        * @see https://tailwindcss.com/docs/aspect-ratio
        */
       aspect: [{
-        aspect: ["auto", "square", "video", O]
+        aspect: ["auto", "square", Fe, _, C, L]
       }],
       /**
        * Container
        * @see https://tailwindcss.com/docs/container
+       * @deprecated since Tailwind CSS v4.0.0
        */
       container: ["container"],
       /**
@@ -407,21 +363,21 @@ function Pn() {
        * @see https://tailwindcss.com/docs/columns
        */
       columns: [{
-        columns: [be]
+        columns: [B, _, C, u]
       }],
       /**
        * Break After
        * @see https://tailwindcss.com/docs/break-after
        */
       "break-after": [{
-        "break-after": b()
+        "break-after": D()
       }],
       /**
        * Break Before
        * @see https://tailwindcss.com/docs/break-before
        */
       "break-before": [{
-        "break-before": b()
+        "break-before": D()
       }],
       /**
        * Break Inside
@@ -450,18 +406,23 @@ function Pn() {
        */
       display: ["block", "inline-block", "inline", "flex", "inline-flex", "table", "inline-table", "table-caption", "table-cell", "table-column", "table-column-group", "table-footer-group", "table-header-group", "table-row-group", "table-row", "flow-root", "grid", "inline-grid", "contents", "list-item", "hidden"],
       /**
+       * Screen Reader Only
+       * @see https://tailwindcss.com/docs/display#screen-reader-only
+       */
+      sr: ["sr-only", "not-sr-only"],
+      /**
        * Floats
        * @see https://tailwindcss.com/docs/float
        */
       float: [{
-        float: ["right", "left", "none"]
+        float: ["right", "left", "none", "start", "end"]
       }],
       /**
        * Clear
        * @see https://tailwindcss.com/docs/clear
        */
       clear: [{
-        clear: ["left", "right", "both", "none"]
+        clear: ["left", "right", "both", "none", "start", "end"]
       }],
       /**
        * Isolation
@@ -480,49 +441,49 @@ function Pn() {
        * @see https://tailwindcss.com/docs/object-position
        */
       "object-position": [{
-        object: [].concat(te(), [O])
+        object: G()
       }],
       /**
        * Overflow
        * @see https://tailwindcss.com/docs/overflow
        */
       overflow: [{
-        overflow: D()
+        overflow: q()
       }],
       /**
        * Overflow X
        * @see https://tailwindcss.com/docs/overflow
        */
       "overflow-x": [{
-        "overflow-x": D()
+        "overflow-x": q()
       }],
       /**
        * Overflow Y
        * @see https://tailwindcss.com/docs/overflow
        */
       "overflow-y": [{
-        "overflow-y": D()
+        "overflow-y": q()
       }],
       /**
        * Overscroll Behavior
        * @see https://tailwindcss.com/docs/overscroll-behavior
        */
       overscroll: [{
-        overscroll: ee()
+        overscroll: J()
       }],
       /**
        * Overscroll Behavior X
        * @see https://tailwindcss.com/docs/overscroll-behavior
        */
       "overscroll-x": [{
-        "overscroll-x": ee()
+        "overscroll-x": J()
       }],
       /**
        * Overscroll Behavior Y
        * @see https://tailwindcss.com/docs/overscroll-behavior
        */
       "overscroll-y": [{
-        "overscroll-y": ee()
+        "overscroll-y": J()
       }],
       /**
        * Position
@@ -534,63 +495,63 @@ function Pn() {
        * @see https://tailwindcss.com/docs/top-right-bottom-left
        */
       inset: [{
-        inset: [_]
+        inset: V()
       }],
       /**
        * Right / Left
        * @see https://tailwindcss.com/docs/top-right-bottom-left
        */
       "inset-x": [{
-        "inset-x": [_]
+        "inset-x": V()
       }],
       /**
        * Top / Bottom
        * @see https://tailwindcss.com/docs/top-right-bottom-left
        */
       "inset-y": [{
-        "inset-y": [_]
+        "inset-y": V()
       }],
       /**
        * Start
        * @see https://tailwindcss.com/docs/top-right-bottom-left
        */
       start: [{
-        start: [_]
+        start: V()
       }],
       /**
        * End
        * @see https://tailwindcss.com/docs/top-right-bottom-left
        */
       end: [{
-        end: [_]
+        end: V()
       }],
       /**
        * Top
        * @see https://tailwindcss.com/docs/top-right-bottom-left
        */
       top: [{
-        top: [_]
+        top: V()
       }],
       /**
        * Right
        * @see https://tailwindcss.com/docs/top-right-bottom-left
        */
       right: [{
-        right: [_]
+        right: V()
       }],
       /**
        * Bottom
        * @see https://tailwindcss.com/docs/top-right-bottom-left
        */
       bottom: [{
-        bottom: [_]
+        bottom: V()
       }],
       /**
        * Left
        * @see https://tailwindcss.com/docs/top-right-bottom-left
        */
       left: [{
-        left: [_]
+        left: V()
       }],
       /**
        * Visibility
@@ -602,15 +563,17 @@ function Pn() {
        * @see https://tailwindcss.com/docs/z-index
        */
       z: [{
-        z: ["auto", We]
+        z: [xe, "auto", C, _]
       }],
-      // Flexbox and Grid
+      // ------------------------
+      // --- Flexbox and Grid ---
+      // ------------------------
       /**
        * Flex Basis
        * @see https://tailwindcss.com/docs/flex-basis
        */
       basis: [{
-        basis: M()
+        basis: [Fe, "full", "auto", u, ...T()]
       }],
       /**
        * Flex Direction
@@ -624,95 +587,91 @@ function Pn() {
        * @see https://tailwindcss.com/docs/flex-wrap
        */
       "flex-wrap": [{
-        flex: ["wrap", "wrap-reverse", "nowrap"]
+        flex: ["nowrap", "wrap", "wrap-reverse"]
       }],
       /**
        * Flex
        * @see https://tailwindcss.com/docs/flex
        */
       flex: [{
-        flex: ["1", "auto", "initial", "none", O]
+        flex: [B, Fe, "auto", "initial", "none", _]
       }],
       /**
        * Flex Grow
        * @see https://tailwindcss.com/docs/flex-grow
        */
       grow: [{
-        grow: h()
+        grow: ["", B, C, _]
       }],
       /**
        * Flex Shrink
        * @see https://tailwindcss.com/docs/flex-shrink
        */
       shrink: [{
-        shrink: h()
+        shrink: ["", B, C, _]
       }],
       /**
        * Order
        * @see https://tailwindcss.com/docs/order
        */
       order: [{
-        order: ["first", "last", "none", We]
+        order: [xe, "first", "last", "none", C, _]
       }],
       /**
        * Grid Template Columns
        * @see https://tailwindcss.com/docs/grid-template-columns
        */
       "grid-cols": [{
-        "grid-cols": [Ge]
+        "grid-cols": O()
       }],
       /**
        * Grid Column Start / End
        * @see https://tailwindcss.com/docs/grid-column
        */
       "col-start-end": [{
-        col: ["auto", {
-          span: ["full", We]
-        }, O]
+        col: te()
       }],
       /**
        * Grid Column Start
        * @see https://tailwindcss.com/docs/grid-column
        */
       "col-start": [{
-        "col-start": C()
+        "col-start": Q()
       }],
       /**
        * Grid Column End
        * @see https://tailwindcss.com/docs/grid-column
        */
       "col-end": [{
-        "col-end": C()
+        "col-end": Q()
       }],
       /**
        * Grid Template Rows
        * @see https://tailwindcss.com/docs/grid-template-rows
        */
       "grid-rows": [{
-        "grid-rows": [Ge]
+        "grid-rows": O()
       }],
       /**
        * Grid Row Start / End
        * @see https://tailwindcss.com/docs/grid-row
        */
       "row-start-end": [{
-        row: ["auto", {
-          span: [We]
-        }, O]
+        row: te()
       }],
       /**
        * Grid Row Start
        * @see https://tailwindcss.com/docs/grid-row
        */
       "row-start": [{
-        "row-start": C()
+        "row-start": Q()
       }],
       /**
        * Grid Row End
        * @see https://tailwindcss.com/docs/grid-row
        */
       "row-end": [{
-        "row-end": C()
+        "row-end": Q()
       }],
       /**
        * Grid Auto Flow
@@ -726,98 +685,102 @@ function Pn() {
        * @see https://tailwindcss.com/docs/grid-auto-columns
        */
       "auto-cols": [{
-        "auto-cols": ["auto", "min", "max", "fr", O]
+        "auto-cols": ue()
       }],
       /**
        * Grid Auto Rows
        * @see https://tailwindcss.com/docs/grid-auto-rows
        */
       "auto-rows": [{
-        "auto-rows": ["auto", "min", "max", "fr", O]
+        "auto-rows": ue()
       }],
       /**
        * Gap
        * @see https://tailwindcss.com/docs/gap
        */
       gap: [{
-        gap: [m]
+        gap: T()
       }],
       /**
        * Gap X
        * @see https://tailwindcss.com/docs/gap
        */
       "gap-x": [{
-        "gap-x": [m]
+        "gap-x": T()
       }],
       /**
        * Gap Y
        * @see https://tailwindcss.com/docs/gap
        */
       "gap-y": [{
-        "gap-y": [m]
+        "gap-y": T()
       }],
       /**
        * Justify Content
        * @see https://tailwindcss.com/docs/justify-content
        */
       "justify-content": [{
-        justify: ["normal"].concat(c())
+        justify: [...k(), "normal"]
       }],
       /**
        * Justify Items
        * @see https://tailwindcss.com/docs/justify-items
        */
       "justify-items": [{
-        "justify-items": ["start", "end", "center", "stretch"]
+        "justify-items": [...le(), "normal"]
       }],
       /**
        * Justify Self
        * @see https://tailwindcss.com/docs/justify-self
        */
       "justify-self": [{
-        "justify-self": ["auto", "start", "end", "center", "stretch"]
+        "justify-self": ["auto", ...le()]
       }],
       /**
        * Align Content
        * @see https://tailwindcss.com/docs/align-content
        */
       "align-content": [{
-        content: ["normal"].concat(c(), ["baseline"])
+        content: ["normal", ...k()]
       }],
       /**
        * Align Items
        * @see https://tailwindcss.com/docs/align-items
        */
       "align-items": [{
-        items: ["start", "end", "center", "baseline", "stretch"]
+        items: [...le(), {
+          baseline: ["", "last"]
+        }]
       }],
       /**
        * Align Self
        * @see https://tailwindcss.com/docs/align-self
        */
       "align-self": [{
-        self: ["auto", "start", "end", "center", "stretch", "baseline"]
+        self: ["auto", ...le(), {
+          baseline: ["", "last"]
+        }]
       }],
       /**
        * Place Content
        * @see https://tailwindcss.com/docs/place-content
        */
       "place-content": [{
-        "place-content": [].concat(c(), ["baseline"])
+        "place-content": k()
       }],
       /**
        * Place Items
        * @see https://tailwindcss.com/docs/place-items
        */
       "place-items": [{
-        "place-items": ["start", "end", "center", "baseline", "stretch"]
+        "place-items": [...le(), "baseline"]
       }],
       /**
        * Place Self
        * @see https://tailwindcss.com/docs/place-self
        */
       "place-self": [{
-        "place-self": ["auto", "start", "end", "center", "stretch"]
+        "place-self": ["auto", ...le()]
       }],
       // Spacing
       /**
@@ -825,203 +788,229 @@ function Pn() {
        * @see https://tailwindcss.com/docs/padding
        */
       p: [{
-        p: [$]
+        p: T()
       }],
       /**
        * Padding X
        * @see https://tailwindcss.com/docs/padding
        */
       px: [{
-        px: [$]
+        px: T()
       }],
       /**
        * Padding Y
        * @see https://tailwindcss.com/docs/padding
        */
       py: [{
-        py: [$]
+        py: T()
       }],
       /**
        * Padding Start
        * @see https://tailwindcss.com/docs/padding
        */
       ps: [{
-        ps: [$]
+        ps: T()
       }],
       /**
        * Padding End
        * @see https://tailwindcss.com/docs/padding
        */
       pe: [{
-        pe: [$]
+        pe: T()
       }],
       /**
        * Padding Top
        * @see https://tailwindcss.com/docs/padding
        */
       pt: [{
-        pt: [$]
+        pt: T()
       }],
       /**
        * Padding Right
        * @see https://tailwindcss.com/docs/padding
        */
       pr: [{
-        pr: [$]
+        pr: T()
       }],
       /**
        * Padding Bottom
        * @see https://tailwindcss.com/docs/padding
        */
       pb: [{
-        pb: [$]
+        pb: T()
       }],
       /**
        * Padding Left
        * @see https://tailwindcss.com/docs/padding
        */
       pl: [{
-        pl: [$]
+        pl: T()
       }],
       /**
        * Margin
        * @see https://tailwindcss.com/docs/margin
        */
       m: [{
-        m: [I]
+        m: a()
       }],
       /**
        * Margin X
        * @see https://tailwindcss.com/docs/margin
        */
       mx: [{
-        mx: [I]
+        mx: a()
       }],
       /**
        * Margin Y
        * @see https://tailwindcss.com/docs/margin
        */
       my: [{
-        my: [I]
+        my: a()
       }],
       /**
        * Margin Start
        * @see https://tailwindcss.com/docs/margin
        */
       ms: [{
-        ms: [I]
+        ms: a()
       }],
       /**
        * Margin End
        * @see https://tailwindcss.com/docs/margin
        */
       me: [{
-        me: [I]
+        me: a()
       }],
       /**
        * Margin Top
        * @see https://tailwindcss.com/docs/margin
        */
       mt: [{
-        mt: [I]
+        mt: a()
       }],
       /**
        * Margin Right
        * @see https://tailwindcss.com/docs/margin
        */
       mr: [{
-        mr: [I]
+        mr: a()
       }],
       /**
        * Margin Bottom
        * @see https://tailwindcss.com/docs/margin
        */
       mb: [{
-        mb: [I]
+        mb: a()
       }],
       /**
        * Margin Left
        * @see https://tailwindcss.com/docs/margin
        */
       ml: [{
-        ml: [I]
+        ml: a()
       }],
       /**
        * Space Between X
-       * @see https://tailwindcss.com/docs/space
+       * @see https://tailwindcss.com/docs/margin#adding-space-between-children
        */
       "space-x": [{
-        "space-x": [J]
+        "space-x": T()
       }],
       /**
        * Space Between X Reverse
-       * @see https://tailwindcss.com/docs/space
+       * @see https://tailwindcss.com/docs/margin#adding-space-between-children
        */
       "space-x-reverse": ["space-x-reverse"],
       /**
        * Space Between Y
-       * @see https://tailwindcss.com/docs/space
+       * @see https://tailwindcss.com/docs/margin#adding-space-between-children
        */
       "space-y": [{
-        "space-y": [J]
+        "space-y": T()
       }],
       /**
        * Space Between Y Reverse
-       * @see https://tailwindcss.com/docs/space
+       * @see https://tailwindcss.com/docs/margin#adding-space-between-children
        */
       "space-y-reverse": ["space-y-reverse"],
-      // Sizing
+      // --------------
+      // --- Sizing ---
+      // --------------
+      /**
+       * Size
+       * @see https://tailwindcss.com/docs/width#setting-both-width-and-height
+       */
+      size: [{
+        size: l()
+      }],
       /**
        * Width
        * @see https://tailwindcss.com/docs/width
        */
       w: [{
-        w: ["auto", "min", "max", "fit", O, t]
+        w: [u, "screen", ...l()]
       }],
       /**
        * Min-Width
        * @see https://tailwindcss.com/docs/min-width
        */
       "min-w": [{
-        "min-w": ["min", "max", "fit", O, le]
+        "min-w": [
+          u,
+          "screen",
+          /** Deprecated. @see https://github.com/tailwindlabs/tailwindcss.com/issues/2027#issuecomment-2620152757 */
+          "none",
+          ...l()
+        ]
       }],
       /**
        * Max-Width
        * @see https://tailwindcss.com/docs/max-width
        */
       "max-w": [{
-        "max-w": ["0", "none", "full", "min", "max", "fit", "prose", {
-          screen: [be]
-        }, be, O]
+        "max-w": [
+          u,
+          "screen",
+          "none",
+          /** Deprecated since Tailwind CSS v4.0.0. @see https://github.com/tailwindlabs/tailwindcss.com/issues/2027#issuecomment-2620152757 */
+          "prose",
+          /** Deprecated since Tailwind CSS v4.0.0. @see https://github.com/tailwindlabs/tailwindcss.com/issues/2027#issuecomment-2620152757 */
+          {
+            screen: [s]
+          },
+          ...l()
+        ]
       }],
       /**
        * Height
        * @see https://tailwindcss.com/docs/height
        */
       h: [{
-        h: [O, t, "auto", "min", "max", "fit"]
+        h: ["screen", ...l()]
       }],
       /**
        * Min-Height
        * @see https://tailwindcss.com/docs/min-height
        */
       "min-h": [{
-        "min-h": ["min", "max", "fit", O, le]
+        "min-h": ["screen", "none", ...l()]
       }],
       /**
        * Max-Height
        * @see https://tailwindcss.com/docs/max-height
        */
       "max-h": [{
-        "max-h": [O, t, "min", "max", "fit"]
+        "max-h": ["screen", ...l()]
       }],
-      // Typography
+      // ------------------
+      // --- Typography ---
+      // ------------------
       /**
        * Font Size
        * @see https://tailwindcss.com/docs/font-size
        */
       "font-size": [{
-        text: ["base", be, Rt]
+        text: ["base", r, Ye, Le]
       }],
       /**
        * Font Smoothing
@@ -1038,14 +1027,21 @@ function Pn() {
        * @see https://tailwindcss.com/docs/font-weight
        */
       "font-weight": [{
-        font: ["thin", "extralight", "light", "normal", "medium", "semibold", "bold", "extrabold", "black", st]
+        font: [o, C, Rt]
+      }],
+      /**
+       * Font Stretch
+       * @see https://tailwindcss.com/docs/font-stretch
+       */
+      "font-stretch": [{
+        "font-stretch": ["ultra-condensed", "extra-condensed", "condensed", "semi-condensed", "normal", "semi-expanded", "expanded", "extra-expanded", "ultra-expanded", jt, _]
       }],
       /**
        * Font Family
        * @see https://tailwindcss.com/docs/font-family
        */
       "font-family": [{
-        font: [Ge]
+        font: [qn, _, t]
       }],
       /**
        * Font Variant Numeric
@@ -1076,41 +1072,38 @@ function Pn() {
        * Font Variant Numeric
        * @see https://tailwindcss.com/docs/font-variant-numeric
        */
-      "fvn-fraction": ["diagonal-fractions", "stacked-fractons"],
+      "fvn-fraction": ["diagonal-fractions", "stacked-fractions"],
       /**
        * Letter Spacing
        * @see https://tailwindcss.com/docs/letter-spacing
        */
       tracking: [{
-        tracking: ["tighter", "tight", "normal", "wide", "wider", "widest", O]
+        tracking: [n, C, _]
       }],
       /**
        * Line Clamp
        * @see https://tailwindcss.com/docs/line-clamp
        */
       "line-clamp": [{
-        "line-clamp": ["none", Pe, st]
+        "line-clamp": [B, "none", C, Rt]
       }],
       /**
        * Line Height
        * @see https://tailwindcss.com/docs/line-height
        */
       leading: [{
-        leading: ["none", "tight", "snug", "normal", "relaxed", "loose", O, le]
+        leading: [
+          /** Deprecated since Tailwind CSS v4.0.0. @see https://github.com/tailwindlabs/tailwindcss.com/issues/2027#issuecomment-2620152757 */
+          i,
+          ...T()
+        ]
       }],
       /**
        * List Style Image
        * @see https://tailwindcss.com/docs/list-style-image
        */
       "list-image": [{
-        "list-image": ["none", O]
-      }],
-      /**
-       * List Style Type
-       * @see https://tailwindcss.com/docs/list-style-type
-       */
-      "list-style-type": [{
-        list: ["none", "disc", "decimal", O]
+        "list-image": ["none", C, _]
       }],
       /**
        * List Style Position
@@ -1120,19 +1113,11 @@ function Pn() {
         list: ["inside", "outside"]
       }],
       /**
-       * Placeholder Color
-       * @deprecated since Tailwind CSS v3.0.0
-       * @see https://tailwindcss.com/docs/placeholder-color
+       * List Style Type
+       * @see https://tailwindcss.com/docs/list-style-type
        */
-      "placeholder-color": [{
-        placeholder: [e]
-      }],
-      /**
-       * Placeholder Opacity
-       * @see https://tailwindcss.com/docs/placeholder-opacity
-       */
-      "placeholder-opacity": [{
-        "placeholder-opacity": [S]
+      "list-style-type": [{
+        list: ["disc", "decimal", "none", C, _]
       }],
       /**
        * Text Alignment
@@ -1142,18 +1127,19 @@ function Pn() {
         text: ["left", "center", "right", "justify", "start", "end"]
       }],
       /**
+       * Placeholder Color
+       * @deprecated since Tailwind CSS v3.0.0
+       * @see https://v3.tailwindcss.com/docs/placeholder-color
+       */
+      "placeholder-color": [{
+        placeholder: d()
+      }],
+      /**
        * Text Color
        * @see https://tailwindcss.com/docs/text-color
        */
       "text-color": [{
-        text: [e]
-      }],
-      /**
-       * Text Opacity
-       * @see https://tailwindcss.com/docs/text-opacity
-       */
-      "text-opacity": [{
-        "text-opacity": [S]
+        text: d()
       }],
       /**
        * Text Decoration
@@ -1165,28 +1151,28 @@ function Pn() {
        * @see https://tailwindcss.com/docs/text-decoration-style
        */
       "text-decoration-style": [{
-        decoration: [].concat(a(), ["wavy"])
+        decoration: [...K(), "wavy"]
       }],
       /**
        * Text Decoration Thickness
        * @see https://tailwindcss.com/docs/text-decoration-thickness
        */
       "text-decoration-thickness": [{
-        decoration: ["auto", "from-font", le]
-      }],
-      /**
-       * Text Underline Offset
-       * @see https://tailwindcss.com/docs/text-underline-offset
-       */
-      "underline-offset": [{
-        "underline-offset": ["auto", O, le]
+        decoration: [B, "from-font", "auto", C, Le]
       }],
       /**
        * Text Decoration Color
        * @see https://tailwindcss.com/docs/text-decoration-color
        */
       "text-decoration-color": [{
-        decoration: [e]
+        decoration: d()
+      }],
+      /**
+       * Text Underline Offset
+       * @see https://tailwindcss.com/docs/text-underline-offset
+       */
+      "underline-offset": [{
+        "underline-offset": [B, "auto", C, _]
       }],
       /**
        * Text Transform
@@ -1199,18 +1185,25 @@ function Pn() {
        */
       "text-overflow": ["truncate", "text-ellipsis", "text-clip"],
       /**
+       * Text Wrap
+       * @see https://tailwindcss.com/docs/text-wrap
+       */
+      "text-wrap": [{
+        text: ["wrap", "nowrap", "balance", "pretty"]
+      }],
+      /**
        * Text Indent
        * @see https://tailwindcss.com/docs/text-indent
        */
       indent: [{
-        indent: A()
+        indent: T()
       }],
       /**
        * Vertical Alignment
        * @see https://tailwindcss.com/docs/vertical-align
        */
       "vertical-align": [{
-        align: ["baseline", "top", "middle", "bottom", "text-top", "text-bottom", "sub", "super", O]
+        align: ["baseline", "top", "middle", "bottom", "text-top", "text-bottom", "sub", "super", C, _]
       }],
       /**
        * Whitespace
@@ -1227,6 +1220,13 @@ function Pn() {
         break: ["normal", "words", "all", "keep"]
       }],
       /**
+       * Overflow Wrap
+       * @see https://tailwindcss.com/docs/overflow-wrap
+       */
+      wrap: [{
+        wrap: ["break-word", "anywhere", "normal"]
+      }],
+      /**
        * Hyphens
        * @see https://tailwindcss.com/docs/hyphens
        */
@@ -1238,9 +1238,11 @@ function Pn() {
        * @see https://tailwindcss.com/docs/content
        */
       content: [{
-        content: ["none", O]
+        content: ["none", C, _]
       }],
-      // Backgrounds
+      // -------------------
+      // --- Backgrounds ---
+      // -------------------
       /**
        * Background Attachment
        * @see https://tailwindcss.com/docs/background-attachment
@@ -1256,14 +1258,6 @@ function Pn() {
         "bg-clip": ["border", "padding", "content", "text"]
       }],
       /**
-       * Background Opacity
-       * @deprecated since Tailwind CSS v3.0.0
-       * @see https://tailwindcss.com/docs/background-opacity
-       */
-      "bg-opacity": [{
-        "bg-opacity": [S]
-      }],
-      /**
        * Background Origin
        * @see https://tailwindcss.com/docs/background-origin
        */
@@ -1275,23 +1269,21 @@ function Pn() {
        * @see https://tailwindcss.com/docs/background-position
        */
       "bg-position": [{
-        bg: [].concat(te(), [_n])
+        bg: h()
       }],
       /**
        * Background Repeat
        * @see https://tailwindcss.com/docs/background-repeat
        */
       "bg-repeat": [{
-        bg: ["no-repeat", {
-          repeat: ["", "x", "y", "round", "space"]
-        }]
+        bg: m()
       }],
       /**
        * Background Size
        * @see https://tailwindcss.com/docs/background-size
        */
       "bg-size": [{
-        bg: ["auto", "cover", "contain", xn]
+        bg: $()
       }],
       /**
        * Background Image
@@ -1299,583 +1291,863 @@ function Pn() {
        */
       "bg-image": [{
         bg: ["none", {
-          "gradient-to": ["t", "tr", "r", "br", "b", "bl", "l", "tl"]
-        }, Cn]
+          linear: [{
+            to: ["t", "tr", "r", "br", "b", "bl", "l", "tl"]
+          }, xe, C, _],
+          radial: ["", C, _],
+          conic: [xe, C, _]
+        }, Yn, Un]
       }],
       /**
        * Background Color
        * @see https://tailwindcss.com/docs/background-color
        */
       "bg-color": [{
-        bg: [e]
+        bg: d()
       }],
       /**
        * Gradient Color Stops From Position
        * @see https://tailwindcss.com/docs/gradient-color-stops
        */
       "gradient-from-pos": [{
-        from: [k]
+        from: M()
       }],
       /**
        * Gradient Color Stops Via Position
        * @see https://tailwindcss.com/docs/gradient-color-stops
        */
       "gradient-via-pos": [{
-        via: [k]
+        via: M()
       }],
       /**
        * Gradient Color Stops To Position
        * @see https://tailwindcss.com/docs/gradient-color-stops
        */
       "gradient-to-pos": [{
-        to: [k]
+        to: M()
       }],
       /**
        * Gradient Color Stops From
        * @see https://tailwindcss.com/docs/gradient-color-stops
        */
       "gradient-from": [{
-        from: [y]
+        from: d()
       }],
       /**
        * Gradient Color Stops Via
        * @see https://tailwindcss.com/docs/gradient-color-stops
        */
       "gradient-via": [{
-        via: [y]
+        via: d()
       }],
       /**
        * Gradient Color Stops To
        * @see https://tailwindcss.com/docs/gradient-color-stops
        */
       "gradient-to": [{
-        to: [y]
+        to: d()
       }],
-      // Borders
+      // ---------------
+      // --- Borders ---
+      // ---------------
       /**
        * Border Radius
        * @see https://tailwindcss.com/docs/border-radius
        */
       rounded: [{
-        rounded: [i]
+        rounded: I()
       }],
       /**
        * Border Radius Start
        * @see https://tailwindcss.com/docs/border-radius
        */
       "rounded-s": [{
-        "rounded-s": [i]
+        "rounded-s": I()
       }],
       /**
        * Border Radius End
        * @see https://tailwindcss.com/docs/border-radius
        */
       "rounded-e": [{
-        "rounded-e": [i]
+        "rounded-e": I()
       }],
       /**
        * Border Radius Top
        * @see https://tailwindcss.com/docs/border-radius
        */
       "rounded-t": [{
-        "rounded-t": [i]
+        "rounded-t": I()
       }],
       /**
        * Border Radius Right
        * @see https://tailwindcss.com/docs/border-radius
        */
       "rounded-r": [{
-        "rounded-r": [i]
+        "rounded-r": I()
       }],
       /**
        * Border Radius Bottom
        * @see https://tailwindcss.com/docs/border-radius
        */
       "rounded-b": [{
-        "rounded-b": [i]
+        "rounded-b": I()
       }],
       /**
        * Border Radius Left
        * @see https://tailwindcss.com/docs/border-radius
        */
       "rounded-l": [{
-        "rounded-l": [i]
+        "rounded-l": I()
       }],
       /**
        * Border Radius Start Start
        * @see https://tailwindcss.com/docs/border-radius
        */
       "rounded-ss": [{
-        "rounded-ss": [i]
+        "rounded-ss": I()
       }],
       /**
        * Border Radius Start End
        * @see https://tailwindcss.com/docs/border-radius
        */
       "rounded-se": [{
-        "rounded-se": [i]
+        "rounded-se": I()
       }],
       /**
        * Border Radius End End
        * @see https://tailwindcss.com/docs/border-radius
        */
       "rounded-ee": [{
-        "rounded-ee": [i]
+        "rounded-ee": I()
       }],
       /**
        * Border Radius End Start
        * @see https://tailwindcss.com/docs/border-radius
        */
       "rounded-es": [{
-        "rounded-es": [i]
+        "rounded-es": I()
       }],
       /**
        * Border Radius Top Left
        * @see https://tailwindcss.com/docs/border-radius
        */
       "rounded-tl": [{
-        "rounded-tl": [i]
+        "rounded-tl": I()
       }],
       /**
        * Border Radius Top Right
        * @see https://tailwindcss.com/docs/border-radius
        */
       "rounded-tr": [{
-        "rounded-tr": [i]
+        "rounded-tr": I()
       }],
       /**
        * Border Radius Bottom Right
        * @see https://tailwindcss.com/docs/border-radius
        */
       "rounded-br": [{
-        "rounded-br": [i]
+        "rounded-br": I()
       }],
       /**
        * Border Radius Bottom Left
        * @see https://tailwindcss.com/docs/border-radius
        */
       "rounded-bl": [{
-        "rounded-bl": [i]
+        "rounded-bl": I()
       }],
       /**
        * Border Width
        * @see https://tailwindcss.com/docs/border-width
        */
       "border-w": [{
-        border: [l]
+        border: R()
       }],
       /**
        * Border Width X
        * @see https://tailwindcss.com/docs/border-width
        */
       "border-w-x": [{
-        "border-x": [l]
+        "border-x": R()
       }],
       /**
        * Border Width Y
        * @see https://tailwindcss.com/docs/border-width
        */
       "border-w-y": [{
-        "border-y": [l]
+        "border-y": R()
       }],
       /**
        * Border Width Start
        * @see https://tailwindcss.com/docs/border-width
        */
       "border-w-s": [{
-        "border-s": [l]
+        "border-s": R()
       }],
       /**
        * Border Width End
        * @see https://tailwindcss.com/docs/border-width
        */
       "border-w-e": [{
-        "border-e": [l]
+        "border-e": R()
       }],
       /**
        * Border Width Top
        * @see https://tailwindcss.com/docs/border-width
        */
       "border-w-t": [{
-        "border-t": [l]
+        "border-t": R()
       }],
       /**
        * Border Width Right
        * @see https://tailwindcss.com/docs/border-width
        */
       "border-w-r": [{
-        "border-r": [l]
+        "border-r": R()
       }],
       /**
        * Border Width Bottom
        * @see https://tailwindcss.com/docs/border-width
        */
       "border-w-b": [{
-        "border-b": [l]
+        "border-b": R()
       }],
       /**
        * Border Width Left
        * @see https://tailwindcss.com/docs/border-width
        */
       "border-w-l": [{
-        "border-l": [l]
+        "border-l": R()
       }],
       /**
-       * Border Opacity
-       * @see https://tailwindcss.com/docs/border-opacity
+       * Divide Width X
+       * @see https://tailwindcss.com/docs/border-width#between-children
        */
-      "border-opacity": [{
-        "border-opacity": [S]
+      "divide-x": [{
+        "divide-x": R()
       }],
+      /**
+       * Divide Width X Reverse
+       * @see https://tailwindcss.com/docs/border-width#between-children
+       */
+      "divide-x-reverse": ["divide-x-reverse"],
+      /**
+       * Divide Width Y
+       * @see https://tailwindcss.com/docs/border-width#between-children
+       */
+      "divide-y": [{
+        "divide-y": R()
+      }],
+      /**
+       * Divide Width Y Reverse
+       * @see https://tailwindcss.com/docs/border-width#between-children
+       */
+      "divide-y-reverse": ["divide-y-reverse"],
       /**
        * Border Style
        * @see https://tailwindcss.com/docs/border-style
        */
       "border-style": [{
-        border: [].concat(a(), ["hidden"])
-      }],
-      /**
-       * Divide Width X
-       * @see https://tailwindcss.com/docs/divide-width
-       */
-      "divide-x": [{
-        "divide-x": [l]
-      }],
-      /**
-       * Divide Width X Reverse
-       * @see https://tailwindcss.com/docs/divide-width
-       */
-      "divide-x-reverse": ["divide-x-reverse"],
-      /**
-       * Divide Width Y
-       * @see https://tailwindcss.com/docs/divide-width
-       */
-      "divide-y": [{
-        "divide-y": [l]
-      }],
-      /**
-       * Divide Width Y Reverse
-       * @see https://tailwindcss.com/docs/divide-width
-       */
-      "divide-y-reverse": ["divide-y-reverse"],
-      /**
-       * Divide Opacity
-       * @see https://tailwindcss.com/docs/divide-opacity
-       */
-      "divide-opacity": [{
-        "divide-opacity": [S]
+        border: [...K(), "hidden", "none"]
       }],
       /**
        * Divide Style
-       * @see https://tailwindcss.com/docs/divide-style
+       * @see https://tailwindcss.com/docs/border-style#setting-the-divider-style
        */
       "divide-style": [{
-        divide: a()
+        divide: [...K(), "hidden", "none"]
       }],
       /**
        * Border Color
        * @see https://tailwindcss.com/docs/border-color
        */
       "border-color": [{
-        border: [n]
+        border: d()
       }],
       /**
        * Border Color X
        * @see https://tailwindcss.com/docs/border-color
        */
       "border-color-x": [{
-        "border-x": [n]
+        "border-x": d()
       }],
       /**
        * Border Color Y
        * @see https://tailwindcss.com/docs/border-color
        */
       "border-color-y": [{
-        "border-y": [n]
+        "border-y": d()
+      }],
+      /**
+       * Border Color S
+       * @see https://tailwindcss.com/docs/border-color
+       */
+      "border-color-s": [{
+        "border-s": d()
+      }],
+      /**
+       * Border Color E
+       * @see https://tailwindcss.com/docs/border-color
+       */
+      "border-color-e": [{
+        "border-e": d()
       }],
       /**
        * Border Color Top
        * @see https://tailwindcss.com/docs/border-color
        */
       "border-color-t": [{
-        "border-t": [n]
+        "border-t": d()
       }],
       /**
        * Border Color Right
        * @see https://tailwindcss.com/docs/border-color
        */
       "border-color-r": [{
-        "border-r": [n]
+        "border-r": d()
       }],
       /**
        * Border Color Bottom
        * @see https://tailwindcss.com/docs/border-color
        */
       "border-color-b": [{
-        "border-b": [n]
+        "border-b": d()
       }],
       /**
        * Border Color Left
        * @see https://tailwindcss.com/docs/border-color
        */
       "border-color-l": [{
-        "border-l": [n]
+        "border-l": d()
       }],
       /**
        * Divide Color
        * @see https://tailwindcss.com/docs/divide-color
        */
       "divide-color": [{
-        divide: [n]
+        divide: d()
       }],
       /**
        * Outline Style
        * @see https://tailwindcss.com/docs/outline-style
        */
       "outline-style": [{
-        outline: [""].concat(a())
+        outline: [...K(), "none", "hidden"]
       }],
       /**
        * Outline Offset
        * @see https://tailwindcss.com/docs/outline-offset
        */
       "outline-offset": [{
-        "outline-offset": [O, le]
+        "outline-offset": [B, C, _]
       }],
       /**
        * Outline Width
        * @see https://tailwindcss.com/docs/outline-width
        */
       "outline-w": [{
-        outline: [le]
+        outline: ["", B, Ye, Le]
       }],
       /**
        * Outline Color
        * @see https://tailwindcss.com/docs/outline-color
        */
       "outline-color": [{
-        outline: [e]
+        outline: d()
       }],
-      /**
-       * Ring Width
-       * @see https://tailwindcss.com/docs/ring-width
-       */
-      "ring-w": [{
-        ring: j()
-      }],
-      /**
-       * Ring Width Inset
-       * @see https://tailwindcss.com/docs/ring-width
-       */
-      "ring-w-inset": ["ring-inset"],
-      /**
-       * Ring Color
-       * @see https://tailwindcss.com/docs/ring-color
-       */
-      "ring-color": [{
-        ring: [e]
-      }],
-      /**
-       * Ring Opacity
-       * @see https://tailwindcss.com/docs/ring-opacity
-       */
-      "ring-opacity": [{
-        "ring-opacity": [S]
-      }],
-      /**
-       * Ring Offset Width
-       * @see https://tailwindcss.com/docs/ring-offset-width
-       */
-      "ring-offset-w": [{
-        "ring-offset": [le]
-      }],
-      /**
-       * Ring Offset Color
-       * @see https://tailwindcss.com/docs/ring-offset-color
-       */
-      "ring-offset-color": [{
-        "ring-offset": [e]
-      }],
-      // Effects
+      // ---------------
+      // --- Effects ---
+      // ---------------
       /**
        * Box Shadow
        * @see https://tailwindcss.com/docs/box-shadow
        */
       shadow: [{
-        shadow: ["", "inner", "none", be, $n]
+        shadow: [
+          // Deprecated since Tailwind CSS v4.0.0
+          "",
+          "none",
+          f,
+          ht,
+          pt
+        ]
       }],
       /**
        * Box Shadow Color
-       * @see https://tailwindcss.com/docs/box-shadow-color
+       * @see https://tailwindcss.com/docs/box-shadow#setting-the-shadow-color
        */
       "shadow-color": [{
-        shadow: [Ge]
+        shadow: d()
+      }],
+      /**
+       * Inset Box Shadow
+       * @see https://tailwindcss.com/docs/box-shadow#adding-an-inset-shadow
+       */
+      "inset-shadow": [{
+        "inset-shadow": ["none", g, ht, pt]
+      }],
+      /**
+       * Inset Box Shadow Color
+       * @see https://tailwindcss.com/docs/box-shadow#setting-the-inset-shadow-color
+       */
+      "inset-shadow-color": [{
+        "inset-shadow": d()
+      }],
+      /**
+       * Ring Width
+       * @see https://tailwindcss.com/docs/box-shadow#adding-a-ring
+       */
+      "ring-w": [{
+        ring: R()
+      }],
+      /**
+       * Ring Width Inset
+       * @see https://v3.tailwindcss.com/docs/ring-width#inset-rings
+       * @deprecated since Tailwind CSS v4.0.0
+       * @see https://github.com/tailwindlabs/tailwindcss/blob/v4.0.0/packages/tailwindcss/src/utilities.ts#L4158
+       */
+      "ring-w-inset": ["ring-inset"],
+      /**
+       * Ring Color
+       * @see https://tailwindcss.com/docs/box-shadow#setting-the-ring-color
+       */
+      "ring-color": [{
+        ring: d()
+      }],
+      /**
+       * Ring Offset Width
+       * @see https://v3.tailwindcss.com/docs/ring-offset-width
+       * @deprecated since Tailwind CSS v4.0.0
+       * @see https://github.com/tailwindlabs/tailwindcss/blob/v4.0.0/packages/tailwindcss/src/utilities.ts#L4158
+       */
+      "ring-offset-w": [{
+        "ring-offset": [B, Le]
+      }],
+      /**
+       * Ring Offset Color
+       * @see https://v3.tailwindcss.com/docs/ring-offset-color
+       * @deprecated since Tailwind CSS v4.0.0
+       * @see https://github.com/tailwindlabs/tailwindcss/blob/v4.0.0/packages/tailwindcss/src/utilities.ts#L4158
+       */
+      "ring-offset-color": [{
+        "ring-offset": d()
+      }],
+      /**
+       * Inset Ring Width
+       * @see https://tailwindcss.com/docs/box-shadow#adding-an-inset-ring
+       */
+      "inset-ring-w": [{
+        "inset-ring": R()
+      }],
+      /**
+       * Inset Ring Color
+       * @see https://tailwindcss.com/docs/box-shadow#setting-the-inset-ring-color
+       */
+      "inset-ring-color": [{
+        "inset-ring": d()
+      }],
+      /**
+       * Text Shadow
+       * @see https://tailwindcss.com/docs/text-shadow
+       */
+      "text-shadow": [{
+        "text-shadow": ["none", b, ht, pt]
+      }],
+      /**
+       * Text Shadow Color
+       * @see https://tailwindcss.com/docs/text-shadow#setting-the-shadow-color
+       */
+      "text-shadow-color": [{
+        "text-shadow": d()
       }],
       /**
        * Opacity
        * @see https://tailwindcss.com/docs/opacity
        */
       opacity: [{
-        opacity: [S]
+        opacity: [B, C, _]
       }],
       /**
        * Mix Blend Mode
        * @see https://tailwindcss.com/docs/mix-blend-mode
        */
       "mix-blend": [{
-        "mix-blend": u()
+        "mix-blend": [...X(), "plus-darker", "plus-lighter"]
       }],
       /**
        * Background Blend Mode
        * @see https://tailwindcss.com/docs/background-blend-mode
        */
       "bg-blend": [{
-        "bg-blend": u()
+        "bg-blend": X()
       }],
-      // Filters
+      /**
+       * Mask Clip
+       * @see https://tailwindcss.com/docs/mask-clip
+       */
+      "mask-clip": [{
+        "mask-clip": ["border", "padding", "content", "fill", "stroke", "view"]
+      }, "mask-no-clip"],
+      /**
+       * Mask Composite
+       * @see https://tailwindcss.com/docs/mask-composite
+       */
+      "mask-composite": [{
+        mask: ["add", "subtract", "intersect", "exclude"]
+      }],
+      /**
+       * Mask Image
+       * @see https://tailwindcss.com/docs/mask-image
+       */
+      "mask-image-linear-pos": [{
+        "mask-linear": [B]
+      }],
+      "mask-image-linear-from-pos": [{
+        "mask-linear-from": E()
+      }],
+      "mask-image-linear-to-pos": [{
+        "mask-linear-to": E()
+      }],
+      "mask-image-linear-from-color": [{
+        "mask-linear-from": d()
+      }],
+      "mask-image-linear-to-color": [{
+        "mask-linear-to": d()
+      }],
+      "mask-image-t-from-pos": [{
+        "mask-t-from": E()
+      }],
+      "mask-image-t-to-pos": [{
+        "mask-t-to": E()
+      }],
+      "mask-image-t-from-color": [{
+        "mask-t-from": d()
+      }],
+      "mask-image-t-to-color": [{
+        "mask-t-to": d()
+      }],
+      "mask-image-r-from-pos": [{
+        "mask-r-from": E()
+      }],
+      "mask-image-r-to-pos": [{
+        "mask-r-to": E()
+      }],
+      "mask-image-r-from-color": [{
+        "mask-r-from": d()
+      }],
+      "mask-image-r-to-color": [{
+        "mask-r-to": d()
+      }],
+      "mask-image-b-from-pos": [{
+        "mask-b-from": E()
+      }],
+      "mask-image-b-to-pos": [{
+        "mask-b-to": E()
+      }],
+      "mask-image-b-from-color": [{
+        "mask-b-from": d()
+      }],
+      "mask-image-b-to-color": [{
+        "mask-b-to": d()
+      }],
+      "mask-image-l-from-pos": [{
+        "mask-l-from": E()
+      }],
+      "mask-image-l-to-pos": [{
+        "mask-l-to": E()
+      }],
+      "mask-image-l-from-color": [{
+        "mask-l-from": d()
+      }],
+      "mask-image-l-to-color": [{
+        "mask-l-to": d()
+      }],
+      "mask-image-x-from-pos": [{
+        "mask-x-from": E()
+      }],
+      "mask-image-x-to-pos": [{
+        "mask-x-to": E()
+      }],
+      "mask-image-x-from-color": [{
+        "mask-x-from": d()
+      }],
+      "mask-image-x-to-color": [{
+        "mask-x-to": d()
+      }],
+      "mask-image-y-from-pos": [{
+        "mask-y-from": E()
+      }],
+      "mask-image-y-to-pos": [{
+        "mask-y-to": E()
+      }],
+      "mask-image-y-from-color": [{
+        "mask-y-from": d()
+      }],
+      "mask-image-y-to-color": [{
+        "mask-y-to": d()
+      }],
+      "mask-image-radial": [{
+        "mask-radial": [C, _]
+      }],
+      "mask-image-radial-from-pos": [{
+        "mask-radial-from": E()
+      }],
+      "mask-image-radial-to-pos": [{
+        "mask-radial-to": E()
+      }],
+      "mask-image-radial-from-color": [{
+        "mask-radial-from": d()
+      }],
+      "mask-image-radial-to-color": [{
+        "mask-radial-to": d()
+      }],
+      "mask-image-radial-shape": [{
+        "mask-radial": ["circle", "ellipse"]
+      }],
+      "mask-image-radial-size": [{
+        "mask-radial": [{
+          closest: ["side", "corner"],
+          farthest: ["side", "corner"]
+        }]
+      }],
+      "mask-image-radial-pos": [{
+        "mask-radial-at": W()
+      }],
+      "mask-image-conic-pos": [{
+        "mask-conic": [B]
+      }],
+      "mask-image-conic-from-pos": [{
+        "mask-conic-from": E()
+      }],
+      "mask-image-conic-to-pos": [{
+        "mask-conic-to": E()
+      }],
+      "mask-image-conic-from-color": [{
+        "mask-conic-from": d()
+      }],
+      "mask-image-conic-to-color": [{
+        "mask-conic-to": d()
+      }],
+      /**
+       * Mask Mode
+       * @see https://tailwindcss.com/docs/mask-mode
+       */
+      "mask-mode": [{
+        mask: ["alpha", "luminance", "match"]
+      }],
+      /**
+       * Mask Origin
+       * @see https://tailwindcss.com/docs/mask-origin
+       */
+      "mask-origin": [{
+        "mask-origin": ["border", "padding", "content", "fill", "stroke", "view"]
+      }],
+      /**
+       * Mask Position
+       * @see https://tailwindcss.com/docs/mask-position
+       */
+      "mask-position": [{
+        mask: h()
+      }],
+      /**
+       * Mask Repeat
+       * @see https://tailwindcss.com/docs/mask-repeat
+       */
+      "mask-repeat": [{
+        mask: m()
+      }],
+      /**
+       * Mask Size
+       * @see https://tailwindcss.com/docs/mask-size
+       */
+      "mask-size": [{
+        mask: $()
+      }],
+      /**
+       * Mask Type
+       * @see https://tailwindcss.com/docs/mask-type
+       */
+      "mask-type": [{
+        "mask-type": ["alpha", "luminance"]
+      }],
+      /**
+       * Mask Image
+       * @see https://tailwindcss.com/docs/mask-image
+       */
+      "mask-image": [{
+        mask: ["none", C, _]
+      }],
+      // ---------------
+      // --- Filters ---
+      // ---------------
       /**
        * Filter
-       * @deprecated since Tailwind CSS v3.0.0
        * @see https://tailwindcss.com/docs/filter
        */
       filter: [{
-        filter: ["", "none"]
+        filter: [
+          // Deprecated since Tailwind CSS v3.0.0
+          "",
+          "none",
+          C,
+          _
+        ]
       }],
       /**
        * Blur
        * @see https://tailwindcss.com/docs/blur
        */
       blur: [{
-        blur: [r]
+        blur: ce()
       }],
       /**
        * Brightness
        * @see https://tailwindcss.com/docs/brightness
        */
       brightness: [{
-        brightness: [o]
+        brightness: [B, C, _]
       }],
       /**
        * Contrast
        * @see https://tailwindcss.com/docs/contrast
        */
       contrast: [{
-        contrast: [d]
+        contrast: [B, C, _]
       }],
       /**
        * Drop Shadow
        * @see https://tailwindcss.com/docs/drop-shadow
        */
       "drop-shadow": [{
-        "drop-shadow": ["", "none", be, O]
+        "drop-shadow": [
+          // Deprecated since Tailwind CSS v4.0.0
+          "",
+          "none",
+          y,
+          ht,
+          pt
+        ]
+      }],
+      /**
+       * Drop Shadow Color
+       * @see https://tailwindcss.com/docs/filter-drop-shadow#setting-the-shadow-color
+       */
+      "drop-shadow-color": [{
+        "drop-shadow": d()
       }],
       /**
        * Grayscale
        * @see https://tailwindcss.com/docs/grayscale
        */
       grayscale: [{
-        grayscale: [p]
+        grayscale: ["", B, C, _]
       }],
       /**
        * Hue Rotate
        * @see https://tailwindcss.com/docs/hue-rotate
        */
       "hue-rotate": [{
-        "hue-rotate": [g]
+        "hue-rotate": [B, C, _]
       }],
       /**
        * Invert
        * @see https://tailwindcss.com/docs/invert
        */
       invert: [{
-        invert: [f]
+        invert: ["", B, C, _]
       }],
       /**
        * Saturate
        * @see https://tailwindcss.com/docs/saturate
        */
       saturate: [{
-        saturate: [E]
+        saturate: [B, C, _]
       }],
       /**
        * Sepia
        * @see https://tailwindcss.com/docs/sepia
        */
       sepia: [{
-        sepia: [W]
+        sepia: ["", B, C, _]
       }],
       /**
        * Backdrop Filter
-       * @deprecated since Tailwind CSS v3.0.0
        * @see https://tailwindcss.com/docs/backdrop-filter
        */
       "backdrop-filter": [{
-        "backdrop-filter": ["", "none"]
+        "backdrop-filter": [
+          // Deprecated since Tailwind CSS v3.0.0
+          "",
+          "none",
+          C,
+          _
+        ]
       }],
       /**
        * Backdrop Blur
        * @see https://tailwindcss.com/docs/backdrop-blur
        */
       "backdrop-blur": [{
-        "backdrop-blur": [r]
+        "backdrop-blur": ce()
       }],
       /**
        * Backdrop Brightness
        * @see https://tailwindcss.com/docs/backdrop-brightness
        */
       "backdrop-brightness": [{
-        "backdrop-brightness": [o]
+        "backdrop-brightness": [B, C, _]
       }],
       /**
        * Backdrop Contrast
        * @see https://tailwindcss.com/docs/backdrop-contrast
        */
       "backdrop-contrast": [{
-        "backdrop-contrast": [d]
+        "backdrop-contrast": [B, C, _]
       }],
       /**
        * Backdrop Grayscale
        * @see https://tailwindcss.com/docs/backdrop-grayscale
        */
       "backdrop-grayscale": [{
-        "backdrop-grayscale": [p]
+        "backdrop-grayscale": ["", B, C, _]
       }],
       /**
        * Backdrop Hue Rotate
        * @see https://tailwindcss.com/docs/backdrop-hue-rotate
        */
       "backdrop-hue-rotate": [{
-        "backdrop-hue-rotate": [g]
+        "backdrop-hue-rotate": [B, C, _]
       }],
       /**
        * Backdrop Invert
        * @see https://tailwindcss.com/docs/backdrop-invert
        */
       "backdrop-invert": [{
-        "backdrop-invert": [f]
+        "backdrop-invert": ["", B, C, _]
       }],
       /**
        * Backdrop Opacity
        * @see https://tailwindcss.com/docs/backdrop-opacity
        */
       "backdrop-opacity": [{
-        "backdrop-opacity": [S]
+        "backdrop-opacity": [B, C, _]
       }],
       /**
        * Backdrop Saturate
        * @see https://tailwindcss.com/docs/backdrop-saturate
        */
       "backdrop-saturate": [{
-        "backdrop-saturate": [E]
+        "backdrop-saturate": [B, C, _]
       }],
       /**
        * Backdrop Sepia
        * @see https://tailwindcss.com/docs/backdrop-sepia
        */
       "backdrop-sepia": [{
-        "backdrop-sepia": [W]
+        "backdrop-sepia": ["", B, C, _]
       }],
-      // Tables
+      // --------------
+      // --- Tables ---
+      // --------------
       /**
        * Border Collapse
        * @see https://tailwindcss.com/docs/border-collapse
@@ -1888,21 +2160,21 @@ function Pn() {
        * @see https://tailwindcss.com/docs/border-spacing
        */
       "border-spacing": [{
-        "border-spacing": [s]
+        "border-spacing": T()
       }],
       /**
        * Border Spacing X
        * @see https://tailwindcss.com/docs/border-spacing
        */
       "border-spacing-x": [{
-        "border-spacing-x": [s]
+        "border-spacing-x": T()
       }],
       /**
        * Border Spacing Y
        * @see https://tailwindcss.com/docs/border-spacing
        */
       "border-spacing-y": [{
-        "border-spacing-y": [s]
+        "border-spacing-y": T()
       }],
       /**
        * Table Layout
@@ -1918,153 +2190,269 @@ function Pn() {
       caption: [{
         caption: ["top", "bottom"]
       }],
-      // Transitions and Animation
+      // ---------------------------------
+      // --- Transitions and Animation ---
+      // ---------------------------------
       /**
-       * Tranisition Property
+       * Transition Property
        * @see https://tailwindcss.com/docs/transition-property
        */
       transition: [{
-        transition: ["none", "all", "", "colors", "opacity", "shadow", "transform", O]
+        transition: ["", "all", "colors", "opacity", "shadow", "transform", "none", C, _]
+      }],
+      /**
+       * Transition Behavior
+       * @see https://tailwindcss.com/docs/transition-behavior
+       */
+      "transition-behavior": [{
+        transition: ["normal", "discrete"]
       }],
       /**
        * Transition Duration
        * @see https://tailwindcss.com/docs/transition-duration
        */
       duration: [{
-        duration: N()
+        duration: [B, "initial", C, _]
       }],
       /**
        * Transition Timing Function
        * @see https://tailwindcss.com/docs/transition-timing-function
        */
       ease: [{
-        ease: ["linear", "in", "out", "in-out", O]
+        ease: ["linear", "initial", P, C, _]
       }],
       /**
        * Transition Delay
        * @see https://tailwindcss.com/docs/transition-delay
        */
       delay: [{
-        delay: N()
+        delay: [B, C, _]
       }],
       /**
        * Animation
        * @see https://tailwindcss.com/docs/animation
        */
       animate: [{
-        animate: ["none", "spin", "ping", "pulse", "bounce", O]
+        animate: ["none", z, C, _]
       }],
-      // Transforms
+      // ------------------
+      // --- Transforms ---
+      // ------------------
       /**
-       * Transform
-       * @see https://tailwindcss.com/docs/transform
+       * Backface Visibility
+       * @see https://tailwindcss.com/docs/backface-visibility
        */
-      transform: [{
-        transform: ["", "gpu", "none"]
-      }],
-      /**
-       * Scale
-       * @see https://tailwindcss.com/docs/scale
-       */
-      scale: [{
-        scale: [V]
+      backface: [{
+        backface: ["hidden", "visible"]
       }],
       /**
-       * Scale X
-       * @see https://tailwindcss.com/docs/scale
+       * Perspective
+       * @see https://tailwindcss.com/docs/perspective
        */
-      "scale-x": [{
-        "scale-x": [V]
+      perspective: [{
+        perspective: [S, C, _]
       }],
       /**
-       * Scale Y
-       * @see https://tailwindcss.com/docs/scale
+       * Perspective Origin
+       * @see https://tailwindcss.com/docs/perspective-origin
        */
-      "scale-y": [{
-        "scale-y": [V]
+      "perspective-origin": [{
+        "perspective-origin": G()
       }],
       /**
        * Rotate
        * @see https://tailwindcss.com/docs/rotate
        */
       rotate: [{
-        rotate: [We, O]
+        rotate: re()
       }],
       /**
-       * Translate X
-       * @see https://tailwindcss.com/docs/translate
+       * Rotate X
+       * @see https://tailwindcss.com/docs/rotate
        */
-      "translate-x": [{
-        "translate-x": [X]
+      "rotate-x": [{
+        "rotate-x": re()
       }],
       /**
-       * Translate Y
-       * @see https://tailwindcss.com/docs/translate
+       * Rotate Y
+       * @see https://tailwindcss.com/docs/rotate
        */
-      "translate-y": [{
-        "translate-y": [X]
+      "rotate-y": [{
+        "rotate-y": re()
+      }],
+      /**
+       * Rotate Z
+       * @see https://tailwindcss.com/docs/rotate
+       */
+      "rotate-z": [{
+        "rotate-z": re()
+      }],
+      /**
+       * Scale
+       * @see https://tailwindcss.com/docs/scale
+       */
+      scale: [{
+        scale: oe()
+      }],
+      /**
+       * Scale X
+       * @see https://tailwindcss.com/docs/scale
+       */
+      "scale-x": [{
+        "scale-x": oe()
+      }],
+      /**
+       * Scale Y
+       * @see https://tailwindcss.com/docs/scale
+       */
+      "scale-y": [{
+        "scale-y": oe()
+      }],
+      /**
+       * Scale Z
+       * @see https://tailwindcss.com/docs/scale
+       */
+      "scale-z": [{
+        "scale-z": oe()
+      }],
+      /**
+       * Scale 3D
+       * @see https://tailwindcss.com/docs/scale
+       */
+      "scale-3d": ["scale-3d"],
+      /**
+       * Skew
+       * @see https://tailwindcss.com/docs/skew
+       */
+      skew: [{
+        skew: we()
       }],
       /**
        * Skew X
        * @see https://tailwindcss.com/docs/skew
        */
       "skew-x": [{
-        "skew-x": [F]
+        "skew-x": we()
       }],
       /**
        * Skew Y
        * @see https://tailwindcss.com/docs/skew
        */
       "skew-y": [{
-        "skew-y": [F]
+        "skew-y": we()
+      }],
+      /**
+       * Transform
+       * @see https://tailwindcss.com/docs/transform
+       */
+      transform: [{
+        transform: [C, _, "", "none", "gpu", "cpu"]
       }],
       /**
        * Transform Origin
        * @see https://tailwindcss.com/docs/transform-origin
        */
       "transform-origin": [{
-        origin: ["center", "top", "top-right", "right", "bottom-right", "bottom", "bottom-left", "left", "top-left", O]
+        origin: G()
       }],
-      // Interactivity
+      /**
+       * Transform Style
+       * @see https://tailwindcss.com/docs/transform-style
+       */
+      "transform-style": [{
+        transform: ["3d", "flat"]
+      }],
+      /**
+       * Translate
+       * @see https://tailwindcss.com/docs/translate
+       */
+      translate: [{
+        translate: be()
+      }],
+      /**
+       * Translate X
+       * @see https://tailwindcss.com/docs/translate
+       */
+      "translate-x": [{
+        "translate-x": be()
+      }],
+      /**
+       * Translate Y
+       * @see https://tailwindcss.com/docs/translate
+       */
+      "translate-y": [{
+        "translate-y": be()
+      }],
+      /**
+       * Translate Z
+       * @see https://tailwindcss.com/docs/translate
+       */
+      "translate-z": [{
+        "translate-z": be()
+      }],
+      /**
+       * Translate None
+       * @see https://tailwindcss.com/docs/translate
+       */
+      "translate-none": ["translate-none"],
+      // ---------------------
+      // --- Interactivity ---
+      // ---------------------
       /**
        * Accent Color
        * @see https://tailwindcss.com/docs/accent-color
        */
       accent: [{
-        accent: ["auto", e]
+        accent: d()
       }],
       /**
        * Appearance
        * @see https://tailwindcss.com/docs/appearance
        */
-      appearance: ["appearance-none"],
-      /**
-       * Cursor
-       * @see https://tailwindcss.com/docs/cursor
-       */
-      cursor: [{
-        cursor: ["auto", "default", "pointer", "wait", "text", "move", "help", "not-allowed", "none", "context-menu", "progress", "cell", "crosshair", "vertical-text", "alias", "copy", "no-drop", "grab", "grabbing", "all-scroll", "col-resize", "row-resize", "n-resize", "e-resize", "s-resize", "w-resize", "ne-resize", "nw-resize", "se-resize", "sw-resize", "ew-resize", "ns-resize", "nesw-resize", "nwse-resize", "zoom-in", "zoom-out", O]
+      appearance: [{
+        appearance: ["none", "auto"]
       }],
       /**
        * Caret Color
        * @see https://tailwindcss.com/docs/just-in-time-mode#caret-color-utilities
        */
       "caret-color": [{
-        caret: [e]
+        caret: d()
+      }],
+      /**
+       * Color Scheme
+       * @see https://tailwindcss.com/docs/color-scheme
+       */
+      "color-scheme": [{
+        scheme: ["normal", "dark", "light", "light-dark", "only-dark", "only-light"]
+      }],
+      /**
+       * Cursor
+       * @see https://tailwindcss.com/docs/cursor
+       */
+      cursor: [{
+        cursor: ["auto", "default", "pointer", "wait", "text", "move", "help", "not-allowed", "none", "context-menu", "progress", "cell", "crosshair", "vertical-text", "alias", "copy", "no-drop", "grab", "grabbing", "all-scroll", "col-resize", "row-resize", "n-resize", "e-resize", "s-resize", "w-resize", "ne-resize", "nw-resize", "se-resize", "sw-resize", "ew-resize", "ns-resize", "nesw-resize", "nwse-resize", "zoom-in", "zoom-out", C, _]
+      }],
+      /**
+       * Field Sizing
+       * @see https://tailwindcss.com/docs/field-sizing
+       */
+      "field-sizing": [{
+        "field-sizing": ["fixed", "content"]
       }],
       /**
        * Pointer Events
        * @see https://tailwindcss.com/docs/pointer-events
        */
       "pointer-events": [{
-        "pointer-events": ["none", "auto"]
+        "pointer-events": ["auto", "none"]
       }],
       /**
        * Resize
        * @see https://tailwindcss.com/docs/resize
        */
       resize: [{
-        resize: ["none", "y", "x", ""]
+        resize: ["none", "", "y", "x"]
       }],
       /**
        * Scroll Behavior
@@ -2078,126 +2466,126 @@ function Pn() {
        * @see https://tailwindcss.com/docs/scroll-margin
        */
       "scroll-m": [{
-        "scroll-m": A()
+        "scroll-m": T()
       }],
       /**
        * Scroll Margin X
        * @see https://tailwindcss.com/docs/scroll-margin
        */
       "scroll-mx": [{
-        "scroll-mx": A()
+        "scroll-mx": T()
       }],
       /**
        * Scroll Margin Y
        * @see https://tailwindcss.com/docs/scroll-margin
        */
       "scroll-my": [{
-        "scroll-my": A()
+        "scroll-my": T()
       }],
       /**
        * Scroll Margin Start
        * @see https://tailwindcss.com/docs/scroll-margin
        */
       "scroll-ms": [{
-        "scroll-ms": A()
+        "scroll-ms": T()
       }],
       /**
        * Scroll Margin End
        * @see https://tailwindcss.com/docs/scroll-margin
        */
       "scroll-me": [{
-        "scroll-me": A()
+        "scroll-me": T()
       }],
       /**
        * Scroll Margin Top
        * @see https://tailwindcss.com/docs/scroll-margin
        */
       "scroll-mt": [{
-        "scroll-mt": A()
+        "scroll-mt": T()
       }],
       /**
        * Scroll Margin Right
        * @see https://tailwindcss.com/docs/scroll-margin
        */
       "scroll-mr": [{
-        "scroll-mr": A()
+        "scroll-mr": T()
       }],
       /**
        * Scroll Margin Bottom
        * @see https://tailwindcss.com/docs/scroll-margin
        */
       "scroll-mb": [{
-        "scroll-mb": A()
+        "scroll-mb": T()
       }],
       /**
        * Scroll Margin Left
        * @see https://tailwindcss.com/docs/scroll-margin
        */
       "scroll-ml": [{
-        "scroll-ml": A()
+        "scroll-ml": T()
       }],
       /**
        * Scroll Padding
        * @see https://tailwindcss.com/docs/scroll-padding
        */
       "scroll-p": [{
-        "scroll-p": A()
+        "scroll-p": T()
       }],
       /**
        * Scroll Padding X
        * @see https://tailwindcss.com/docs/scroll-padding
        */
       "scroll-px": [{
-        "scroll-px": A()
+        "scroll-px": T()
       }],
       /**
        * Scroll Padding Y
        * @see https://tailwindcss.com/docs/scroll-padding
        */
       "scroll-py": [{
-        "scroll-py": A()
+        "scroll-py": T()
       }],
       /**
        * Scroll Padding Start
        * @see https://tailwindcss.com/docs/scroll-padding
        */
       "scroll-ps": [{
-        "scroll-ps": A()
+        "scroll-ps": T()
       }],
       /**
        * Scroll Padding End
        * @see https://tailwindcss.com/docs/scroll-padding
        */
       "scroll-pe": [{
-        "scroll-pe": A()
+        "scroll-pe": T()
       }],
       /**
        * Scroll Padding Top
        * @see https://tailwindcss.com/docs/scroll-padding
        */
       "scroll-pt": [{
-        "scroll-pt": A()
+        "scroll-pt": T()
       }],
       /**
        * Scroll Padding Right
        * @see https://tailwindcss.com/docs/scroll-padding
        */
       "scroll-pr": [{
-        "scroll-pr": A()
+        "scroll-pr": T()
       }],
       /**
        * Scroll Padding Bottom
        * @see https://tailwindcss.com/docs/scroll-padding
        */
       "scroll-pb": [{
-        "scroll-pb": A()
+        "scroll-pb": T()
       }],
       /**
        * Scroll Padding Left
        * @see https://tailwindcss.com/docs/scroll-padding
        */
       "scroll-pl": [{
-        "scroll-pl": A()
+        "scroll-pl": T()
       }],
       /**
        * Scroll Snap Align
@@ -2232,10 +2620,27 @@ function Pn() {
        * @see https://tailwindcss.com/docs/touch-action
        */
       touch: [{
-        touch: ["auto", "none", "pinch-zoom", "manipulation", {
-          pan: ["x", "left", "right", "y", "up", "down"]
-        }]
+        touch: ["auto", "none", "manipulation"]
       }],
+      /**
+       * Touch Action X
+       * @see https://tailwindcss.com/docs/touch-action
+       */
+      "touch-x": [{
+        "touch-pan": ["x", "left", "right"]
+      }],
+      /**
+       * Touch Action Y
+       * @see https://tailwindcss.com/docs/touch-action
+       */
+      "touch-y": [{
+        "touch-pan": ["y", "up", "down"]
+      }],
+      /**
+       * Touch Action Pinch Zoom
+       * @see https://tailwindcss.com/docs/touch-action
+       */
+      "touch-pz": ["touch-pinch-zoom"],
       /**
        * User Select
        * @see https://tailwindcss.com/docs/user-select
@@ -2248,36 +2653,42 @@ function Pn() {
        * @see https://tailwindcss.com/docs/will-change
        */
       "will-change": [{
-        "will-change": ["auto", "scroll", "contents", "transform", O]
+        "will-change": ["auto", "scroll", "contents", "transform", C, _]
       }],
-      // SVG
+      // -----------
+      // --- SVG ---
+      // -----------
       /**
        * Fill
        * @see https://tailwindcss.com/docs/fill
        */
       fill: [{
-        fill: [e, "none"]
+        fill: ["none", ...d()]
       }],
       /**
        * Stroke Width
        * @see https://tailwindcss.com/docs/stroke-width
        */
       "stroke-w": [{
-        stroke: [le, st]
+        stroke: [B, Ye, Le, Rt]
       }],
       /**
        * Stroke
        * @see https://tailwindcss.com/docs/stroke
        */
       stroke: [{
-        stroke: [e, "none"]
+        stroke: ["none", ...d()]
       }],
-      // Accessibility
+      // ---------------------
+      // --- Accessibility ---
+      // ---------------------
       /**
-       * Screen Readers
-       * @see https://tailwindcss.com/docs/screen-readers
+       * Forced Color Adjust
+       * @see https://tailwindcss.com/docs/forced-color-adjust
        */
-      sr: ["sr-only", "not-sr-only"]
+      "forced-color-adjust": [{
+        "forced-color-adjust": ["auto", "none"]
+      }]
     },
     conflictingClassGroups: {
       overflow: ["overflow-x", "overflow-y"],
@@ -2293,6 +2704,7 @@ function Pn() {
       m: ["mx", "my", "ms", "me", "mt", "mr", "mb", "ml"],
       mx: ["mr", "ml"],
       my: ["mt", "mb"],
+      size: ["w", "h"],
       "font-size": ["leading"],
       "fvn-normal": ["fvn-ordinal", "fvn-slashed-zero", "fvn-figure", "fvn-spacing", "fvn-fraction"],
       "fvn-ordinal": ["fvn-normal"],
@@ -2300,6 +2712,7 @@ function Pn() {
       "fvn-figure": ["fvn-normal"],
       "fvn-spacing": ["fvn-normal"],
       "fvn-fraction": ["fvn-normal"],
+      "line-clamp": ["display", "overflow"],
       rounded: ["rounded-s", "rounded-e", "rounded-t", "rounded-r", "rounded-b", "rounded-l", "rounded-ss", "rounded-se", "rounded-ee", "rounded-es", "rounded-tl", "rounded-tr", "rounded-br", "rounded-bl"],
       "rounded-s": ["rounded-ss", "rounded-es"],
       "rounded-e": ["rounded-se", "rounded-ee"],
@@ -2308,246 +2721,244 @@ function Pn() {
       "rounded-b": ["rounded-br", "rounded-bl"],
       "rounded-l": ["rounded-tl", "rounded-bl"],
       "border-spacing": ["border-spacing-x", "border-spacing-y"],
-      "border-w": ["border-w-s", "border-w-e", "border-w-t", "border-w-r", "border-w-b", "border-w-l"],
+      "border-w": ["border-w-x", "border-w-y", "border-w-s", "border-w-e", "border-w-t", "border-w-r", "border-w-b", "border-w-l"],
       "border-w-x": ["border-w-r", "border-w-l"],
       "border-w-y": ["border-w-t", "border-w-b"],
-      "border-color": ["border-color-t", "border-color-r", "border-color-b", "border-color-l"],
+      "border-color": ["border-color-x", "border-color-y", "border-color-s", "border-color-e", "border-color-t", "border-color-r", "border-color-b", "border-color-l"],
       "border-color-x": ["border-color-r", "border-color-l"],
       "border-color-y": ["border-color-t", "border-color-b"],
+      translate: ["translate-x", "translate-y", "translate-none"],
+      "translate-none": ["translate", "translate-x", "translate-y", "translate-z"],
       "scroll-m": ["scroll-mx", "scroll-my", "scroll-ms", "scroll-me", "scroll-mt", "scroll-mr", "scroll-mb", "scroll-ml"],
       "scroll-mx": ["scroll-mr", "scroll-ml"],
       "scroll-my": ["scroll-mt", "scroll-mb"],
       "scroll-p": ["scroll-px", "scroll-py", "scroll-ps", "scroll-pe", "scroll-pt", "scroll-pr", "scroll-pb", "scroll-pl"],
       "scroll-px": ["scroll-pr", "scroll-pl"],
-      "scroll-py": ["scroll-pt", "scroll-pb"]
+      "scroll-py": ["scroll-pt", "scroll-pb"],
+      touch: ["touch-x", "touch-y", "touch-pz"],
+      "touch-x": ["touch"],
+      "touch-y": ["touch"],
+      "touch-pz": ["touch"]
     },
     conflictingClassGroupModifiers: {
       "font-size": ["leading"]
-    }
+    },
+    orderSensitiveModifiers: ["*", "**", "after", "backdrop", "before", "details-content", "file", "first-letter", "first-line", "marker", "placeholder", "selection"]
   };
+}, Me = /* @__PURE__ */ zn(Qn);
+function Co(e) {
+  return typeof e == "string" ? e.trim() : Array.isArray(e) ? e.map(Co).join(" ").trim() : typeof e == "object" && e !== null ? Object.entries(e).filter(([t, r]) => r).map(([t]) => t).join(" ") : "";
 }
-var se = /* @__PURE__ */ gn(Pn);
-const Ln = "p-5 border border-gray-200 dark:border-gray-700 dark:bg-gray-900";
-function An(e) {
-  const t = x(() => e.value.parentElement.parentElement.dataset.accordionId), r = x(() => e.value.parentElement.dataset.panelId), { accordionsStates: o } = ot(), n = x(() => o[t.value]), i = x(() => o[t.value].panels[r.value]), s = x(() => Object.keys(o[t.value].panels[r.value]).length);
-  return {
-    contentClasses: x(() => se(
-      Ln,
-      !i.value.isVisible && "hidden",
-      (i.value.order !== s.value - 1 || n.value.flush) && "border-b-0",
-      i.value.order === s.value - 1 && "border-t-0",
-      n.value.flush && "border-x-0"
-    ))
-  };
-}
-const Nn = /* @__PURE__ */ K({
-  __name: "FwbAccordionContent",
+const se = (e) => Me(Co(e)), Xn = ["data-accordion-id"], ei = "w-full", ti = /* @__PURE__ */ Z({
+  __name: "FwbAccordion",
+  props: {
+    class: { default: "" },
+    collapsed: { type: Boolean, default: !1 },
+    flushed: { type: Boolean, default: !1 },
+    persistent: { type: Boolean, default: !1 }
+  },
   setup(e) {
-    const t = ie(!1), r = ie();
-    let o;
-    return _t(() => {
-      o = An(r).contentClasses, t.value = !0;
-    }), (n, i) => (w(), L("div", {
-      ref_key: "content",
-      ref: r
+    const t = ho(), r = e, o = v(() => r.class ?? ""), n = v(() => se([
+      ei,
+      o.value
+    ]));
+    return Pt(t, { ...r }), (i, s) => (x(), N("div", {
+      "data-accordion-id": A(t),
+      class: H(n.value)
     }, [
-      t.value ? (w(), L("div", {
+      j(i.$slots, "default")
+    ], 10, Xn));
+  }
+}), ri = (e, t, r) => {
+  const o = "p-5 border border-gray-200 dark:border-gray-700 dark:bg-gray-900", n = v(() => r.class), i = v(() => r.activeClass), s = v(() => e.value?.flushed), u = v(() => t.value?.isVisible), p = v(() => e.value?.panels?.length ?? 0), c = v(() => t.value?.order === p.value - 1);
+  return v(
+    () => se(
+      [
+        o,
+        s.value && "border-x-0 border-t-0",
+        !u.value && "hidden",
+        !c.value && !s.value && "border-b-0",
+        c.value && "border-t-0",
+        n.value,
+        u.value ? i.value : ""
+      ].filter((f) => f).join(" ")
+    )
+  ).value;
+}, oi = /* @__PURE__ */ Z({
+  __name: "FwbAccordionContent",
+  props: {
+    activeClass: { default: "" },
+    class: { default: "" }
+  },
+  setup(e) {
+    const t = e, { getAccordionState: r } = Pt(), o = ae(!1), n = ae(), i = ae(), s = v(() => (n.value && n.value.closest("[data-panel-id]"))?.dataset.panelId), u = v(() => i.value?.panels.find((c) => c.id === s.value)), p = v(() => i.value && u.value ? ri(i, u, t) : null);
+    return It(() => {
+      i.value = r({ element: n }), o.value = !0;
+    }), (c, f) => (x(), N("div", {
+      ref_key: "contentRef",
+      ref: n
+    }, [
+      o.value ? (x(), N("div", {
         key: 0,
-        class: H(T(o))
+        class: H(p.value)
       }, [
-        z(n.$slots, "default")
-      ], 2)) : U("", !0)
+        j(c.$slots, "default")
+      ], 2)) : Y("", !0)
     ], 512));
   }
-}), Dn = "flex items-center p-5 w-full font-medium text-left text-gray-500 border border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800", zn = "w-6 h-6 shrink-0";
-function En(e) {
-  const t = x(() => e.value.parentElement.parentElement.dataset.accordionId), r = x(() => e.value.parentElement.dataset.panelId), { accordionsStates: o } = ot(), n = x(() => o[t.value]), i = x(() => n.value.panels[r.value]), s = x(() => Object.keys(i.value).length), l = x(() => i.value.order !== s.value - 1), d = x(() => l.value || n.value.flush && i.value.order === s.value - 1 && !i.value.isVisible), p = x(() => se(
-    Dn,
-    i.value.isVisible && "bg-gray-100 dark:bg-gray-800",
-    i.value.order === 0 && !n.value.flush && "rounded-t-xl",
-    i.value.order === 0 && n.value.flush && "border-t-0",
-    d.value && "border-b-0",
-    n.value.flush && "border-x-0"
-  )), g = x(() => se(zn, i.value.isVisible && "rotate-180"));
+}), $o = "flex w-full items-center justify-between gap-3 font-medium p-5 text-gray-500 dark:text-gray-400 rtl:text-right", ni = `${$o} border border-gray-200 hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:border-gray-700 dark:hover:bg-gray-800 dark:focus:ring-gray-800`, ii = `${$o} border-b border-gray-200 dark:border-gray-700`, si = "ml-auto size-6 shrink-0", ai = (e, t, r) => {
+  const o = v(
+    () => se([
+      si,
+      t.value?.isVisible ? "rotate-180" : ""
+    ])
+  ), n = v(() => r.class), i = v(() => r.activeClass), s = v(() => e.value?.panels?.length ?? 0), u = v(() => t.value?.order === 0), p = v(() => t.value?.order === s.value - 1), c = v(() => t.value?.isVisible), f = v(() => e.value?.flushed), g = v(
+    () => se(
+      [
+        f.value ? ii : ni,
+        c.value ? "text-gray-900 dark:text-white" : "text-gray-500 dark:text-gray-400",
+        c.value && !f.value && "bg-gray-100 dark:bg-gray-800",
+        u.value && !f.value && "rounded-t-xl",
+        u.value && f.value && "border-t-0",
+        !p.value && "border-b-0",
+        f.value && "border-x-0 border-b",
+        n.value,
+        c.value ? i.value : ""
+      ].filter((b) => b).join(" ")
+    )
+  );
   return {
-    headerClasses: p,
-    arrowClasses: g
+    arrowClasses: o.value,
+    headerClasses: g.value
   };
-}
-const On = { class: "w-full" }, Mn = /* @__PURE__ */ R("path", {
-  "fill-rule": "evenodd",
-  d: "M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-}, null, -1), Bn = [
-  Mn
-], jn = /* @__PURE__ */ K({
+}, li = /* @__PURE__ */ Z({
   __name: "FwbAccordionHeader",
+  props: {
+    activeClass: { default: "" },
+    class: { default: "" }
+  },
   setup(e) {
-    const t = ie(!1), r = ie(), o = x(() => r.value.parentElement.parentElement.dataset.accordionId), n = x(() => r.value.parentElement.dataset.panelId), { accordionsStates: i } = ot(), s = x(() => i[o.value]), l = x(() => s.value.panels[n.value]);
-    let d, p;
-    function g() {
-      const y = l.value.isVisible;
-      for (const k in s.value.panels) {
-        const _ = s.value.panels[k];
-        _.id !== n.value ? _.isVisible = !1 : _.isVisible = !y;
+    const t = e, { getAccordionState: r } = Pt(), o = ae(!1), n = ae(), i = ae(), s = v(() => (n.value && n.value.closest("[data-panel-id]"))?.dataset.panelId), u = v(() => i.value?.panels.find((b) => b.id === s.value)), p = v(() => i.value && u.value ? ai(i, u, t) : null), c = v(() => p.value?.arrowClasses), f = v(() => p.value?.headerClasses);
+    It(() => {
+      i.value = r({ element: n }), o.value = !0;
+    });
+    const g = () => {
+      if (i.value.persistent) {
+        u.value.isVisible = !u.value?.isVisible;
+        return;
       }
-    }
-    function f() {
-      l.value.isVisible = !l.value.isVisible;
-    }
-    function m() {
-      if (s.value.alwaysOpen)
-        return f();
-      g();
-    }
-    return _t(() => {
-      const y = En(r);
-      d = y.headerClasses, p = y.arrowClasses, t.value = !0;
-    }), (y, k) => (w(), L("div", {
-      ref_key: "header",
-      ref: r
+      const b = u.value.isVisible;
+      i.value.panels.forEach((y) => {
+        y.id !== s.value ? y.isVisible = !1 : y.isVisible = !b;
+      });
+    };
+    return (b, y) => (x(), N("div", {
+      ref_key: "headerRef",
+      ref: n
     }, [
-      t.value ? (w(), L("button", {
+      o.value ? (x(), N("button", {
         key: 0,
+        class: H(f.value),
         type: "button",
-        class: H(T(d)),
-        onClick: m
+        onClick: g
       }, [
-        R("span", On, [
-          z(y.$slots, "default")
-        ]),
-        (w(), L("svg", {
-          "data-accordion-icon": "",
-          class: H(T(p)),
+        j(b.$slots, "default"),
+        (x(), N("svg", {
+          class: H(c.value),
           fill: "currentColor",
           viewBox: "0 0 20 20",
           xmlns: "http://www.w3.org/2000/svg"
-        }, Bn, 2))
-      ], 2)) : U("", !0)
+        }, y[0] || (y[0] = [
+          U("path", { d: "M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" }, null, -1)
+        ]), 2))
+      ], 2)) : Y("", !0)
     ], 512));
   }
-}), Rn = ["data-panel-id"], Fn = /* @__PURE__ */ K({
+}), ui = ({ props: e, isVisible: t }) => {
+  const r = e.activeClass ?? "";
+  return se([`${t ? r : ""}`]);
+}, di = ["data-panel-id"], ci = /* @__PURE__ */ Z({
   __name: "FwbAccordionPanel",
-  setup(e) {
-    const { accordionsStates: t } = ot(), r = Xr(), o = ie(), n = x(() => o.value ? o.value.parentElement.dataset.accordionId : null), i = x(() => t[n.value]);
-    return _t(() => {
-      var l, d;
-      const s = (d = Object.keys((l = i == null ? void 0 : i.value) == null ? void 0 : l.panels)) == null ? void 0 : d.length;
-      i.value.panels[r] = {
-        id: r,
-        order: s,
-        isVisible: (i.value.openFirstItem && s === 0) ?? !1
-      };
-    }), (s, l) => (w(), L("div", {
-      ref_key: "panel",
-      ref: o,
-      "data-panel-id": T(r)
+  props: {
+    activeClass: { default: "" }
+  },
+  emits: ["show", "hide"],
+  setup(e, { emit: t }) {
+    const r = e, {
+      getAccordionState: o,
+      getAccordionPanelState: n
+    } = Pt(), i = ae(), s = ho(), u = ae(), p = ae(), c = v(
+      () => p.value ? n({ accordionState: p, panelId: s }) : null
+    ), f = v(
+      () => ui({
+        isVisible: c.value?.isVisible ?? !1,
+        props: r
+      })
+    ), g = v(() => c.value?.isVisible), b = t;
+    return Ut(g, () => {
+      g.value ? b("show") : b("hide");
+    }), It(() => {
+      p.value = o({ element: i }), u.value = p.value.id;
+      const y = i.value && i.value.parentElement ? Array.from(i.value.parentElement.children).indexOf(i.value) : -1;
+      p.value.panels.push({
+        id: s,
+        isVisible: (!p.value.collapsed && y === 0) ?? !1,
+        order: y
+      });
+    }), (y, w) => (x(), N("div", {
+      ref_key: "panelRef",
+      ref: i,
+      "data-panel-id": A(s),
+      class: H(f.value)
     }, [
-      n.value ? z(s.$slots, "default", { key: 0 }) : U("", !0)
-    ], 8, Rn));
+      u.value ? j(y.$slots, "default", { key: 0 }) : Y("", !0)
+    ], 10, di));
   }
-}), Ft = (e) => se(e);
-function Hn(e) {
+});
+function pi(e) {
   return e && e.__esModule && Object.prototype.hasOwnProperty.call(e, "default") ? e.default : e;
 }
-var io = { exports: {} };
+var _r = { exports: {} };
 /*!
 	Copyright (c) 2018 Jed Watson.
 	Licensed under the MIT License (MIT), see
 	http://jedwatson.github.io/classnames
 */
-(function(e) {
-  (function() {
-    var t = {}.hasOwnProperty;
-    function r() {
-      for (var o = [], n = 0; n < arguments.length; n++) {
-        var i = arguments[n];
-        if (i) {
-          var s = typeof i;
-          if (s === "string" || s === "number")
-            o.push(i);
-          else if (Array.isArray(i)) {
-            if (i.length) {
-              var l = r.apply(null, i);
-              l && o.push(l);
-            }
-          } else if (s === "object") {
-            if (i.toString !== Object.prototype.toString && !i.toString.toString().includes("[native code]")) {
-              o.push(i.toString());
-              continue;
-            }
-            for (var d in i)
-              t.call(i, d) && i[d] && o.push(d);
-          }
+var Cr;
+function hi() {
+  return Cr || (Cr = 1, function(e) {
+    (function() {
+      var t = {}.hasOwnProperty;
+      function r() {
+        for (var i = "", s = 0; s < arguments.length; s++) {
+          var u = arguments[s];
+          u && (i = n(i, o(u)));
         }
+        return i;
       }
-      return o.join(" ");
-    }
-    e.exports ? (r.default = r, e.exports = r) : window.classNames = r;
-  })();
-})(io);
-var Vn = io.exports;
-const Wn = /* @__PURE__ */ Hn(Vn), Gn = {
-  0: "w-0 h-0",
-  0.5: "w-0.5 h-0.5",
-  1: "w-1 h-1",
-  1.5: "w-1.5 h-1.5",
-  10: "w-10 h-10",
-  11: "w-11 h-11",
-  12: "w-12 h-12",
-  2: "w-2 h-2",
-  2.5: "w-2.5 h-2.5",
-  3: "w-3 h-3",
-  4: "w-4 h-4",
-  5: "w-5 h-5",
-  6: "w-6 h-6",
-  7: "w-7 h-7",
-  8: "w-8 h-8",
-  9: "w-9 h-9"
-}, Un = {
-  blue: "fill-blue-600",
-  gray: "fill-gray-600 dark:fill-gray-300",
-  green: "fill-green-500",
-  pink: "fill-pink-600",
-  purple: "fill-purple-600",
-  red: "fill-red-600",
-  white: "fill-white",
-  yellow: "fill-yellow-400"
-};
-function qn(e) {
-  const t = x(() => Gn[e.size.value]), r = x(() => Un[e.color.value]), o = x(() => "text-gray-200 dark:text-gray-600"), n = x(() => "animate-spin");
-  return { spinnerClasses: x(() => Wn(
-    n.value,
-    o.value,
-    r.value,
-    t.value
-  )) };
+      function o(i) {
+        if (typeof i == "string" || typeof i == "number")
+          return i;
+        if (typeof i != "object")
+          return "";
+        if (Array.isArray(i))
+          return r.apply(null, i);
+        if (i.toString !== Object.prototype.toString && !i.toString.toString().includes("[native code]"))
+          return i.toString();
+        var s = "";
+        for (var u in i)
+          t.call(i, u) && i[u] && (s = n(s, u));
+        return s;
+      }
+      function n(i, s) {
+        return s ? i ? i + " " + s : i + s : i;
+      }
+      e.exports ? (r.default = r, e.exports = r) : window.classNames = r;
+    })();
+  }(_r)), _r.exports;
 }
-const Kn = /* @__PURE__ */ R("path", {
-  d: "M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z",
-  fill: "currentColor"
-}, null, -1), Qn = /* @__PURE__ */ R("path", {
-  d: "M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z",
-  fill: "currentFill"
-}, null, -1), Jn = [
-  Kn,
-  Qn
-], at = /* @__PURE__ */ K({
-  __name: "FwbSpinner",
-  props: {
-    color: { default: "blue" },
-    size: { default: "4" }
-  },
-  setup(e) {
-    const t = e, { spinnerClasses: r } = qn(Ce(t));
-    return (o, n) => (w(), L("svg", {
-      class: H(T(r)),
-      fill: "none",
-      role: "status",
-      viewBox: "0 0 100 101",
-      xmlns: "http://www.w3.org/2000/svg"
-    }, Jn, 2));
-  }
-}), cr = {
+var fi = hi();
+const gi = /* @__PURE__ */ pi(fi), $r = {
   default: {
     default: "text-white bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg dark:bg-blue-600 focus:outline-none dark:focus:ring-blue-800",
     blue: "text-white bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg dark:bg-blue-600 focus:outline-none dark:focus:ring-blue-800",
@@ -2572,7 +2983,7 @@ const Kn = /* @__PURE__ */ R("path", {
     purple: "hover:bg-purple-800 dark:hover:bg-purple-700",
     pink: "hover:bg-pink-800 dark:hover:bg-pink-700"
   }
-}, pr = {
+}, Sr = {
   default: {
     dark: "text-gray-900 border border-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm text-center dark:border-gray-600 dark:text-gray-400 dark:focus:ring-gray-800",
     default: "text-blue-700 border border-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm text-center dark:border-blue-500 dark:text-blue-500 dark:focus:ring-blue-800",
@@ -2593,7 +3004,7 @@ const Kn = /* @__PURE__ */ R("path", {
     red: "hover:text-white hover:bg-red-800 dark:hover:text-white dark:hover:bg-red-600",
     yellow: "hover:text-white hover:bg-yellow-500 dark:hover:text-white dark:hover:bg-yellow-400"
   }
-}, hr = {
+}, Tr = {
   hover: {
     "cyan-blue": "hover:bg-gradient-to-bl",
     "green-blue": "hover:bg-gradient-to-bl",
@@ -2628,7 +3039,7 @@ const Kn = /* @__PURE__ */ R("path", {
     red: "text-white bg-gradient-to-r from-red-500 via-red-600 to-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 rounded-lg",
     teal: "text-white bg-gradient-to-r from-teal-500 via-teal-600 to-teal-700 focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 rounded-lg"
   }
-}, fr = {
+}, Ir = {
   default: {
     "cyan-blue": "relative inline-flex items-center justify-center overflow-hidden font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800",
     "green-blue": "relative inline-flex items-center justify-center overflow-hidden font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800",
@@ -2647,19 +3058,19 @@ const Kn = /* @__PURE__ */ R("path", {
     "red-yellow": "group-hover:from-red-200 group-hover:via-red-300 group-hover:to-yellow-200 dark:hover:text-gray-900",
     "teal-lime": "group-hover:from-teal-300 group-hover:to-lime-300 dark:hover:text-gray-900"
   }
-}, Yn = {
+}, mi = {
   xs: "text-xs px-2 py-1",
   sm: "text-sm px-3 py-1.5",
   md: "text-sm px-4 py-2",
   lg: "text-base px-5 py-2.5",
   xl: "text-base px-6 py-3"
-}, Zn = {
+}, yi = {
   xs: "text-xs p-1",
   sm: "text-sm p-1.5",
   md: "text-sm p-2",
   lg: "text-base p-2.5",
   xl: "text-base p-3"
-}, gr = {
+}, Ar = {
   blue: "shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80",
   cyan: "shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80",
   green: "shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80",
@@ -2668,38 +3079,38 @@ const Kn = /* @__PURE__ */ R("path", {
   purple: "shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80",
   red: "shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80",
   teal: "shadow-lg shadow-teal-500/50 dark:shadow-lg dark:shadow-teal-800/80"
-}, Et = ["blue", "green", "cyan", "teal", "lime", "red", "pink", "purple"], Xn = ["alternative", "light"];
-function ei(e) {
-  const t = Uo(), r = x(() => e.square.value ? Zn[e.size.value] : Yn[e.size.value]), o = x(() => {
-    const i = !!e.gradient.value, s = !!e.color.value, l = e.outline.value;
-    let d = "", p = "";
-    if (i && l)
-      Et.includes(e.gradient.value) ? console.warn(`cannot use outline prop with "${e.gradient.value}" gradient`) : (p = fr.default[e.gradient.value], e.disabled.value || (d = fr.hover[e.gradient.value]));
-    else if (i)
-      p = hr.default[e.gradient.value], e.disabled.value || (d = hr.hover[e.gradient.value]);
-    else if (s && l)
-      if (Xn.includes(e.color.value))
+}, Ft = ["blue", "green", "cyan", "teal", "lime", "red", "pink", "purple"], bi = ["alternative", "light"];
+function vi(e) {
+  const t = mn(), r = v(() => e.square.value ? yi[e.size.value] : mi[e.size.value]), o = v(() => {
+    const i = !!e.gradient.value, s = !!e.color.value, u = e.outline.value;
+    let p = "", c = "";
+    if (i && u)
+      e.gradient.value && !Ft.includes(e.gradient.value) ? (c = Ir.default[e.gradient.value], e.disabled.value || (p = Ir.hover[e.gradient.value])) : console.warn(`cannot use outline prop with "${e.gradient.value}" gradient`);
+    else if (e.gradient.value && i)
+      c = Tr.default[e.gradient.value], e.disabled.value || (p = Tr.hover[e.gradient.value]);
+    else if (s && u)
+      if (bi.includes(e.color.value))
         console.warn(`cannot use outline prop with "${e.color.value}" color`);
       else {
-        const f = e.color.value;
-        p = pr.default[f], e.disabled.value || (d = pr.hover[f]);
+        const g = e.color.value;
+        c = Sr.default[g], e.disabled.value || (p = Sr.hover[g]);
       }
     else {
-      const f = e.color.value;
-      p = cr.default[f], e.disabled.value || (d = cr.hover[f]);
+      const g = e.color.value;
+      c = $r.default[g], e.disabled.value || (p = $r.hover[g]);
     }
-    let g = "";
-    return e.shadow.value === "" ? e.gradient.value && Et.includes(e.gradient.value) && (g = gr[e.gradient.value]) : typeof e.shadow.value == "string" && Et.includes(e.shadow.value) && (g = gr[e.shadow.value]), [
+    let f = "";
+    return e.shadow.value === "" ? e.gradient.value && Ft.includes(e.gradient.value) && (f = Ar[e.gradient.value]) : typeof e.shadow.value == "string" && Ft.includes(e.shadow.value) && (f = Ar[e.shadow.value]), [
+      c,
       p,
-      d,
-      g,
+      f,
       e.pill.value && "!rounded-full",
       e.disabled.value && "cursor-not-allowed opacity-50",
-      i && l ? "p-0.5" : r.value,
+      i && u ? "p-0.5" : r.value,
       (t.prefix || t.suffix || e.loading.value) && "inline-flex items-center",
       e.class.value
-    ].filter((f) => f).join(" ");
-  }), n = x(() => e.gradient.value && e.outline.value ? [
+    ].filter((g) => g).join(" ");
+  }), n = v(() => e.gradient.value && e.outline.value ? [
     "relative bg-white dark:bg-gray-900 rounded-md inline-flex items-center",
     r.value,
     e.disabled.value ? "" : "group-hover:bg-opacity-0 transition-all ease-in duration-75"
@@ -2709,39 +3120,100 @@ function ei(e) {
     spanClasses: n.value
   };
 }
-function ti(e) {
+function wi(e) {
   const t = {
     xs: "2.5",
     sm: "3",
     md: "4",
     lg: "5",
     xl: "6"
-  }, r = x(() => t[e.size.value]);
+  }, r = v(() => t[e.size.value]);
   return {
-    color: x(() => e.outline.value ? e.gradient.value ? e.gradient.value.includes("purple") ? "purple" : e.gradient.value.includes("blue") ? "blue" : e.gradient.value.includes("pink") ? "pink" : e.gradient.value.includes("red") ? "red" : "white" : ["alternative", "dark", "light"].includes(e.color.value) ? "white" : e.color.value === "default" ? "blue" : e.color.value : "white"),
+    color: v(() => e.outline.value ? e.gradient.value ? e.gradient.value.includes("purple") ? "purple" : e.gradient.value.includes("blue") ? "blue" : e.gradient.value.includes("pink") ? "pink" : e.gradient.value.includes("red") ? "red" : "white" : ["alternative", "dark", "light"].includes(e.color.value) ? "white" : e.color.value === "default" ? "blue" : e.color.value : "white"),
     size: r
   };
 }
-const ri = {
+const xi = {
+  0: "w-0 h-0",
+  0.5: "w-0.5 h-0.5",
+  1: "w-1 h-1",
+  1.5: "w-1.5 h-1.5",
+  10: "w-10 h-10",
+  11: "w-11 h-11",
+  12: "w-12 h-12",
+  2: "w-2 h-2",
+  2.5: "w-2.5 h-2.5",
+  3: "w-3 h-3",
+  4: "w-4 h-4",
+  5: "w-5 h-5",
+  6: "w-6 h-6",
+  7: "w-7 h-7",
+  8: "w-8 h-8",
+  9: "w-9 h-9"
+}, ki = {
+  blue: "fill-blue-600",
+  gray: "fill-gray-600 dark:fill-gray-300",
+  green: "fill-green-500",
+  pink: "fill-pink-600",
+  purple: "fill-purple-600",
+  red: "fill-red-600",
+  white: "fill-white",
+  yellow: "fill-yellow-400"
+};
+function _i(e) {
+  const t = v(() => xi[e.size.value]), r = v(() => ki[e.color.value]), o = v(() => "text-gray-200 dark:text-gray-600"), n = v(() => "animate-spin");
+  return { spinnerClasses: v(() => gi(
+    n.value,
+    o.value,
+    r.value,
+    t.value
+  )) };
+}
+const ft = /* @__PURE__ */ Z({
+  __name: "FwbSpinner",
+  props: {
+    color: { default: "blue" },
+    size: { default: "4" }
+  },
+  setup(e) {
+    const t = e, { spinnerClasses: r } = _i(Ie(t));
+    return (o, n) => (x(), N("svg", {
+      class: H(A(r)),
+      fill: "none",
+      role: "status",
+      viewBox: "0 0 100 101",
+      xmlns: "http://www.w3.org/2000/svg"
+    }, n[0] || (n[0] = [
+      U("path", {
+        d: "M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z",
+        fill: "currentColor"
+      }, null, -1),
+      U("path", {
+        d: "M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z",
+        fill: "currentFill"
+      }, null, -1)
+    ]), 2));
+  }
+}), Ci = {
   key: 0,
   class: "mr-2"
-}, oi = {
+}, $i = {
   key: 0,
   class: "mr-2"
-}, ni = {
+}, Si = {
   key: 1,
   class: "ml-2"
-}, ii = {
+}, Ti = {
   key: 1,
   class: "ml-2"
-}, si = /* @__PURE__ */ K({
+}, Ii = /* @__PURE__ */ Z({
   __name: "FwbButton",
   props: {
     class: { default: "" },
     color: { default: "default" },
     gradient: { default: null },
     size: { default: "md" },
-    shadow: { default: null },
+    shadow: { type: [String, Boolean], default: !1 },
     pill: { type: Boolean, default: !1 },
     square: { type: Boolean, default: !1 },
     outline: { type: Boolean, default: !1 },
@@ -2752,236 +3224,191 @@ const ri = {
     tag: { default: "a" }
   },
   setup(e) {
-    const t = e, r = x(() => ei(Ce(t))), o = x(() => Ft(r.value.wrapperClasses)), n = x(() => Ft(r.value.spanClasses)), i = x(() => t.outline && t.gradient), s = x(() => t.loading && t.loadingPosition === "prefix"), l = x(() => t.loading && t.loadingPosition === "suffix"), { color: d, size: p } = ti(Ce(t)), g = t.tag !== "a" ? ft(t.tag) : "a", f = t.href ? g : "button", m = t.tag === "router-link" || t.tag === "nuxt-link" ? "to" : "href";
-    return (y, k) => (w(), Q(xt(T(f)), rt({
+    const t = e, r = v(() => vi(Ie(t))), o = v(() => se(r.value.wrapperClasses)), n = v(() => se(r.value.spanClasses)), i = v(() => t.outline && t.gradient), s = v(() => t.loading && t.loadingPosition === "prefix"), u = v(() => t.loading && t.loadingPosition === "suffix"), { color: p, size: c } = wi(Ie(t)), f = t.tag !== "a" ? vt(t.tag) : "a", g = t.href ? f : "button", b = t.tag === "router-link" || t.tag === "nuxt-link" ? "to" : "href";
+    return (y, w) => (x(), ee(St(A(g)), lt({
       class: o.value,
-      [T(m) || ""]: y.href,
-      disabled: T(f) === "button" && y.disabled
+      [A(b) || ""]: y.href,
+      disabled: A(g) === "button" && y.disabled
     }), {
-      default: Z(() => [
-        !i.value && (y.$slots.prefix || s.value) ? (w(), L("div", ri, [
-          s.value ? (w(), Q(at, {
+      default: ie(() => [
+        !i.value && (y.$slots.prefix || s.value) ? (x(), N("div", Ci, [
+          s.value ? (x(), ee(ft, {
             key: 0,
-            color: T(d),
-            size: T(p)
-          }, null, 8, ["color", "size"])) : z(y.$slots, "prefix", { key: 1 })
-        ])) : U("", !0),
-        R("span", {
+            color: A(p),
+            size: A(c)
+          }, null, 8, ["color", "size"])) : j(y.$slots, "prefix", { key: 1 })
+        ])) : Y("", !0),
+        U("span", {
           class: H(n.value)
         }, [
-          i.value && (y.$slots.prefix || s.value) ? (w(), L("span", oi, [
-            s.value ? (w(), Q(at, {
+          i.value && (y.$slots.prefix || s.value) ? (x(), N("span", $i, [
+            s.value ? (x(), ee(ft, {
               key: 0,
-              color: T(d),
-              size: T(p)
-            }, null, 8, ["color", "size"])) : z(y.$slots, "prefix", { key: 1 })
-          ])) : U("", !0),
-          z(y.$slots, "default"),
-          i.value && (y.$slots.suffix || l.value) ? (w(), L("span", ni, [
-            l.value ? (w(), Q(at, {
+              color: A(p),
+              size: A(c)
+            }, null, 8, ["color", "size"])) : j(y.$slots, "prefix", { key: 1 })
+          ])) : Y("", !0),
+          j(y.$slots, "default"),
+          i.value && (y.$slots.suffix || u.value) ? (x(), N("span", Si, [
+            u.value ? (x(), ee(ft, {
               key: 0,
-              color: T(d),
-              size: T(p)
-            }, null, 8, ["color", "size"])) : z(y.$slots, "suffix", { key: 1 })
-          ])) : U("", !0)
+              color: A(p),
+              size: A(c)
+            }, null, 8, ["color", "size"])) : j(y.$slots, "suffix", { key: 1 })
+          ])) : Y("", !0)
         ], 2),
-        !i.value && (y.$slots.suffix || l.value) ? (w(), L("div", ii, [
-          l.value ? (w(), Q(at, {
+        !i.value && (y.$slots.suffix || u.value) ? (x(), N("div", Ti, [
+          u.value ? (x(), ee(ft, {
             key: 0,
-            color: T(d),
-            size: T(p)
-          }, null, 8, ["color", "size"])) : z(y.$slots, "suffix", { key: 1 })
-        ])) : U("", !0)
+            color: A(p),
+            size: A(c)
+          }, null, 8, ["color", "size"])) : j(y.$slots, "suffix", { key: 1 })
+        ])) : Y("", !0)
       ]),
       _: 3
     }, 16, ["class", "disabled"]));
   }
 });
-var mr;
-const so = typeof window < "u", ai = (e) => typeof e < "u", li = (e) => typeof e == "function";
-so && (mr = window == null ? void 0 : window.navigator) != null && mr.userAgent && /iP(ad|hone|od)/.test(window.navigator.userAgent);
-function ui(e) {
-  return typeof e == "function" ? e() : T(e);
+function Ai(e) {
+  return sn() ? (an(e), !0) : !1;
 }
-function di(e) {
-  return e;
-}
-function ci(e) {
-  return Jo() ? (Yo(e), !0) : !1;
-}
-function pi(e, t, r = {}) {
+const Pi = typeof window < "u" && typeof document < "u";
+typeof WorkerGlobalScope < "u" && globalThis instanceof WorkerGlobalScope;
+const Li = (e) => typeof e < "u";
+function Ni(e, t, r = {}) {
   const {
-    immediate: o = !0
-  } = r, n = ie(!1);
-  let i = null;
-  function s() {
-    i && (clearTimeout(i), i = null);
+    immediate: o = !0,
+    immediateCallback: n = !1
+  } = r, i = tn(!1);
+  let s = null;
+  function u() {
+    s && (clearTimeout(s), s = null);
   }
-  function l() {
-    n.value = !1, s();
+  function p() {
+    i.value = !1, u();
   }
-  function d(...p) {
-    s(), n.value = !0, i = setTimeout(() => {
-      n.value = !1, i = null, e(...p);
-    }, ui(t));
+  function c(...f) {
+    n && e(), u(), i.value = !0, s = setTimeout(() => {
+      i.value = !1, s = null, e(...f);
+    }, nn(t));
   }
-  return o && (n.value = !0, so && d()), ci(l), {
-    isPending: n,
-    start: d,
-    stop: l
+  return o && (i.value = !0, Pi && c()), Ai(p), {
+    isPending: rn(i),
+    start: c,
+    stop: p
   };
 }
-function hi(e) {
+function zi(e) {
   return JSON.parse(JSON.stringify(e));
 }
-const br = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : typeof global < "u" ? global : typeof self < "u" ? self : {}, yr = "__vueuse_ssr_handlers__";
-br[yr] = br[yr] || {};
-var vr;
-(function(e) {
-  e.UP = "UP", e.RIGHT = "RIGHT", e.DOWN = "DOWN", e.LEFT = "LEFT", e.NONE = "NONE";
-})(vr || (vr = {}));
-var fi = Object.defineProperty, wr = Object.getOwnPropertySymbols, gi = Object.prototype.hasOwnProperty, mi = Object.prototype.propertyIsEnumerable, xr = (e, t, r) => t in e ? fi(e, t, { enumerable: !0, configurable: !0, writable: !0, value: r }) : e[t] = r, bi = (e, t) => {
-  for (var r in t || (t = {}))
-    gi.call(t, r) && xr(e, r, t[r]);
-  if (wr)
-    for (var r of wr(t))
-      mi.call(t, r) && xr(e, r, t[r]);
-  return e;
-};
-const yi = {
-  easeInSine: [0.12, 0, 0.39, 0],
-  easeOutSine: [0.61, 1, 0.88, 1],
-  easeInOutSine: [0.37, 0, 0.63, 1],
-  easeInQuad: [0.11, 0, 0.5, 0],
-  easeOutQuad: [0.5, 1, 0.89, 1],
-  easeInOutQuad: [0.45, 0, 0.55, 1],
-  easeInCubic: [0.32, 0, 0.67, 0],
-  easeOutCubic: [0.33, 1, 0.68, 1],
-  easeInOutCubic: [0.65, 0, 0.35, 1],
-  easeInQuart: [0.5, 0, 0.75, 0],
-  easeOutQuart: [0.25, 1, 0.5, 1],
-  easeInOutQuart: [0.76, 0, 0.24, 1],
-  easeInQuint: [0.64, 0, 0.78, 0],
-  easeOutQuint: [0.22, 1, 0.36, 1],
-  easeInOutQuint: [0.83, 0, 0.17, 1],
-  easeInExpo: [0.7, 0, 0.84, 0],
-  easeOutExpo: [0.16, 1, 0.3, 1],
-  easeInOutExpo: [0.87, 0, 0.13, 1],
-  easeInCirc: [0.55, 0, 1, 0.45],
-  easeOutCirc: [0, 0.55, 0.45, 1],
-  easeInOutCirc: [0.85, 0, 0.15, 1],
-  easeInBack: [0.36, 0, 0.66, -0.56],
-  easeOutBack: [0.34, 1.56, 0.64, 1],
-  easeInOutBack: [0.68, -0.6, 0.32, 1.6]
-};
-bi({
-  linear: di
-}, yi);
-function ao(e, t, r, o = {}) {
+function Di(e, t, r, o = {}) {
   var n, i, s;
   const {
-    clone: l = !1,
-    passive: d = !1,
-    eventName: p,
-    deep: g = !1,
-    defaultValue: f
-  } = o, m = qo(), y = r || (m == null ? void 0 : m.emit) || ((n = m == null ? void 0 : m.$emit) == null ? void 0 : n.bind(m)) || ((s = (i = m == null ? void 0 : m.proxy) == null ? void 0 : i.$emit) == null ? void 0 : s.bind(m == null ? void 0 : m.proxy));
-  let k = p;
-  t || (t = "modelValue"), k = p || k || `update:${t.toString()}`;
-  const _ = (S) => l ? li(l) ? l(S) : hi(S) : S, I = () => ai(e[t]) ? _(e[t]) : f;
-  if (d) {
-    const S = I(), $ = ie(S);
-    return ar(() => e[t], (E) => $.value = _(E)), ar($, (E) => {
-      (E !== e[t] || g) && y(k, E);
-    }, { deep: g }), $;
-  } else
-    return x({
-      get() {
-        return I();
+    clone: u = !1,
+    passive: p = !1,
+    eventName: c,
+    deep: f = !1,
+    defaultValue: g,
+    shouldEmit: b
+  } = o, y = yn(), w = r || y?.emit || ((n = y?.$emit) == null ? void 0 : n.bind(y)) || ((s = (i = y?.proxy) == null ? void 0 : i.$emit) == null ? void 0 : s.bind(y?.proxy));
+  let S = c;
+  S = S || `update:${t.toString()}`;
+  const L = (D) => u ? typeof u == "function" ? u(D) : zi(D) : D, P = () => Li(e[t]) ? L(e[t]) : g, z = (D) => {
+    b ? b(D) && w(S, D) : w(S, D);
+  };
+  if (p) {
+    const D = P(), W = ae(D);
+    let G = !1;
+    return Ut(
+      () => e[t],
+      (q) => {
+        G || (G = !0, W.value = L(q), uo(() => G = !1));
+      }
+    ), Ut(
+      W,
+      (q) => {
+        !G && (q !== e[t] || f) && z(q);
       },
-      set(S) {
-        y(k, S);
+      { deep: f }
+    ), W;
+  } else
+    return v({
+      get() {
+        return P();
+      },
+      set(D) {
+        z(D);
       }
     });
 }
-var vi = typeof global == "object" && global && global.Object === Object && global;
-const wi = vi;
-var xi = typeof self == "object" && self && self.Object === Object && self, _i = wi || xi || Function("return this")();
-const Jt = _i;
-var Ci = Jt.Symbol;
-const ke = Ci;
-var lo = Object.prototype, ki = lo.hasOwnProperty, $i = lo.toString, Ue = ke ? ke.toStringTag : void 0;
-function Si(e) {
-  var t = ki.call(e, Ue), r = e[Ue];
+var Mi = typeof global == "object" && global && global.Object === Object && global, Ei = typeof self == "object" && self && self.Object === Object && self, sr = Mi || Ei || Function("return this")(), Ae = sr.Symbol, So = Object.prototype, Bi = So.hasOwnProperty, Oi = So.toString, Je = Ae ? Ae.toStringTag : void 0;
+function ji(e) {
+  var t = Bi.call(e, Je), r = e[Je];
   try {
-    e[Ue] = void 0;
+    e[Je] = void 0;
     var o = !0;
   } catch {
   }
-  var n = $i.call(e);
-  return o && (t ? e[Ue] = r : delete e[Ue]), n;
+  var n = Oi.call(e);
+  return o && (t ? e[Je] = r : delete e[Je]), n;
 }
-var Ii = Object.prototype, Ti = Ii.toString;
-function Pi(e) {
-  return Ti.call(e);
+var Ri = Object.prototype, Fi = Ri.toString;
+function Hi(e) {
+  return Fi.call(e);
 }
-var Li = "[object Null]", Ai = "[object Undefined]", _r = ke ? ke.toStringTag : void 0;
-function Yt(e) {
-  return e == null ? e === void 0 ? Ai : Li : _r && _r in Object(e) ? Si(e) : Pi(e);
+var Vi = "[object Null]", Wi = "[object Undefined]", Pr = Ae ? Ae.toStringTag : void 0;
+function ar(e) {
+  return e == null ? e === void 0 ? Wi : Vi : Pr && Pr in Object(e) ? ji(e) : Hi(e);
 }
-function Zt(e) {
+function lr(e) {
   return e != null && typeof e == "object";
 }
-var Ni = "[object Symbol]";
-function Xt(e) {
-  return typeof e == "symbol" || Zt(e) && Yt(e) == Ni;
+var Gi = "[object Symbol]";
+function ur(e) {
+  return typeof e == "symbol" || lr(e) && ar(e) == Gi;
 }
-function Di(e, t) {
+function Ui(e, t) {
   for (var r = -1, o = e == null ? 0 : e.length, n = Array(o); ++r < o; )
     n[r] = t(e[r], r, e);
   return n;
 }
-var zi = Array.isArray;
-const nt = zi;
-var Ei = 1 / 0, Cr = ke ? ke.prototype : void 0, kr = Cr ? Cr.toString : void 0;
-function uo(e) {
+var ut = Array.isArray, Lr = Ae ? Ae.prototype : void 0, Nr = Lr ? Lr.toString : void 0;
+function To(e) {
   if (typeof e == "string")
     return e;
-  if (nt(e))
-    return Di(e, uo) + "";
-  if (Xt(e))
-    return kr ? kr.call(e) : "";
+  if (ut(e))
+    return Ui(e, To) + "";
+  if (ur(e))
+    return Nr ? Nr.call(e) : "";
   var t = e + "";
-  return t == "0" && 1 / e == -Ei ? "-0" : t;
+  return t == "0" && 1 / e == -1 / 0 ? "-0" : t;
 }
-function mt(e) {
+function wt(e) {
   var t = typeof e;
   return e != null && (t == "object" || t == "function");
 }
-function Oi(e) {
+function qi(e) {
   return e;
 }
-var Mi = "[object AsyncFunction]", Bi = "[object Function]", ji = "[object GeneratorFunction]", Ri = "[object Proxy]";
-function Fi(e) {
-  if (!mt(e))
+var Ki = "[object AsyncFunction]", Yi = "[object Function]", Ji = "[object GeneratorFunction]", Zi = "[object Proxy]";
+function Qi(e) {
+  if (!wt(e))
     return !1;
-  var t = Yt(e);
-  return t == Bi || t == ji || t == Mi || t == Ri;
+  var t = ar(e);
+  return t == Yi || t == Ji || t == Ki || t == Zi;
 }
-var Hi = Jt["__core-js_shared__"];
-const Ot = Hi;
-var $r = function() {
-  var e = /[^.]+$/.exec(Ot && Ot.keys && Ot.keys.IE_PROTO || "");
+var Ht = sr["__core-js_shared__"], zr = function() {
+  var e = /[^.]+$/.exec(Ht && Ht.keys && Ht.keys.IE_PROTO || "");
   return e ? "Symbol(src)_1." + e : "";
 }();
-function Vi(e) {
-  return !!$r && $r in e;
+function Xi(e) {
+  return !!zr && zr in e;
 }
-var Wi = Function.prototype, Gi = Wi.toString;
-function Ui(e) {
+var es = Function.prototype, ts = es.toString;
+function rs(e) {
   if (e != null) {
     try {
-      return Gi.call(e);
+      return ts.call(e);
     } catch {
     }
     try {
@@ -2991,23 +3418,23 @@ function Ui(e) {
   }
   return "";
 }
-var qi = /[\\^$.*+?()[\]{}|]/g, Ki = /^\[object .+?Constructor\]$/, Qi = Function.prototype, Ji = Object.prototype, Yi = Qi.toString, Zi = Ji.hasOwnProperty, Xi = RegExp(
-  "^" + Yi.call(Zi).replace(qi, "\\$&").replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, "$1.*?") + "$"
+var os = /[\\^$.*+?()[\]{}|]/g, ns = /^\[object .+?Constructor\]$/, is = Function.prototype, ss = Object.prototype, as = is.toString, ls = ss.hasOwnProperty, us = RegExp(
+  "^" + as.call(ls).replace(os, "\\$&").replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, "$1.*?") + "$"
 );
-function es(e) {
-  if (!mt(e) || Vi(e))
+function ds(e) {
+  if (!wt(e) || Xi(e))
     return !1;
-  var t = Fi(e) ? Xi : Ki;
-  return t.test(Ui(e));
+  var t = Qi(e) ? us : ns;
+  return t.test(rs(e));
 }
-function ts(e, t) {
-  return e == null ? void 0 : e[t];
+function cs(e, t) {
+  return e?.[t];
 }
-function er(e, t) {
-  var r = ts(e, t);
-  return es(r) ? r : void 0;
+function dr(e, t) {
+  var r = cs(e, t);
+  return ds(r) ? r : void 0;
 }
-function rs(e, t, r) {
+function ps(e, t, r) {
   switch (r.length) {
     case 0:
       return e.call(t);
@@ -3020,223 +3447,213 @@ function rs(e, t, r) {
   }
   return e.apply(t, r);
 }
-var os = 800, ns = 16, is = Date.now;
-function ss(e) {
+var hs = 800, fs = 16, gs = Date.now;
+function ms(e) {
   var t = 0, r = 0;
   return function() {
-    var o = is(), n = ns - (o - r);
+    var o = gs(), n = fs - (o - r);
     if (r = o, n > 0) {
-      if (++t >= os)
+      if (++t >= hs)
         return arguments[0];
     } else
       t = 0;
     return e.apply(void 0, arguments);
   };
 }
-function as(e) {
+function ys(e) {
   return function() {
     return e;
   };
 }
-var ls = function() {
+var xt = function() {
   try {
-    var e = er(Object, "defineProperty");
+    var e = dr(Object, "defineProperty");
     return e({}, "", {}), e;
   } catch {
   }
-}();
-const bt = ls;
-var us = bt ? function(e, t) {
-  return bt(e, "toString", {
+}(), bs = xt ? function(e, t) {
+  return xt(e, "toString", {
     configurable: !0,
     enumerable: !1,
-    value: as(t),
+    value: ys(t),
     writable: !0
   });
-} : Oi;
-const ds = us;
-var cs = ss(ds);
-const ps = cs;
-var hs = 9007199254740991, fs = /^(?:0|[1-9]\d*)$/;
-function co(e, t) {
+} : qi, vs = ms(bs), ws = 9007199254740991, xs = /^(?:0|[1-9]\d*)$/;
+function Io(e, t) {
   var r = typeof e;
-  return t = t ?? hs, !!t && (r == "number" || r != "symbol" && fs.test(e)) && e > -1 && e % 1 == 0 && e < t;
+  return t = t ?? ws, !!t && (r == "number" || r != "symbol" && xs.test(e)) && e > -1 && e % 1 == 0 && e < t;
 }
-function gs(e, t, r) {
-  t == "__proto__" && bt ? bt(e, t, {
+function ks(e, t, r) {
+  t == "__proto__" && xt ? xt(e, t, {
     configurable: !0,
     enumerable: !0,
     value: r,
     writable: !0
   }) : e[t] = r;
 }
-function po(e, t) {
+function Ao(e, t) {
   return e === t || e !== e && t !== t;
 }
-var ms = Object.prototype, bs = ms.hasOwnProperty;
-function ys(e, t, r) {
+var _s = Object.prototype, Cs = _s.hasOwnProperty;
+function $s(e, t, r) {
   var o = e[t];
-  (!(bs.call(e, t) && po(o, r)) || r === void 0 && !(t in e)) && gs(e, t, r);
+  (!(Cs.call(e, t) && Ao(o, r)) || r === void 0 && !(t in e)) && ks(e, t, r);
 }
-var Sr = Math.max;
-function vs(e, t, r) {
-  return t = Sr(t === void 0 ? e.length - 1 : t, 0), function() {
-    for (var o = arguments, n = -1, i = Sr(o.length - t, 0), s = Array(i); ++n < i; )
+var Dr = Math.max;
+function Ss(e, t, r) {
+  return t = Dr(t === void 0 ? e.length - 1 : t, 0), function() {
+    for (var o = arguments, n = -1, i = Dr(o.length - t, 0), s = Array(i); ++n < i; )
       s[n] = o[t + n];
     n = -1;
-    for (var l = Array(t + 1); ++n < t; )
-      l[n] = o[n];
-    return l[t] = r(s), rs(e, this, l);
+    for (var u = Array(t + 1); ++n < t; )
+      u[n] = o[n];
+    return u[t] = r(s), ps(e, this, u);
   };
 }
-var ws = 9007199254740991;
-function xs(e) {
-  return typeof e == "number" && e > -1 && e % 1 == 0 && e <= ws;
+var Ts = 9007199254740991;
+function Is(e) {
+  return typeof e == "number" && e > -1 && e % 1 == 0 && e <= Ts;
 }
-var _s = "[object Arguments]";
-function Ir(e) {
-  return Zt(e) && Yt(e) == _s;
+var As = "[object Arguments]";
+function Mr(e) {
+  return lr(e) && ar(e) == As;
 }
-var ho = Object.prototype, Cs = ho.hasOwnProperty, ks = ho.propertyIsEnumerable, $s = Ir(/* @__PURE__ */ function() {
+var Po = Object.prototype, Ps = Po.hasOwnProperty, Ls = Po.propertyIsEnumerable, Lo = Mr(/* @__PURE__ */ function() {
   return arguments;
-}()) ? Ir : function(e) {
-  return Zt(e) && Cs.call(e, "callee") && !ks.call(e, "callee");
-};
-const fo = $s;
-var Ss = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/, Is = /^\w*$/;
-function Ts(e, t) {
-  if (nt(e))
+}()) ? Mr : function(e) {
+  return lr(e) && Ps.call(e, "callee") && !Ls.call(e, "callee");
+}, Ns = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/, zs = /^\w*$/;
+function Ds(e, t) {
+  if (ut(e))
     return !1;
   var r = typeof e;
-  return r == "number" || r == "symbol" || r == "boolean" || e == null || Xt(e) ? !0 : Is.test(e) || !Ss.test(e) || t != null && e in Object(t);
+  return r == "number" || r == "symbol" || r == "boolean" || e == null || ur(e) ? !0 : zs.test(e) || !Ns.test(e) || t != null && e in Object(t);
 }
-var Ps = er(Object, "create");
-const Ze = Ps;
-function Ls() {
-  this.__data__ = Ze ? Ze(null) : {}, this.size = 0;
+var ot = dr(Object, "create");
+function Ms() {
+  this.__data__ = ot ? ot(null) : {}, this.size = 0;
 }
-function As(e) {
+function Es(e) {
   var t = this.has(e) && delete this.__data__[e];
   return this.size -= t ? 1 : 0, t;
 }
-var Ns = "__lodash_hash_undefined__", Ds = Object.prototype, zs = Ds.hasOwnProperty;
-function Es(e) {
+var Bs = "__lodash_hash_undefined__", Os = Object.prototype, js = Os.hasOwnProperty;
+function Rs(e) {
   var t = this.__data__;
-  if (Ze) {
+  if (ot) {
     var r = t[e];
-    return r === Ns ? void 0 : r;
+    return r === Bs ? void 0 : r;
   }
-  return zs.call(t, e) ? t[e] : void 0;
+  return js.call(t, e) ? t[e] : void 0;
 }
-var Os = Object.prototype, Ms = Os.hasOwnProperty;
-function Bs(e) {
+var Fs = Object.prototype, Hs = Fs.hasOwnProperty;
+function Vs(e) {
   var t = this.__data__;
-  return Ze ? t[e] !== void 0 : Ms.call(t, e);
+  return ot ? t[e] !== void 0 : Hs.call(t, e);
 }
-var js = "__lodash_hash_undefined__";
-function Rs(e, t) {
+var Ws = "__lodash_hash_undefined__";
+function Gs(e, t) {
   var r = this.__data__;
-  return this.size += this.has(e) ? 0 : 1, r[e] = Ze && t === void 0 ? js : t, this;
+  return this.size += this.has(e) ? 0 : 1, r[e] = ot && t === void 0 ? Ws : t, this;
 }
-function Ae(e) {
+function Ee(e) {
   var t = -1, r = e == null ? 0 : e.length;
   for (this.clear(); ++t < r; ) {
     var o = e[t];
     this.set(o[0], o[1]);
   }
 }
-Ae.prototype.clear = Ls;
-Ae.prototype.delete = As;
-Ae.prototype.get = Es;
-Ae.prototype.has = Bs;
-Ae.prototype.set = Rs;
-function Fs() {
+Ee.prototype.clear = Ms;
+Ee.prototype.delete = Es;
+Ee.prototype.get = Rs;
+Ee.prototype.has = Vs;
+Ee.prototype.set = Gs;
+function Us() {
   this.__data__ = [], this.size = 0;
 }
-function $t(e, t) {
+function Lt(e, t) {
   for (var r = e.length; r--; )
-    if (po(e[r][0], t))
+    if (Ao(e[r][0], t))
       return r;
   return -1;
 }
-var Hs = Array.prototype, Vs = Hs.splice;
-function Ws(e) {
-  var t = this.__data__, r = $t(t, e);
+var qs = Array.prototype, Ks = qs.splice;
+function Ys(e) {
+  var t = this.__data__, r = Lt(t, e);
   if (r < 0)
     return !1;
   var o = t.length - 1;
-  return r == o ? t.pop() : Vs.call(t, r, 1), --this.size, !0;
+  return r == o ? t.pop() : Ks.call(t, r, 1), --this.size, !0;
 }
-function Gs(e) {
-  var t = this.__data__, r = $t(t, e);
+function Js(e) {
+  var t = this.__data__, r = Lt(t, e);
   return r < 0 ? void 0 : t[r][1];
 }
-function Us(e) {
-  return $t(this.__data__, e) > -1;
+function Zs(e) {
+  return Lt(this.__data__, e) > -1;
 }
-function qs(e, t) {
-  var r = this.__data__, o = $t(r, e);
+function Qs(e, t) {
+  var r = this.__data__, o = Lt(r, e);
   return o < 0 ? (++this.size, r.push([e, t])) : r[o][1] = t, this;
 }
-function Fe(e) {
+function qe(e) {
   var t = -1, r = e == null ? 0 : e.length;
   for (this.clear(); ++t < r; ) {
     var o = e[t];
     this.set(o[0], o[1]);
   }
 }
-Fe.prototype.clear = Fs;
-Fe.prototype.delete = Ws;
-Fe.prototype.get = Gs;
-Fe.prototype.has = Us;
-Fe.prototype.set = qs;
-var Ks = er(Jt, "Map");
-const Qs = Ks;
-function Js() {
+qe.prototype.clear = Us;
+qe.prototype.delete = Ys;
+qe.prototype.get = Js;
+qe.prototype.has = Zs;
+qe.prototype.set = Qs;
+var Xs = dr(sr, "Map");
+function ea() {
   this.size = 0, this.__data__ = {
-    hash: new Ae(),
-    map: new (Qs || Fe)(),
-    string: new Ae()
+    hash: new Ee(),
+    map: new (Xs || qe)(),
+    string: new Ee()
   };
 }
-function Ys(e) {
+function ta(e) {
   var t = typeof e;
   return t == "string" || t == "number" || t == "symbol" || t == "boolean" ? e !== "__proto__" : e === null;
 }
-function St(e, t) {
+function Nt(e, t) {
   var r = e.__data__;
-  return Ys(t) ? r[typeof t == "string" ? "string" : "hash"] : r.map;
+  return ta(t) ? r[typeof t == "string" ? "string" : "hash"] : r.map;
 }
-function Zs(e) {
-  var t = St(this, e).delete(e);
+function ra(e) {
+  var t = Nt(this, e).delete(e);
   return this.size -= t ? 1 : 0, t;
 }
-function Xs(e) {
-  return St(this, e).get(e);
+function oa(e) {
+  return Nt(this, e).get(e);
 }
-function ea(e) {
-  return St(this, e).has(e);
+function na(e) {
+  return Nt(this, e).has(e);
 }
-function ta(e, t) {
-  var r = St(this, e), o = r.size;
+function ia(e, t) {
+  var r = Nt(this, e), o = r.size;
   return r.set(e, t), this.size += r.size == o ? 0 : 1, this;
 }
-function De(e) {
+function je(e) {
   var t = -1, r = e == null ? 0 : e.length;
   for (this.clear(); ++t < r; ) {
     var o = e[t];
     this.set(o[0], o[1]);
   }
 }
-De.prototype.clear = Js;
-De.prototype.delete = Zs;
-De.prototype.get = Xs;
-De.prototype.has = ea;
-De.prototype.set = ta;
-var ra = "Expected a function";
-function tr(e, t) {
+je.prototype.clear = ea;
+je.prototype.delete = ra;
+je.prototype.get = oa;
+je.prototype.has = na;
+je.prototype.set = ia;
+var sa = "Expected a function";
+function cr(e, t) {
   if (typeof e != "function" || t != null && typeof t != "function")
-    throw new TypeError(ra);
+    throw new TypeError(sa);
   var r = function() {
     var o = arguments, n = t ? t.apply(this, o) : o[0], i = r.cache;
     if (i.has(n))
@@ -3244,148 +3661,144 @@ function tr(e, t) {
     var s = e.apply(this, o);
     return r.cache = i.set(n, s) || i, s;
   };
-  return r.cache = new (tr.Cache || De)(), r;
+  return r.cache = new (cr.Cache || je)(), r;
 }
-tr.Cache = De;
-var oa = 500;
-function na(e) {
-  var t = tr(e, function(o) {
-    return r.size === oa && r.clear(), o;
+cr.Cache = je;
+var aa = 500;
+function la(e) {
+  var t = cr(e, function(o) {
+    return r.size === aa && r.clear(), o;
   }), r = t.cache;
   return t;
 }
-var ia = /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g, sa = /\\(\\)?/g, aa = na(function(e) {
+var ua = /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g, da = /\\(\\)?/g, ca = la(function(e) {
   var t = [];
-  return e.charCodeAt(0) === 46 && t.push(""), e.replace(ia, function(r, o, n, i) {
-    t.push(n ? i.replace(sa, "$1") : o || r);
+  return e.charCodeAt(0) === 46 && t.push(""), e.replace(ua, function(r, o, n, i) {
+    t.push(n ? i.replace(da, "$1") : o || r);
   }), t;
 });
-const la = aa;
-function ua(e) {
-  return e == null ? "" : uo(e);
+function pa(e) {
+  return e == null ? "" : To(e);
 }
-function It(e, t) {
-  return nt(e) ? e : Ts(e, t) ? [e] : la(ua(e));
+function zt(e, t) {
+  return ut(e) ? e : Ds(e, t) ? [e] : ca(pa(e));
 }
-var da = 1 / 0;
-function rr(e) {
-  if (typeof e == "string" || Xt(e))
+function pr(e) {
+  if (typeof e == "string" || ur(e))
     return e;
   var t = e + "";
-  return t == "0" && 1 / e == -da ? "-0" : t;
+  return t == "0" && 1 / e == -1 / 0 ? "-0" : t;
 }
-function ca(e, t) {
-  t = It(t, e);
+function ha(e, t) {
+  t = zt(t, e);
   for (var r = 0, o = t.length; e != null && r < o; )
-    e = e[rr(t[r++])];
+    e = e[pr(t[r++])];
   return r && r == o ? e : void 0;
 }
-function pa(e, t) {
+function fa(e, t) {
   for (var r = -1, o = t.length, n = e.length; ++r < o; )
     e[n + r] = t[r];
   return e;
 }
-var Tr = ke ? ke.isConcatSpreadable : void 0;
-function ha(e) {
-  return nt(e) || fo(e) || !!(Tr && e && e[Tr]);
+var Er = Ae ? Ae.isConcatSpreadable : void 0;
+function ga(e) {
+  return ut(e) || Lo(e) || !!(Er && e && e[Er]);
 }
-function go(e, t, r, o, n) {
+function ma(e, t, r, o, n) {
   var i = -1, s = e.length;
-  for (r || (r = ha), n || (n = []); ++i < s; ) {
-    var l = e[i];
-    t > 0 && r(l) ? t > 1 ? go(l, t - 1, r, o, n) : pa(n, l) : o || (n[n.length] = l);
+  for (r || (r = ga), n || (n = []); ++i < s; ) {
+    var u = e[i];
+    r(u) ? fa(n, u) : n[n.length] = u;
   }
   return n;
 }
-function fa(e) {
+function ya(e) {
   var t = e == null ? 0 : e.length;
-  return t ? go(e, 1) : [];
+  return t ? ma(e) : [];
 }
-function ga(e) {
-  return ps(vs(e, void 0, fa), e + "");
+function ba(e) {
+  return vs(Ss(e, void 0, ya), e + "");
 }
-function ma(e, t) {
+function va(e, t) {
   return e != null && t in Object(e);
 }
-function ba(e, t, r) {
-  t = It(t, e);
+function wa(e, t, r) {
+  t = zt(t, e);
   for (var o = -1, n = t.length, i = !1; ++o < n; ) {
-    var s = rr(t[o]);
+    var s = pr(t[o]);
     if (!(i = e != null && r(e, s)))
       break;
     e = e[s];
   }
-  return i || ++o != n ? i : (n = e == null ? 0 : e.length, !!n && xs(n) && co(s, n) && (nt(e) || fo(e)));
+  return i || ++o != n ? i : (n = e == null ? 0 : e.length, !!n && Is(n) && Io(s, n) && (ut(e) || Lo(e)));
 }
-function ya(e, t) {
-  return e != null && ba(e, t, ma);
+function xa(e, t) {
+  return e != null && wa(e, t, va);
 }
-function va(e, t, r, o) {
-  if (!mt(e))
+function ka(e, t, r, o) {
+  if (!wt(e))
     return e;
-  t = It(t, e);
-  for (var n = -1, i = t.length, s = i - 1, l = e; l != null && ++n < i; ) {
-    var d = rr(t[n]), p = r;
-    if (d === "__proto__" || d === "constructor" || d === "prototype")
+  t = zt(t, e);
+  for (var n = -1, i = t.length, s = i - 1, u = e; u != null && ++n < i; ) {
+    var p = pr(t[n]), c = r;
+    if (p === "__proto__" || p === "constructor" || p === "prototype")
       return e;
     if (n != s) {
-      var g = l[d];
-      p = o ? o(g, d, l) : void 0, p === void 0 && (p = mt(g) ? g : co(t[n + 1]) ? [] : {});
+      var f = u[p];
+      c = void 0, c === void 0 && (c = wt(f) ? f : Io(t[n + 1]) ? [] : {});
     }
-    ys(l, d, p), l = l[d];
+    $s(u, p, c), u = u[p];
   }
   return e;
 }
-function wa(e, t, r) {
+function _a(e, t, r) {
   for (var o = -1, n = t.length, i = {}; ++o < n; ) {
-    var s = t[o], l = ca(e, s);
-    r(l, s) && va(i, It(s, e), l);
+    var s = t[o], u = ha(e, s);
+    r(u, s) && ka(i, zt(s, e), u);
   }
   return i;
 }
-function xa(e, t) {
-  return wa(e, t, function(r, o) {
-    return ya(e, o);
+function Ca(e, t) {
+  return _a(e, t, function(r, o) {
+    return xa(e, o);
   });
 }
-var _a = ga(function(e, t) {
-  return e == null ? {} : xa(e, t);
+var $a = ba(function(e, t) {
+  return e == null ? {} : Ca(e, t);
 });
-const Ca = _a;
-function Ht(e, t = !0, r = []) {
+function Jt(e, t = !0, r = []) {
   return e.forEach((o) => {
     if (o !== null) {
       if (typeof o != "object") {
-        (typeof o == "string" || typeof o == "number") && r.push(dt(String(o)));
+        (typeof o == "string" || typeof o == "number") && r.push(yt(String(o)));
         return;
       }
       if (Array.isArray(o)) {
-        Ht(o, t, r);
+        Jt(o, t, r);
         return;
       }
-      if (o.type === Be) {
+      if (o.type === We) {
         if (o.children === null)
           return;
-        Array.isArray(o.children) && Ht(o.children, t, r);
-      } else
-        o.type !== Ro && r.push(o);
+        Array.isArray(o.children) && Jt(o.children, t, r);
+      } else o.type !== en && r.push(o);
     }
   }), r;
 }
-function ka(e, t = "default", r = void 0) {
+function Sa(e, t = "default", r = void 0) {
   const o = e[t];
   if (!o)
     return console.warn("getFirstSlotVNode", `slot[${t}] is empty`), null;
-  const n = Ht(o(r));
+  const n = Jt(o(r));
   return n.length === 1 ? n[0] : (console.warn("getFirstSlotVNode", `slot[${t}] should have exactly one child`), null);
 }
-const $a = {
+const Ta = {
   focus: ["onFocus", "onBlur"],
   click: ["onClick"],
   hover: ["onMouseenter", "onMouseleave"]
 };
-function Sa(e, t) {
-  Object.entries($a).forEach(([, r]) => {
+function Ia(e, t) {
+  Object.entries(Ta).forEach(([, r]) => {
     r.forEach((o) => {
       e.props ? e.props = Object.assign({}, e.props) : e.props = {};
       const n = e.props[o], i = t[o];
@@ -3395,7 +3808,7 @@ function Sa(e, t) {
     });
   });
 }
-K({
+Z({
   name: "SlotListener",
   props: {
     trigger: {
@@ -3432,42 +3845,37 @@ K({
       onMouseleave: this.handleMouseLeave,
       onFocus: this.handleFocus,
       onBlur: this.handleBlur
-    }, r = ka(e, "default"), o = [
+    }, r = Sa(e, "default"), o = [
       t
     ];
-    return r != null && r.props && o.push(
-      Ca(r.props, "onClick", "onMouseenter", "onMouseleave", "onFocus", "onBlur")
-    ), r && Sa(
+    return r?.props && o.push(
+      $a(r.props, "onClick", "onMouseenter", "onMouseleave", "onFocus", "onBlur")
+    ), r && Ia(
       r,
       {
         onBlur: (n) => {
           o.forEach((i) => {
-            var s;
-            (s = i == null ? void 0 : i.onBlur) == null || s.call(i, n);
+            i?.onBlur?.(n);
           });
         },
         onFocus: (n) => {
           o.forEach((i) => {
-            var s;
-            (s = i == null ? void 0 : i.onFocus) == null || s.call(i, n);
+            i?.onFocus?.(n);
           });
         },
         onClick: (n) => {
           o.forEach((i) => {
-            var s;
-            (s = i == null ? void 0 : i.onClick) == null || s.call(i, n);
+            i?.onClick?.(n);
           });
         },
         onMouseenter: (n) => {
           o.forEach((i) => {
-            var s;
-            (s = i == null ? void 0 : i.onMouseenter) == null || s.call(i, n);
+            i?.onMouseenter?.(n);
           });
         },
         onMouseleave: (n) => {
           o.forEach((i) => {
-            var s;
-            (s = i == null ? void 0 : i.onMouseleave) == null || s.call(i, n);
+            i?.onMouseleave?.(n);
           });
         }
       }
@@ -3475,30 +3883,31 @@ K({
   }
 });
 (/* @__PURE__ */ new Date()).getFullYear();
-const Ia = {
+typeof WorkerGlobalScope < "u" && globalThis instanceof WorkerGlobalScope;
+const Aa = {
   border: (e) => e.substring(0, e.lastIndexOf("-"))
-}, Ta = (e, t = Ia) => {
+}, Pa = (e, t = Aa) => {
   const r = Object.keys(t).find((o) => e.includes(o));
   return r ? t[r](e) : e.substring(0, e.indexOf("-"));
 };
-function ct(...e) {
+function La(...e) {
   return e.filter((t) => t).reduce((t, r) => {
-    const o = Array.isArray(r) ? Array.from(r).map((p) => p.split(" ")).flat() : r.split(" "), n = o.map((p) => Ta(p)), i = n.filter((p) => !t.types.includes(p)), s = [...n.filter((p) => t.types.includes(p)), ...i], l = [.../* @__PURE__ */ new Set([...t.types, ...s])], d = l.map((p) => {
-      if (s.includes(p)) {
-        const f = n.indexOf(p);
-        if (f >= 0)
-          return o[f] || "";
+    const o = Array.isArray(r) ? Array.from(r).map((c) => c.split(" ")).flat() : r.split(" "), n = o.map((c) => Pa(c)), i = n.filter((c) => !t.types.includes(c)), s = [...n.filter((c) => t.types.includes(c)), ...i], u = [.../* @__PURE__ */ new Set([...t.types, ...s])], p = u.map((c) => {
+      if (s.includes(c)) {
+        const g = n.indexOf(c);
+        if (g >= 0)
+          return o[g] || "";
       }
-      const g = t.types.indexOf(p);
-      return g >= 0 && t.classes[g] || "";
-    }).filter((p) => !!p);
+      const f = t.types.indexOf(c);
+      return f >= 0 && t.classes[f] || "";
+    }).filter((c) => !!c);
     return {
-      types: l,
-      classes: d
+      types: u,
+      classes: p
     };
   }, { types: [], classes: [] }).classes.join(" ");
 }
-const Pa = "flowbite-themable-injection-key", Ee = {
+const Na = "flowbite-themable-injection-key", He = {
   blue: {
     background: "bg-blue-700 dark:bg-blue-600",
     disabled: "",
@@ -3540,54 +3949,53 @@ const Pa = "flowbite-themable-injection-key", Ee = {
     focus: "focus:ring-red-300 dark:focus:ring-red-900"
   }
 };
-function La(e) {
-  const t = Zo(Pa, ie(null)), r = x(() => e || t.value), o = x(() => !!(t != null && t.value)), n = x(
-    () => r.value ? Ee[r.value].background : ""
-  ), i = x(
-    () => r.value ? Ee[r.value].border : ""
-  ), s = x(() => (t == null ? void 0 : t.value) || void 0), l = x(
-    () => r.value ? Ee[r.value].disabled : ""
-  ), d = x(
-    () => r.value ? Ee[r.value].focus : ""
-  ), p = x(
-    () => r.value ? Ee[r.value].hover : ""
-  ), g = x(
-    () => r.value ? Ee[r.value].text : ""
+function za(e) {
+  const t = on(Na, ae(null)), r = v(() => e || t.value), o = v(() => !!t?.value), n = v(
+    () => r.value ? He[r.value].background : ""
+  ), i = v(
+    () => r.value ? He[r.value].border : ""
+  ), s = v(() => t?.value || void 0), u = v(
+    () => r.value ? He[r.value].disabled : ""
+  ), p = v(
+    () => r.value ? He[r.value].focus : ""
+  ), c = v(
+    () => r.value ? He[r.value].hover : ""
+  ), f = v(
+    () => r.value ? He[r.value].text : ""
   );
   return {
     backgroundClasses: n,
     borderClasses: i,
     color: s,
-    disabledClasses: l,
-    focusClasses: d,
-    hoverClasses: p,
+    disabledClasses: u,
+    focusClasses: p,
+    hoverClasses: c,
     isActive: o,
-    textClasses: g
+    textClasses: f
   };
 }
-const Aa = {
+const Da = {
   danger: "text-red-500 bg-red-100 dark:bg-red-800 dark:text-red-200",
   empty: "",
   success: "text-green-500 bg-green-100 dark:bg-green-800 dark:text-green-200",
   warning: "text-orange-500 bg-orange-100 dark:bg-orange-700 dark:text-orange-200"
-}, Na = {
+}, Ma = {
   center: "items-center",
   end: "items-end",
   start: "items-start"
-}, Pr = "flex w-full max-w-xs p-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800", Lr = "text-sm font-normal";
-function Da(e) {
-  const t = x(() => Aa[e.type.value]), r = x(() => {
-    const n = Na[e.alignment.value];
-    return e.divide.value ? ct(Pr, "dark:divide-gray-700 divide-x divide-gray-200", n) : ct(Pr, n);
-  }), o = x(() => e.type.value !== "empty" && e.divide.value ? ct(Lr, "pl-3") : Lr);
+}, Br = "flex w-full max-w-xs p-4 text-gray-500 bg-white rounded-lg shadow-sm dark:text-gray-400 dark:bg-gray-800", Or = "text-sm font-normal";
+function Ea(e) {
+  const t = v(() => Da[e.type.value]), r = v(() => {
+    const n = Ma[e.alignment.value];
+    return e.divide.value ? se([Br, "dark:divide-gray-700 divide-x divide-gray-200", n]) : se([Br, n]);
+  }), o = v(() => e.type.value !== "empty" && e.divide.value ? se([Or, "pl-3"]) : Or);
   return {
     typeClasses: t,
     wrapperClasses: r,
     contentClasses: o
   };
 }
-function za(e) {
-  var d;
+function Ba(e) {
   const {
     backgroundClasses: t,
     borderClasses: r,
@@ -3595,18 +4003,18 @@ function za(e) {
     focusClasses: n,
     hoverClasses: i,
     isActive: s,
-    textClasses: l
-  } = La((d = e.theme) == null ? void 0 : d.value);
+    textClasses: u
+  } = za(e.theme?.value);
   return {
-    classes: x(() => {
+    classes: v(() => {
       if (!s.value)
         return "";
       const p = [];
-      return e.apply.value.includes("text") && p.push(l.value), e.apply.value.includes("border") && p.push(r.value), e.apply.value.includes("background") && p.push(t.value), e.apply.value.includes("hover") && p.push(i.value), e.apply.value.includes("disabled") && p.push(o.value), e.apply.value.includes("focus") && p.push(n.value), p.join(" ");
+      return e.apply.value.includes("text") && p.push(u.value), e.apply.value.includes("border") && p.push(r.value), e.apply.value.includes("background") && p.push(t.value), e.apply.value.includes("hover") && p.push(i.value), e.apply.value.includes("disabled") && p.push(o.value), e.apply.value.includes("focus") && p.push(n.value), p.join(" ");
     })
   };
 }
-const Ea = /* @__PURE__ */ K({
+const Oa = /* @__PURE__ */ Z({
   __name: "FlowbiteThemableChild",
   props: {
     apply: {
@@ -3623,70 +4031,38 @@ const Ea = /* @__PURE__ */ K({
     }
   },
   setup(e) {
-    const t = e, r = Kt(), { classes: o } = za(Ce(t)), n = x(() => r.class || "");
-    return (i, s) => (w(), Q(xt(e.tag), {
-      class: H(T(ct)(n.value, T(o)))
+    const t = or(), r = e, { classes: o } = Ba(Ie(r)), n = v(() => t.class || "");
+    return (i, s) => (x(), ee(St(e.tag), {
+      class: H(A(La)(n.value, A(o)))
     }, {
-      default: Z(() => [
-        z(i.$slots, "default")
+      default: ie(() => [
+        j(i.$slots, "default")
       ]),
       _: 3
     }, 8, ["class"]));
   }
-}), Oa = {
+}), ja = {
   key: 1,
   "aria-hidden": "true",
-  class: "w-5 h-5",
+  class: "size-5",
   fill: "currentColor",
   viewBox: "0 0 20 20",
   xmlns: "http://www.w3.org/2000/svg"
-}, Ma = /* @__PURE__ */ R("path", {
-  "clip-rule": "evenodd",
-  d: "M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z",
-  "fill-rule": "evenodd"
-}, null, -1), Ba = [
-  Ma
-], ja = {
+}, Ra = {
   key: 2,
   "aria-hidden": "true",
-  class: "w-5 h-5",
+  class: "size-5",
   fill: "currentColor",
   viewBox: "0 0 20 20",
   xmlns: "http://www.w3.org/2000/svg"
-}, Ra = /* @__PURE__ */ R("path", {
-  "clip-rule": "evenodd",
-  d: "M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z",
-  "fill-rule": "evenodd"
-}, null, -1), Fa = [
-  Ra
-], Ha = {
+}, Fa = {
   key: 3,
   "aria-hidden": "true",
-  class: "w-5 h-5",
+  class: "size-5",
   fill: "currentColor",
   viewBox: "0 0 20 20",
   xmlns: "http://www.w3.org/2000/svg"
-}, Va = /* @__PURE__ */ R("path", {
-  "clip-rule": "evenodd",
-  d: "M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z",
-  "fill-rule": "evenodd"
-}, null, -1), Wa = [
-  Va
-], Ga = /* @__PURE__ */ R("span", { class: "sr-only" }, "Close", -1), Ua = /* @__PURE__ */ R("svg", {
-  class: "w-5 h-5",
-  fill: "currentColor",
-  viewBox: "0 0 20 20",
-  xmlns: "http://www.w3.org/2000/svg"
-}, [
-  /* @__PURE__ */ R("path", {
-    "clip-rule": "evenodd",
-    d: "M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z",
-    "fill-rule": "evenodd"
-  })
-], -1), qa = [
-  Ga,
-  Ua
-], Ar = /* @__PURE__ */ K({
+}, jr = /* @__PURE__ */ Z({
   __name: "FwbToast",
   props: {
     type: {
@@ -3708,50 +4084,82 @@ const Ea = /* @__PURE__ */ K({
   },
   emits: ["close"],
   setup(e, { emit: t }) {
-    const r = e, o = ie(!0), {
-      typeClasses: n,
-      wrapperClasses: i,
-      contentClasses: s
-    } = Da(Ce(r)), l = () => {
-      t("close"), o.value = !1;
+    const r = e, o = ae(!0), n = t, {
+      typeClasses: i,
+      wrapperClasses: s,
+      contentClasses: u
+    } = Ea(Ie(r)), p = () => {
+      n("close"), o.value = !1;
     };
-    return (d, p) => o.value ? (w(), L("div", {
+    return (c, f) => o.value ? (x(), N("div", {
       key: 0,
       id: "toast-default",
-      class: H(T(i)),
+      class: H(A(s)),
       role: "alert"
     }, [
-      e.type !== "empty" || d.$slots.icon ? (w(), Q(Ea, {
+      e.type !== "empty" || c.$slots.icon ? (x(), ee(Oa, {
         key: 0,
         apply: ["background", "text"],
-        class: H(["inline-flex flex-shrink-0 justify-center items-center w-8 h-8 rounded-lg", T(n)])
+        class: H(["inline-flex size-8 shrink-0 items-center justify-center rounded-lg", A(i)])
       }, {
-        default: Z(() => [
-          d.$slots.icon ? z(d.$slots, "icon", {
+        default: ie(() => [
+          c.$slots.icon ? j(c.$slots, "icon", {
             key: 0,
             class: H({ "ml-3": e.type !== "empty" })
-          }) : e.type === "success" ? (w(), L("svg", Oa, Ba)) : e.type === "danger" ? (w(), L("svg", ja, Fa)) : e.type === "warning" ? (w(), L("svg", Ha, Wa)) : U("", !0)
+          }) : e.type === "success" ? (x(), N("svg", ja, f[0] || (f[0] = [
+            U("path", {
+              "clip-rule": "evenodd",
+              d: "M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z",
+              "fill-rule": "evenodd"
+            }, null, -1)
+          ]))) : e.type === "danger" ? (x(), N("svg", Ra, f[1] || (f[1] = [
+            U("path", {
+              "clip-rule": "evenodd",
+              d: "M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z",
+              "fill-rule": "evenodd"
+            }, null, -1)
+          ]))) : e.type === "warning" ? (x(), N("svg", Fa, f[2] || (f[2] = [
+            U("path", {
+              "clip-rule": "evenodd",
+              d: "M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z",
+              "fill-rule": "evenodd"
+            }, null, -1)
+          ]))) : Y("", !0)
         ]),
         _: 3
-      }, 8, ["class"])) : U("", !0),
-      R("div", {
-        class: H([T(s), { "ml-3": d.$slots.icon || e.type !== "empty" }])
+      }, 8, ["class"])) : Y("", !0),
+      U("div", {
+        class: H([A(u), { "ml-3": c.$slots.icon || e.type !== "empty" }])
       }, [
-        z(d.$slots, "default")
+        j(c.$slots, "default")
       ], 2),
-      e.closable ? (w(), L("button", {
+      e.closable ? (x(), N("button", {
         key: 1,
         "aria-label": "Close",
-        class: "border-none ml-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700",
+        class: "-m-1.5 ml-auto inline-flex size-8 rounded-lg border-none bg-white p-1.5 text-gray-400 hover:bg-gray-100 hover:text-gray-900 focus:ring-2 focus:ring-gray-300 dark:bg-gray-800 dark:text-gray-500 dark:hover:bg-gray-700 dark:hover:text-white",
         type: "button",
-        onClick: l
-      }, qa)) : U("", !0)
-    ], 2)) : U("", !0);
+        onClick: p
+      }, f[3] || (f[3] = [
+        U("span", { class: "sr-only" }, "Close", -1),
+        U("svg", {
+          class: "size-5",
+          fill: "currentColor",
+          viewBox: "0 0 20 20",
+          xmlns: "http://www.w3.org/2000/svg"
+        }, [
+          U("path", {
+            "clip-rule": "evenodd",
+            d: "M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z",
+            "fill-rule": "evenodd"
+          })
+        ], -1)
+      ]))) : Y("", !0)
+    ], 2)) : Y("", !0);
   }
-}), Ka = "flowbite-toast-injection-key";
-K({
+}), Ha = "flowbite-toast-injection-key";
+Z({
   components: {
-    FwbToast: Ar
+    FwbToast: jr
   },
   props: {
     transition: {
@@ -3760,8 +4168,8 @@ K({
     }
   },
   setup() {
-    const e = ie([]), t = (i, s) => {
-      pi(() => n(i), s);
+    const e = ae([]), t = (i, s) => {
+      Ni(() => n(i), s);
     }, r = (i) => {
       const s = parseInt(((/* @__PURE__ */ new Date()).getTime() * Math.random()).toString()).toString();
       return e.value.push({
@@ -3774,10 +4182,10 @@ K({
       const i = e.value[e.value.length - 1].id;
       return e.value.pop(), i;
     }, n = (i) => {
-      const s = e.value.findIndex((l) => l.id === i);
+      const s = e.value.findIndex((u) => u.id === i);
       return s >= 0 && e.value.splice(s, 1), s >= 0;
     };
-    return Eo(Ka, {
+    return Zo(Ha, {
       add: r,
       pop: o,
       remove: n
@@ -3788,11 +4196,11 @@ K({
   },
   render() {
     const { $props: e, $slots: t, toasts: r, removeToast: o } = this;
-    return it("div", {}, [
+    return dt("div", {}, [
       t.default ? t.default() : null,
       // rendering default slot
-      it(
-        Oo,
+      dt(
+        Jo,
         {
           name: e.transition,
           tag: "div",
@@ -3800,7 +4208,7 @@ K({
         },
         {
           default: () => r.map(
-            (n) => n.component ? it(
+            (n) => n.component ? dt(
               n.component,
               {
                 key: n.id,
@@ -3808,8 +4216,8 @@ K({
                 ...n.componentProps ? n.componentProps : {}
               },
               () => n.text
-            ) : it(
-              Ar,
+            ) : dt(
+              jr,
               {
                 closable: !0,
                 type: n.type,
@@ -3824,429 +4232,790 @@ K({
     ]);
   }
 });
-function ue(e) {
-  return e.split("-")[1];
-}
-function or(e) {
-  return e === "y" ? "height" : "width";
-}
-function he(e) {
-  return e.split("-")[0];
-}
-function He(e) {
-  return ["top", "bottom"].includes(he(e)) ? "x" : "y";
-}
-function Nr(e, t, r) {
-  let { reference: o, floating: n } = e;
-  const i = o.x + o.width / 2 - n.width / 2, s = o.y + o.height / 2 - n.height / 2, l = He(t), d = or(l), p = o[d] / 2 - n[d] / 2, g = l === "x";
-  let f;
-  switch (he(t)) {
-    case "top":
-      f = { x: i, y: o.y - n.height };
-      break;
-    case "bottom":
-      f = { x: i, y: o.y + o.height };
-      break;
-    case "right":
-      f = { x: o.x + o.width, y: s };
-      break;
-    case "left":
-      f = { x: o.x - n.width, y: s };
-      break;
-    default:
-      f = { x: o.x, y: o.y };
-  }
-  switch (ue(t)) {
-    case "start":
-      f[l] -= p * (r && g ? -1 : 1);
-      break;
-    case "end":
-      f[l] += p * (r && g ? -1 : 1);
-  }
-  return f;
-}
-const Qa = async (e, t, r) => {
-  const { placement: o = "bottom", strategy: n = "absolute", middleware: i = [], platform: s } = r, l = i.filter(Boolean), d = await (s.isRTL == null ? void 0 : s.isRTL(t));
-  let p = await s.getElementRects({ reference: e, floating: t, strategy: n }), { x: g, y: f } = Nr(p, o, d), m = o, y = {}, k = 0;
-  for (let _ = 0; _ < l.length; _++) {
-    const { name: I, fn: S } = l[_], { x: $, y: E, data: V, reset: W } = await S({ x: g, y: f, initialPlacement: o, placement: m, strategy: n, middlewareData: y, rects: p, platform: s, elements: { reference: e, floating: t } });
-    g = $ ?? g, f = E ?? f, y = { ...y, [I]: { ...y[I], ...V } }, W && k <= 50 && (k++, typeof W == "object" && (W.placement && (m = W.placement), W.rects && (p = W.rects === !0 ? await s.getElementRects({ reference: e, floating: t, strategy: n }) : W.rects), { x: g, y: f } = Nr(p, m, d)), _ = -1);
-  }
-  return { x: g, y: f, placement: m, strategy: n, middlewareData: y };
+const Va = ["top", "right", "bottom", "left"], Rr = ["start", "end"], Fr = /* @__PURE__ */ Va.reduce((e, t) => e.concat(t, t + "-" + Rr[0], t + "-" + Rr[1]), []), nt = Math.min, ze = Math.max, Wa = {
+  left: "right",
+  right: "left",
+  bottom: "top",
+  top: "bottom"
+}, Ga = {
+  start: "end",
+  end: "start"
 };
-function ze(e, t) {
+function Zt(e, t, r) {
+  return ze(e, nt(t, r));
+}
+function Re(e, t) {
   return typeof e == "function" ? e(t) : e;
 }
-function mo(e) {
-  return typeof e != "number" ? function(t) {
-    return { top: 0, right: 0, bottom: 0, left: 0, ...t };
-  }(e) : { top: e, right: e, bottom: e, left: e };
+function ye(e) {
+  return e.split("-")[0];
 }
-function qe(e) {
-  return { ...e, top: e.y, left: e.x, right: e.x + e.width, bottom: e.y + e.height };
+function fe(e) {
+  return e.split("-")[1];
 }
-async function Tt(e, t) {
-  var r;
-  t === void 0 && (t = {});
-  const { x: o, y: n, platform: i, rects: s, elements: l, strategy: d } = e, { boundary: p = "clippingAncestors", rootBoundary: g = "viewport", elementContext: f = "floating", altBoundary: m = !1, padding: y = 0 } = ze(t, e), k = mo(y), _ = l[m ? f === "floating" ? "reference" : "floating" : f], I = qe(await i.getClippingRect({ element: (r = await (i.isElement == null ? void 0 : i.isElement(_))) == null || r ? _ : _.contextElement || await (i.getDocumentElement == null ? void 0 : i.getDocumentElement(l.floating)), boundary: p, rootBoundary: g, strategy: d })), S = f === "floating" ? { ...s.floating, x: o, y: n } : s.reference, $ = await (i.getOffsetParent == null ? void 0 : i.getOffsetParent(l.floating)), E = await (i.isElement == null ? void 0 : i.isElement($)) && await (i.getScale == null ? void 0 : i.getScale($)) || { x: 1, y: 1 }, V = qe(i.convertOffsetParentRelativeRectToViewportRelativeRect ? await i.convertOffsetParentRelativeRectToViewportRelativeRect({ rect: S, offsetParent: $, strategy: d }) : S);
-  return { top: (I.top - V.top + k.top) / E.y, bottom: (V.bottom - I.bottom + k.bottom) / E.y, left: (I.left - V.left + k.left) / E.x, right: (V.right - I.right + k.right) / E.x };
-}
-const Xe = Math.min, Te = Math.max;
-function Vt(e, t, r) {
-  return Te(e, Xe(t, r));
-}
-const Ja = (e) => ({ name: "arrow", options: e, async fn(t) {
-  const { x: r, y: o, placement: n, rects: i, platform: s, elements: l } = t, { element: d, padding: p = 0 } = ze(e, t) || {};
-  if (d == null)
-    return {};
-  const g = mo(p), f = { x: r, y: o }, m = He(n), y = or(m), k = await s.getDimensions(d), _ = m === "y", I = _ ? "top" : "left", S = _ ? "bottom" : "right", $ = _ ? "clientHeight" : "clientWidth", E = i.reference[y] + i.reference[m] - f[m] - i.floating[y], V = f[m] - i.reference[m], W = await (s.getOffsetParent == null ? void 0 : s.getOffsetParent(d));
-  let F = W ? W[$] : 0;
-  F && await (s.isElement == null ? void 0 : s.isElement(W)) || (F = l.floating[$] || i.floating[y]);
-  const J = E / 2 - V / 2, X = F / 2 - k[y] / 2 - 1, ee = Xe(g[I], X), D = Xe(g[S], X), M = ee, A = F - k[y] - D, j = F / 2 - k[y] / 2 + J, C = Vt(M, j, A), te = ue(n) != null && j != C && i.reference[y] / 2 - (j < M ? ee : D) - k[y] / 2 < 0 ? j < M ? M - j : A - j : 0;
-  return { [m]: f[m] - te, data: { [m]: C, centerOffset: j - C + te } };
-} }), Ya = ["top", "right", "bottom", "left"], Dr = Ya.reduce((e, t) => e.concat(t, t + "-start", t + "-end"), []), Za = { left: "right", right: "left", bottom: "top", top: "bottom" };
-function yt(e) {
-  return e.replace(/left|right|bottom|top/g, (t) => Za[t]);
-}
-function bo(e, t, r) {
-  r === void 0 && (r = !1);
-  const o = ue(e), n = He(e), i = or(n);
-  let s = n === "x" ? o === (r ? "end" : "start") ? "right" : "left" : o === "start" ? "bottom" : "top";
-  return t.reference[i] > t.floating[i] && (s = yt(s)), { main: s, cross: yt(s) };
-}
-const Xa = { start: "end", end: "start" };
-function pt(e) {
-  return e.replace(/start|end/g, (t) => Xa[t]);
-}
-const el = function(e) {
-  return e === void 0 && (e = {}), { name: "autoPlacement", options: e, async fn(t) {
-    var r, o, n;
-    const { rects: i, middlewareData: s, placement: l, platform: d, elements: p } = t, { crossAxis: g = !1, alignment: f, allowedPlacements: m = Dr, autoAlignment: y = !0, ...k } = ze(e, t), _ = f !== void 0 || m === Dr ? function(D, M, A) {
-      return (D ? [...A.filter((j) => ue(j) === D), ...A.filter((j) => ue(j) !== D)] : A.filter((j) => he(j) === j)).filter((j) => !D || ue(j) === D || !!M && pt(j) !== j);
-    }(f || null, y, m) : m, I = await Tt(t, k), S = ((r = s.autoPlacement) == null ? void 0 : r.index) || 0, $ = _[S];
-    if ($ == null)
-      return {};
-    const { main: E, cross: V } = bo($, i, await (d.isRTL == null ? void 0 : d.isRTL(p.floating)));
-    if (l !== $)
-      return { reset: { placement: _[0] } };
-    const W = [I[he($)], I[E], I[V]], F = [...((o = s.autoPlacement) == null ? void 0 : o.overflows) || [], { placement: $, overflows: W }], J = _[S + 1];
-    if (J)
-      return { data: { index: S + 1, overflows: F }, reset: { placement: J } };
-    const X = F.map((D) => {
-      const M = ue(D.placement);
-      return [D.placement, M && g ? D.overflows.slice(0, 2).reduce((A, j) => A + j, 0) : D.overflows[0], D.overflows];
-    }).sort((D, M) => D[1] - M[1]), ee = ((n = X.filter((D) => D[2].slice(0, ue(D[0]) ? 2 : 3).every((M) => M <= 0))[0]) == null ? void 0 : n[0]) || X[0][0];
-    return ee !== l ? { data: { index: S + 1, overflows: F }, reset: { placement: ee } } : {};
-  } };
-}, tl = function(e) {
-  return e === void 0 && (e = {}), { name: "flip", options: e, async fn(t) {
-    var r;
-    const { placement: o, middlewareData: n, rects: i, initialPlacement: s, platform: l, elements: d } = t, { mainAxis: p = !0, crossAxis: g = !0, fallbackPlacements: f, fallbackStrategy: m = "bestFit", fallbackAxisSideDirection: y = "none", flipAlignment: k = !0, ..._ } = ze(e, t), I = he(o), S = he(s) === s, $ = await (l.isRTL == null ? void 0 : l.isRTL(d.floating)), E = f || (S || !k ? [yt(s)] : function(M) {
-      const A = yt(M);
-      return [pt(M), A, pt(A)];
-    }(s));
-    f || y === "none" || E.push(...function(M, A, j, C) {
-      const te = ue(M);
-      let a = function(u, c, h) {
-        const b = ["left", "right"], v = ["right", "left"], N = ["top", "bottom"], P = ["bottom", "top"];
-        switch (u) {
-          case "top":
-          case "bottom":
-            return h ? c ? v : b : c ? b : v;
-          case "left":
-          case "right":
-            return c ? N : P;
-          default:
-            return [];
-        }
-      }(he(M), j === "start", C);
-      return te && (a = a.map((u) => u + "-" + te), A && (a = a.concat(a.map(pt)))), a;
-    }(s, k, y, $));
-    const V = [s, ...E], W = await Tt(t, _), F = [];
-    let J = ((r = n.flip) == null ? void 0 : r.overflows) || [];
-    if (p && F.push(W[I]), g) {
-      const { main: M, cross: A } = bo(o, i, $);
-      F.push(W[M], W[A]);
-    }
-    if (J = [...J, { placement: o, overflows: F }], !F.every((M) => M <= 0)) {
-      var X, ee;
-      const M = (((X = n.flip) == null ? void 0 : X.index) || 0) + 1, A = V[M];
-      if (A)
-        return { data: { index: M, overflows: J }, reset: { placement: A } };
-      let j = (ee = J.filter((C) => C.overflows[0] <= 0).sort((C, te) => C.overflows[1] - te.overflows[1])[0]) == null ? void 0 : ee.placement;
-      if (!j)
-        switch (m) {
-          case "bestFit": {
-            var D;
-            const C = (D = J.map((te) => [te.placement, te.overflows.filter((a) => a > 0).reduce((a, u) => a + u, 0)]).sort((te, a) => te[1] - a[1])[0]) == null ? void 0 : D[0];
-            C && (j = C);
-            break;
-          }
-          case "initialPlacement":
-            j = s;
-        }
-      if (o !== j)
-        return { reset: { placement: j } };
-    }
-    return {};
-  } };
-}, rl = function(e) {
-  return e === void 0 && (e = 0), { name: "offset", options: e, async fn(t) {
-    const { x: r, y: o } = t, n = await async function(i, s) {
-      const { placement: l, platform: d, elements: p } = i, g = await (d.isRTL == null ? void 0 : d.isRTL(p.floating)), f = he(l), m = ue(l), y = He(l) === "x", k = ["left", "top"].includes(f) ? -1 : 1, _ = g && y ? -1 : 1, I = ze(s, i);
-      let { mainAxis: S, crossAxis: $, alignmentAxis: E } = typeof I == "number" ? { mainAxis: I, crossAxis: 0, alignmentAxis: null } : { mainAxis: 0, crossAxis: 0, alignmentAxis: null, ...I };
-      return m && typeof E == "number" && ($ = m === "end" ? -1 * E : E), y ? { x: $ * _, y: S * k } : { x: S * k, y: $ * _ };
-    }(t, e);
-    return { x: r + n.x, y: o + n.y, data: n };
-  } };
-};
-function ol(e) {
+function No(e) {
   return e === "x" ? "y" : "x";
 }
-const nl = function(e) {
-  return e === void 0 && (e = {}), { name: "shift", options: e, async fn(t) {
-    const { x: r, y: o, placement: n } = t, { mainAxis: i = !0, crossAxis: s = !1, limiter: l = { fn: (I) => {
-      let { x: S, y: $ } = I;
-      return { x: S, y: $ };
-    } }, ...d } = ze(e, t), p = { x: r, y: o }, g = await Tt(t, d), f = He(he(n)), m = ol(f);
-    let y = p[f], k = p[m];
-    if (i) {
-      const I = f === "y" ? "bottom" : "right";
-      y = Vt(y + g[f === "y" ? "top" : "left"], y, y - g[I]);
-    }
-    if (s) {
-      const I = m === "y" ? "bottom" : "right";
-      k = Vt(k + g[m === "y" ? "top" : "left"], k, k - g[I]);
-    }
-    const _ = l.fn({ ...t, [f]: y, [m]: k });
-    return { ..._, data: { x: _.x - r, y: _.y - o } };
-  } };
-}, il = function(e) {
-  return e === void 0 && (e = {}), { name: "size", options: e, async fn(t) {
-    const { placement: r, rects: o, platform: n, elements: i } = t, { apply: s = () => {
-    }, ...l } = ze(e, t), d = await Tt(t, l), p = he(r), g = ue(r), f = He(r) === "x", { width: m, height: y } = o.floating;
-    let k, _;
-    p === "top" || p === "bottom" ? (k = p, _ = g === (await (n.isRTL == null ? void 0 : n.isRTL(i.floating)) ? "start" : "end") ? "left" : "right") : (_ = p, k = g === "end" ? "top" : "bottom");
-    const I = y - d[k], S = m - d[_], $ = !t.middlewareData.shift;
-    let E = I, V = S;
-    if (f) {
-      const F = m - d.left - d.right;
-      V = g || $ ? Xe(S, F) : F;
-    } else {
-      const F = y - d.top - d.bottom;
-      E = g || $ ? Xe(I, F) : F;
-    }
-    if ($ && !g) {
-      const F = Te(d.left, 0), J = Te(d.right, 0), X = Te(d.top, 0), ee = Te(d.bottom, 0);
-      f ? V = m - 2 * (F !== 0 || J !== 0 ? F + J : Te(d.left, d.right)) : E = y - 2 * (X !== 0 || ee !== 0 ? X + ee : Te(d.top, d.bottom));
-    }
-    await s({ ...t, availableWidth: V, availableHeight: E });
-    const W = await n.getDimensions(i.floating);
-    return m !== W.width || y !== W.height ? { reset: { rects: !0 } } : {};
-  } };
+function hr(e) {
+  return e === "y" ? "height" : "width";
+}
+function Be(e) {
+  return ["top", "bottom"].includes(ye(e)) ? "y" : "x";
+}
+function fr(e) {
+  return No(Be(e));
+}
+function zo(e, t, r) {
+  r === void 0 && (r = !1);
+  const o = fe(e), n = fr(e), i = hr(n);
+  let s = n === "x" ? o === (r ? "end" : "start") ? "right" : "left" : o === "start" ? "bottom" : "top";
+  return t.reference[i] > t.floating[i] && (s = _t(s)), [s, _t(s)];
+}
+function Ua(e) {
+  const t = _t(e);
+  return [kt(e), t, kt(t)];
+}
+function kt(e) {
+  return e.replace(/start|end/g, (t) => Ga[t]);
+}
+function qa(e, t, r) {
+  const o = ["left", "right"], n = ["right", "left"], i = ["top", "bottom"], s = ["bottom", "top"];
+  switch (e) {
+    case "top":
+    case "bottom":
+      return r ? t ? n : o : t ? o : n;
+    case "left":
+    case "right":
+      return t ? i : s;
+    default:
+      return [];
+  }
+}
+function Ka(e, t, r, o) {
+  const n = fe(e);
+  let i = qa(ye(e), r === "start", o);
+  return n && (i = i.map((s) => s + "-" + n), t && (i = i.concat(i.map(kt)))), i;
+}
+function _t(e) {
+  return e.replace(/left|right|bottom|top/g, (t) => Wa[t]);
+}
+function Ya(e) {
+  return {
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    ...e
+  };
+}
+function Do(e) {
+  return typeof e != "number" ? Ya(e) : {
+    top: e,
+    right: e,
+    bottom: e,
+    left: e
+  };
+}
+function Ze(e) {
+  const {
+    x: t,
+    y: r,
+    width: o,
+    height: n
+  } = e;
+  return {
+    width: o,
+    height: n,
+    top: r,
+    left: t,
+    right: t + o,
+    bottom: r + n,
+    x: t,
+    y: r
+  };
+}
+function Hr(e, t, r) {
+  let {
+    reference: o,
+    floating: n
+  } = e;
+  const i = Be(t), s = fr(t), u = hr(s), p = ye(t), c = i === "y", f = o.x + o.width / 2 - n.width / 2, g = o.y + o.height / 2 - n.height / 2, b = o[u] / 2 - n[u] / 2;
+  let y;
+  switch (p) {
+    case "top":
+      y = {
+        x: f,
+        y: o.y - n.height
+      };
+      break;
+    case "bottom":
+      y = {
+        x: f,
+        y: o.y + o.height
+      };
+      break;
+    case "right":
+      y = {
+        x: o.x + o.width,
+        y: g
+      };
+      break;
+    case "left":
+      y = {
+        x: o.x - n.width,
+        y: g
+      };
+      break;
+    default:
+      y = {
+        x: o.x,
+        y: o.y
+      };
+  }
+  switch (fe(t)) {
+    case "start":
+      y[s] -= b * (r && c ? -1 : 1);
+      break;
+    case "end":
+      y[s] += b * (r && c ? -1 : 1);
+      break;
+  }
+  return y;
+}
+const Ja = async (e, t, r) => {
+  const {
+    placement: o = "bottom",
+    strategy: n = "absolute",
+    middleware: i = [],
+    platform: s
+  } = r, u = i.filter(Boolean), p = await (s.isRTL == null ? void 0 : s.isRTL(t));
+  let c = await s.getElementRects({
+    reference: e,
+    floating: t,
+    strategy: n
+  }), {
+    x: f,
+    y: g
+  } = Hr(c, o, p), b = o, y = {}, w = 0;
+  for (let S = 0; S < u.length; S++) {
+    const {
+      name: L,
+      fn: P
+    } = u[S], {
+      x: z,
+      y: D,
+      data: W,
+      reset: G
+    } = await P({
+      x: f,
+      y: g,
+      initialPlacement: o,
+      placement: b,
+      strategy: n,
+      middlewareData: y,
+      rects: c,
+      platform: s,
+      elements: {
+        reference: e,
+        floating: t
+      }
+    });
+    f = z ?? f, g = D ?? g, y = {
+      ...y,
+      [L]: {
+        ...y[L],
+        ...W
+      }
+    }, G && w <= 50 && (w++, typeof G == "object" && (G.placement && (b = G.placement), G.rects && (c = G.rects === !0 ? await s.getElementRects({
+      reference: e,
+      floating: t,
+      strategy: n
+    }) : G.rects), {
+      x: f,
+      y: g
+    } = Hr(c, b, p)), S = -1);
+  }
+  return {
+    x: f,
+    y: g,
+    placement: b,
+    strategy: n,
+    middlewareData: y
+  };
 };
-function ae(e) {
+async function Dt(e, t) {
+  var r;
+  t === void 0 && (t = {});
+  const {
+    x: o,
+    y: n,
+    platform: i,
+    rects: s,
+    elements: u,
+    strategy: p
+  } = e, {
+    boundary: c = "clippingAncestors",
+    rootBoundary: f = "viewport",
+    elementContext: g = "floating",
+    altBoundary: b = !1,
+    padding: y = 0
+  } = Re(t, e), w = Do(y), S = u[b ? g === "floating" ? "reference" : "floating" : g], L = Ze(await i.getClippingRect({
+    element: (r = await (i.isElement == null ? void 0 : i.isElement(S))) == null || r ? S : S.contextElement || await (i.getDocumentElement == null ? void 0 : i.getDocumentElement(u.floating)),
+    boundary: c,
+    rootBoundary: f,
+    strategy: p
+  })), P = g === "floating" ? {
+    x: o,
+    y: n,
+    width: s.floating.width,
+    height: s.floating.height
+  } : s.reference, z = await (i.getOffsetParent == null ? void 0 : i.getOffsetParent(u.floating)), D = await (i.isElement == null ? void 0 : i.isElement(z)) ? await (i.getScale == null ? void 0 : i.getScale(z)) || {
+    x: 1,
+    y: 1
+  } : {
+    x: 1,
+    y: 1
+  }, W = Ze(i.convertOffsetParentRelativeRectToViewportRelativeRect ? await i.convertOffsetParentRelativeRectToViewportRelativeRect({
+    elements: u,
+    rect: P,
+    offsetParent: z,
+    strategy: p
+  }) : P);
+  return {
+    top: (L.top - W.top + w.top) / D.y,
+    bottom: (W.bottom - L.bottom + w.bottom) / D.y,
+    left: (L.left - W.left + w.left) / D.x,
+    right: (W.right - L.right + w.right) / D.x
+  };
+}
+const Za = (e) => ({
+  name: "arrow",
+  options: e,
+  async fn(t) {
+    const {
+      x: r,
+      y: o,
+      placement: n,
+      rects: i,
+      platform: s,
+      elements: u,
+      middlewareData: p
+    } = t, {
+      element: c,
+      padding: f = 0
+    } = Re(e, t) || {};
+    if (c == null)
+      return {};
+    const g = Do(f), b = {
+      x: r,
+      y: o
+    }, y = fr(n), w = hr(y), S = await s.getDimensions(c), L = y === "y", P = L ? "top" : "left", z = L ? "bottom" : "right", D = L ? "clientHeight" : "clientWidth", W = i.reference[w] + i.reference[y] - b[y] - i.floating[w], G = b[y] - i.reference[y], q = await (s.getOffsetParent == null ? void 0 : s.getOffsetParent(c));
+    let J = q ? q[D] : 0;
+    (!J || !await (s.isElement == null ? void 0 : s.isElement(q))) && (J = u.floating[D] || i.floating[w]);
+    const T = W / 2 - G / 2, V = J / 2 - S[w] / 2 - 1, O = nt(g[P], V), te = nt(g[z], V), Q = O, ue = J - S[w] - te, k = J / 2 - S[w] / 2 + T, le = Zt(Q, k, ue), a = !p.arrow && fe(n) != null && k !== le && i.reference[w] / 2 - (k < Q ? O : te) - S[w] / 2 < 0, l = a ? k < Q ? k - Q : k - ue : 0;
+    return {
+      [y]: b[y] + l,
+      data: {
+        [y]: le,
+        centerOffset: k - le - l,
+        ...a && {
+          alignmentOffset: l
+        }
+      },
+      reset: a
+    };
+  }
+});
+function Qa(e, t, r) {
+  return (e ? [...r.filter((o) => fe(o) === e), ...r.filter((o) => fe(o) !== e)] : r.filter((o) => ye(o) === o)).filter((o) => e ? fe(o) === e || (t ? kt(o) !== o : !1) : !0);
+}
+const Xa = function(e) {
+  return e === void 0 && (e = {}), {
+    name: "autoPlacement",
+    options: e,
+    async fn(t) {
+      var r, o, n;
+      const {
+        rects: i,
+        middlewareData: s,
+        placement: u,
+        platform: p,
+        elements: c
+      } = t, {
+        crossAxis: f = !1,
+        alignment: g,
+        allowedPlacements: b = Fr,
+        autoAlignment: y = !0,
+        ...w
+      } = Re(e, t), S = g !== void 0 || b === Fr ? Qa(g || null, y, b) : b, L = await Dt(t, w), P = ((r = s.autoPlacement) == null ? void 0 : r.index) || 0, z = S[P];
+      if (z == null)
+        return {};
+      const D = zo(z, i, await (p.isRTL == null ? void 0 : p.isRTL(c.floating)));
+      if (u !== z)
+        return {
+          reset: {
+            placement: S[0]
+          }
+        };
+      const W = [L[ye(z)], L[D[0]], L[D[1]]], G = [...((o = s.autoPlacement) == null ? void 0 : o.overflows) || [], {
+        placement: z,
+        overflows: W
+      }], q = S[P + 1];
+      if (q)
+        return {
+          data: {
+            index: P + 1,
+            overflows: G
+          },
+          reset: {
+            placement: q
+          }
+        };
+      const J = G.map((V) => {
+        const O = fe(V.placement);
+        return [V.placement, O && f ? (
+          // Check along the mainAxis and main crossAxis side.
+          V.overflows.slice(0, 2).reduce((te, Q) => te + Q, 0)
+        ) : (
+          // Check only the mainAxis.
+          V.overflows[0]
+        ), V.overflows];
+      }).sort((V, O) => V[1] - O[1]), T = ((n = J.filter((V) => V[2].slice(
+        0,
+        // Aligned placements should not check their opposite crossAxis
+        // side.
+        fe(V[0]) ? 2 : 3
+      ).every((O) => O <= 0))[0]) == null ? void 0 : n[0]) || J[0][0];
+      return T !== u ? {
+        data: {
+          index: P + 1,
+          overflows: G
+        },
+        reset: {
+          placement: T
+        }
+      } : {};
+    }
+  };
+}, el = function(e) {
+  return e === void 0 && (e = {}), {
+    name: "flip",
+    options: e,
+    async fn(t) {
+      var r, o;
+      const {
+        placement: n,
+        middlewareData: i,
+        rects: s,
+        initialPlacement: u,
+        platform: p,
+        elements: c
+      } = t, {
+        mainAxis: f = !0,
+        crossAxis: g = !0,
+        fallbackPlacements: b,
+        fallbackStrategy: y = "bestFit",
+        fallbackAxisSideDirection: w = "none",
+        flipAlignment: S = !0,
+        ...L
+      } = Re(e, t);
+      if ((r = i.arrow) != null && r.alignmentOffset)
+        return {};
+      const P = ye(n), z = Be(u), D = ye(u) === u, W = await (p.isRTL == null ? void 0 : p.isRTL(c.floating)), G = b || (D || !S ? [_t(u)] : Ua(u)), q = w !== "none";
+      !b && q && G.push(...Ka(u, S, w, W));
+      const J = [u, ...G], T = await Dt(t, L), V = [];
+      let O = ((o = i.flip) == null ? void 0 : o.overflows) || [];
+      if (f && V.push(T[P]), g) {
+        const k = zo(n, s, W);
+        V.push(T[k[0]], T[k[1]]);
+      }
+      if (O = [...O, {
+        placement: n,
+        overflows: V
+      }], !V.every((k) => k <= 0)) {
+        var te, Q;
+        const k = (((te = i.flip) == null ? void 0 : te.index) || 0) + 1, le = J[k];
+        if (le)
+          return {
+            data: {
+              index: k,
+              overflows: O
+            },
+            reset: {
+              placement: le
+            }
+          };
+        let a = (Q = O.filter((l) => l.overflows[0] <= 0).sort((l, d) => l.overflows[1] - d.overflows[1])[0]) == null ? void 0 : Q.placement;
+        if (!a)
+          switch (y) {
+            case "bestFit": {
+              var ue;
+              const l = (ue = O.filter((d) => {
+                if (q) {
+                  const h = Be(d.placement);
+                  return h === z || // Create a bias to the `y` side axis due to horizontal
+                  // reading directions favoring greater width.
+                  h === "y";
+                }
+                return !0;
+              }).map((d) => [d.placement, d.overflows.filter((h) => h > 0).reduce((h, m) => h + m, 0)]).sort((d, h) => d[1] - h[1])[0]) == null ? void 0 : ue[0];
+              l && (a = l);
+              break;
+            }
+            case "initialPlacement":
+              a = u;
+              break;
+          }
+        if (n !== a)
+          return {
+            reset: {
+              placement: a
+            }
+          };
+      }
+      return {};
+    }
+  };
+};
+async function tl(e, t) {
+  const {
+    placement: r,
+    platform: o,
+    elements: n
+  } = e, i = await (o.isRTL == null ? void 0 : o.isRTL(n.floating)), s = ye(r), u = fe(r), p = Be(r) === "y", c = ["left", "top"].includes(s) ? -1 : 1, f = i && p ? -1 : 1, g = Re(t, e);
+  let {
+    mainAxis: b,
+    crossAxis: y,
+    alignmentAxis: w
+  } = typeof g == "number" ? {
+    mainAxis: g,
+    crossAxis: 0,
+    alignmentAxis: null
+  } : {
+    mainAxis: g.mainAxis || 0,
+    crossAxis: g.crossAxis || 0,
+    alignmentAxis: g.alignmentAxis
+  };
+  return u && typeof w == "number" && (y = u === "end" ? w * -1 : w), p ? {
+    x: y * f,
+    y: b * c
+  } : {
+    x: b * c,
+    y: y * f
+  };
+}
+const rl = function(e) {
+  return e === void 0 && (e = 0), {
+    name: "offset",
+    options: e,
+    async fn(t) {
+      var r, o;
+      const {
+        x: n,
+        y: i,
+        placement: s,
+        middlewareData: u
+      } = t, p = await tl(t, e);
+      return s === ((r = u.offset) == null ? void 0 : r.placement) && (o = u.arrow) != null && o.alignmentOffset ? {} : {
+        x: n + p.x,
+        y: i + p.y,
+        data: {
+          ...p,
+          placement: s
+        }
+      };
+    }
+  };
+}, ol = function(e) {
+  return e === void 0 && (e = {}), {
+    name: "shift",
+    options: e,
+    async fn(t) {
+      const {
+        x: r,
+        y: o,
+        placement: n
+      } = t, {
+        mainAxis: i = !0,
+        crossAxis: s = !1,
+        limiter: u = {
+          fn: (L) => {
+            let {
+              x: P,
+              y: z
+            } = L;
+            return {
+              x: P,
+              y: z
+            };
+          }
+        },
+        ...p
+      } = Re(e, t), c = {
+        x: r,
+        y: o
+      }, f = await Dt(t, p), g = Be(ye(n)), b = No(g);
+      let y = c[b], w = c[g];
+      if (i) {
+        const L = b === "y" ? "top" : "left", P = b === "y" ? "bottom" : "right", z = y + f[L], D = y - f[P];
+        y = Zt(z, y, D);
+      }
+      if (s) {
+        const L = g === "y" ? "top" : "left", P = g === "y" ? "bottom" : "right", z = w + f[L], D = w - f[P];
+        w = Zt(z, w, D);
+      }
+      const S = u.fn({
+        ...t,
+        [b]: y,
+        [g]: w
+      });
+      return {
+        ...S,
+        data: {
+          x: S.x - r,
+          y: S.y - o,
+          enabled: {
+            [b]: i,
+            [g]: s
+          }
+        }
+      };
+    }
+  };
+}, nl = function(e) {
+  return e === void 0 && (e = {}), {
+    name: "size",
+    options: e,
+    async fn(t) {
+      var r, o;
+      const {
+        placement: n,
+        rects: i,
+        platform: s,
+        elements: u
+      } = t, {
+        apply: p = () => {
+        },
+        ...c
+      } = Re(e, t), f = await Dt(t, c), g = ye(n), b = fe(n), y = Be(n) === "y", {
+        width: w,
+        height: S
+      } = i.floating;
+      let L, P;
+      g === "top" || g === "bottom" ? (L = g, P = b === (await (s.isRTL == null ? void 0 : s.isRTL(u.floating)) ? "start" : "end") ? "left" : "right") : (P = g, L = b === "end" ? "top" : "bottom");
+      const z = S - f.top - f.bottom, D = w - f.left - f.right, W = nt(S - f[L], z), G = nt(w - f[P], D), q = !t.middlewareData.shift;
+      let J = W, T = G;
+      if ((r = t.middlewareData.shift) != null && r.enabled.x && (T = D), (o = t.middlewareData.shift) != null && o.enabled.y && (J = z), q && !b) {
+        const O = ze(f.left, 0), te = ze(f.right, 0), Q = ze(f.top, 0), ue = ze(f.bottom, 0);
+        y ? T = w - 2 * (O !== 0 || te !== 0 ? O + te : ze(f.left, f.right)) : J = S - 2 * (Q !== 0 || ue !== 0 ? Q + ue : ze(f.top, f.bottom));
+      }
+      await p({
+        ...t,
+        availableWidth: T,
+        availableHeight: J
+      });
+      const V = await s.getDimensions(u.floating);
+      return w !== V.width || S !== V.height ? {
+        reset: {
+          rects: !0
+        }
+      } : {};
+    }
+  };
+};
+function pe(e) {
   var t;
   return ((t = e.ownerDocument) == null ? void 0 : t.defaultView) || window;
 }
-function fe(e) {
-  return ae(e).getComputedStyle(e);
+function ge(e) {
+  return pe(e).getComputedStyle(e);
 }
-const zr = Math.min, Ke = Math.max, vt = Math.round;
-function yo(e) {
-  const t = fe(e);
+const Vr = Math.min, Qe = Math.max, Ct = Math.round;
+function Mo(e) {
+  const t = ge(e);
   let r = parseFloat(t.width), o = parseFloat(t.height);
-  const n = e.offsetWidth, i = e.offsetHeight, s = vt(r) !== n || vt(o) !== i;
+  const n = e.offsetWidth, i = e.offsetHeight, s = Ct(r) !== n || Ct(o) !== i;
   return s && (r = n, o = i), { width: r, height: o, fallback: s };
 }
-function $e(e) {
-  return wo(e) ? (e.nodeName || "").toLowerCase() : "";
+function Pe(e) {
+  return Bo(e) ? (e.nodeName || "").toLowerCase() : "";
 }
-let lt;
-function vo() {
-  if (lt)
-    return lt;
+let gt;
+function Eo() {
+  if (gt) return gt;
   const e = navigator.userAgentData;
-  return e && Array.isArray(e.brands) ? (lt = e.brands.map((t) => t.brand + "/" + t.version).join(" "), lt) : navigator.userAgent;
+  return e && Array.isArray(e.brands) ? (gt = e.brands.map((t) => t.brand + "/" + t.version).join(" "), gt) : navigator.userAgent;
 }
-function ge(e) {
-  return e instanceof ae(e).HTMLElement;
+function me(e) {
+  return e instanceof pe(e).HTMLElement;
 }
-function xe(e) {
-  return e instanceof ae(e).Element;
+function Se(e) {
+  return e instanceof pe(e).Element;
 }
-function wo(e) {
-  return e instanceof ae(e).Node;
+function Bo(e) {
+  return e instanceof pe(e).Node;
 }
-function Er(e) {
-  return typeof ShadowRoot > "u" ? !1 : e instanceof ae(e).ShadowRoot || e instanceof ShadowRoot;
+function Wr(e) {
+  return typeof ShadowRoot > "u" ? !1 : e instanceof pe(e).ShadowRoot || e instanceof ShadowRoot;
 }
-function Pt(e) {
-  const { overflow: t, overflowX: r, overflowY: o, display: n } = fe(e);
+function Mt(e) {
+  const { overflow: t, overflowX: r, overflowY: o, display: n } = ge(e);
   return /auto|scroll|overlay|hidden|clip/.test(t + o + r) && !["inline", "contents"].includes(n);
 }
-function sl(e) {
-  return ["table", "td", "th"].includes($e(e));
+function il(e) {
+  return ["table", "td", "th"].includes(Pe(e));
 }
-function Wt(e) {
-  const t = /firefox/i.test(vo()), r = fe(e), o = r.backdropFilter || r.WebkitBackdropFilter;
+function Qt(e) {
+  const t = /firefox/i.test(Eo()), r = ge(e), o = r.backdropFilter || r.WebkitBackdropFilter;
   return r.transform !== "none" || r.perspective !== "none" || !!o && o !== "none" || t && r.willChange === "filter" || t && !!r.filter && r.filter !== "none" || ["transform", "perspective"].some((n) => r.willChange.includes(n)) || ["paint", "layout", "strict", "content"].some((n) => {
     const i = r.contain;
     return i != null && i.includes(n);
   });
 }
-function xo() {
-  return !/^((?!chrome|android).)*safari/i.test(vo());
+function Oo() {
+  return !/^((?!chrome|android).)*safari/i.test(Eo());
 }
-function nr(e) {
-  return ["html", "body", "#document"].includes($e(e));
+function gr(e) {
+  return ["html", "body", "#document"].includes(Pe(e));
 }
-function _o(e) {
-  return xe(e) ? e : e.contextElement;
+function jo(e) {
+  return Se(e) ? e : e.contextElement;
 }
-const Co = { x: 1, y: 1 };
-function Me(e) {
-  const t = _o(e);
-  if (!ge(t))
-    return Co;
-  const r = t.getBoundingClientRect(), { width: o, height: n, fallback: i } = yo(t);
-  let s = (i ? vt(r.width) : r.width) / o, l = (i ? vt(r.height) : r.height) / n;
-  return s && Number.isFinite(s) || (s = 1), l && Number.isFinite(l) || (l = 1), { x: s, y: l };
+const Ro = { x: 1, y: 1 };
+function Ve(e) {
+  const t = jo(e);
+  if (!me(t)) return Ro;
+  const r = t.getBoundingClientRect(), { width: o, height: n, fallback: i } = Mo(t);
+  let s = (i ? Ct(r.width) : r.width) / o, u = (i ? Ct(r.height) : r.height) / n;
+  return s && Number.isFinite(s) || (s = 1), u && Number.isFinite(u) || (u = 1), { x: s, y: u };
 }
-function et(e, t, r, o) {
+function it(e, t, r, o) {
   var n, i;
   t === void 0 && (t = !1), r === void 0 && (r = !1);
-  const s = e.getBoundingClientRect(), l = _o(e);
-  let d = Co;
-  t && (o ? xe(o) && (d = Me(o)) : d = Me(e));
-  const p = l ? ae(l) : window, g = !xo() && r;
-  let f = (s.left + (g && ((n = p.visualViewport) == null ? void 0 : n.offsetLeft) || 0)) / d.x, m = (s.top + (g && ((i = p.visualViewport) == null ? void 0 : i.offsetTop) || 0)) / d.y, y = s.width / d.x, k = s.height / d.y;
-  if (l) {
-    const _ = ae(l), I = o && xe(o) ? ae(o) : o;
-    let S = _.frameElement;
-    for (; S && o && I !== _; ) {
-      const $ = Me(S), E = S.getBoundingClientRect(), V = getComputedStyle(S);
-      E.x += (S.clientLeft + parseFloat(V.paddingLeft)) * $.x, E.y += (S.clientTop + parseFloat(V.paddingTop)) * $.y, f *= $.x, m *= $.y, y *= $.x, k *= $.y, f += E.x, m += E.y, S = ae(S).frameElement;
+  const s = e.getBoundingClientRect(), u = jo(e);
+  let p = Ro;
+  t && (o ? Se(o) && (p = Ve(o)) : p = Ve(e));
+  const c = u ? pe(u) : window, f = !Oo() && r;
+  let g = (s.left + (f && ((n = c.visualViewport) == null ? void 0 : n.offsetLeft) || 0)) / p.x, b = (s.top + (f && ((i = c.visualViewport) == null ? void 0 : i.offsetTop) || 0)) / p.y, y = s.width / p.x, w = s.height / p.y;
+  if (u) {
+    const S = pe(u), L = o && Se(o) ? pe(o) : o;
+    let P = S.frameElement;
+    for (; P && o && L !== S; ) {
+      const z = Ve(P), D = P.getBoundingClientRect(), W = getComputedStyle(P);
+      D.x += (P.clientLeft + parseFloat(W.paddingLeft)) * z.x, D.y += (P.clientTop + parseFloat(W.paddingTop)) * z.y, g *= z.x, b *= z.y, y *= z.x, w *= z.y, g += D.x, b += D.y, P = pe(P).frameElement;
     }
   }
-  return { width: y, height: k, top: m, right: f + y, bottom: m + k, left: f, x: f, y: m };
+  return { width: y, height: w, top: b, right: g + y, bottom: b + w, left: g, x: g, y: b };
 }
-function _e(e) {
-  return ((wo(e) ? e.ownerDocument : e.document) || window.document).documentElement;
+function Te(e) {
+  return ((Bo(e) ? e.ownerDocument : e.document) || window.document).documentElement;
 }
-function Lt(e) {
-  return xe(e) ? { scrollLeft: e.scrollLeft, scrollTop: e.scrollTop } : { scrollLeft: e.pageXOffset, scrollTop: e.pageYOffset };
+function Et(e) {
+  return Se(e) ? { scrollLeft: e.scrollLeft, scrollTop: e.scrollTop } : { scrollLeft: e.pageXOffset, scrollTop: e.pageYOffset };
 }
-function ko(e) {
-  return et(_e(e)).left + Lt(e).scrollLeft;
+function Fo(e) {
+  return it(Te(e)).left + Et(e).scrollLeft;
 }
-function tt(e) {
-  if ($e(e) === "html")
-    return e;
-  const t = e.assignedSlot || e.parentNode || Er(e) && e.host || _e(e);
-  return Er(t) ? t.host : t;
+function st(e) {
+  if (Pe(e) === "html") return e;
+  const t = e.assignedSlot || e.parentNode || Wr(e) && e.host || Te(e);
+  return Wr(t) ? t.host : t;
 }
-function $o(e) {
-  const t = tt(e);
-  return nr(t) ? t.ownerDocument.body : ge(t) && Pt(t) ? t : $o(t);
+function Ho(e) {
+  const t = st(e);
+  return gr(t) ? t.ownerDocument.body : me(t) && Mt(t) ? t : Ho(t);
 }
-function wt(e, t) {
+function $t(e, t) {
   var r;
   t === void 0 && (t = []);
-  const o = $o(e), n = o === ((r = e.ownerDocument) == null ? void 0 : r.body), i = ae(o);
-  return n ? t.concat(i, i.visualViewport || [], Pt(o) ? o : []) : t.concat(o, wt(o));
+  const o = Ho(e), n = o === ((r = e.ownerDocument) == null ? void 0 : r.body), i = pe(o);
+  return n ? t.concat(i, i.visualViewport || [], Mt(o) ? o : []) : t.concat(o, $t(o));
 }
-function Or(e, t, r) {
-  return t === "viewport" ? qe(function(o, n) {
-    const i = ae(o), s = _e(o), l = i.visualViewport;
-    let d = s.clientWidth, p = s.clientHeight, g = 0, f = 0;
-    if (l) {
-      d = l.width, p = l.height;
-      const m = xo();
-      (m || !m && n === "fixed") && (g = l.offsetLeft, f = l.offsetTop);
+function Gr(e, t, r) {
+  return t === "viewport" ? Ze(function(o, n) {
+    const i = pe(o), s = Te(o), u = i.visualViewport;
+    let p = s.clientWidth, c = s.clientHeight, f = 0, g = 0;
+    if (u) {
+      p = u.width, c = u.height;
+      const b = Oo();
+      (b || !b && n === "fixed") && (f = u.offsetLeft, g = u.offsetTop);
     }
-    return { width: d, height: p, x: g, y: f };
-  }(e, r)) : xe(t) ? qe(function(o, n) {
-    const i = et(o, !0, n === "fixed"), s = i.top + o.clientTop, l = i.left + o.clientLeft, d = ge(o) ? Me(o) : { x: 1, y: 1 };
-    return { width: o.clientWidth * d.x, height: o.clientHeight * d.y, x: l * d.x, y: s * d.y };
-  }(t, r)) : qe(function(o) {
-    const n = _e(o), i = Lt(o), s = o.ownerDocument.body, l = Ke(n.scrollWidth, n.clientWidth, s.scrollWidth, s.clientWidth), d = Ke(n.scrollHeight, n.clientHeight, s.scrollHeight, s.clientHeight);
-    let p = -i.scrollLeft + ko(o);
-    const g = -i.scrollTop;
-    return fe(s).direction === "rtl" && (p += Ke(n.clientWidth, s.clientWidth) - l), { width: l, height: d, x: p, y: g };
-  }(_e(e)));
+    return { width: p, height: c, x: f, y: g };
+  }(e, r)) : Se(t) ? Ze(function(o, n) {
+    const i = it(o, !0, n === "fixed"), s = i.top + o.clientTop, u = i.left + o.clientLeft, p = me(o) ? Ve(o) : { x: 1, y: 1 };
+    return { width: o.clientWidth * p.x, height: o.clientHeight * p.y, x: u * p.x, y: s * p.y };
+  }(t, r)) : Ze(function(o) {
+    const n = Te(o), i = Et(o), s = o.ownerDocument.body, u = Qe(n.scrollWidth, n.clientWidth, s.scrollWidth, s.clientWidth), p = Qe(n.scrollHeight, n.clientHeight, s.scrollHeight, s.clientHeight);
+    let c = -i.scrollLeft + Fo(o);
+    const f = -i.scrollTop;
+    return ge(s).direction === "rtl" && (c += Qe(n.clientWidth, s.clientWidth) - u), { width: u, height: p, x: c, y: f };
+  }(Te(e)));
 }
-function Mr(e) {
-  return ge(e) && fe(e).position !== "fixed" ? e.offsetParent : null;
+function Ur(e) {
+  return me(e) && ge(e).position !== "fixed" ? e.offsetParent : null;
 }
-function Br(e) {
-  const t = ae(e);
-  let r = Mr(e);
-  for (; r && sl(r) && fe(r).position === "static"; )
-    r = Mr(r);
-  return r && ($e(r) === "html" || $e(r) === "body" && fe(r).position === "static" && !Wt(r)) ? t : r || function(o) {
-    let n = tt(o);
-    for (; ge(n) && !nr(n); ) {
-      if (Wt(n))
-        return n;
-      n = tt(n);
+function qr(e) {
+  const t = pe(e);
+  let r = Ur(e);
+  for (; r && il(r) && ge(r).position === "static"; ) r = Ur(r);
+  return r && (Pe(r) === "html" || Pe(r) === "body" && ge(r).position === "static" && !Qt(r)) ? t : r || function(o) {
+    let n = st(o);
+    for (; me(n) && !gr(n); ) {
+      if (Qt(n)) return n;
+      n = st(n);
     }
     return null;
   }(e) || t;
 }
-function al(e, t, r) {
-  const o = ge(t), n = _e(t), i = et(e, !0, r === "fixed", t);
+function sl(e, t, r) {
+  const o = me(t), n = Te(t), i = it(e, !0, r === "fixed", t);
   let s = { scrollLeft: 0, scrollTop: 0 };
-  const l = { x: 0, y: 0 };
-  if (o || !o && r !== "fixed")
-    if (($e(t) !== "body" || Pt(n)) && (s = Lt(t)), ge(t)) {
-      const d = et(t, !0);
-      l.x = d.x + t.clientLeft, l.y = d.y + t.clientTop;
-    } else
-      n && (l.x = ko(n));
-  return { x: i.left + s.scrollLeft - l.x, y: i.top + s.scrollTop - l.y, width: i.width, height: i.height };
+  const u = { x: 0, y: 0 };
+  if (o || !o && r !== "fixed") if ((Pe(t) !== "body" || Mt(n)) && (s = Et(t)), me(t)) {
+    const p = it(t, !0);
+    u.x = p.x + t.clientLeft, u.y = p.y + t.clientTop;
+  } else n && (u.x = Fo(n));
+  return { x: i.left + s.scrollLeft - u.x, y: i.top + s.scrollTop - u.y, width: i.width, height: i.height };
 }
-const ll = { getClippingRect: function(e) {
+const al = { getClippingRect: function(e) {
   let { element: t, boundary: r, rootBoundary: o, strategy: n } = e;
-  const i = r === "clippingAncestors" ? function(p, g) {
-    const f = g.get(p);
-    if (f)
-      return f;
-    let m = wt(p).filter((I) => xe(I) && $e(I) !== "body"), y = null;
-    const k = fe(p).position === "fixed";
-    let _ = k ? tt(p) : p;
-    for (; xe(_) && !nr(_); ) {
-      const I = fe(_), S = Wt(_);
-      (k ? S || y : S || I.position !== "static" || !y || !["absolute", "fixed"].includes(y.position)) ? y = I : m = m.filter(($) => $ !== _), _ = tt(_);
+  const i = r === "clippingAncestors" ? function(c, f) {
+    const g = f.get(c);
+    if (g) return g;
+    let b = $t(c).filter((L) => Se(L) && Pe(L) !== "body"), y = null;
+    const w = ge(c).position === "fixed";
+    let S = w ? st(c) : c;
+    for (; Se(S) && !gr(S); ) {
+      const L = ge(S), P = Qt(S);
+      (w ? P || y : P || L.position !== "static" || !y || !["absolute", "fixed"].includes(y.position)) ? y = L : b = b.filter((z) => z !== S), S = st(S);
     }
-    return g.set(p, m), m;
-  }(t, this._c) : [].concat(r), s = [...i, o], l = s[0], d = s.reduce((p, g) => {
-    const f = Or(t, g, n);
-    return p.top = Ke(f.top, p.top), p.right = zr(f.right, p.right), p.bottom = zr(f.bottom, p.bottom), p.left = Ke(f.left, p.left), p;
-  }, Or(t, l, n));
-  return { width: d.right - d.left, height: d.bottom - d.top, x: d.left, y: d.top };
+    return f.set(c, b), b;
+  }(t, this._c) : [].concat(r), s = [...i, o], u = s[0], p = s.reduce((c, f) => {
+    const g = Gr(t, f, n);
+    return c.top = Qe(g.top, c.top), c.right = Vr(g.right, c.right), c.bottom = Vr(g.bottom, c.bottom), c.left = Qe(g.left, c.left), c;
+  }, Gr(t, u, n));
+  return { width: p.right - p.left, height: p.bottom - p.top, x: p.left, y: p.top };
 }, convertOffsetParentRelativeRectToViewportRelativeRect: function(e) {
   let { rect: t, offsetParent: r, strategy: o } = e;
-  const n = ge(r), i = _e(r);
-  if (r === i)
-    return t;
-  let s = { scrollLeft: 0, scrollTop: 0 }, l = { x: 1, y: 1 };
-  const d = { x: 0, y: 0 };
-  if ((n || !n && o !== "fixed") && (($e(r) !== "body" || Pt(i)) && (s = Lt(r)), ge(r))) {
-    const p = et(r);
-    l = Me(r), d.x = p.x + r.clientLeft, d.y = p.y + r.clientTop;
+  const n = me(r), i = Te(r);
+  if (r === i) return t;
+  let s = { scrollLeft: 0, scrollTop: 0 }, u = { x: 1, y: 1 };
+  const p = { x: 0, y: 0 };
+  if ((n || !n && o !== "fixed") && ((Pe(r) !== "body" || Mt(i)) && (s = Et(r)), me(r))) {
+    const c = it(r);
+    u = Ve(r), p.x = c.x + r.clientLeft, p.y = c.y + r.clientTop;
   }
-  return { width: t.width * l.x, height: t.height * l.y, x: t.x * l.x - s.scrollLeft * l.x + d.x, y: t.y * l.y - s.scrollTop * l.y + d.y };
-}, isElement: xe, getDimensions: function(e) {
-  return ge(e) ? yo(e) : e.getBoundingClientRect();
-}, getOffsetParent: Br, getDocumentElement: _e, getScale: Me, async getElementRects(e) {
+  return { width: t.width * u.x, height: t.height * u.y, x: t.x * u.x - s.scrollLeft * u.x + p.x, y: t.y * u.y - s.scrollTop * u.y + p.y };
+}, isElement: Se, getDimensions: function(e) {
+  return me(e) ? Mo(e) : e.getBoundingClientRect();
+}, getOffsetParent: qr, getDocumentElement: Te, getScale: Ve, async getElementRects(e) {
   let { reference: t, floating: r, strategy: o } = e;
-  const n = this.getOffsetParent || Br, i = this.getDimensions;
-  return { reference: al(t, await n(r), o), floating: { x: 0, y: 0, ...await i(r) } };
-}, getClientRects: (e) => Array.from(e.getClientRects()), isRTL: (e) => fe(e).direction === "rtl" }, ul = (e, t, r) => {
-  const o = /* @__PURE__ */ new Map(), n = { platform: ll, ...r }, i = { ...n.platform, _c: o };
-  return Qa(e, t, { ...n, platform: i });
-}, Le = {
+  const n = this.getOffsetParent || qr, i = this.getDimensions;
+  return { reference: sl(t, await n(r), o), floating: { x: 0, y: 0, ...await i(r) } };
+}, getClientRects: (e) => Array.from(e.getClientRects()), isRTL: (e) => ge(e).direction === "rtl" }, ll = (e, t, r) => {
+  const o = /* @__PURE__ */ new Map(), n = { platform: al, ...r }, i = { ...n.platform, _c: o };
+  return Ja(e, t, { ...n, platform: i });
+}, De = {
   // Disable popper components
   disabled: !1,
   // Default position offset along main axis (px)
@@ -4260,7 +5029,7 @@ const ll = { getClippingRect: function(e) {
   // Skip delay & CSS transitions when another popper is shown, so that the popper appear to instanly move to the new position.
   instantMove: !1,
   // Auto destroy tooltip DOM nodes (ms)
-  disposeTimeout: 5e3,
+  disposeTimeout: 150,
   // Triggers on the popper itself
   popperTriggers: [],
   // Positioning strategy
@@ -4277,6 +5046,10 @@ const ll = { getClippingRect: function(e) {
   arrowPadding: 0,
   // Compute arrow overflow (useful to hide it)
   arrowOverflow: !0,
+  /**
+   * By default, compute autohide on 'click'.
+   */
+  autoHideOnMousedown: !1,
   // Themes
   themes: {
     tooltip: {
@@ -4313,7 +5086,7 @@ const ll = { getClippingRect: function(e) {
     menu: {
       $extend: "dropdown",
       triggers: ["hover", "focus"],
-      popperTriggers: ["hover", "focus"],
+      popperTriggers: ["hover"],
       delay: {
         show: 0,
         hide: 400
@@ -4321,96 +5094,96 @@ const ll = { getClippingRect: function(e) {
     }
   }
 };
-function Gt(e, t) {
-  let r = Le.themes[e] || {}, o;
+function Xt(e, t) {
+  let r = De.themes[e] || {}, o;
   do
-    o = r[t], typeof o > "u" ? r.$extend ? r = Le.themes[r.$extend] || {} : (r = null, o = Le[t]) : r = null;
+    o = r[t], typeof o > "u" ? r.$extend ? r = De.themes[r.$extend] || {} : (r = null, o = De[t]) : r = null;
   while (r);
   return o;
 }
-function dl(e) {
+function ul(e) {
   const t = [e];
-  let r = Le.themes[e] || {};
+  let r = De.themes[e] || {};
   do
-    r.$extend && !r.$resetCss ? (t.push(r.$extend), r = Le.themes[r.$extend] || {}) : r = null;
+    r.$extend && !r.$resetCss ? (t.push(r.$extend), r = De.themes[r.$extend] || {}) : r = null;
   while (r);
   return t.map((o) => `v-popper--theme-${o}`);
 }
-function jr(e) {
+function Kr(e) {
   const t = [e];
-  let r = Le.themes[e] || {};
+  let r = De.themes[e] || {};
   do
-    r.$extend ? (t.push(r.$extend), r = Le.themes[r.$extend] || {}) : r = null;
+    r.$extend ? (t.push(r.$extend), r = De.themes[r.$extend] || {}) : r = null;
   while (r);
   return t;
 }
-let je = !1;
+let at = !1;
 if (typeof window < "u") {
-  je = !1;
+  at = !1;
   try {
     const e = Object.defineProperty({}, "passive", {
       get() {
-        je = !0;
+        at = !0;
       }
     });
     window.addEventListener("test", null, e);
   } catch {
   }
 }
-let So = !1;
-typeof window < "u" && typeof navigator < "u" && (So = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream);
-const cl = ["auto", "top", "bottom", "left", "right"].reduce((e, t) => e.concat([
+let Vo = !1;
+typeof window < "u" && typeof navigator < "u" && (Vo = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream);
+const dl = ["auto", "top", "bottom", "left", "right"].reduce((e, t) => e.concat([
   t,
   `${t}-start`,
   `${t}-end`
-]), []), Rr = {
+]), []), Yr = {
   hover: "mouseenter",
   focus: "focus",
   click: "click",
   touch: "touchstart",
   pointer: "pointerdown"
-}, Fr = {
+}, Jr = {
   hover: "mouseleave",
   focus: "blur",
   click: "click",
   touch: "touchend",
   pointer: "pointerup"
 };
-function Hr(e, t) {
+function Zr(e, t) {
   const r = e.indexOf(t);
   r !== -1 && e.splice(r, 1);
 }
-function Mt() {
+function Vt() {
   return new Promise((e) => requestAnimationFrame(() => {
     requestAnimationFrame(e);
   }));
 }
-const de = [];
-let Ie = null;
-const Vr = {};
-function Wr(e) {
-  let t = Vr[e];
-  return t || (t = Vr[e] = []), t;
+const he = [];
+let Ne = null;
+const Qr = {};
+function Xr(e) {
+  let t = Qr[e];
+  return t || (t = Qr[e] = []), t;
 }
-let Ut = function() {
+let er = function() {
 };
-typeof window < "u" && (Ut = window.Element);
-function B(e) {
+typeof window < "u" && (er = window.Element);
+function F(e) {
   return function(t) {
-    return Gt(t.theme, e);
+    return Xt(t.theme, e);
   };
 }
-const Bt = "__floating-vue__popper", Io = () => K({
+const Wt = "__floating-vue__popper", Wo = () => Z({
   name: "VPopper",
   provide() {
     return {
-      [Bt]: {
+      [Wt]: {
         parentPopper: this
       }
     };
   },
   inject: {
-    [Bt]: { default: null }
+    [Wt]: { default: null }
   },
   props: {
     theme: {
@@ -4443,161 +5216,160 @@ const Bt = "__floating-vue__popper", Io = () => K({
     },
     disabled: {
       type: Boolean,
-      default: B("disabled")
+      default: F("disabled")
     },
     positioningDisabled: {
       type: Boolean,
-      default: B("positioningDisabled")
+      default: F("positioningDisabled")
     },
     placement: {
       type: String,
-      default: B("placement"),
-      validator: (e) => cl.includes(e)
+      default: F("placement"),
+      validator: (e) => dl.includes(e)
     },
     delay: {
       type: [String, Number, Object],
-      default: B("delay")
+      default: F("delay")
     },
     distance: {
       type: [Number, String],
-      default: B("distance")
+      default: F("distance")
     },
     skidding: {
       type: [Number, String],
-      default: B("skidding")
+      default: F("skidding")
     },
     triggers: {
       type: Array,
-      default: B("triggers")
+      default: F("triggers")
     },
     showTriggers: {
       type: [Array, Function],
-      default: B("showTriggers")
+      default: F("showTriggers")
     },
     hideTriggers: {
       type: [Array, Function],
-      default: B("hideTriggers")
+      default: F("hideTriggers")
     },
     popperTriggers: {
       type: Array,
-      default: B("popperTriggers")
+      default: F("popperTriggers")
     },
     popperShowTriggers: {
       type: [Array, Function],
-      default: B("popperShowTriggers")
+      default: F("popperShowTriggers")
     },
     popperHideTriggers: {
       type: [Array, Function],
-      default: B("popperHideTriggers")
+      default: F("popperHideTriggers")
     },
     container: {
-      type: [String, Object, Ut, Boolean],
-      default: B("container")
+      type: [String, Object, er, Boolean],
+      default: F("container")
     },
     boundary: {
-      type: [String, Ut],
-      default: B("boundary")
+      type: [String, er],
+      default: F("boundary")
     },
     strategy: {
       type: String,
       validator: (e) => ["absolute", "fixed"].includes(e),
-      default: B("strategy")
+      default: F("strategy")
     },
     autoHide: {
       type: [Boolean, Function],
-      default: B("autoHide")
+      default: F("autoHide")
     },
     handleResize: {
       type: Boolean,
-      default: B("handleResize")
+      default: F("handleResize")
     },
     instantMove: {
       type: Boolean,
-      default: B("instantMove")
+      default: F("instantMove")
     },
     eagerMount: {
       type: Boolean,
-      default: B("eagerMount")
+      default: F("eagerMount")
     },
     popperClass: {
       type: [String, Array, Object],
-      default: B("popperClass")
+      default: F("popperClass")
     },
     computeTransformOrigin: {
       type: Boolean,
-      default: B("computeTransformOrigin")
+      default: F("computeTransformOrigin")
     },
     /**
      * @deprecated
      */
     autoMinSize: {
       type: Boolean,
-      default: B("autoMinSize")
+      default: F("autoMinSize")
     },
     autoSize: {
       type: [Boolean, String],
-      default: B("autoSize")
+      default: F("autoSize")
     },
     /**
      * @deprecated
      */
     autoMaxSize: {
       type: Boolean,
-      default: B("autoMaxSize")
+      default: F("autoMaxSize")
     },
     autoBoundaryMaxSize: {
       type: Boolean,
-      default: B("autoBoundaryMaxSize")
+      default: F("autoBoundaryMaxSize")
     },
     preventOverflow: {
       type: Boolean,
-      default: B("preventOverflow")
+      default: F("preventOverflow")
     },
     overflowPadding: {
       type: [Number, String],
-      default: B("overflowPadding")
+      default: F("overflowPadding")
     },
     arrowPadding: {
       type: [Number, String],
-      default: B("arrowPadding")
+      default: F("arrowPadding")
     },
     arrowOverflow: {
       type: Boolean,
-      default: B("arrowOverflow")
+      default: F("arrowOverflow")
     },
     flip: {
       type: Boolean,
-      default: B("flip")
+      default: F("flip")
     },
     shift: {
       type: Boolean,
-      default: B("shift")
+      default: F("shift")
     },
     shiftCrossAxis: {
       type: Boolean,
-      default: B("shiftCrossAxis")
+      default: F("shiftCrossAxis")
     },
     noAutoFocus: {
       type: Boolean,
-      default: B("noAutoFocus")
+      default: F("noAutoFocus")
     },
     disposeTimeout: {
       type: Number,
-      default: B("disposeTimeout")
+      default: F("disposeTimeout")
     }
   },
-  emits: [
-    "show",
-    "hide",
-    "update:shown",
-    "apply-show",
-    "apply-hide",
-    "close-group",
-    "close-directive",
-    "auto-hide",
-    "resize",
-    "dispose"
-  ],
+  emits: {
+    show: () => !0,
+    hide: () => !0,
+    "update:shown": (e) => !0,
+    "apply-show": () => !0,
+    "apply-hide": () => !0,
+    "close-group": () => !0,
+    "close-directive": () => !0,
+    "auto-hide": () => !0,
+    resize: () => !0
+  },
   data() {
     return {
       isShown: !1,
@@ -4621,8 +5393,13 @@ const Bt = "__floating-vue__popper", Io = () => K({
         },
         transformOrigin: null
       },
+      randomId: `popper_${[Math.random(), Date.now()].map((e) => e.toString(36).substring(2, 10)).join("_")}`,
       shownChildren: /* @__PURE__ */ new Set(),
-      lastAutoHide: !0
+      lastAutoHide: !0,
+      pendingHide: !1,
+      containsGlobalTarget: !1,
+      isDisposed: !0,
+      mouseDownContains: !1
     };
   },
   computed: {
@@ -4653,7 +5430,7 @@ const Bt = "__floating-vue__popper", Io = () => K({
     },
     parentPopper() {
       var e;
-      return (e = this[Bt]) == null ? void 0 : e.parentPopper;
+      return (e = this[Wt]) == null ? void 0 : e.parentPopper;
     },
     hasPopperShowTriggerHover() {
       var e, t;
@@ -4668,10 +5445,11 @@ const Bt = "__floating-vue__popper", Io = () => K({
     async container() {
       this.isShown && (this.$_ensureTeleport(), await this.$_computePosition());
     },
-    ...[
-      "triggers",
-      "positioningDisabled"
-    ].reduce((e, t) => (e[t] = "$_refreshListeners", e), {}),
+    triggers: {
+      handler: "$_refreshListeners",
+      deep: !0
+    },
+    positioningDisabled: "$_refreshListeners",
     ...[
       "placement",
       "distance",
@@ -4687,7 +5465,7 @@ const Bt = "__floating-vue__popper", Io = () => K({
     ].reduce((e, t) => (e[t] = "$_computePosition", e), {})
   },
   created() {
-    this.$_isDisposed = !0, this.randomId = `popper_${[Math.random(), Date.now()].map((e) => e.toString(36).substring(2, 10)).join("_")}`, this.autoMinSize && console.warn('[floating-vue] `autoMinSize` option is deprecated. Use `autoSize="min"` instead.'), this.autoMaxSize && console.warn("[floating-vue] `autoMaxSize` option is deprecated. Use `autoBoundaryMaxSize` instead.");
+    this.autoMinSize && console.warn('[floating-vue] `autoMinSize` option is deprecated. Use `autoSize="min"` instead.'), this.autoMaxSize && console.warn("[floating-vue] `autoMaxSize` option is deprecated. Use `autoBoundaryMaxSize` instead.");
   },
   mounted() {
     this.init(), this.$_detachPopperNode();
@@ -4704,7 +5482,7 @@ const Bt = "__floating-vue__popper", Io = () => K({
   methods: {
     show({ event: e = null, skipDelay: t = !1, force: r = !1 } = {}) {
       var o, n;
-      (o = this.parentPopper) != null && o.lockedChild && this.parentPopper.lockedChild !== this || (this.$_pendingHide = !1, (r || !this.disabled) && (((n = this.parentPopper) == null ? void 0 : n.lockedChild) === this && (this.parentPopper.lockedChild = null), this.$_scheduleShow(e, t), this.$emit("show"), this.$_showFrameLocked = !0, requestAnimationFrame(() => {
+      (o = this.parentPopper) != null && o.lockedChild && this.parentPopper.lockedChild !== this || (this.pendingHide = !1, (r || !this.disabled) && (((n = this.parentPopper) == null ? void 0 : n.lockedChild) === this && (this.parentPopper.lockedChild = null), this.$_scheduleShow(e, t), this.$emit("show"), this.$_showFrameLocked = !0, requestAnimationFrame(() => {
         this.$_showFrameLocked = !1;
       })), this.$emit("update:shown", !0));
     },
@@ -4712,7 +5490,7 @@ const Bt = "__floating-vue__popper", Io = () => K({
       var r;
       if (!this.$_hideInProgress) {
         if (this.shownChildren.size > 0) {
-          this.$_pendingHide = !0;
+          this.pendingHide = !0;
           return;
         }
         if (this.hasPopperShowTriggerHover && this.$_isAimingPopper()) {
@@ -4721,21 +5499,21 @@ const Bt = "__floating-vue__popper", Io = () => K({
           }, 1e3));
           return;
         }
-        ((r = this.parentPopper) == null ? void 0 : r.lockedChild) === this && (this.parentPopper.lockedChild = null), this.$_pendingHide = !1, this.$_scheduleHide(e, t), this.$emit("hide"), this.$emit("update:shown", !1);
+        ((r = this.parentPopper) == null ? void 0 : r.lockedChild) === this && (this.parentPopper.lockedChild = null), this.pendingHide = !1, this.$_scheduleHide(e, t), this.$emit("hide"), this.$emit("update:shown", !1);
       }
     },
     init() {
       var e;
-      this.$_isDisposed && (this.$_isDisposed = !1, this.isMounted = !1, this.$_events = [], this.$_preventShow = !1, this.$_referenceNode = ((e = this.referenceNode) == null ? void 0 : e.call(this)) ?? this.$el, this.$_targetNodes = this.targetNodes().filter((t) => t.nodeType === t.ELEMENT_NODE), this.$_popperNode = this.popperNode(), this.$_innerNode = this.$_popperNode.querySelector(".v-popper__inner"), this.$_arrowNode = this.$_popperNode.querySelector(".v-popper__arrow-container"), this.$_swapTargetAttrs("title", "data-original-title"), this.$_detachPopperNode(), this.triggers.length && this.$_addEventListeners(), this.shown && this.show());
+      this.isDisposed && (this.isDisposed = !1, this.isMounted = !1, this.$_events = [], this.$_preventShow = !1, this.$_referenceNode = ((e = this.referenceNode) == null ? void 0 : e.call(this)) ?? this.$el, this.$_targetNodes = this.targetNodes().filter((t) => t.nodeType === t.ELEMENT_NODE), this.$_popperNode = this.popperNode(), this.$_innerNode = this.$_popperNode.querySelector(".v-popper__inner"), this.$_arrowNode = this.$_popperNode.querySelector(".v-popper__arrow-container"), this.$_swapTargetAttrs("title", "data-original-title"), this.$_detachPopperNode(), this.triggers.length && this.$_addEventListeners(), this.shown && this.show());
     },
     dispose() {
-      this.$_isDisposed || (this.$_isDisposed = !0, this.$_removeEventListeners(), this.hide({ skipDelay: !0 }), this.$_detachPopperNode(), this.isMounted = !1, this.isShown = !1, this.$_updateParentShownChildren(!1), this.$_swapTargetAttrs("data-original-title", "title"), this.$emit("dispose"));
+      this.isDisposed || (this.isDisposed = !0, this.$_removeEventListeners(), this.hide({ skipDelay: !0 }), this.$_detachPopperNode(), this.isMounted = !1, this.isShown = !1, this.$_updateParentShownChildren(!1), this.$_swapTargetAttrs("data-original-title", "title"));
     },
     async onResize() {
       this.isShown && (await this.$_computePosition(), this.$emit("resize"));
     },
     async $_computePosition() {
-      if (this.$_isDisposed || this.positioningDisabled)
+      if (this.isDisposed || this.positioningDisabled)
         return;
       const e = {
         strategy: this.strategy,
@@ -4746,24 +5524,24 @@ const Bt = "__floating-vue__popper", Io = () => K({
         crossAxis: this.skidding
       }));
       const t = this.placement.startsWith("auto");
-      if (t ? e.middleware.push(el({
+      if (t ? e.middleware.push(Xa({
         alignment: this.placement.split("-")[1] ?? ""
-      })) : e.placement = this.placement, this.preventOverflow && (this.shift && e.middleware.push(nl({
+      })) : e.placement = this.placement, this.preventOverflow && (this.shift && e.middleware.push(ol({
         padding: this.overflowPadding,
         boundary: this.boundary,
         crossAxis: this.shiftCrossAxis
-      })), !t && this.flip && e.middleware.push(tl({
+      })), !t && this.flip && e.middleware.push(el({
         padding: this.overflowPadding,
         boundary: this.boundary
-      }))), e.middleware.push(Ja({
+      }))), e.middleware.push(Za({
         element: this.$_arrowNode,
         padding: this.arrowPadding
       })), this.arrowOverflow && e.middleware.push({
         name: "arrowOverflow",
         fn: ({ placement: o, rects: n, middlewareData: i }) => {
           let s;
-          const { centerOffset: l } = i.arrow;
-          return o.startsWith("top") || o.startsWith("bottom") ? s = Math.abs(l) > n.reference.width / 2 : s = Math.abs(l) > n.reference.height / 2, {
+          const { centerOffset: u } = i.arrow;
+          return o.startsWith("top") || o.startsWith("bottom") ? s = Math.abs(u) > n.reference.width / 2 : s = Math.abs(u) > n.reference.height / 2, {
             data: {
               overflow: s
             }
@@ -4774,11 +5552,11 @@ const Bt = "__floating-vue__popper", Io = () => K({
         e.middleware.push({
           name: "autoSize",
           fn: ({ rects: n, placement: i, middlewareData: s }) => {
-            var l;
-            if ((l = s.autoSize) != null && l.skip)
+            var u;
+            if ((u = s.autoSize) != null && u.skip)
               return {};
-            let d, p;
-            return i.startsWith("top") || i.startsWith("bottom") ? d = n.reference.width : p = n.reference.height, this.$_innerNode.style[o === "min" ? "minWidth" : o === "max" ? "maxWidth" : "width"] = d != null ? `${d}px` : null, this.$_innerNode.style[o === "min" ? "minHeight" : o === "max" ? "maxHeight" : "height"] = p != null ? `${p}px` : null, {
+            let p, c;
+            return i.startsWith("top") || i.startsWith("bottom") ? p = n.reference.width : c = n.reference.height, this.$_innerNode.style[o === "min" ? "minWidth" : o === "max" ? "maxWidth" : "width"] = p != null ? `${p}px` : null, this.$_innerNode.style[o === "min" ? "minHeight" : o === "max" ? "maxHeight" : "height"] = c != null ? `${c}px` : null, {
               data: {
                 skip: !0
               },
@@ -4789,14 +5567,14 @@ const Bt = "__floating-vue__popper", Io = () => K({
           }
         });
       }
-      (this.autoMaxSize || this.autoBoundaryMaxSize) && (this.$_innerNode.style.maxWidth = null, this.$_innerNode.style.maxHeight = null, e.middleware.push(il({
+      (this.autoMaxSize || this.autoBoundaryMaxSize) && (this.$_innerNode.style.maxWidth = null, this.$_innerNode.style.maxHeight = null, e.middleware.push(nl({
         boundary: this.boundary,
         padding: this.overflowPadding,
         apply: ({ availableWidth: o, availableHeight: n }) => {
           this.$_innerNode.style.maxWidth = o != null ? `${o}px` : null, this.$_innerNode.style.maxHeight = n != null ? `${n}px` : null;
         }
       })));
-      const r = await ul(this.$_referenceNode, this.$_popperNode, e);
+      const r = await ll(this.$_referenceNode, this.$_popperNode, e);
       Object.assign(this.result, {
         x: r.x,
         y: r.y,
@@ -4808,28 +5586,28 @@ const Bt = "__floating-vue__popper", Io = () => K({
         }
       });
     },
-    $_scheduleShow(e = null, t = !1) {
-      if (this.$_updateParentShownChildren(!0), this.$_hideInProgress = !1, clearTimeout(this.$_scheduleTimer), Ie && this.instantMove && Ie.instantMove && Ie !== this.parentPopper) {
-        Ie.$_applyHide(!0), this.$_applyShow(!0);
+    $_scheduleShow(e, t = !1) {
+      if (this.$_updateParentShownChildren(!0), this.$_hideInProgress = !1, clearTimeout(this.$_scheduleTimer), Ne && this.instantMove && Ne.instantMove && Ne !== this.parentPopper) {
+        Ne.$_applyHide(!0), this.$_applyShow(!0);
         return;
       }
       t ? this.$_applyShow() : this.$_scheduleTimer = setTimeout(this.$_applyShow.bind(this), this.$_computeDelay("show"));
     },
-    $_scheduleHide(e = null, t = !1) {
+    $_scheduleHide(e, t = !1) {
       if (this.shownChildren.size > 0) {
-        this.$_pendingHide = !0;
+        this.pendingHide = !0;
         return;
       }
-      this.$_updateParentShownChildren(!1), this.$_hideInProgress = !0, clearTimeout(this.$_scheduleTimer), this.isShown && (Ie = this), t ? this.$_applyHide() : this.$_scheduleTimer = setTimeout(this.$_applyHide.bind(this), this.$_computeDelay("hide"));
+      this.$_updateParentShownChildren(!1), this.$_hideInProgress = !0, clearTimeout(this.$_scheduleTimer), this.isShown && (Ne = this), t ? this.$_applyHide() : this.$_scheduleTimer = setTimeout(this.$_applyHide.bind(this), this.$_computeDelay("hide"));
     },
     $_computeDelay(e) {
       const t = this.delay;
       return parseInt(t && t[e] || t || 0);
     },
     async $_applyShow(e = !1) {
-      clearTimeout(this.$_disposeTimer), clearTimeout(this.$_scheduleTimer), this.skipTransition = e, !this.isShown && (this.$_ensureTeleport(), await Mt(), await this.$_computePosition(), await this.$_applyShowEffect(), this.positioningDisabled || this.$_registerEventListeners([
-        ...wt(this.$_referenceNode),
-        ...wt(this.$_popperNode)
+      clearTimeout(this.$_disposeTimer), clearTimeout(this.$_scheduleTimer), this.skipTransition = e, !this.isShown && (this.$_ensureTeleport(), await Vt(), await this.$_computePosition(), await this.$_applyShowEffect(), this.positioningDisabled || this.$_registerEventListeners([
+        ...$t(this.$_referenceNode),
+        ...$t(this.$_popperNode)
       ], "scroll", () => {
         this.$_computePosition();
       }));
@@ -4848,40 +5626,40 @@ const Bt = "__floating-vue__popper", Io = () => K({
       const e = this.showGroup;
       if (e) {
         let t;
-        for (let r = 0; r < de.length; r++)
-          t = de[r], t.showGroup !== e && (t.hide(), t.$emit("close-group"));
+        for (let r = 0; r < he.length; r++)
+          t = he[r], t.showGroup !== e && (t.hide(), t.$emit("close-group"));
       }
-      de.push(this), document.body.classList.add("v-popper--some-open");
-      for (const t of jr(this.theme))
-        Wr(t).push(this), document.body.classList.add(`v-popper--some-open--${t}`);
-      this.$emit("apply-show"), this.classes.showFrom = !0, this.classes.showTo = !1, this.classes.hideFrom = !1, this.classes.hideTo = !1, await Mt(), this.classes.showFrom = !1, this.classes.showTo = !0, this.noAutoFocus || this.$_popperNode.focus();
+      he.push(this), document.body.classList.add("v-popper--some-open");
+      for (const t of Kr(this.theme))
+        Xr(t).push(this), document.body.classList.add(`v-popper--some-open--${t}`);
+      this.$emit("apply-show"), this.classes.showFrom = !0, this.classes.showTo = !1, this.classes.hideFrom = !1, this.classes.hideTo = !1, await Vt(), this.classes.showFrom = !1, this.classes.showTo = !0, this.noAutoFocus || this.$_popperNode.focus();
     },
     async $_applyHide(e = !1) {
       if (this.shownChildren.size > 0) {
-        this.$_pendingHide = !0, this.$_hideInProgress = !1;
+        this.pendingHide = !0, this.$_hideInProgress = !1;
         return;
       }
       if (clearTimeout(this.$_scheduleTimer), !this.isShown)
         return;
-      this.skipTransition = e, Hr(de, this), de.length === 0 && document.body.classList.remove("v-popper--some-open");
-      for (const r of jr(this.theme)) {
-        const o = Wr(r);
-        Hr(o, this), o.length === 0 && document.body.classList.remove(`v-popper--some-open--${r}`);
+      this.skipTransition = e, Zr(he, this), he.length === 0 && document.body.classList.remove("v-popper--some-open");
+      for (const r of Kr(this.theme)) {
+        const o = Xr(r);
+        Zr(o, this), o.length === 0 && document.body.classList.remove(`v-popper--some-open--${r}`);
       }
-      Ie === this && (Ie = null), this.isShown = !1, this.$_applyAttrsToTarget({
+      Ne === this && (Ne = null), this.isShown = !1, this.$_applyAttrsToTarget({
         "aria-describedby": void 0,
         "data-popper-shown": void 0
       }), clearTimeout(this.$_disposeTimer);
       const t = this.disposeTimeout;
       t !== null && (this.$_disposeTimer = setTimeout(() => {
         this.$_popperNode && (this.$_detachPopperNode(), this.isMounted = !1);
-      }, t)), this.$_removeEventListeners("scroll"), this.$emit("apply-hide"), this.classes.showFrom = !1, this.classes.showTo = !1, this.classes.hideFrom = !0, this.classes.hideTo = !1, await Mt(), this.classes.hideFrom = !1, this.classes.hideTo = !0;
+      }, t)), this.$_removeEventListeners("scroll"), this.$emit("apply-hide"), this.classes.showFrom = !1, this.classes.showTo = !1, this.classes.hideFrom = !0, this.classes.hideTo = !1, await Vt(), this.classes.hideFrom = !1, this.classes.hideTo = !0;
     },
     $_autoShowHide() {
       this.shown ? this.show() : this.hide();
     },
     $_ensureTeleport() {
-      if (this.$_isDisposed)
+      if (this.isDisposed)
         return;
       let e = this.container;
       if (typeof e == "string" ? e = window.document.querySelector(e) : e === !1 && (e = this.$_targetNodes[0].parentNode), !e)
@@ -4892,22 +5670,22 @@ const Bt = "__floating-vue__popper", Io = () => K({
       const e = (r) => {
         this.isShown && !this.$_hideInProgress || (r.usedByTooltip = !0, !this.$_preventShow && this.show({ event: r }));
       };
-      this.$_registerTriggerListeners(this.$_targetNodes, Rr, this.triggers, this.showTriggers, e), this.$_registerTriggerListeners([this.$_popperNode], Rr, this.popperTriggers, this.popperShowTriggers, e);
+      this.$_registerTriggerListeners(this.$_targetNodes, Yr, this.triggers, this.showTriggers, e), this.$_registerTriggerListeners([this.$_popperNode], Yr, this.popperTriggers, this.popperShowTriggers, e);
       const t = (r) => {
         r.usedByTooltip || this.hide({ event: r });
       };
-      this.$_registerTriggerListeners(this.$_targetNodes, Fr, this.triggers, this.hideTriggers, t), this.$_registerTriggerListeners([this.$_popperNode], Fr, this.popperTriggers, this.popperHideTriggers, t);
+      this.$_registerTriggerListeners(this.$_targetNodes, Jr, this.triggers, this.hideTriggers, t), this.$_registerTriggerListeners([this.$_popperNode], Jr, this.popperTriggers, this.popperHideTriggers, t);
     },
     $_registerEventListeners(e, t, r) {
-      this.$_events.push({ targetNodes: e, eventType: t, handler: r }), e.forEach((o) => o.addEventListener(t, r, je ? {
+      this.$_events.push({ targetNodes: e, eventType: t, handler: r }), e.forEach((o) => o.addEventListener(t, r, at ? {
         passive: !0
       } : void 0));
     },
     $_registerTriggerListeners(e, t, r, o, n) {
       let i = r;
       o != null && (i = typeof o == "function" ? o(i) : o), i.forEach((s) => {
-        const l = t[s];
-        l && this.$_registerEventListeners(e, l, n);
+        const u = t[s];
+        u && this.$_registerEventListeners(e, u, n);
       });
     },
     $_removeEventListeners(e) {
@@ -4918,7 +5696,7 @@ const Bt = "__floating-vue__popper", Io = () => K({
       }), this.$_events = t;
     },
     $_refreshListeners() {
-      this.$_isDisposed || (this.$_removeEventListeners(), this.$_addEventListeners());
+      this.isDisposed || (this.$_removeEventListeners(), this.$_addEventListeners());
     },
     $_handleGlobalClose(e, t = !1) {
       this.$_showFrameLocked || (this.hide({ event: e }), e.closePopover ? this.$emit("close-directive") : this.$emit("auto-hide"), t && (this.$_preventShow = !0, setTimeout(() => {
@@ -4944,16 +5722,16 @@ const Bt = "__floating-vue__popper", Io = () => K({
     $_updateParentShownChildren(e) {
       let t = this.parentPopper;
       for (; t; )
-        e ? t.shownChildren.add(this.randomId) : (t.shownChildren.delete(this.randomId), t.$_pendingHide && t.hide()), t = t.parentPopper;
+        e ? t.shownChildren.add(this.randomId) : (t.shownChildren.delete(this.randomId), t.pendingHide && t.hide()), t = t.parentPopper;
     },
     $_isAimingPopper() {
       const e = this.$_referenceNode.getBoundingClientRect();
-      if (Qe >= e.left && Qe <= e.right && Je >= e.top && Je <= e.bottom) {
-        const t = this.$_popperNode.getBoundingClientRect(), r = Qe - ye, o = Je - ve, n = t.left + t.width / 2 - ye + (t.top + t.height / 2) - ve + t.width + t.height, i = ye + r * n, s = ve + o * n;
-        return ut(ye, ve, i, s, t.left, t.top, t.left, t.bottom) || // Left edge
-        ut(ye, ve, i, s, t.left, t.top, t.right, t.top) || // Top edge
-        ut(ye, ve, i, s, t.right, t.top, t.right, t.bottom) || // Right edge
-        ut(ye, ve, i, s, t.left, t.bottom, t.right, t.bottom);
+      if (Xe >= e.left && Xe <= e.right && et >= e.top && et <= e.bottom) {
+        const t = this.$_popperNode.getBoundingClientRect(), r = Xe - _e, o = et - Ce, n = t.left + t.width / 2 - _e + (t.top + t.height / 2) - Ce + t.width + t.height, i = _e + r * n, s = Ce + o * n;
+        return mt(_e, Ce, i, s, t.left, t.top, t.left, t.bottom) || // Left edge
+        mt(_e, Ce, i, s, t.left, t.top, t.right, t.top) || // Top edge
+        mt(_e, Ce, i, s, t.right, t.top, t.right, t.bottom) || // Right edge
+        mt(_e, Ce, i, s, t.left, t.bottom, t.right, t.bottom);
       }
       return !1;
     }
@@ -4962,45 +5740,45 @@ const Bt = "__floating-vue__popper", Io = () => K({
     return this.$slots.default(this.slotData);
   }
 });
-typeof document < "u" && typeof window < "u" && (So ? (document.addEventListener("touchstart", Gr, je ? {
-  passive: !0,
-  capture: !0
-} : !0), document.addEventListener("touchend", hl, je ? {
-  passive: !0,
-  capture: !0
-} : !0)) : (window.addEventListener("mousedown", Gr, !0), window.addEventListener("click", pl, !0)), window.addEventListener("resize", ml));
-function Gr(e) {
-  for (let t = 0; t < de.length; t++) {
-    const r = de[t];
+if (typeof document < "u" && typeof window < "u") {
+  if (Vo) {
+    const e = at ? {
+      passive: !0,
+      capture: !0
+    } : !0;
+    document.addEventListener("touchstart", (t) => eo(t), e), document.addEventListener("touchend", (t) => to(t, !0), e);
+  } else
+    window.addEventListener("mousedown", (e) => eo(e), !0), window.addEventListener("click", (e) => to(e, !1), !0);
+  window.addEventListener("resize", hl);
+}
+function eo(e, t) {
+  for (let r = 0; r < he.length; r++) {
+    const o = he[r];
     try {
-      const o = r.popperNode();
-      r.$_mouseDownContains = o.contains(e.target);
+      o.mouseDownContains = o.popperNode().contains(e.target);
     } catch {
     }
   }
 }
-function pl(e) {
-  To(e);
+function to(e, t) {
+  cl(e, t);
 }
-function hl(e) {
-  To(e, !0);
-}
-function To(e, t = !1) {
+function cl(e, t) {
   const r = {};
-  for (let o = de.length - 1; o >= 0; o--) {
-    const n = de[o];
+  for (let o = he.length - 1; o >= 0; o--) {
+    const n = he[o];
     try {
-      const i = n.$_containsGlobalTarget = fl(n, e);
-      n.$_pendingHide = !1, requestAnimationFrame(() => {
-        if (n.$_pendingHide = !1, !r[n.randomId] && Ur(n, i, e)) {
+      const i = n.containsGlobalTarget = n.mouseDownContains || n.popperNode().contains(e.target);
+      n.pendingHide = !1, requestAnimationFrame(() => {
+        if (n.pendingHide = !1, !r[n.randomId] && ro(n, i, e)) {
           if (n.$_handleGlobalClose(e, t), !e.closeAllPopover && e.closePopover && i) {
-            let l = n.parentPopper;
-            for (; l; )
-              r[l.randomId] = !0, l = l.parentPopper;
+            let u = n.parentPopper;
+            for (; u; )
+              r[u.randomId] = !0, u = u.parentPopper;
             return;
           }
           let s = n.parentPopper;
-          for (; s && Ur(s, s.$_containsGlobalTarget, e); )
+          for (; s && ro(s, s.containsGlobalTarget, e); )
             s.$_handleGlobalClose(e, t), s = s.parentPopper;
         }
       });
@@ -5008,54 +5786,50 @@ function To(e, t = !1) {
     }
   }
 }
-function fl(e, t) {
-  const r = e.popperNode();
-  return e.$_mouseDownContains || r.contains(t.target);
+function ro(e, t, r) {
+  return r.closeAllPopover || r.closePopover && t || pl(e, r) && !t;
 }
-function Ur(e, t, r) {
-  return r.closeAllPopover || r.closePopover && t || gl(e, r) && !t;
-}
-function gl(e, t) {
+function pl(e, t) {
   if (typeof e.autoHide == "function") {
     const r = e.autoHide(t);
     return e.lastAutoHide = r, r;
   }
   return e.autoHide;
 }
-function ml(e) {
-  for (let t = 0; t < de.length; t++)
-    de[t].$_computePosition(e);
+function hl() {
+  for (let e = 0; e < he.length; e++)
+    he[e].$_computePosition();
 }
-let ye = 0, ve = 0, Qe = 0, Je = 0;
+let _e = 0, Ce = 0, Xe = 0, et = 0;
 typeof window < "u" && window.addEventListener("mousemove", (e) => {
-  ye = Qe, ve = Je, Qe = e.clientX, Je = e.clientY;
-}, je ? {
+  _e = Xe, Ce = et, Xe = e.clientX, et = e.clientY;
+}, at ? {
   passive: !0
 } : void 0);
-function ut(e, t, r, o, n, i, s, l) {
-  const d = ((s - n) * (t - i) - (l - i) * (e - n)) / ((l - i) * (r - e) - (s - n) * (o - t)), p = ((r - e) * (t - i) - (o - t) * (e - n)) / ((l - i) * (r - e) - (s - n) * (o - t));
-  return d >= 0 && d <= 1 && p >= 0 && p <= 1;
+function mt(e, t, r, o, n, i, s, u) {
+  const p = ((s - n) * (t - i) - (u - i) * (e - n)) / ((u - i) * (r - e) - (s - n) * (o - t)), c = ((r - e) * (t - i) - (o - t) * (e - n)) / ((u - i) * (r - e) - (s - n) * (o - t));
+  return p >= 0 && p <= 1 && c >= 0 && c <= 1;
 }
-const bl = {
-  extends: Io()
-}, ir = (e, t) => {
+const fl = {
+  extends: Wo()
+}, mr = (e, t) => {
   const r = e.__vccOpts || e;
   for (const [o, n] of t)
     r[o] = n;
   return r;
 };
-function yl(e, t, r, o, n, i) {
-  return w(), L("div", {
+function gl(e, t, r, o, n, i) {
+  return x(), N("div", {
     ref: "reference",
     class: H(["v-popper", {
       "v-popper--shown": e.slotData.isShown
     }])
   }, [
-    z(e.$slots, "default", rt(kt(e.slotData)))
+    j(e.$slots, "default", lt(Tt(e.slotData)))
   ], 2);
 }
-const vl = /* @__PURE__ */ ir(bl, [["render", yl]]);
-function wl() {
+const ml = /* @__PURE__ */ mr(fl, [["render", gl]]);
+function yl() {
   var e = window.navigator.userAgent, t = e.indexOf("MSIE ");
   if (t > 0)
     return parseInt(e.substring(t + 5, e.indexOf(".", t)), 10);
@@ -5067,11 +5841,11 @@ function wl() {
   var n = e.indexOf("Edge/");
   return n > 0 ? parseInt(e.substring(n + 5, e.indexOf(".", n)), 10) : -1;
 }
-let ht;
-function qt() {
-  qt.init || (qt.init = !0, ht = wl() !== -1);
+let bt;
+function tr() {
+  tr.init || (tr.init = !0, bt = yl() !== -1);
 }
-var At = {
+var Bt = {
   name: "ResizeObserver",
   props: {
     emitOnMount: {
@@ -5091,11 +5865,11 @@ var At = {
     "notify"
   ],
   mounted() {
-    qt(), jo(() => {
+    tr(), uo(() => {
       this._w = this.$el.offsetWidth, this._h = this.$el.offsetHeight, this.emitOnMount && this.emitSize();
     });
     const e = document.createElement("object");
-    this._resizeObject = e, e.setAttribute("aria-hidden", "true"), e.setAttribute("tabindex", -1), e.onload = this.addResizeHandlers, e.type = "text/html", ht && this.$el.appendChild(e), e.data = "about:blank", ht || this.$el.appendChild(e);
+    this._resizeObject = e, e.setAttribute("aria-hidden", "true"), e.setAttribute("tabindex", -1), e.onload = this.addResizeHandlers, e.type = "text/html", bt && this.$el.appendChild(e), e.data = "about:blank", bt || this.$el.appendChild(e);
   },
   beforeUnmount() {
     this.removeResizeHandlers();
@@ -5114,34 +5888,34 @@ var At = {
       this._resizeObject.contentDocument.defaultView.addEventListener("resize", this.compareAndNotify), this.compareAndNotify();
     },
     removeResizeHandlers() {
-      this._resizeObject && this._resizeObject.onload && (!ht && this._resizeObject.contentDocument && this._resizeObject.contentDocument.defaultView.removeEventListener("resize", this.compareAndNotify), this.$el.removeChild(this._resizeObject), this._resizeObject.onload = null, this._resizeObject = null);
+      this._resizeObject && this._resizeObject.onload && (!bt && this._resizeObject.contentDocument && this._resizeObject.contentDocument.defaultView.removeEventListener("resize", this.compareAndNotify), this.$el.removeChild(this._resizeObject), this._resizeObject.onload = null, this._resizeObject = null);
     }
   }
 };
-const xl = /* @__PURE__ */ Ko("data-v-b329ee4c");
-Mo("data-v-b329ee4c");
-const _l = {
+const bl = /* @__PURE__ */ ln("data-v-b329ee4c");
+Qo("data-v-b329ee4c");
+const vl = {
   class: "resize-observer",
   tabindex: "-1"
 };
-Bo();
-const Cl = /* @__PURE__ */ xl((e, t, r, o, n, i) => (w(), Q("div", _l)));
-At.render = Cl;
-At.__scopeId = "data-v-b329ee4c";
-At.__file = "src/components/ResizeObserver.vue";
-const Po = (e = "theme") => ({
+Xo();
+const wl = /* @__PURE__ */ bl((e, t, r, o, n, i) => (x(), ee("div", vl)));
+Bt.render = wl;
+Bt.__scopeId = "data-v-b329ee4c";
+Bt.__file = "src/components/ResizeObserver.vue";
+const Go = (e = "theme") => ({
   computed: {
     themeClass() {
-      return dl(this[e]);
+      return ul(this[e]);
     }
   }
-}), kl = K({
+}), xl = Z({
   name: "VPopperContent",
   components: {
-    ResizeObserver: At
+    ResizeObserver: Bt
   },
   mixins: [
-    Po()
+    Go()
   ],
   props: {
     popperId: String,
@@ -5163,16 +5937,16 @@ const Po = (e = "theme") => ({
       return e != null && !isNaN(e) ? `${e}px` : null;
     }
   }
-}), $l = ["id", "aria-hidden", "tabindex", "data-popper-placement"], Sl = {
+}), kl = ["id", "aria-hidden", "tabindex", "data-popper-placement"], _l = {
   ref: "inner",
   class: "v-popper__inner"
-}, Il = /* @__PURE__ */ R("div", { class: "v-popper__arrow-outer" }, null, -1), Tl = /* @__PURE__ */ R("div", { class: "v-popper__arrow-inner" }, null, -1), Pl = [
-  Il,
-  Tl
+}, Cl = /* @__PURE__ */ U("div", { class: "v-popper__arrow-outer" }, null, -1), $l = /* @__PURE__ */ U("div", { class: "v-popper__arrow-inner" }, null, -1), Sl = [
+  Cl,
+  $l
 ];
-function Ll(e, t, r, o, n, i) {
-  const s = ft("ResizeObserver");
-  return w(), L("div", {
+function Tl(e, t, r, o, n, i) {
+  const s = vt("ResizeObserver");
+  return x(), N("div", {
     id: e.popperId,
     ref: "popover",
     class: H(["v-popper__popper", [
@@ -5190,48 +5964,48 @@ function Ll(e, t, r, o, n, i) {
         "v-popper__popper--no-positioning": !e.result
       }
     ]]),
-    style: Dt(e.result ? {
+    style: Ot(e.result ? {
       position: e.result.strategy,
       transform: `translate3d(${Math.round(e.result.x)}px,${Math.round(e.result.y)}px,0)`
     } : void 0),
     "aria-hidden": e.shown ? "false" : "true",
     tabindex: e.autoHide ? 0 : void 0,
     "data-popper-placement": e.result ? e.result.placement : void 0,
-    onKeyup: t[2] || (t[2] = Qo((l) => e.autoHide && e.$emit("hide"), ["esc"]))
+    onKeyup: t[2] || (t[2] = un((u) => e.autoHide && e.$emit("hide"), ["esc"]))
   }, [
-    R("div", {
+    U("div", {
       class: "v-popper__backdrop",
-      onClick: t[0] || (t[0] = (l) => e.autoHide && e.$emit("hide"))
+      onClick: t[0] || (t[0] = (u) => e.autoHide && e.$emit("hide"))
     }),
-    R("div", {
+    U("div", {
       class: "v-popper__wrapper",
-      style: Dt(e.result ? {
+      style: Ot(e.result ? {
         transformOrigin: e.result.transformOrigin
       } : void 0)
     }, [
-      R("div", Sl, [
-        e.mounted ? (w(), L(Be, { key: 0 }, [
-          R("div", null, [
-            z(e.$slots, "default")
+      U("div", _l, [
+        e.mounted ? (x(), N(We, { key: 0 }, [
+          U("div", null, [
+            j(e.$slots, "default")
           ]),
-          e.handleResize ? (w(), Q(s, {
+          e.handleResize ? (x(), ee(s, {
             key: 0,
-            onNotify: t[1] || (t[1] = (l) => e.$emit("resize", l))
-          })) : U("", !0)
-        ], 64)) : U("", !0)
+            onNotify: t[1] || (t[1] = (u) => e.$emit("resize", u))
+          })) : Y("", !0)
+        ], 64)) : Y("", !0)
       ], 512),
-      R("div", {
+      U("div", {
         ref: "arrow",
         class: "v-popper__arrow-container",
-        style: Dt(e.result ? {
+        style: Ot(e.result ? {
           left: e.toPx(e.result.arrow.x),
           top: e.toPx(e.result.arrow.y)
         } : void 0)
-      }, Pl, 4)
+      }, Sl, 4)
     ], 4)
-  ], 46, $l);
+  ], 46, kl);
 }
-const Lo = /* @__PURE__ */ ir(kl, [["render", Ll]]), Ao = {
+const Uo = /* @__PURE__ */ mr(xl, [["render", Tl]]), qo = {
   methods: {
     show(...e) {
       return this.$refs.popper.show(...e);
@@ -5246,21 +6020,194 @@ const Lo = /* @__PURE__ */ ir(kl, [["render", Ll]]), Ao = {
       return this.$refs.popper.onResize(...e);
     }
   }
-}, Al = K({
+};
+let rr = function() {
+};
+typeof window < "u" && (rr = window.Element);
+const Il = Z({
   name: "VPopperWrapper",
   components: {
-    Popper: vl,
-    PopperContent: Lo
+    Popper: ml,
+    PopperContent: Uo
   },
   mixins: [
-    Ao,
-    Po("finalTheme")
+    qo,
+    Go("finalTheme")
   ],
   props: {
     theme: {
       type: String,
       default: null
+    },
+    referenceNode: {
+      type: Function,
+      default: null
+    },
+    shown: {
+      type: Boolean,
+      default: !1
+    },
+    showGroup: {
+      type: String,
+      default: null
+    },
+    // eslint-disable-next-line vue/require-prop-types
+    ariaId: {
+      default: null
+    },
+    disabled: {
+      type: Boolean,
+      default: void 0
+    },
+    positioningDisabled: {
+      type: Boolean,
+      default: void 0
+    },
+    placement: {
+      type: String,
+      default: void 0
+    },
+    delay: {
+      type: [String, Number, Object],
+      default: void 0
+    },
+    distance: {
+      type: [Number, String],
+      default: void 0
+    },
+    skidding: {
+      type: [Number, String],
+      default: void 0
+    },
+    triggers: {
+      type: Array,
+      default: void 0
+    },
+    showTriggers: {
+      type: [Array, Function],
+      default: void 0
+    },
+    hideTriggers: {
+      type: [Array, Function],
+      default: void 0
+    },
+    popperTriggers: {
+      type: Array,
+      default: void 0
+    },
+    popperShowTriggers: {
+      type: [Array, Function],
+      default: void 0
+    },
+    popperHideTriggers: {
+      type: [Array, Function],
+      default: void 0
+    },
+    container: {
+      type: [String, Object, rr, Boolean],
+      default: void 0
+    },
+    boundary: {
+      type: [String, rr],
+      default: void 0
+    },
+    strategy: {
+      type: String,
+      default: void 0
+    },
+    autoHide: {
+      type: [Boolean, Function],
+      default: void 0
+    },
+    handleResize: {
+      type: Boolean,
+      default: void 0
+    },
+    instantMove: {
+      type: Boolean,
+      default: void 0
+    },
+    eagerMount: {
+      type: Boolean,
+      default: void 0
+    },
+    popperClass: {
+      type: [String, Array, Object],
+      default: void 0
+    },
+    computeTransformOrigin: {
+      type: Boolean,
+      default: void 0
+    },
+    /**
+     * @deprecated
+     */
+    autoMinSize: {
+      type: Boolean,
+      default: void 0
+    },
+    autoSize: {
+      type: [Boolean, String],
+      default: void 0
+    },
+    /**
+     * @deprecated
+     */
+    autoMaxSize: {
+      type: Boolean,
+      default: void 0
+    },
+    autoBoundaryMaxSize: {
+      type: Boolean,
+      default: void 0
+    },
+    preventOverflow: {
+      type: Boolean,
+      default: void 0
+    },
+    overflowPadding: {
+      type: [Number, String],
+      default: void 0
+    },
+    arrowPadding: {
+      type: [Number, String],
+      default: void 0
+    },
+    arrowOverflow: {
+      type: Boolean,
+      default: void 0
+    },
+    flip: {
+      type: Boolean,
+      default: void 0
+    },
+    shift: {
+      type: Boolean,
+      default: void 0
+    },
+    shiftCrossAxis: {
+      type: Boolean,
+      default: void 0
+    },
+    noAutoFocus: {
+      type: Boolean,
+      default: void 0
+    },
+    disposeTimeout: {
+      type: Number,
+      default: void 0
     }
+  },
+  emits: {
+    show: () => !0,
+    hide: () => !0,
+    "update:shown": (e) => !0,
+    "apply-show": () => !0,
+    "apply-hide": () => !0,
+    "close-group": () => !0,
+    "close-directive": () => !0,
+    "auto-hide": () => !0,
+    resize: () => !0
   },
   computed: {
     finalTheme() {
@@ -5273,79 +6220,87 @@ const Lo = /* @__PURE__ */ ir(kl, [["render", Ll]]), Ao = {
     }
   }
 });
-function Nl(e, t, r, o, n, i) {
-  const s = ft("PopperContent"), l = ft("Popper");
-  return w(), Q(l, {
-    ref: "popper",
+function Al(e, t, r, o, n, i) {
+  const s = vt("PopperContent"), u = vt("Popper");
+  return x(), ee(u, Oe({ ref: "popper" }, e.$props, {
     theme: e.finalTheme,
     "target-nodes": e.getTargetNodes,
     "popper-node": () => e.$refs.popperContent.$el,
-    class: H([
+    class: [
       e.themeClass
-    ])
-  }, {
-    default: Z(({
-      popperId: d,
-      isShown: p,
-      shouldMountContent: g,
-      skipTransition: f,
-      autoHide: m,
+    ],
+    onShow: t[0] || (t[0] = () => e.$emit("show")),
+    onHide: t[1] || (t[1] = () => e.$emit("hide")),
+    "onUpdate:shown": t[2] || (t[2] = (p) => e.$emit("update:shown", p)),
+    onApplyShow: t[3] || (t[3] = () => e.$emit("apply-show")),
+    onApplyHide: t[4] || (t[4] = () => e.$emit("apply-hide")),
+    onCloseGroup: t[5] || (t[5] = () => e.$emit("close-group")),
+    onCloseDirective: t[6] || (t[6] = () => e.$emit("close-directive")),
+    onAutoHide: t[7] || (t[7] = () => e.$emit("auto-hide")),
+    onResize: t[8] || (t[8] = () => e.$emit("resize"))
+  }), {
+    default: ie(({
+      popperId: p,
+      isShown: c,
+      shouldMountContent: f,
+      skipTransition: g,
+      autoHide: b,
       show: y,
-      hide: k,
-      handleResize: _,
-      onResize: I,
-      classes: S,
-      result: $
+      hide: w,
+      handleResize: S,
+      onResize: L,
+      classes: P,
+      result: z
     }) => [
-      z(e.$slots, "default", {
-        shown: p,
+      j(e.$slots, "default", {
+        shown: c,
         show: y,
-        hide: k
+        hide: w
       }),
-      Ye(s, {
+      tt(s, {
         ref: "popperContent",
-        "popper-id": d,
+        "popper-id": p,
         theme: e.finalTheme,
-        shown: p,
-        mounted: g,
-        "skip-transition": f,
-        "auto-hide": m,
-        "handle-resize": _,
-        classes: S,
-        result: $,
-        onHide: k,
-        onResize: I
+        shown: c,
+        mounted: f,
+        "skip-transition": g,
+        "auto-hide": b,
+        "handle-resize": S,
+        classes: P,
+        result: z,
+        onHide: w,
+        onResize: L
       }, {
-        default: Z(() => [
-          z(e.$slots, "popper", {
-            shown: p,
-            hide: k
+        default: ie(() => [
+          j(e.$slots, "popper", {
+            shown: c,
+            hide: w
           })
         ]),
         _: 2
       }, 1032, ["popper-id", "theme", "shown", "mounted", "skip-transition", "auto-hide", "handle-resize", "classes", "result", "onHide", "onResize"])
     ]),
     _: 3
-  }, 8, ["theme", "target-nodes", "popper-node", "class"]);
+  }, 16, ["theme", "target-nodes", "popper-node", "class"]);
 }
-const sr = /* @__PURE__ */ ir(Al, [["render", Nl]]);
+const yr = /* @__PURE__ */ mr(Il, [["render", Al]]);
 ({
-  ...sr
+  ...yr
 });
 ({
-  ...sr
+  ...yr
 });
 ({
-  ...sr
+  ...yr
 });
-K({
+Z({
   name: "VTooltipDirective",
   components: {
-    Popper: Io(),
-    PopperContent: Lo
+    Popper: Wo(),
+    PopperContent: Uo
   },
   mixins: [
-    Ao
+    qo
   ],
   inheritAttrs: !1,
   props: {
@@ -5355,7 +6310,7 @@ K({
     },
     html: {
       type: Boolean,
-      default: (e) => Gt(e.theme, "html")
+      default: (e) => Xt(e.theme, "html")
     },
     content: {
       type: [String, Number, Function],
@@ -5363,7 +6318,7 @@ K({
     },
     loadingContent: {
       type: String,
-      default: (e) => Gt(e.theme, "loadingContent")
+      default: (e) => Xt(e.theme, "loadingContent")
     },
     targetNodes: {
       type: Function,
@@ -5419,127 +6374,161 @@ K({
     }
   }
 });
-const Oe = {
-  Success: "success",
-  Error: "error"
-}, Dl = "block mb-2 text-sm font-medium", zl = "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", El = "cursor-not-allowed bg-gray-100", Ol = {
-  lg: "p-4",
+const ke = {
+  Error: "error",
+  Success: "success"
+}, Pl = "", Ll = "block mb-2 text-sm font-medium", Nl = "relative flex items-center has-[input:focus]:ring-offset-0 has-[input:focus]:ring-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg has-[input:focus]:ring-blue-500 has-[input:focus]:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:has-[input:focus]:ring-blue-500 dark:has-[input:focus]:border-blue-500", zl = "block flex-grow w-full p-0 bg-transparent text-inherit ring-offset-0 ring-0 border-0 focus:ring-offset-0 focus:ring-0 focus:border-0 dark:placeholder-gray-400", oo = "mt-2 text-sm text-gray-500 dark:text-gray-400", Dl = "bg-gray-100", Ml = "cursor-not-allowed", El = {
+  sm: "p-2 text-sm",
   md: "p-2.5 text-sm",
-  sm: "p-2 text-sm"
-}, Ml = "bg-green-50 border-green-500 dark:border-green-500 text-green-900 dark:text-green-400 placeholder-green-700 dark:placeholder-green-500 focus:ring-green-500 focus:border-green-500", Bl = "bg-red-50 border-red-500 text-red-900 placeholder-red-700 focus:ring-red-500 focus:border-red-500 dark:text-red-500 dark:placeholder-red-500 dark:border-red-500";
-function jl(e) {
-  const t = x(() => {
-    const o = e.validationStatus.value, n = o === Oe.Success ? Ml : o === Oe.Error ? Bl : "";
-    return se(
-      zl,
-      n,
-      Ol[e.size.value],
-      e.disabled.value ? El : ""
-    );
-  }), r = x(() => {
-    const o = e.validationStatus.value, n = o === Oe.Success ? "text-green-700 dark:text-green-500" : o === Oe.Error ? "text-red-700 dark:text-red-500" : "text-gray-900 dark:text-white";
-    return se(Dl, n);
-  });
+  lg: "p-4"
+}, Bl = "bg-red-50 border-red-500 text-red-900 placeholder-red-700 has-[input:focus]:ring-red-500 has-[input:focus]:border-red-500 dark:text-red-500 dark:placeholder-red-500 dark:border-red-500", no = "text-red-700 dark:text-red-500", Ol = "bg-green-50 border-green-500 dark:border-green-500 text-green-900 dark:text-green-400 placeholder-green-700 dark:placeholder-green-500 has-[input:focus]:ring-green-500 has-[input:focus]:border-green-500 ", io = "text-green-700 dark:text-green-500", jl = "text-red-900 placeholder-red-700 dark:placeholder-red-500", Rl = "text-green-900 dark:text-green-400 placeholder-green-700 dark:placeholder-green-500";
+function Fl(e) {
+  const t = v(() => se([
+    Pl,
+    e.wrapperClass.value
+  ])), r = v(() => se([
+    Ll,
+    e.labelClass.value,
+    e.validationStatus.value === ke.Success ? io : e.validationStatus.value === ke.Error ? no : ""
+  ])), o = v(() => se([
+    Nl,
+    e.class.value,
+    e.validationStatus.value === ke.Success ? Ol : e.validationStatus.value === ke.Error ? Bl : "",
+    e.disabled.value ? Dl : ""
+  ])), n = v(() => se([
+    zl,
+    El[e.size.value],
+    e.validationStatus.value === ke.Success ? Rl : e.validationStatus.value === ke.Error ? jl : "",
+    e.inputClass.value,
+    e.disabled.value ? Ml : ""
+  ])), i = v(() => se([
+    oo,
+    e.validationStatus.value === ke.Success ? io : e.validationStatus.value === ke.Error ? no : ""
+  ]));
   return {
-    inputClasses: t,
-    labelClasses: r
+    helperMessageClass: v(() => se([
+      oo
+    ])),
+    inputClass: n,
+    inputWrapperClass: o,
+    labelClass: r,
+    validationMessageClass: i,
+    wrapperClass: t
   };
 }
-const Rl = { class: "flex relative" }, Fl = {
+const Hl = {
   key: 0,
-  class: "w-10 flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none overflow-hidden"
-}, Hl = ["disabled", "type", "required"], Vl = {
+  class: "ms-2 flex shrink-0 items-center"
+}, Vl = ["autocomplete", "disabled", "required", "type"], Wl = {
   key: 1,
-  class: "absolute right-2.5 bottom-2.5"
-}, Wl = {
-  key: 2,
-  class: "mt-2 text-sm text-gray-500 dark:text-gray-400"
-}, Gl = /* @__PURE__ */ K({
+  class: "me-2 flex shrink-0 items-center"
+}, Gl = /* @__PURE__ */ Z({
+  inheritAttrs: !1,
   __name: "FwbInput",
-  props: {
+  props: /* @__PURE__ */ rt({
+    autocomplete: { default: "off" },
+    class: { default: "" },
     disabled: { type: Boolean, default: !1 },
+    inputClass: { default: "" },
     label: { default: "" },
+    labelClass: { default: "" },
     modelValue: { default: "" },
     required: { type: Boolean, default: !1 },
     size: { default: "md" },
     type: { default: "text" },
-    validationStatus: { default: void 0 }
-  },
+    validationStatus: { default: void 0 },
+    wrapperClass: { default: "" }
+  }, {
+    modelValue: { type: String },
+    modelModifiers: {}
+  }),
+  emits: ["update:modelValue"],
   setup(e) {
-    const t = e, r = ao(t, "modelValue"), { inputClasses: o, labelClasses: n } = jl(Ce(t)), i = x(() => se(
-      "mt-2 text-sm",
-      t.validationStatus === Oe.Success ? "text-green-600 dark:text-green-500" : "",
-      t.validationStatus === Oe.Error ? "text-red-600 dark:text-red-500" : ""
-    ));
-    return (s, l) => (w(), L("div", null, [
-      s.label ? (w(), L("label", {
+    const t = e, r = nr(e, "modelValue"), {
+      wrapperClass: o,
+      helperMessageClass: n,
+      validationMessageClass: i,
+      labelClass: s,
+      inputWrapperClass: u,
+      inputClass: p
+    } = Fl(Ie(t));
+    return (c, f) => (x(), N("div", {
+      class: H(A(o))
+    }, [
+      c.label ? (x(), N("label", {
         key: 0,
-        class: H(T(n))
-      }, ne(s.label), 3)) : U("", !0),
-      R("div", Rl, [
-        s.$slots.prefix ? (w(), L("div", Fl, [
-          z(s.$slots, "prefix")
-        ])) : U("", !0),
-        Ct(R("input", Re(s.$attrs, {
-          "onUpdate:modelValue": l[0] || (l[0] = (d) => Qr(r) ? r.value = d : null),
-          disabled: s.disabled,
-          type: s.type,
-          required: s.required,
-          class: [T(o), s.$slots.prefix ? "pl-10" : ""]
-        }), null, 16, Hl), [
-          [Fo, T(r)]
-        ]),
-        s.$slots.suffix ? (w(), L("div", Vl, [
-          z(s.$slots, "suffix")
-        ])) : U("", !0)
-      ]),
-      s.$slots.validationMessage ? (w(), L("p", {
-        key: 1,
-        class: H(i.value)
+        class: H(A(s))
+      }, de(c.label), 3)) : Y("", !0),
+      U("div", {
+        class: H(A(u))
       }, [
-        z(s.$slots, "validationMessage")
-      ], 2)) : U("", !0),
-      s.$slots.helper ? (w(), L("p", Wl, [
-        z(s.$slots, "helper")
-      ])) : U("", !0)
-    ]));
+        c.$slots.prefix ? (x(), N("div", Hl, [
+          j(c.$slots, "prefix")
+        ])) : Y("", !0),
+        At(U("input", Oe(c.$attrs, {
+          "onUpdate:modelValue": f[0] || (f[0] = (g) => r.value = g),
+          autocomplete: c.autocomplete,
+          class: A(p),
+          disabled: c.disabled,
+          required: c.required,
+          type: c.type
+        }), null, 16, Vl), [
+          [dn, r.value]
+        ]),
+        c.$slots.suffix ? (x(), N("div", Wl, [
+          j(c.$slots, "suffix")
+        ])) : Y("", !0)
+      ], 2),
+      c.$slots.validationMessage ? (x(), N("p", {
+        key: 1,
+        class: H(A(i))
+      }, [
+        j(c.$slots, "validationMessage")
+      ], 2)) : Y("", !0),
+      c.$slots.helper ? (x(), N("p", {
+        key: 2,
+        class: H(A(n))
+      }, [
+        j(c.$slots, "helper")
+      ], 2)) : Y("", !0)
+    ], 2));
   }
-}), we = {
+}), $e = {
   Success: "success",
   Error: "error"
-}, Ul = "block mb-2 text-sm font-medium", ql = "w-full text-gray-900 bg-gray-50 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500", Kl = "cursor-not-allowed bg-gray-100", Ql = "bg-transparent dark:bg-transparent border-b-2 border-gray-200 appearance-none dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer", Jl = {
+}, Ul = "block mb-2 text-sm font-medium", ql = "w-full text-gray-900 bg-gray-50 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500", Kl = "cursor-not-allowed bg-gray-100", Yl = "bg-transparent dark:bg-transparent dark:text-gray-500 border-b-2 border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer", Jl = {
   lg: "p-4",
   md: "p-2.5 text-sm",
   sm: "p-2 text-sm"
-}, Yl = "bg-green-50 border-green-500 dark:border-green-500 text-green-900 dark:text-green-400 placeholder-green-700 dark:placeholder-green-500 focus:ring-green-500 focus:border-green-500", Zl = "bg-red-50 border-red-500 text-red-900 placeholder-red-700 focus:ring-red-500 focus:border-red-500 dark:text-red-500 dark:placeholder-red-500 dark:border-red-500";
+}, Zl = "bg-green-50 border-green-500 dark:border-green-500 text-green-900 dark:text-green-400 placeholder-green-700 dark:placeholder-green-500 focus:ring-green-500 focus:border-green-500", Ql = "bg-red-50 border-red-500 text-red-900 placeholder-red-700 focus:ring-red-500 focus:border-red-500 dark:text-red-500 dark:placeholder-red-500 dark:border-red-500";
 function Xl(e) {
-  const t = x(() => {
-    const o = e.validationStatus.value, n = o === we.Success ? Yl : o === we.Error ? Zl : "", i = o === we.Success ? "focus:border-green-500" : o === we.Error ? "focus:border-red-500" : "";
-    return se(
+  const t = v(() => {
+    const o = e.validationStatus.value, n = o === $e.Success ? Zl : o === $e.Error ? Ql : "", i = o === $e.Success ? "focus:border-green-500" : o === $e.Error ? "focus:border-red-500" : "";
+    return Me(
       ql,
       n,
       Jl[e.size.value],
       e.disabled.value && Kl,
-      e.underline.value ? Ql : "border border-gray-300 rounded-lg",
+      e.underline.value ? Yl : "border border-gray-300 rounded-lg",
       e.underline.value && i
     );
-  }), r = x(() => {
-    const o = e.validationStatus.value, n = o === we.Success ? "text-green-700 dark:text-green-500" : o === we.Error ? "text-red-700 dark:text-red-500" : "text-gray-900 dark:text-white";
-    return se(Ul, n);
+  }), r = v(() => {
+    const o = e.validationStatus.value, n = o === $e.Success ? "text-green-700 dark:text-green-500" : o === $e.Error ? "text-red-700 dark:text-red-500" : "text-gray-900 dark:text-white";
+    return Me(Ul, n);
   });
   return {
     selectClasses: t,
     labelClasses: r
   };
 }
-const eu = ["disabled"], tu = {
+const eu = ["disabled", "required", "autocomplete"], tu = {
   disabled: "",
   selected: "",
   value: ""
 }, ru = ["value"], ou = {
   key: 1,
   class: "mt-2 text-sm text-gray-500 dark:text-gray-400"
-}, nu = /* @__PURE__ */ K({
+}, nu = /* @__PURE__ */ Z({
   __name: "FwbSelect",
   props: {
     modelValue: { default: "" },
@@ -5547,53 +6536,63 @@ const eu = ["disabled"], tu = {
     options: { default: () => [] },
     placeholder: { default: "Please select one" },
     disabled: { type: Boolean, default: !1 },
+    required: { type: Boolean, default: !1 },
     underline: { type: Boolean, default: !1 },
     size: { default: "md" },
+    autocomplete: { default: "off" },
     validationStatus: { default: void 0 }
   },
   emits: ["update:modelValue"],
   setup(e, { emit: t }) {
-    const r = e, o = ao(r, "modelValue", t), { selectClasses: n, labelClasses: i } = Xl(Ce(r)), s = x(() => se(
+    const r = e, o = Di(r, "modelValue", t), { selectClasses: n, labelClasses: i } = Xl(Ie(r)), s = v(() => Me(
       "mt-2 text-sm",
-      r.validationStatus === we.Success ? "text-green-600 dark:text-green-500" : "",
-      r.validationStatus === we.Error ? "text-red-600 dark:text-red-500" : ""
+      r.validationStatus === $e.Success ? "text-green-600 dark:text-green-500" : "",
+      r.validationStatus === $e.Error ? "text-red-600 dark:text-red-500" : ""
     ));
-    return (l, d) => (w(), L("div", null, [
-      R("label", null, [
-        l.label ? (w(), L("span", {
+    return (u, p) => (x(), N("div", null, [
+      U("label", null, [
+        u.label ? (x(), N("span", {
           key: 0,
-          class: H(T(i))
-        }, ne(l.label), 3)) : U("", !0),
-        Ct(R("select", {
-          "onUpdate:modelValue": d[0] || (d[0] = (p) => Qr(o) ? o.value = p : null),
-          disabled: l.disabled,
-          class: H(T(n))
+          class: H(A(i))
+        }, de(u.label), 3)) : Y("", !0),
+        At(U("select", {
+          "onUpdate:modelValue": p[0] || (p[0] = (c) => cn(o) ? o.value = c : null),
+          disabled: u.disabled,
+          required: u.required,
+          class: H(A(n)),
+          autocomplete: u.autocomplete
         }, [
-          R("option", tu, ne(l.placeholder), 1),
-          (w(!0), L(Be, null, Jr(l.options, (p, g) => (w(), L("option", {
-            key: g,
-            value: p.value
-          }, ne(p.name), 9, ru))), 128))
+          U("option", tu, de(u.placeholder), 1),
+          (x(!0), N(We, null, co(u.options, (c, f) => (x(), N("option", {
+            key: f,
+            value: c.value
+          }, de(c.name), 9, ru))), 128))
         ], 10, eu), [
-          [Ho, T(o)]
+          [pn, A(o)]
         ])
       ]),
-      l.$slots.validationMessage ? (w(), L("p", {
+      u.$slots.validationMessage ? (x(), N("p", {
         key: 0,
         class: H(s.value)
       }, [
-        z(l.$slots, "validationMessage")
-      ], 2)) : U("", !0),
-      l.$slots.helper ? (w(), L("p", ou, [
-        z(l.$slots, "helper")
-      ])) : U("", !0)
+        j(u.$slots, "validationMessage")
+      ], 2)) : Y("", !0),
+      u.$slots.helper ? (x(), N("p", ou, [
+        j(u.$slots, "helper")
+      ])) : Y("", !0)
     ]));
   }
-}), iu = "w-fit relative inline-flex items-center cursor-pointer", su = 'bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[""] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600', au = "ml-3 text-sm font-medium text-gray-900 dark:text-gray-300", lu = {
-  lg: "w-14 h-7 after:top-0.5 after:left-[4px] after:h-6 after:w-6",
-  md: "w-11 h-6 after:top-[2px] after:left-[2px] after:h-5 after:w-5",
-  sm: "w-9 h-5 after:top-[2px] after:left-[2px] after:h-4 after:w-4"
+}), iu = "w-fit relative inline-flex items-center cursor-pointer", su = 'relative bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[""] after:absolute after:bg-white after:border-gray-300 after:border after:rounded-full after:transition-all dark:border-gray-600 peer-checked:bg-blue-600', au = "text-sm font-medium text-gray-900 dark:text-gray-300", lu = {
+  direct: "",
+  reverse: "flex-row-reverse"
 }, uu = {
+  direct: "ms-3",
+  reverse: "me-3"
+}, du = {
+  lg: "w-14 h-7 after:top-0.5 after:start-[4px] after:h-6 after:w-6",
+  md: "w-11 h-6 after:top-[2px] after:start-[2px] after:h-5 after:w-5",
+  sm: "w-9 h-5 after:top-[2px] after:start-[2px] after:h-4 after:w-4"
+}, cu = {
   red: "peer-focus:ring-red-300 dark:peer-focus:ring-red-800 peer-checked:bg-red-600",
   green: "peer-focus:ring-green-300 dark:peer-focus:ring-green-800 peer-checked:bg-green-600",
   purple: "peer-focus:ring-purple-300 dark:peer-focus:ring-purple-800 peer-checked:bg-purple-600",
@@ -5601,75 +6600,80 @@ const eu = ["disabled"], tu = {
   teal: "peer-focus:ring-teal-300 dark:peer-focus:ring-teal-800 peer-checked:bg-teal-600",
   orange: "peer-focus:ring-orange-300 dark:peer-focus:ring-orange-800 peer-checked:bg-orange-500"
 };
-function du(e) {
-  const t = x(() => iu), r = x(() => su), o = x(() => lu[e.size.value]), n = x(() => uu[e.color.value]), i = x(() => au);
+function pu(e) {
+  const t = v(() => iu), r = v(() => su), o = v(() => du[e.size.value]), n = v(() => cu[e.color.value]), i = v(() => au), s = v(() => uu[e.reverse.value ? "reverse" : "direct"]), u = v(() => lu[e.reverse.value ? "reverse" : "direct"]);
   return {
     labelClasses: t,
     toggleSize: o,
     toggleClasses: r,
     toggleColor: n,
-    toggleBallClasses: i
+    toggleBallClasses: i,
+    toggleBallOrder: s,
+    labelOrder: u
   };
 }
-const cu = ["disabled"], qr = /* @__PURE__ */ K({
+const hu = ["disabled"], so = /* @__PURE__ */ Z({
   __name: "FwbToggle",
   props: {
     color: { default: "" },
     disabled: { type: Boolean, default: !1 },
     label: { default: "" },
     modelValue: { type: Boolean, default: !1 },
-    size: { default: "md" }
+    size: { default: "md" },
+    reverse: { type: Boolean, default: !1 }
   },
   emits: ["update:modelValue"],
   setup(e, { emit: t }) {
-    const r = e, o = x({
+    const r = e, o = t, n = v({
       get() {
         return r.modelValue;
       },
-      set(p) {
-        t("update:modelValue", p);
+      set(b) {
+        o("update:modelValue", b);
       }
     }), {
-      labelClasses: n,
-      toggleSize: i,
-      toggleClasses: s,
-      toggleColor: l,
-      toggleBallClasses: d
-    } = du(Ce(r));
-    return (p, g) => (w(), L("label", {
-      class: H(T(n))
+      labelClasses: i,
+      toggleSize: s,
+      toggleClasses: u,
+      toggleColor: p,
+      toggleBallClasses: c,
+      toggleBallOrder: f,
+      labelOrder: g
+    } = pu(Ie(r));
+    return (b, y) => (x(), N("label", {
+      class: H([A(i), A(g)])
     }, [
-      Ct(R("input", {
-        "onUpdate:modelValue": g[0] || (g[0] = (f) => o.value = f),
-        disabled: p.disabled,
-        class: "sr-only peer",
+      At(U("input", {
+        "onUpdate:modelValue": y[0] || (y[0] = (w) => n.value = w),
+        disabled: b.disabled,
+        class: "peer sr-only",
         type: "checkbox"
-      }, null, 8, cu), [
-        [Vo, o.value]
+      }, null, 8, hu), [
+        [hn, n.value]
       ]),
-      R("span", {
-        class: H([T(s), T(i), T(l)])
+      U("span", {
+        class: H([A(u), A(s), A(p)])
       }, null, 2),
-      R("span", {
-        class: H(T(d))
-      }, ne(p.label), 3)
+      U("span", {
+        class: H([A(c), A(f)])
+      }, de(b.label), 3)
     ], 2));
   }
-}), pu = ["href"], hu = /* @__PURE__ */ K({
+}), fu = ["href"], gu = /* @__PURE__ */ Z({
   __name: "FwbA",
   props: {
     href: { default: "" },
     color: { default: "text-primary-600 dark:text-primary-500" }
   },
   setup(e) {
-    return (t, r) => (w(), L("a", {
+    return (t, r) => (x(), N("a", {
       href: t.href,
       class: H([t.color, "inline-flex items-center hover:underline"])
     }, [
-      z(t.$slots, "default")
-    ], 10, pu));
+      j(t.$slots, "default")
+    ], 10, fu));
   }
-}), fu = /* @__PURE__ */ K({
+}), mu = /* @__PURE__ */ Z({
   inheritAttrs: !1,
   __name: "FwbHeading",
   props: {
@@ -5685,42 +6689,42 @@ const cu = ["disabled"], qr = /* @__PURE__ */ K({
       h4: "text-2xl font-bold",
       h5: "text-xl font-bold",
       h6: "text-lg font-bold"
-    }, o = Kt(), n = se(
+    }, o = or(), n = Me(
       "w-full",
       r[t.tag],
       t.color,
       t.customSize,
       o.class
     ), i = t.tag;
-    return (s, l) => (w(), Q(xt(T(i)), Re(s.$attrs, { class: T(n) }), {
-      default: Z(() => [
-        z(s.$slots, "default")
+    return (s, u) => (x(), ee(St(A(i)), Oe(s.$attrs, { class: A(n) }), {
+      default: ie(() => [
+        j(s.$slots, "default")
       ]),
       _: 3
     }, 16, ["class"]));
   }
-}), gu = "mb-3 last:mb-0 text-gray-900 dark:text-white leading-normal", mu = /* @__PURE__ */ K({
+}), yu = "mb-3 last:mb-0 text-gray-900 dark:text-white leading-normal", bu = /* @__PURE__ */ Z({
   __name: "FwbP",
   props: {
     class: { default: "" }
   },
   setup(e) {
-    const t = e, r = x(() => Ft([
-      gu,
+    const t = e, r = v(() => se([
+      yu,
       t.class
     ]));
-    return (o, n) => (w(), L("p", {
+    return (o, n) => (x(), N("p", {
       class: H(r.value)
     }, [
-      z(o.$slots, "default")
+      j(o.$slots, "default")
     ], 2));
   }
-}), Ve = (e, t) => {
+}), Ke = (e, t) => {
   const r = e.__vccOpts || e;
   for (const [o, n] of t)
     r[o] = n;
   return r;
-}, bu = {
+}, vu = {
   __name: "TwcButton",
   props: {
     flat: {
@@ -5737,20 +6741,20 @@ const cu = ["disabled"], qr = /* @__PURE__ */ K({
     }
   },
   setup(e) {
-    const t = e, r = x(() => {
+    const t = e, r = v(() => {
       let o = "TwcButton text-base";
       return t.flat ? `${o}border-0 bg-transparent text-gray-800 hover:bg-transparent focus:ring-0` : t.icon ? `${o}border-0 bg-transparent text-gray-800 hover:bg-gray-300 p-2` : t.link ? `${o}border-0 bg-transparent text-gray-800 hover:bg-transparent hover:underline p-0 text-blue-700` : o;
     });
-    return (o, n) => (w(), Q(T(si), Re(o.$props, { class: r.value }), {
-      default: Z(() => [
-        z(o.$slots, "default", {}, void 0, !0)
+    return (o, n) => (x(), ee(A(Ii), Oe(o.$props, { class: r.value }), {
+      default: ie(() => [
+        j(o.$slots, "default", {}, void 0, !0)
       ]),
       _: 3
     }, 16, ["class"]));
   }
-}, zu = /* @__PURE__ */ Ve(bu, [["__scopeId", "data-v-9c0172c8"]]), yu = { class: "flex justify-between" }, vu = { class: "font-semibold" }, wu = { class: "font-semibold" }, xu = { class: "flex flex-col" }, Kr = "font-light text-xs -mt-1", _u = {
+}, Ou = /* @__PURE__ */ Ke(vu, [["__scopeId", "data-v-9c0172c8"]]), wu = { class: "flex justify-between" }, xu = { class: "font-semibold" }, ku = { class: "font-semibold" }, _u = { class: "flex flex-col" }, ao = "font-light text-xs -mt-1", Cu = {
   __name: "TwcToggle",
-  props: /* @__PURE__ */ gt({
+  props: /* @__PURE__ */ rt({
     label: {
       type: String,
       default: ""
@@ -5783,84 +6787,84 @@ const cu = ["disabled"], qr = /* @__PURE__ */ K({
     },
     modelModifiers: {}
   }),
-  emits: /* @__PURE__ */ gt(["change", "click"], ["update:modelValue"]),
+  emits: /* @__PURE__ */ rt(["change", "click"], ["update:modelValue"]),
   setup(e, { emit: t }) {
-    const r = t, o = Yr(e, "modelValue");
+    const r = t, o = nr(e, "modelValue");
     function n() {
       r("click");
     }
-    return (i, s) => (w(), L("div", null, [
-      R("div", yu, [
-        i.$props.reverse ? (w(), L(Be, { key: 0 }, [
-          R("label", vu, ne(i.$props.label), 1),
-          Ye(T(qr), {
+    return (i, s) => (x(), N("div", null, [
+      U("div", wu, [
+        i.$props.reverse ? (x(), N(We, { key: 0 }, [
+          U("label", xu, de(i.$props.label), 1),
+          tt(A(so), {
             modelValue: o.value,
-            "onUpdate:modelValue": s[0] || (s[0] = (l) => o.value = l),
+            "onUpdate:modelValue": s[0] || (s[0] = (u) => o.value = u),
             class: "TwcToggle -mr-3",
             disabled: i.$props.disabled,
             onClick: n
           }, null, 8, ["modelValue", "disabled"])
-        ], 64)) : (w(), L(Be, { key: 1 }, [
-          Ye(T(qr), {
+        ], 64)) : (x(), N(We, { key: 1 }, [
+          tt(A(so), {
             modelValue: o.value,
-            "onUpdate:modelValue": s[1] || (s[1] = (l) => o.value = l),
+            "onUpdate:modelValue": s[1] || (s[1] = (u) => o.value = u),
             class: "TwcToggle",
             disabled: i.$props.disabled,
             onClick: n
           }, null, 8, ["modelValue", "disabled"]),
-          R("label", wu, ne(i.$props.label), 1)
+          U("label", ku, de(i.$props.label), 1)
         ], 64))
       ]),
-      R("div", xu, [
-        i.$props.hint ? (w(), L("label", {
+      U("div", _u, [
+        i.$props.hint ? (x(), N("label", {
           key: 0,
-          class: H(`${Kr} text-gray-500`)
-        }, ne(i.$props.hint), 3)) : U("", !0),
-        i.$props.errorMessage ? (w(), L("label", {
+          class: H(`${ao} text-gray-500`)
+        }, de(i.$props.hint), 3)) : Y("", !0),
+        i.$props.errorMessage ? (x(), N("label", {
           key: 1,
-          class: H(`${Kr} text-red-500`)
-        }, ne(i.$props.errorMessage), 3)) : U("", !0)
+          class: H(`${ao} text-red-500`)
+        }, de(i.$props.errorMessage), 3)) : Y("", !0)
       ])
     ]));
   }
-}, Eu = /* @__PURE__ */ Ve(_u, [["__scopeId", "data-v-c43f0be6"]]), Ou = {
+}, ju = /* @__PURE__ */ Ke(Cu, [["__scopeId", "data-v-c43f0be6"]]), Ru = {
   __name: "TwcHeading",
   setup(e) {
-    return (t, r) => (w(), Q(T(fu), rt(kt(t.$props)), {
-      default: Z(() => [
-        z(t.$slots, "default")
+    return (t, r) => (x(), ee(A(mu), lt(Tt(t.$props)), {
+      default: ie(() => [
+        j(t.$slots, "default")
       ]),
       _: 3
     }, 16));
   }
-}, Cu = {
+}, $u = {
   __name: "TwcInput",
   setup(e) {
-    return (t, r) => (w(), Q(T(Gl), Re(t.$props, { class: "TwcInput" }), Zr({ _: 2 }, [
+    return (t, r) => (x(), ee(A(Gl), Oe(t.$props, { class: "TwcInput" }), po({ _: 2 }, [
       t.$slots.helper ? {
         name: "helper",
-        fn: Z(() => [
-          z(t.$slots, "helper", {}, void 0, !0)
+        fn: ie(() => [
+          j(t.$slots, "helper", {}, void 0, !0)
         ]),
         key: "0"
       } : void 0,
       t.$slots.prefix ? {
         name: "prefix",
-        fn: Z(() => [
-          z(t.$slots, "prefix", {}, void 0, !0)
+        fn: ie(() => [
+          j(t.$slots, "prefix", {}, void 0, !0)
         ]),
         key: "1"
       } : void 0,
       t.$slots.suffix ? {
         name: "suffix",
-        fn: Z(() => [
-          z(t.$slots, "suffix", {}, void 0, !0)
+        fn: ie(() => [
+          j(t.$slots, "suffix", {}, void 0, !0)
         ]),
         key: "2"
       } : void 0
     ]), 1040));
   }
-}, Mu = /* @__PURE__ */ Ve(Cu, [["__scopeId", "data-v-9a366333"]]), Bu = {
+}, Fu = /* @__PURE__ */ Ke($u, [["__scopeId", "data-v-9a366333"]]), Hu = {
   __name: "TwcLabel",
   props: {
     class: {
@@ -5873,2547 +6877,2602 @@ const cu = ["disabled"], qr = /* @__PURE__ */ K({
     function r() {
       return `block text-sm font-medium ${t.class}`;
     }
-    return (o, n) => (w(), L("label", {
+    return (o, n) => (x(), N("label", {
       class: H(r())
     }, [
-      z(o.$slots, "default")
+      j(o.$slots, "default")
     ], 2));
   }
-}, ju = {
+}, Vu = {
   __name: "TwcLink",
   setup(e) {
-    return (t, r) => (w(), Q(T(hu), rt(kt(t.$props)), {
-      default: Z(() => [
-        z(t.$slots, "default")
+    return (t, r) => (x(), ee(A(gu), lt(Tt(t.$props)), {
+      default: ie(() => [
+        j(t.$slots, "default")
       ]),
       _: 3
     }, 16));
   }
-}, Ru = {
+}, Wu = {
   __name: "TwcParagraph",
   setup(e) {
-    return (t, r) => (w(), Q(T(mu), rt(kt(t.$props)), {
-      default: Z(() => [
-        z(t.$slots, "default")
+    return (t, r) => (x(), ee(A(bu), lt(Tt(t.$props)), {
+      default: ie(() => [
+        j(t.$slots, "default")
       ]),
       _: 3
     }, 16));
   }
-}, ku = {
+}, Su = {
   __name: "TwcSelect",
   setup(e) {
-    return (t, r) => (w(), Q(T(nu), Re(t.$props, { class: "TwcSelect" }), Zr({ _: 2 }, [
+    return (t, r) => (x(), ee(A(nu), Oe(t.$props, { class: "TwcSelect" }), po({ _: 2 }, [
       t.$slots.helper ? {
         name: "helper",
-        fn: Z(() => [
-          z(t.$slots, "helper", {}, void 0, !0)
+        fn: ie(() => [
+          j(t.$slots, "helper", {}, void 0, !0)
         ]),
         key: "0"
       } : void 0
     ]), 1040));
   }
-}, Fu = /* @__PURE__ */ Ve(ku, [["__scopeId", "data-v-dab28e77"]]);
-function $u(e) {
+}, Gu = /* @__PURE__ */ Ke(Su, [["__scopeId", "data-v-dab28e77"]]);
+function Tu(e) {
   return e && e.__esModule && Object.prototype.hasOwnProperty.call(e, "default") ? e.default : e;
 }
-var No = { exports: {} };
-(function(e) {
-  (function(t) {
-    e.exports ? e.exports = t() : window.intlTelInput = t();
-  })(() => {
-    var t = (() => {
-      var r = Object.defineProperty, o = Object.getOwnPropertyDescriptor, n = Object.getOwnPropertyNames, i = Object.prototype.hasOwnProperty, s = (a, u) => {
-        for (var c in u)
-          r(a, c, { get: u[c], enumerable: !0 });
-      }, l = (a, u, c, h) => {
-        if (u && typeof u == "object" || typeof u == "function")
-          for (let b of n(u))
-            !i.call(a, b) && b !== c && r(a, b, { get: () => u[b], enumerable: !(h = o(u, b)) || h.enumerable });
-        return a;
-      }, d = (a) => l(r({}, "__esModule", { value: !0 }), a), p = {};
-      s(p, {
-        Iti: () => A,
-        default: () => te
-      });
-      var g = [
-        [
-          "af",
-          // Afghanistan
-          "93"
-        ],
-        [
-          "ax",
-          // Åland Islands
-          "358",
-          1,
-          ["18"]
-        ],
-        [
-          "al",
-          // Albania
-          "355"
-        ],
-        [
-          "dz",
-          // Algeria
-          "213"
-        ],
-        [
-          "as",
-          // American Samoa
-          "1",
-          5,
-          ["684"]
-        ],
-        [
-          "ad",
-          // Andorra
-          "376"
-        ],
-        [
-          "ao",
-          // Angola
-          "244"
-        ],
-        [
-          "ai",
-          // Anguilla
-          "1",
-          6,
-          ["264"]
-        ],
-        [
-          "ag",
-          // Antigua and Barbuda
-          "1",
-          7,
-          ["268"]
-        ],
-        [
-          "ar",
-          // Argentina
-          "54"
-        ],
-        [
-          "am",
-          // Armenia
-          "374"
-        ],
-        [
-          "aw",
-          // Aruba
-          "297"
-        ],
-        [
-          "ac",
-          // Ascension Island
-          "247"
-        ],
-        [
-          "au",
-          // Australia
-          "61",
-          0
-        ],
-        [
-          "at",
-          // Austria
-          "43"
-        ],
-        [
-          "az",
-          // Azerbaijan
-          "994"
-        ],
-        [
-          "bs",
-          // Bahamas
-          "1",
-          8,
-          ["242"]
-        ],
-        [
-          "bh",
-          // Bahrain
-          "973"
-        ],
-        [
-          "bd",
-          // Bangladesh
-          "880"
-        ],
-        [
-          "bb",
-          // Barbados
-          "1",
-          9,
-          ["246"]
-        ],
-        [
-          "by",
-          // Belarus
-          "375"
-        ],
-        [
-          "be",
-          // Belgium
-          "32"
-        ],
-        [
-          "bz",
-          // Belize
-          "501"
-        ],
-        [
-          "bj",
-          // Benin
-          "229"
-        ],
-        [
-          "bm",
-          // Bermuda
-          "1",
-          10,
-          ["441"]
-        ],
-        [
-          "bt",
-          // Bhutan
-          "975"
-        ],
-        [
-          "bo",
-          // Bolivia
-          "591"
-        ],
-        [
-          "ba",
-          // Bosnia and Herzegovina
-          "387"
-        ],
-        [
-          "bw",
-          // Botswana
-          "267"
-        ],
-        [
-          "br",
-          // Brazil
-          "55"
-        ],
-        [
-          "io",
-          // British Indian Ocean Territory
-          "246"
-        ],
-        [
-          "vg",
-          // British Virgin Islands
-          "1",
-          11,
-          ["284"]
-        ],
-        [
-          "bn",
-          // Brunei
-          "673"
-        ],
-        [
-          "bg",
-          // Bulgaria
-          "359"
-        ],
-        [
-          "bf",
-          // Burkina Faso
-          "226"
-        ],
-        [
-          "bi",
-          // Burundi
-          "257"
-        ],
-        [
-          "kh",
-          // Cambodia
-          "855"
-        ],
-        [
-          "cm",
-          // Cameroon
-          "237"
-        ],
-        [
-          "ca",
-          // Canada
-          "1",
-          1,
-          ["204", "226", "236", "249", "250", "263", "289", "306", "343", "354", "365", "367", "368", "382", "387", "403", "416", "418", "428", "431", "437", "438", "450", "584", "468", "474", "506", "514", "519", "548", "579", "581", "584", "587", "604", "613", "639", "647", "672", "683", "705", "709", "742", "753", "778", "780", "782", "807", "819", "825", "867", "873", "879", "902", "905"]
-        ],
-        [
-          "cv",
-          // Cape Verde
-          "238"
-        ],
-        [
-          "bq",
-          // Caribbean Netherlands
-          "599",
-          1,
-          ["3", "4", "7"]
-        ],
-        [
-          "ky",
-          // Cayman Islands
-          "1",
-          12,
-          ["345"]
-        ],
-        [
-          "cf",
-          // Central African Republic
-          "236"
-        ],
-        [
-          "td",
-          // Chad
-          "235"
-        ],
-        [
-          "cl",
-          // Chile
-          "56"
-        ],
-        [
-          "cn",
-          // China
-          "86"
-        ],
-        [
-          "cx",
-          // Christmas Island
-          "61",
-          2,
-          ["89164"]
-        ],
-        [
-          "cc",
-          // Cocos (Keeling) Islands
-          "61",
-          1,
-          ["89162"]
-        ],
-        [
-          "co",
-          // Colombia
-          "57"
-        ],
-        [
-          "km",
-          // Comoros
-          "269"
-        ],
-        [
-          "cg",
-          // Congo (Brazzaville)
-          "242"
-        ],
-        [
-          "cd",
-          // Congo (Kinshasa)
-          "243"
-        ],
-        [
-          "ck",
-          // Cook Islands
-          "682"
-        ],
-        [
-          "cr",
-          // Costa Rica
-          "506"
-        ],
-        [
-          "ci",
-          // Côte d'Ivoire
-          "225"
-        ],
-        [
-          "hr",
-          // Croatia
-          "385"
-        ],
-        [
-          "cu",
-          // Cuba
-          "53"
-        ],
-        [
-          "cw",
-          // Curaçao
-          "599",
-          0
-        ],
-        [
-          "cy",
-          // Cyprus
-          "357"
-        ],
-        [
-          "cz",
-          // Czech Republic
-          "420"
-        ],
-        [
-          "dk",
-          // Denmark
-          "45"
-        ],
-        [
-          "dj",
-          // Djibouti
-          "253"
-        ],
-        [
-          "dm",
-          // Dominica
-          "1",
-          13,
-          ["767"]
-        ],
-        [
-          "do",
-          // Dominican Republic
-          "1",
-          2,
-          ["809", "829", "849"]
-        ],
-        [
-          "ec",
-          // Ecuador
-          "593"
-        ],
-        [
-          "eg",
-          // Egypt
-          "20"
-        ],
-        [
-          "sv",
-          // El Salvador
-          "503"
-        ],
-        [
-          "gq",
-          // Equatorial Guinea
-          "240"
-        ],
-        [
-          "er",
-          // Eritrea
-          "291"
-        ],
-        [
-          "ee",
-          // Estonia
-          "372"
-        ],
-        [
-          "sz",
-          // Eswatini
-          "268"
-        ],
-        [
-          "et",
-          // Ethiopia
-          "251"
-        ],
-        [
-          "fk",
-          // Falkland Islands (Malvinas)
-          "500"
-        ],
-        [
-          "fo",
-          // Faroe Islands
-          "298"
-        ],
-        [
-          "fj",
-          // Fiji
-          "679"
-        ],
-        [
-          "fi",
-          // Finland
-          "358",
-          0
-        ],
-        [
-          "fr",
-          // France
-          "33"
-        ],
-        [
-          "gf",
-          // French Guiana
-          "594"
-        ],
-        [
-          "pf",
-          // French Polynesia
-          "689"
-        ],
-        [
-          "ga",
-          // Gabon
-          "241"
-        ],
-        [
-          "gm",
-          // Gambia
-          "220"
-        ],
-        [
-          "ge",
-          // Georgia
-          "995"
-        ],
-        [
-          "de",
-          // Germany
-          "49"
-        ],
-        [
-          "gh",
-          // Ghana
-          "233"
-        ],
-        [
-          "gi",
-          // Gibraltar
-          "350"
-        ],
-        [
-          "gr",
-          // Greece
-          "30"
-        ],
-        [
-          "gl",
-          // Greenland
-          "299"
-        ],
-        [
-          "gd",
-          // Grenada
-          "1",
-          14,
-          ["473"]
-        ],
-        [
-          "gp",
-          // Guadeloupe
-          "590",
-          0
-        ],
-        [
-          "gu",
-          // Guam
-          "1",
-          15,
-          ["671"]
-        ],
-        [
-          "gt",
-          // Guatemala
-          "502"
-        ],
-        [
-          "gg",
-          // Guernsey
-          "44",
-          1,
-          ["1481", "7781", "7839", "7911"]
-        ],
-        [
-          "gn",
-          // Guinea
-          "224"
-        ],
-        [
-          "gw",
-          // Guinea-Bissau
-          "245"
-        ],
-        [
-          "gy",
-          // Guyana
-          "592"
-        ],
-        [
-          "ht",
-          // Haiti
-          "509"
-        ],
-        [
-          "hn",
-          // Honduras
-          "504"
-        ],
-        [
-          "hk",
-          // Hong Kong SAR China
-          "852"
-        ],
-        [
-          "hu",
-          // Hungary
-          "36"
-        ],
-        [
-          "is",
-          // Iceland
-          "354"
-        ],
-        [
-          "in",
-          // India
-          "91"
-        ],
-        [
-          "id",
-          // Indonesia
-          "62"
-        ],
-        [
-          "ir",
-          // Iran
-          "98"
-        ],
-        [
-          "iq",
-          // Iraq
-          "964"
-        ],
-        [
-          "ie",
-          // Ireland
-          "353"
-        ],
-        [
-          "im",
-          // Isle of Man
-          "44",
-          2,
-          ["1624", "74576", "7524", "7924", "7624"]
-        ],
-        [
-          "il",
-          // Israel
-          "972"
-        ],
-        [
-          "it",
-          // Italy
-          "39",
-          0
-        ],
-        [
-          "jm",
-          // Jamaica
-          "1",
-          4,
-          ["876", "658"]
-        ],
-        [
-          "jp",
-          // Japan
-          "81"
-        ],
-        [
-          "je",
-          // Jersey
-          "44",
-          3,
-          ["1534", "7509", "7700", "7797", "7829", "7937"]
-        ],
-        [
-          "jo",
-          // Jordan
-          "962"
-        ],
-        [
-          "kz",
-          // Kazakhstan
-          "7",
-          1,
-          ["33", "7"]
-        ],
-        [
-          "ke",
-          // Kenya
-          "254"
-        ],
-        [
-          "ki",
-          // Kiribati
-          "686"
-        ],
-        [
-          "xk",
-          // Kosovo
-          "383"
-        ],
-        [
-          "kw",
-          // Kuwait
-          "965"
-        ],
-        [
-          "kg",
-          // Kyrgyzstan
-          "996"
-        ],
-        [
-          "la",
-          // Laos
-          "856"
-        ],
-        [
-          "lv",
-          // Latvia
-          "371"
-        ],
-        [
-          "lb",
-          // Lebanon
-          "961"
-        ],
-        [
-          "ls",
-          // Lesotho
-          "266"
-        ],
-        [
-          "lr",
-          // Liberia
-          "231"
-        ],
-        [
-          "ly",
-          // Libya
-          "218"
-        ],
-        [
-          "li",
-          // Liechtenstein
-          "423"
-        ],
-        [
-          "lt",
-          // Lithuania
-          "370"
-        ],
-        [
-          "lu",
-          // Luxembourg
-          "352"
-        ],
-        [
-          "mo",
-          // Macao SAR China
-          "853"
-        ],
-        [
-          "mg",
-          // Madagascar
-          "261"
-        ],
-        [
-          "mw",
-          // Malawi
-          "265"
-        ],
-        [
-          "my",
-          // Malaysia
-          "60"
-        ],
-        [
-          "mv",
-          // Maldives
-          "960"
-        ],
-        [
-          "ml",
-          // Mali
-          "223"
-        ],
-        [
-          "mt",
-          // Malta
-          "356"
-        ],
-        [
-          "mh",
-          // Marshall Islands
-          "692"
-        ],
-        [
-          "mq",
-          // Martinique
-          "596"
-        ],
-        [
-          "mr",
-          // Mauritania
-          "222"
-        ],
-        [
-          "mu",
-          // Mauritius
-          "230"
-        ],
-        [
-          "yt",
-          // Mayotte
-          "262",
-          1,
-          ["269", "639"]
-        ],
-        [
-          "mx",
-          // Mexico
-          "52"
-        ],
-        [
-          "fm",
-          // Micronesia
-          "691"
-        ],
-        [
-          "md",
-          // Moldova
-          "373"
-        ],
-        [
-          "mc",
-          // Monaco
-          "377"
-        ],
-        [
-          "mn",
-          // Mongolia
-          "976"
-        ],
-        [
-          "me",
-          // Montenegro
-          "382"
-        ],
-        [
-          "ms",
-          // Montserrat
-          "1",
-          16,
-          ["664"]
-        ],
-        [
-          "ma",
-          // Morocco
-          "212",
-          0
-        ],
-        [
-          "mz",
-          // Mozambique
-          "258"
-        ],
-        [
-          "mm",
-          // Myanmar (Burma)
-          "95"
-        ],
-        [
-          "na",
-          // Namibia
-          "264"
-        ],
-        [
-          "nr",
-          // Nauru
-          "674"
-        ],
-        [
-          "np",
-          // Nepal
-          "977"
-        ],
-        [
-          "nl",
-          // Netherlands
-          "31"
-        ],
-        [
-          "nc",
-          // New Caledonia
-          "687"
-        ],
-        [
-          "nz",
-          // New Zealand
-          "64"
-        ],
-        [
-          "ni",
-          // Nicaragua
-          "505"
-        ],
-        [
-          "ne",
-          // Niger
-          "227"
-        ],
-        [
-          "ng",
-          // Nigeria
-          "234"
-        ],
-        [
-          "nu",
-          // Niue
-          "683"
-        ],
-        [
-          "nf",
-          // Norfolk Island
-          "672"
-        ],
-        [
-          "kp",
-          // North Korea
-          "850"
-        ],
-        [
-          "mk",
-          // North Macedonia
-          "389"
-        ],
-        [
-          "mp",
-          // Northern Mariana Islands
-          "1",
-          17,
-          ["670"]
-        ],
-        [
-          "no",
-          // Norway
-          "47",
-          0
-        ],
-        [
-          "om",
-          // Oman
-          "968"
-        ],
-        [
-          "pk",
-          // Pakistan
-          "92"
-        ],
-        [
-          "pw",
-          // Palau
-          "680"
-        ],
-        [
-          "ps",
-          // Palestinian Territories
-          "970"
-        ],
-        [
-          "pa",
-          // Panama
-          "507"
-        ],
-        [
-          "pg",
-          // Papua New Guinea
-          "675"
-        ],
-        [
-          "py",
-          // Paraguay
-          "595"
-        ],
-        [
-          "pe",
-          // Peru
-          "51"
-        ],
-        [
-          "ph",
-          // Philippines
-          "63"
-        ],
-        [
-          "pl",
-          // Poland
-          "48"
-        ],
-        [
-          "pt",
-          // Portugal
-          "351"
-        ],
-        [
-          "pr",
-          // Puerto Rico
-          "1",
-          3,
-          ["787", "939"]
-        ],
-        [
-          "qa",
-          // Qatar
-          "974"
-        ],
-        [
-          "re",
-          // Réunion
-          "262",
-          0
-        ],
-        [
-          "ro",
-          // Romania
-          "40"
-        ],
-        [
-          "ru",
-          // Russia
-          "7",
-          0
-        ],
-        [
-          "rw",
-          // Rwanda
-          "250"
-        ],
-        [
-          "ws",
-          // Samoa
-          "685"
-        ],
-        [
-          "sm",
-          // San Marino
-          "378"
-        ],
-        [
-          "st",
-          // São Tomé & Príncipe
-          "239"
-        ],
-        [
-          "sa",
-          // Saudi Arabia
-          "966"
-        ],
-        [
-          "sn",
-          // Senegal
-          "221"
-        ],
-        [
-          "rs",
-          // Serbia
-          "381"
-        ],
-        [
-          "sc",
-          // Seychelles
-          "248"
-        ],
-        [
-          "sl",
-          // Sierra Leone
-          "232"
-        ],
-        [
-          "sg",
-          // Singapore
-          "65"
-        ],
-        [
-          "sx",
-          // Sint Maarten
-          "1",
-          21,
-          ["721"]
-        ],
-        [
-          "sk",
-          // Slovakia
-          "421"
-        ],
-        [
-          "si",
-          // Slovenia
-          "386"
-        ],
-        [
-          "sb",
-          // Solomon Islands
-          "677"
-        ],
-        [
-          "so",
-          // Somalia
-          "252"
-        ],
-        [
-          "za",
-          // South Africa
-          "27"
-        ],
-        [
-          "kr",
-          // South Korea
-          "82"
-        ],
-        [
-          "ss",
-          // South Sudan
-          "211"
-        ],
-        [
-          "es",
-          // Spain
-          "34"
-        ],
-        [
-          "lk",
-          // Sri Lanka
-          "94"
-        ],
-        [
-          "bl",
-          // St. Barthélemy
-          "590",
-          1
-        ],
-        [
-          "sh",
-          // St. Helena
-          "290"
-        ],
-        [
-          "kn",
-          // St. Kitts & Nevis
-          "1",
-          18,
-          ["869"]
-        ],
-        [
-          "lc",
-          // St. Lucia
-          "1",
-          19,
-          ["758"]
-        ],
-        [
-          "mf",
-          // St. Martin
-          "590",
-          2
-        ],
-        [
-          "pm",
-          // St. Pierre & Miquelon
-          "508"
-        ],
-        [
-          "vc",
-          // St. Vincent & Grenadines
-          "1",
-          20,
-          ["784"]
-        ],
-        [
-          "sd",
-          // Sudan
-          "249"
-        ],
-        [
-          "sr",
-          // Suriname
-          "597"
-        ],
-        [
-          "sj",
-          // Svalbard & Jan Mayen
-          "47",
-          1,
-          ["79"]
-        ],
-        [
-          "se",
-          // Sweden
-          "46"
-        ],
-        [
-          "ch",
-          // Switzerland
-          "41"
-        ],
-        [
-          "sy",
-          // Syria
-          "963"
-        ],
-        [
-          "tw",
-          // Taiwan
-          "886"
-        ],
-        [
-          "tj",
-          // Tajikistan
-          "992"
-        ],
-        [
-          "tz",
-          // Tanzania
-          "255"
-        ],
-        [
-          "th",
-          // Thailand
-          "66"
-        ],
-        [
-          "tl",
-          // Timor-Leste
-          "670"
-        ],
-        [
-          "tg",
-          // Togo
-          "228"
-        ],
-        [
-          "tk",
-          // Tokelau
-          "690"
-        ],
-        [
-          "to",
-          // Tonga
-          "676"
-        ],
-        [
-          "tt",
-          // Trinidad & Tobago
-          "1",
-          22,
-          ["868"]
-        ],
-        [
-          "tn",
-          // Tunisia
-          "216"
-        ],
-        [
-          "tr",
-          // Turkey
-          "90"
-        ],
-        [
-          "tm",
-          // Turkmenistan
-          "993"
-        ],
-        [
-          "tc",
-          // Turks & Caicos Islands
-          "1",
-          23,
-          ["649"]
-        ],
-        [
-          "tv",
-          // Tuvalu
-          "688"
-        ],
-        [
-          "ug",
-          // Uganda
-          "256"
-        ],
-        [
-          "ua",
-          // Ukraine
-          "380"
-        ],
-        [
-          "ae",
-          // United Arab Emirates
-          "971"
-        ],
-        [
-          "gb",
-          // United Kingdom
-          "44",
-          0
-        ],
-        [
-          "us",
-          // United States
-          "1",
-          0
-        ],
-        [
-          "uy",
-          // Uruguay
-          "598"
-        ],
-        [
-          "vi",
-          // U.S. Virgin Islands
-          "1",
-          24,
-          ["340"]
-        ],
-        [
-          "uz",
-          // Uzbekistan
-          "998"
-        ],
-        [
-          "vu",
-          // Vanuatu
-          "678"
-        ],
-        [
-          "va",
-          // Vatican City
-          "39",
-          1,
-          ["06698"]
-        ],
-        [
-          "ve",
-          // Venezuela
-          "58"
-        ],
-        [
-          "vn",
-          // Vietnam
-          "84"
-        ],
-        [
-          "wf",
-          // Wallis & Futuna
-          "681"
-        ],
-        [
-          "eh",
-          // Western Sahara
-          "212",
-          1,
-          ["5288", "5289"]
-        ],
-        [
-          "ye",
-          // Yemen
-          "967"
-        ],
-        [
-          "zm",
-          // Zambia
-          "260"
-        ],
-        [
-          "zw",
-          // Zimbabwe
-          "263"
-        ]
-      ], f = [];
-      for (let a = 0; a < g.length; a++) {
-        const u = g[a];
-        f[a] = {
-          name: "",
-          // this is now populated in the plugin
-          iso2: u[0],
-          dialCode: u[1],
-          priority: u[2] || 0,
-          areaCodes: u[3] || null,
-          nodeById: {}
-        };
-      }
-      var m = f, y = {
-        ad: "Andorra",
-        ae: "United Arab Emirates",
-        af: "Afghanistan",
-        ag: "Antigua & Barbuda",
-        ai: "Anguilla",
-        al: "Albania",
-        am: "Armenia",
-        ao: "Angola",
-        ar: "Argentina",
-        as: "American Samoa",
-        at: "Austria",
-        au: "Australia",
-        aw: "Aruba",
-        ax: "Åland Islands",
-        az: "Azerbaijan",
-        ba: "Bosnia & Herzegovina",
-        bb: "Barbados",
-        bd: "Bangladesh",
-        be: "Belgium",
-        bf: "Burkina Faso",
-        bg: "Bulgaria",
-        bh: "Bahrain",
-        bi: "Burundi",
-        bj: "Benin",
-        bl: "St. Barthélemy",
-        bm: "Bermuda",
-        bn: "Brunei",
-        bo: "Bolivia",
-        bq: "Caribbean Netherlands",
-        br: "Brazil",
-        bs: "Bahamas",
-        bt: "Bhutan",
-        bw: "Botswana",
-        by: "Belarus",
-        bz: "Belize",
-        ca: "Canada",
-        cc: "Cocos (Keeling) Islands",
-        cd: "Congo - Kinshasa",
-        cf: "Central African Republic",
-        cg: "Congo - Brazzaville",
-        ch: "Switzerland",
-        ci: "Côte d’Ivoire",
-        ck: "Cook Islands",
-        cl: "Chile",
-        cm: "Cameroon",
-        cn: "China",
-        co: "Colombia",
-        cr: "Costa Rica",
-        cu: "Cuba",
-        cv: "Cape Verde",
-        cw: "Curaçao",
-        cx: "Christmas Island",
-        cy: "Cyprus",
-        cz: "Czechia",
-        de: "Germany",
-        dj: "Djibouti",
-        dk: "Denmark",
-        dm: "Dominica",
-        do: "Dominican Republic",
-        dz: "Algeria",
-        ec: "Ecuador",
-        ee: "Estonia",
-        eg: "Egypt",
-        eh: "Western Sahara",
-        er: "Eritrea",
-        es: "Spain",
-        et: "Ethiopia",
-        fi: "Finland",
-        fj: "Fiji",
-        fk: "Falkland Islands",
-        fm: "Micronesia",
-        fo: "Faroe Islands",
-        fr: "France",
-        ga: "Gabon",
-        gb: "United Kingdom",
-        gd: "Grenada",
-        ge: "Georgia",
-        gf: "French Guiana",
-        gg: "Guernsey",
-        gh: "Ghana",
-        gi: "Gibraltar",
-        gl: "Greenland",
-        gm: "Gambia",
-        gn: "Guinea",
-        gp: "Guadeloupe",
-        gq: "Equatorial Guinea",
-        gr: "Greece",
-        gt: "Guatemala",
-        gu: "Guam",
-        gw: "Guinea-Bissau",
-        gy: "Guyana",
-        hk: "Hong Kong SAR China",
-        hn: "Honduras",
-        hr: "Croatia",
-        ht: "Haiti",
-        hu: "Hungary",
-        id: "Indonesia",
-        ie: "Ireland",
-        il: "Israel",
-        im: "Isle of Man",
-        in: "India",
-        io: "British Indian Ocean Territory",
-        iq: "Iraq",
-        ir: "Iran",
-        is: "Iceland",
-        it: "Italy",
-        je: "Jersey",
-        jm: "Jamaica",
-        jo: "Jordan",
-        jp: "Japan",
-        ke: "Kenya",
-        kg: "Kyrgyzstan",
-        kh: "Cambodia",
-        ki: "Kiribati",
-        km: "Comoros",
-        kn: "St. Kitts & Nevis",
-        kp: "North Korea",
-        kr: "South Korea",
-        kw: "Kuwait",
-        ky: "Cayman Islands",
-        kz: "Kazakhstan",
-        la: "Laos",
-        lb: "Lebanon",
-        lc: "St. Lucia",
-        li: "Liechtenstein",
-        lk: "Sri Lanka",
-        lr: "Liberia",
-        ls: "Lesotho",
-        lt: "Lithuania",
-        lu: "Luxembourg",
-        lv: "Latvia",
-        ly: "Libya",
-        ma: "Morocco",
-        mc: "Monaco",
-        md: "Moldova",
-        me: "Montenegro",
-        mf: "St. Martin",
-        mg: "Madagascar",
-        mh: "Marshall Islands",
-        mk: "North Macedonia",
-        ml: "Mali",
-        mm: "Myanmar (Burma)",
-        mn: "Mongolia",
-        mo: "Macao SAR China",
-        mp: "Northern Mariana Islands",
-        mq: "Martinique",
-        mr: "Mauritania",
-        ms: "Montserrat",
-        mt: "Malta",
-        mu: "Mauritius",
-        mv: "Maldives",
-        mw: "Malawi",
-        mx: "Mexico",
-        my: "Malaysia",
-        mz: "Mozambique",
-        na: "Namibia",
-        nc: "New Caledonia",
-        ne: "Niger",
-        nf: "Norfolk Island",
-        ng: "Nigeria",
-        ni: "Nicaragua",
-        nl: "Netherlands",
-        no: "Norway",
-        np: "Nepal",
-        nr: "Nauru",
-        nu: "Niue",
-        nz: "New Zealand",
-        om: "Oman",
-        pa: "Panama",
-        pe: "Peru",
-        pf: "French Polynesia",
-        pg: "Papua New Guinea",
-        ph: "Philippines",
-        pk: "Pakistan",
-        pl: "Poland",
-        pm: "St. Pierre & Miquelon",
-        pr: "Puerto Rico",
-        ps: "Palestinian Territories",
-        pt: "Portugal",
-        pw: "Palau",
-        py: "Paraguay",
-        qa: "Qatar",
-        re: "Réunion",
-        ro: "Romania",
-        rs: "Serbia",
-        ru: "Russia",
-        rw: "Rwanda",
-        sa: "Saudi Arabia",
-        sb: "Solomon Islands",
-        sc: "Seychelles",
-        sd: "Sudan",
-        se: "Sweden",
-        sg: "Singapore",
-        sh: "St. Helena",
-        si: "Slovenia",
-        sj: "Svalbard & Jan Mayen",
-        sk: "Slovakia",
-        sl: "Sierra Leone",
-        sm: "San Marino",
-        sn: "Senegal",
-        so: "Somalia",
-        sr: "Suriname",
-        ss: "South Sudan",
-        st: "São Tomé & Príncipe",
-        sv: "El Salvador",
-        sx: "Sint Maarten",
-        sy: "Syria",
-        sz: "Eswatini",
-        tc: "Turks & Caicos Islands",
-        td: "Chad",
-        tg: "Togo",
-        th: "Thailand",
-        tj: "Tajikistan",
-        tk: "Tokelau",
-        tl: "Timor-Leste",
-        tm: "Turkmenistan",
-        tn: "Tunisia",
-        to: "Tonga",
-        tr: "Turkey",
-        tt: "Trinidad & Tobago",
-        tv: "Tuvalu",
-        tw: "Taiwan",
-        tz: "Tanzania",
-        ua: "Ukraine",
-        ug: "Uganda",
-        us: "United States",
-        uy: "Uruguay",
-        uz: "Uzbekistan",
-        va: "Vatican City",
-        vc: "St. Vincent & Grenadines",
-        ve: "Venezuela",
-        vg: "British Virgin Islands",
-        vi: "U.S. Virgin Islands",
-        vn: "Vietnam",
-        vu: "Vanuatu",
-        wf: "Wallis & Futuna",
-        ws: "Samoa",
-        ye: "Yemen",
-        yt: "Mayotte",
-        za: "South Africa",
-        zm: "Zambia",
-        zw: "Zimbabwe"
-      }, k = y, _ = {
-        selectedCountryAriaLabel: "Selected country",
-        noCountrySelected: "No country selected",
-        countryListAriaLabel: "List of countries",
-        searchPlaceholder: "Search",
-        zeroSearchResults: "No results found",
-        oneSearchResult: "1 result found",
-        multipleSearchResults: "${count} results found",
-        // additional countries (not supported by country-list library)
-        ac: "Ascension Island",
-        xk: "Kosovo"
-      }, I = _, S = { ...k, ...I }, $ = S;
-      for (let a = 0; a < m.length; a++)
-        m[a].name = $[m[a].iso2];
-      var E = 0, V = {
-        //* Whether or not to allow the dropdown.
-        allowDropdown: !0,
-        //* Add a placeholder in the input with an example number for the selected country.
-        autoPlaceholder: "polite",
-        //* Modify the parentClass.
-        containerClass: "",
-        //* The order of the countries in the dropdown. Defaults to alphabetical.
-        countryOrder: null,
-        //* Add a country search input at the top of the dropdown.
-        countrySearch: !0,
-        //* Modify the auto placeholder.
-        customPlaceholder: null,
-        //* Append menu to specified element.
-        dropdownContainer: null,
-        //* Don't display these countries.
-        excludeCountries: [],
-        //* Fix the dropdown width to the input width (rather than being as wide as the longest country name).
-        fixDropdownWidth: !0,
-        //* Format the number as the user types
-        formatAsYouType: !0,
-        //* Format the input value during initialisation and on setNumber.
-        formatOnDisplay: !0,
-        //* geoIp lookup function.
-        geoIpLookup: null,
-        //* Inject a hidden input with the name returned from this function, and on submit, populate it with the result of getNumber.
-        hiddenInput: null,
-        //* Internationalise the plugin text e.g. search input placeholder, country names.
-        i18n: {},
-        //* Initial country.
-        initialCountry: "",
-        //* National vs international formatting for numbers e.g. placeholders and displaying existing numbers.
-        nationalMode: !0,
-        //* Display only these countries.
-        onlyCountries: [],
-        //* Number type to use for placeholders.
-        placeholderNumberType: "MOBILE",
-        //* Show flags - for both the selected country, and in the country dropdown
-        showFlags: !0,
-        //* Display the international dial code next to the selected flag.
-        separateDialCode: !1,
-        //* Only allow certain chars e.g. a plus followed by numeric digits, and cap at max valid length.
-        strictMode: !1,
-        //* Use full screen popup instead of dropdown for country list.
-        useFullscreenPopup: typeof navigator < "u" && typeof window < "u" ? (
-          //* We cannot just test screen size as some smartphones/website meta tags will report desktop resolutions.
-          //* Note: to target Android Mobiles (and not Tablets), we must find 'Android' and 'Mobile'
-          /Android.+Mobile|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-            navigator.userAgent
-          ) || window.innerWidth <= 500
-        ) : !1,
-        //* Specify the path to the libphonenumber script to enable validation/formatting.
-        utilsScript: "",
-        //* The number type to enforce during validation.
-        validationNumberType: "MOBILE"
-      }, W = [
-        "800",
-        "822",
-        "833",
-        "844",
-        "855",
-        "866",
-        "877",
-        "880",
-        "881",
-        "882",
-        "883",
-        "884",
-        "885",
-        "886",
-        "887",
-        "888",
-        "889"
-      ], F = (a) => a.replace(/\D/g, ""), J = (a = "") => a.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase(), X = (a) => {
-        const u = F(a);
-        if (u.charAt(0) === "1") {
-          const c = u.substr(1, 3);
-          return W.indexOf(c) !== -1;
+var Gt = { exports: {} }, lo;
+function Iu() {
+  return lo || (lo = 1, function(e) {
+    (function(t) {
+      e.exports ? e.exports = t() : window.intlTelInput = t();
+    })(() => {
+      var t = (() => {
+        var r = Object.defineProperty, o = Object.getOwnPropertyDescriptor, n = Object.getOwnPropertyNames, i = Object.prototype.hasOwnProperty, s = (a, l) => {
+          for (var d in l)
+            r(a, d, { get: l[d], enumerable: !0 });
+        }, u = (a, l, d, h) => {
+          if (l && typeof l == "object" || typeof l == "function")
+            for (let m of n(l))
+              !i.call(a, m) && m !== d && r(a, m, { get: () => l[m], enumerable: !(h = o(l, m)) || h.enumerable });
+          return a;
+        }, p = (a) => u(r({}, "__esModule", { value: !0 }), a), c = {};
+        s(c, {
+          Iti: () => Q,
+          default: () => le
+        });
+        var f = [
+          [
+            "af",
+            // Afghanistan
+            "93"
+          ],
+          [
+            "ax",
+            // Åland Islands
+            "358",
+            1
+          ],
+          [
+            "al",
+            // Albania
+            "355"
+          ],
+          [
+            "dz",
+            // Algeria
+            "213"
+          ],
+          [
+            "as",
+            // American Samoa
+            "1",
+            5,
+            ["684"]
+          ],
+          [
+            "ad",
+            // Andorra
+            "376"
+          ],
+          [
+            "ao",
+            // Angola
+            "244"
+          ],
+          [
+            "ai",
+            // Anguilla
+            "1",
+            6,
+            ["264"]
+          ],
+          [
+            "ag",
+            // Antigua and Barbuda
+            "1",
+            7,
+            ["268"]
+          ],
+          [
+            "ar",
+            // Argentina
+            "54"
+          ],
+          [
+            "am",
+            // Armenia
+            "374"
+          ],
+          [
+            "aw",
+            // Aruba
+            "297"
+          ],
+          [
+            "ac",
+            // Ascension Island
+            "247"
+          ],
+          [
+            "au",
+            // Australia
+            "61",
+            0,
+            null,
+            "0"
+          ],
+          [
+            "at",
+            // Austria
+            "43"
+          ],
+          [
+            "az",
+            // Azerbaijan
+            "994"
+          ],
+          [
+            "bs",
+            // Bahamas
+            "1",
+            8,
+            ["242"]
+          ],
+          [
+            "bh",
+            // Bahrain
+            "973"
+          ],
+          [
+            "bd",
+            // Bangladesh
+            "880"
+          ],
+          [
+            "bb",
+            // Barbados
+            "1",
+            9,
+            ["246"]
+          ],
+          [
+            "by",
+            // Belarus
+            "375"
+          ],
+          [
+            "be",
+            // Belgium
+            "32"
+          ],
+          [
+            "bz",
+            // Belize
+            "501"
+          ],
+          [
+            "bj",
+            // Benin
+            "229"
+          ],
+          [
+            "bm",
+            // Bermuda
+            "1",
+            10,
+            ["441"]
+          ],
+          [
+            "bt",
+            // Bhutan
+            "975"
+          ],
+          [
+            "bo",
+            // Bolivia
+            "591"
+          ],
+          [
+            "ba",
+            // Bosnia and Herzegovina
+            "387"
+          ],
+          [
+            "bw",
+            // Botswana
+            "267"
+          ],
+          [
+            "br",
+            // Brazil
+            "55"
+          ],
+          [
+            "io",
+            // British Indian Ocean Territory
+            "246"
+          ],
+          [
+            "vg",
+            // British Virgin Islands
+            "1",
+            11,
+            ["284"]
+          ],
+          [
+            "bn",
+            // Brunei
+            "673"
+          ],
+          [
+            "bg",
+            // Bulgaria
+            "359"
+          ],
+          [
+            "bf",
+            // Burkina Faso
+            "226"
+          ],
+          [
+            "bi",
+            // Burundi
+            "257"
+          ],
+          [
+            "kh",
+            // Cambodia
+            "855"
+          ],
+          [
+            "cm",
+            // Cameroon
+            "237"
+          ],
+          [
+            "ca",
+            // Canada
+            "1",
+            1,
+            ["204", "226", "236", "249", "250", "263", "289", "306", "343", "354", "365", "367", "368", "382", "387", "403", "416", "418", "428", "431", "437", "438", "450", "584", "468", "474", "506", "514", "519", "548", "579", "581", "584", "587", "604", "613", "639", "647", "672", "683", "705", "709", "742", "753", "778", "780", "782", "807", "819", "825", "867", "873", "879", "902", "905"]
+          ],
+          [
+            "cv",
+            // Cape Verde
+            "238"
+          ],
+          [
+            "bq",
+            // Caribbean Netherlands
+            "599",
+            1,
+            ["3", "4", "7"]
+          ],
+          [
+            "ky",
+            // Cayman Islands
+            "1",
+            12,
+            ["345"]
+          ],
+          [
+            "cf",
+            // Central African Republic
+            "236"
+          ],
+          [
+            "td",
+            // Chad
+            "235"
+          ],
+          [
+            "cl",
+            // Chile
+            "56"
+          ],
+          [
+            "cn",
+            // China
+            "86"
+          ],
+          [
+            "cx",
+            // Christmas Island
+            "61",
+            2,
+            ["89164"],
+            "0"
+          ],
+          [
+            "cc",
+            // Cocos (Keeling) Islands
+            "61",
+            1,
+            ["89162"],
+            "0"
+          ],
+          [
+            "co",
+            // Colombia
+            "57"
+          ],
+          [
+            "km",
+            // Comoros
+            "269"
+          ],
+          [
+            "cg",
+            // Congo (Brazzaville)
+            "242"
+          ],
+          [
+            "cd",
+            // Congo (Kinshasa)
+            "243"
+          ],
+          [
+            "ck",
+            // Cook Islands
+            "682"
+          ],
+          [
+            "cr",
+            // Costa Rica
+            "506"
+          ],
+          [
+            "ci",
+            // Côte d'Ivoire
+            "225"
+          ],
+          [
+            "hr",
+            // Croatia
+            "385"
+          ],
+          [
+            "cu",
+            // Cuba
+            "53"
+          ],
+          [
+            "cw",
+            // Curaçao
+            "599",
+            0
+          ],
+          [
+            "cy",
+            // Cyprus
+            "357"
+          ],
+          [
+            "cz",
+            // Czech Republic
+            "420"
+          ],
+          [
+            "dk",
+            // Denmark
+            "45"
+          ],
+          [
+            "dj",
+            // Djibouti
+            "253"
+          ],
+          [
+            "dm",
+            // Dominica
+            "1",
+            13,
+            ["767"]
+          ],
+          [
+            "do",
+            // Dominican Republic
+            "1",
+            2,
+            ["809", "829", "849"]
+          ],
+          [
+            "ec",
+            // Ecuador
+            "593"
+          ],
+          [
+            "eg",
+            // Egypt
+            "20"
+          ],
+          [
+            "sv",
+            // El Salvador
+            "503"
+          ],
+          [
+            "gq",
+            // Equatorial Guinea
+            "240"
+          ],
+          [
+            "er",
+            // Eritrea
+            "291"
+          ],
+          [
+            "ee",
+            // Estonia
+            "372"
+          ],
+          [
+            "sz",
+            // Eswatini
+            "268"
+          ],
+          [
+            "et",
+            // Ethiopia
+            "251"
+          ],
+          [
+            "fk",
+            // Falkland Islands (Malvinas)
+            "500"
+          ],
+          [
+            "fo",
+            // Faroe Islands
+            "298"
+          ],
+          [
+            "fj",
+            // Fiji
+            "679"
+          ],
+          [
+            "fi",
+            // Finland
+            "358",
+            0
+          ],
+          [
+            "fr",
+            // France
+            "33"
+          ],
+          [
+            "gf",
+            // French Guiana
+            "594"
+          ],
+          [
+            "pf",
+            // French Polynesia
+            "689"
+          ],
+          [
+            "ga",
+            // Gabon
+            "241"
+          ],
+          [
+            "gm",
+            // Gambia
+            "220"
+          ],
+          [
+            "ge",
+            // Georgia
+            "995"
+          ],
+          [
+            "de",
+            // Germany
+            "49"
+          ],
+          [
+            "gh",
+            // Ghana
+            "233"
+          ],
+          [
+            "gi",
+            // Gibraltar
+            "350"
+          ],
+          [
+            "gr",
+            // Greece
+            "30"
+          ],
+          [
+            "gl",
+            // Greenland
+            "299"
+          ],
+          [
+            "gd",
+            // Grenada
+            "1",
+            14,
+            ["473"]
+          ],
+          [
+            "gp",
+            // Guadeloupe
+            "590",
+            0
+          ],
+          [
+            "gu",
+            // Guam
+            "1",
+            15,
+            ["671"]
+          ],
+          [
+            "gt",
+            // Guatemala
+            "502"
+          ],
+          [
+            "gg",
+            // Guernsey
+            "44",
+            1,
+            ["1481", "7781", "7839", "7911"],
+            "0"
+          ],
+          [
+            "gn",
+            // Guinea
+            "224"
+          ],
+          [
+            "gw",
+            // Guinea-Bissau
+            "245"
+          ],
+          [
+            "gy",
+            // Guyana
+            "592"
+          ],
+          [
+            "ht",
+            // Haiti
+            "509"
+          ],
+          [
+            "hn",
+            // Honduras
+            "504"
+          ],
+          [
+            "hk",
+            // Hong Kong SAR China
+            "852"
+          ],
+          [
+            "hu",
+            // Hungary
+            "36"
+          ],
+          [
+            "is",
+            // Iceland
+            "354"
+          ],
+          [
+            "in",
+            // India
+            "91"
+          ],
+          [
+            "id",
+            // Indonesia
+            "62"
+          ],
+          [
+            "ir",
+            // Iran
+            "98"
+          ],
+          [
+            "iq",
+            // Iraq
+            "964"
+          ],
+          [
+            "ie",
+            // Ireland
+            "353"
+          ],
+          [
+            "im",
+            // Isle of Man
+            "44",
+            2,
+            ["1624", "74576", "7524", "7924", "7624"],
+            "0"
+          ],
+          [
+            "il",
+            // Israel
+            "972"
+          ],
+          [
+            "it",
+            // Italy
+            "39",
+            0
+          ],
+          [
+            "jm",
+            // Jamaica
+            "1",
+            4,
+            ["876", "658"]
+          ],
+          [
+            "jp",
+            // Japan
+            "81"
+          ],
+          [
+            "je",
+            // Jersey
+            "44",
+            3,
+            ["1534", "7509", "7700", "7797", "7829", "7937"],
+            "0"
+          ],
+          [
+            "jo",
+            // Jordan
+            "962"
+          ],
+          [
+            "kz",
+            // Kazakhstan
+            "7",
+            1,
+            ["33", "7"],
+            "8"
+          ],
+          [
+            "ke",
+            // Kenya
+            "254"
+          ],
+          [
+            "ki",
+            // Kiribati
+            "686"
+          ],
+          [
+            "xk",
+            // Kosovo
+            "383"
+          ],
+          [
+            "kw",
+            // Kuwait
+            "965"
+          ],
+          [
+            "kg",
+            // Kyrgyzstan
+            "996"
+          ],
+          [
+            "la",
+            // Laos
+            "856"
+          ],
+          [
+            "lv",
+            // Latvia
+            "371"
+          ],
+          [
+            "lb",
+            // Lebanon
+            "961"
+          ],
+          [
+            "ls",
+            // Lesotho
+            "266"
+          ],
+          [
+            "lr",
+            // Liberia
+            "231"
+          ],
+          [
+            "ly",
+            // Libya
+            "218"
+          ],
+          [
+            "li",
+            // Liechtenstein
+            "423"
+          ],
+          [
+            "lt",
+            // Lithuania
+            "370"
+          ],
+          [
+            "lu",
+            // Luxembourg
+            "352"
+          ],
+          [
+            "mo",
+            // Macao SAR China
+            "853"
+          ],
+          [
+            "mg",
+            // Madagascar
+            "261"
+          ],
+          [
+            "mw",
+            // Malawi
+            "265"
+          ],
+          [
+            "my",
+            // Malaysia
+            "60"
+          ],
+          [
+            "mv",
+            // Maldives
+            "960"
+          ],
+          [
+            "ml",
+            // Mali
+            "223"
+          ],
+          [
+            "mt",
+            // Malta
+            "356"
+          ],
+          [
+            "mh",
+            // Marshall Islands
+            "692"
+          ],
+          [
+            "mq",
+            // Martinique
+            "596"
+          ],
+          [
+            "mr",
+            // Mauritania
+            "222"
+          ],
+          [
+            "mu",
+            // Mauritius
+            "230"
+          ],
+          [
+            "yt",
+            // Mayotte
+            "262",
+            1,
+            ["269", "639"],
+            "0"
+          ],
+          [
+            "mx",
+            // Mexico
+            "52"
+          ],
+          [
+            "fm",
+            // Micronesia
+            "691"
+          ],
+          [
+            "md",
+            // Moldova
+            "373"
+          ],
+          [
+            "mc",
+            // Monaco
+            "377"
+          ],
+          [
+            "mn",
+            // Mongolia
+            "976"
+          ],
+          [
+            "me",
+            // Montenegro
+            "382"
+          ],
+          [
+            "ms",
+            // Montserrat
+            "1",
+            16,
+            ["664"]
+          ],
+          [
+            "ma",
+            // Morocco
+            "212",
+            0,
+            null,
+            "0"
+          ],
+          [
+            "mz",
+            // Mozambique
+            "258"
+          ],
+          [
+            "mm",
+            // Myanmar (Burma)
+            "95"
+          ],
+          [
+            "na",
+            // Namibia
+            "264"
+          ],
+          [
+            "nr",
+            // Nauru
+            "674"
+          ],
+          [
+            "np",
+            // Nepal
+            "977"
+          ],
+          [
+            "nl",
+            // Netherlands
+            "31"
+          ],
+          [
+            "nc",
+            // New Caledonia
+            "687"
+          ],
+          [
+            "nz",
+            // New Zealand
+            "64"
+          ],
+          [
+            "ni",
+            // Nicaragua
+            "505"
+          ],
+          [
+            "ne",
+            // Niger
+            "227"
+          ],
+          [
+            "ng",
+            // Nigeria
+            "234"
+          ],
+          [
+            "nu",
+            // Niue
+            "683"
+          ],
+          [
+            "nf",
+            // Norfolk Island
+            "672"
+          ],
+          [
+            "kp",
+            // North Korea
+            "850"
+          ],
+          [
+            "mk",
+            // North Macedonia
+            "389"
+          ],
+          [
+            "mp",
+            // Northern Mariana Islands
+            "1",
+            17,
+            ["670"]
+          ],
+          [
+            "no",
+            // Norway
+            "47",
+            0
+          ],
+          [
+            "om",
+            // Oman
+            "968"
+          ],
+          [
+            "pk",
+            // Pakistan
+            "92"
+          ],
+          [
+            "pw",
+            // Palau
+            "680"
+          ],
+          [
+            "ps",
+            // Palestinian Territories
+            "970"
+          ],
+          [
+            "pa",
+            // Panama
+            "507"
+          ],
+          [
+            "pg",
+            // Papua New Guinea
+            "675"
+          ],
+          [
+            "py",
+            // Paraguay
+            "595"
+          ],
+          [
+            "pe",
+            // Peru
+            "51"
+          ],
+          [
+            "ph",
+            // Philippines
+            "63"
+          ],
+          [
+            "pl",
+            // Poland
+            "48"
+          ],
+          [
+            "pt",
+            // Portugal
+            "351"
+          ],
+          [
+            "pr",
+            // Puerto Rico
+            "1",
+            3,
+            ["787", "939"]
+          ],
+          [
+            "qa",
+            // Qatar
+            "974"
+          ],
+          [
+            "re",
+            // Réunion
+            "262",
+            0,
+            null,
+            "0"
+          ],
+          [
+            "ro",
+            // Romania
+            "40"
+          ],
+          [
+            "ru",
+            // Russia
+            "7",
+            0,
+            null,
+            "8"
+          ],
+          [
+            "rw",
+            // Rwanda
+            "250"
+          ],
+          [
+            "ws",
+            // Samoa
+            "685"
+          ],
+          [
+            "sm",
+            // San Marino
+            "378"
+          ],
+          [
+            "st",
+            // São Tomé & Príncipe
+            "239"
+          ],
+          [
+            "sa",
+            // Saudi Arabia
+            "966"
+          ],
+          [
+            "sn",
+            // Senegal
+            "221"
+          ],
+          [
+            "rs",
+            // Serbia
+            "381"
+          ],
+          [
+            "sc",
+            // Seychelles
+            "248"
+          ],
+          [
+            "sl",
+            // Sierra Leone
+            "232"
+          ],
+          [
+            "sg",
+            // Singapore
+            "65"
+          ],
+          [
+            "sx",
+            // Sint Maarten
+            "1",
+            21,
+            ["721"]
+          ],
+          [
+            "sk",
+            // Slovakia
+            "421"
+          ],
+          [
+            "si",
+            // Slovenia
+            "386"
+          ],
+          [
+            "sb",
+            // Solomon Islands
+            "677"
+          ],
+          [
+            "so",
+            // Somalia
+            "252"
+          ],
+          [
+            "za",
+            // South Africa
+            "27"
+          ],
+          [
+            "kr",
+            // South Korea
+            "82"
+          ],
+          [
+            "ss",
+            // South Sudan
+            "211"
+          ],
+          [
+            "es",
+            // Spain
+            "34"
+          ],
+          [
+            "lk",
+            // Sri Lanka
+            "94"
+          ],
+          [
+            "bl",
+            // St. Barthélemy
+            "590",
+            1
+          ],
+          [
+            "sh",
+            // St. Helena
+            "290"
+          ],
+          [
+            "kn",
+            // St. Kitts & Nevis
+            "1",
+            18,
+            ["869"]
+          ],
+          [
+            "lc",
+            // St. Lucia
+            "1",
+            19,
+            ["758"]
+          ],
+          [
+            "mf",
+            // St. Martin
+            "590",
+            2
+          ],
+          [
+            "pm",
+            // St. Pierre & Miquelon
+            "508"
+          ],
+          [
+            "vc",
+            // St. Vincent & Grenadines
+            "1",
+            20,
+            ["784"]
+          ],
+          [
+            "sd",
+            // Sudan
+            "249"
+          ],
+          [
+            "sr",
+            // Suriname
+            "597"
+          ],
+          [
+            "sj",
+            // Svalbard & Jan Mayen
+            "47",
+            1,
+            ["79"]
+          ],
+          [
+            "se",
+            // Sweden
+            "46"
+          ],
+          [
+            "ch",
+            // Switzerland
+            "41"
+          ],
+          [
+            "sy",
+            // Syria
+            "963"
+          ],
+          [
+            "tw",
+            // Taiwan
+            "886"
+          ],
+          [
+            "tj",
+            // Tajikistan
+            "992"
+          ],
+          [
+            "tz",
+            // Tanzania
+            "255"
+          ],
+          [
+            "th",
+            // Thailand
+            "66"
+          ],
+          [
+            "tl",
+            // Timor-Leste
+            "670"
+          ],
+          [
+            "tg",
+            // Togo
+            "228"
+          ],
+          [
+            "tk",
+            // Tokelau
+            "690"
+          ],
+          [
+            "to",
+            // Tonga
+            "676"
+          ],
+          [
+            "tt",
+            // Trinidad & Tobago
+            "1",
+            22,
+            ["868"]
+          ],
+          [
+            "tn",
+            // Tunisia
+            "216"
+          ],
+          [
+            "tr",
+            // Turkey
+            "90"
+          ],
+          [
+            "tm",
+            // Turkmenistan
+            "993"
+          ],
+          [
+            "tc",
+            // Turks & Caicos Islands
+            "1",
+            23,
+            ["649"]
+          ],
+          [
+            "tv",
+            // Tuvalu
+            "688"
+          ],
+          [
+            "ug",
+            // Uganda
+            "256"
+          ],
+          [
+            "ua",
+            // Ukraine
+            "380"
+          ],
+          [
+            "ae",
+            // United Arab Emirates
+            "971"
+          ],
+          [
+            "gb",
+            // United Kingdom
+            "44",
+            0,
+            null,
+            "0"
+          ],
+          [
+            "us",
+            // United States
+            "1",
+            0
+          ],
+          [
+            "uy",
+            // Uruguay
+            "598"
+          ],
+          [
+            "vi",
+            // U.S. Virgin Islands
+            "1",
+            24,
+            ["340"]
+          ],
+          [
+            "uz",
+            // Uzbekistan
+            "998"
+          ],
+          [
+            "vu",
+            // Vanuatu
+            "678"
+          ],
+          [
+            "va",
+            // Vatican City
+            "39",
+            1,
+            ["06698"]
+          ],
+          [
+            "ve",
+            // Venezuela
+            "58"
+          ],
+          [
+            "vn",
+            // Vietnam
+            "84"
+          ],
+          [
+            "wf",
+            // Wallis & Futuna
+            "681"
+          ],
+          [
+            "eh",
+            // Western Sahara
+            "212",
+            1,
+            ["5288", "5289"],
+            "0"
+          ],
+          [
+            "ye",
+            // Yemen
+            "967"
+          ],
+          [
+            "zm",
+            // Zambia
+            "260"
+          ],
+          [
+            "zw",
+            // Zimbabwe
+            "263"
+          ]
+        ], g = [];
+        for (let a = 0; a < f.length; a++) {
+          const l = f[a];
+          g[a] = {
+            name: "",
+            // this is now populated in the plugin
+            iso2: l[0],
+            dialCode: l[1],
+            priority: l[2] || 0,
+            areaCodes: l[3] || null,
+            nodeById: {},
+            nationalPrefix: l[4] || null
+          };
         }
-        return !1;
-      }, ee = (a, u, c, h) => {
-        if (c === 0 && !h)
-          return 0;
-        let b = 0;
-        for (let v = 0; v < u.length; v++) {
-          if (/[+0-9]/.test(u[v]) && b++, b === a && !h)
-            return v + 1;
-          if (h && b === a + 1)
-            return v;
-        }
-        return u.length;
-      }, D = (a, u, c) => {
-        const h = document.createElement(a);
-        return u && Object.entries(u).forEach(([b, v]) => h.setAttribute(b, v)), c && c.appendChild(h), h;
-      }, M = (a) => {
-        const { instances: u } = C;
-        Object.values(u).forEach((c) => c[a]());
-      }, A = class {
-        constructor(a, u = {}) {
-          this.id = E++, this.telInput = a, this.highlightedItem = null, this.options = Object.assign({}, V, u), this.hadInitialPlaceholder = !!a.getAttribute("placeholder");
-        }
-        //* Can't be private as it's called from intlTelInput convenience wrapper.
-        _init() {
-          this.options.useFullscreenPopup && (this.options.fixDropdownWidth = !1), this.options.onlyCountries.length === 1 && (this.options.initialCountry = this.options.onlyCountries[0]), this.options.separateDialCode && (this.options.nationalMode = !1), this.options.allowDropdown && !this.options.showFlags && !this.options.separateDialCode && (this.options.nationalMode = !1), this.options.useFullscreenPopup && !this.options.dropdownContainer && (this.options.dropdownContainer = document.body), this.isAndroid = typeof navigator < "u" ? /Android/i.test(navigator.userAgent) : !1, this.isRTL = !!this.telInput.closest("[dir=rtl]");
-          const a = this.options.allowDropdown || this.options.separateDialCode;
-          this.showSelectedCountryOnLeft = this.isRTL ? !a : a, this.options.separateDialCode && (this.isRTL ? this.originalPaddingRight = this.telInput.style.paddingRight : this.originalPaddingLeft = this.telInput.style.paddingLeft), this.options.i18n = { ...$, ...this.options.i18n };
-          const u = new Promise((h, b) => {
-            this.resolveAutoCountryPromise = h, this.rejectAutoCountryPromise = b;
-          }), c = new Promise((h, b) => {
-            this.resolveUtilsScriptPromise = h, this.rejectUtilsScriptPromise = b;
-          });
-          this.promise = Promise.all([u, c]), this.selectedCountryData = {}, this._processCountryData(), this._generateMarkup(), this._setInitialState(), this._initListeners(), this._initRequests();
-        }
-        //********************
-        //*  PRIVATE METHODS
-        //********************
-        //* Prepare all of the country data, including onlyCountries, excludeCountries, countryOrder options.
-        _processCountryData() {
-          this._processAllCountries(), this._processDialCodes(), this._translateCountryNames(), this._sortCountries();
-        }
-        //* Sort countries by countryOrder option (if present), then name.
-        _sortCountries() {
-          this.options.countryOrder && (this.options.countryOrder = this.options.countryOrder.map((a) => a.toLowerCase())), this.countries.sort((a, u) => {
-            const { countryOrder: c } = this.options;
-            if (c) {
-              const h = c.indexOf(a.iso2), b = c.indexOf(u.iso2), v = h > -1, N = b > -1;
-              if (v || N)
-                return v && N ? h - b : v ? -1 : 1;
+        var b = g, y = {
+          ad: "Andorra",
+          ae: "United Arab Emirates",
+          af: "Afghanistan",
+          ag: "Antigua & Barbuda",
+          ai: "Anguilla",
+          al: "Albania",
+          am: "Armenia",
+          ao: "Angola",
+          ar: "Argentina",
+          as: "American Samoa",
+          at: "Austria",
+          au: "Australia",
+          aw: "Aruba",
+          ax: "Åland Islands",
+          az: "Azerbaijan",
+          ba: "Bosnia & Herzegovina",
+          bb: "Barbados",
+          bd: "Bangladesh",
+          be: "Belgium",
+          bf: "Burkina Faso",
+          bg: "Bulgaria",
+          bh: "Bahrain",
+          bi: "Burundi",
+          bj: "Benin",
+          bl: "St. Barthélemy",
+          bm: "Bermuda",
+          bn: "Brunei",
+          bo: "Bolivia",
+          bq: "Caribbean Netherlands",
+          br: "Brazil",
+          bs: "Bahamas",
+          bt: "Bhutan",
+          bw: "Botswana",
+          by: "Belarus",
+          bz: "Belize",
+          ca: "Canada",
+          cc: "Cocos (Keeling) Islands",
+          cd: "Congo - Kinshasa",
+          cf: "Central African Republic",
+          cg: "Congo - Brazzaville",
+          ch: "Switzerland",
+          ci: "Côte d’Ivoire",
+          ck: "Cook Islands",
+          cl: "Chile",
+          cm: "Cameroon",
+          cn: "China",
+          co: "Colombia",
+          cr: "Costa Rica",
+          cu: "Cuba",
+          cv: "Cape Verde",
+          cw: "Curaçao",
+          cx: "Christmas Island",
+          cy: "Cyprus",
+          cz: "Czechia",
+          de: "Germany",
+          dj: "Djibouti",
+          dk: "Denmark",
+          dm: "Dominica",
+          do: "Dominican Republic",
+          dz: "Algeria",
+          ec: "Ecuador",
+          ee: "Estonia",
+          eg: "Egypt",
+          eh: "Western Sahara",
+          er: "Eritrea",
+          es: "Spain",
+          et: "Ethiopia",
+          fi: "Finland",
+          fj: "Fiji",
+          fk: "Falkland Islands",
+          fm: "Micronesia",
+          fo: "Faroe Islands",
+          fr: "France",
+          ga: "Gabon",
+          gb: "United Kingdom",
+          gd: "Grenada",
+          ge: "Georgia",
+          gf: "French Guiana",
+          gg: "Guernsey",
+          gh: "Ghana",
+          gi: "Gibraltar",
+          gl: "Greenland",
+          gm: "Gambia",
+          gn: "Guinea",
+          gp: "Guadeloupe",
+          gq: "Equatorial Guinea",
+          gr: "Greece",
+          gt: "Guatemala",
+          gu: "Guam",
+          gw: "Guinea-Bissau",
+          gy: "Guyana",
+          hk: "Hong Kong SAR China",
+          hn: "Honduras",
+          hr: "Croatia",
+          ht: "Haiti",
+          hu: "Hungary",
+          id: "Indonesia",
+          ie: "Ireland",
+          il: "Israel",
+          im: "Isle of Man",
+          in: "India",
+          io: "British Indian Ocean Territory",
+          iq: "Iraq",
+          ir: "Iran",
+          is: "Iceland",
+          it: "Italy",
+          je: "Jersey",
+          jm: "Jamaica",
+          jo: "Jordan",
+          jp: "Japan",
+          ke: "Kenya",
+          kg: "Kyrgyzstan",
+          kh: "Cambodia",
+          ki: "Kiribati",
+          km: "Comoros",
+          kn: "St. Kitts & Nevis",
+          kp: "North Korea",
+          kr: "South Korea",
+          kw: "Kuwait",
+          ky: "Cayman Islands",
+          kz: "Kazakhstan",
+          la: "Laos",
+          lb: "Lebanon",
+          lc: "St. Lucia",
+          li: "Liechtenstein",
+          lk: "Sri Lanka",
+          lr: "Liberia",
+          ls: "Lesotho",
+          lt: "Lithuania",
+          lu: "Luxembourg",
+          lv: "Latvia",
+          ly: "Libya",
+          ma: "Morocco",
+          mc: "Monaco",
+          md: "Moldova",
+          me: "Montenegro",
+          mf: "St. Martin",
+          mg: "Madagascar",
+          mh: "Marshall Islands",
+          mk: "North Macedonia",
+          ml: "Mali",
+          mm: "Myanmar (Burma)",
+          mn: "Mongolia",
+          mo: "Macao SAR China",
+          mp: "Northern Mariana Islands",
+          mq: "Martinique",
+          mr: "Mauritania",
+          ms: "Montserrat",
+          mt: "Malta",
+          mu: "Mauritius",
+          mv: "Maldives",
+          mw: "Malawi",
+          mx: "Mexico",
+          my: "Malaysia",
+          mz: "Mozambique",
+          na: "Namibia",
+          nc: "New Caledonia",
+          ne: "Niger",
+          nf: "Norfolk Island",
+          ng: "Nigeria",
+          ni: "Nicaragua",
+          nl: "Netherlands",
+          no: "Norway",
+          np: "Nepal",
+          nr: "Nauru",
+          nu: "Niue",
+          nz: "New Zealand",
+          om: "Oman",
+          pa: "Panama",
+          pe: "Peru",
+          pf: "French Polynesia",
+          pg: "Papua New Guinea",
+          ph: "Philippines",
+          pk: "Pakistan",
+          pl: "Poland",
+          pm: "St. Pierre & Miquelon",
+          pr: "Puerto Rico",
+          ps: "Palestinian Territories",
+          pt: "Portugal",
+          pw: "Palau",
+          py: "Paraguay",
+          qa: "Qatar",
+          re: "Réunion",
+          ro: "Romania",
+          rs: "Serbia",
+          ru: "Russia",
+          rw: "Rwanda",
+          sa: "Saudi Arabia",
+          sb: "Solomon Islands",
+          sc: "Seychelles",
+          sd: "Sudan",
+          se: "Sweden",
+          sg: "Singapore",
+          sh: "St. Helena",
+          si: "Slovenia",
+          sj: "Svalbard & Jan Mayen",
+          sk: "Slovakia",
+          sl: "Sierra Leone",
+          sm: "San Marino",
+          sn: "Senegal",
+          so: "Somalia",
+          sr: "Suriname",
+          ss: "South Sudan",
+          st: "São Tomé & Príncipe",
+          sv: "El Salvador",
+          sx: "Sint Maarten",
+          sy: "Syria",
+          sz: "Eswatini",
+          tc: "Turks & Caicos Islands",
+          td: "Chad",
+          tg: "Togo",
+          th: "Thailand",
+          tj: "Tajikistan",
+          tk: "Tokelau",
+          tl: "Timor-Leste",
+          tm: "Turkmenistan",
+          tn: "Tunisia",
+          to: "Tonga",
+          tr: "Turkey",
+          tt: "Trinidad & Tobago",
+          tv: "Tuvalu",
+          tw: "Taiwan",
+          tz: "Tanzania",
+          ua: "Ukraine",
+          ug: "Uganda",
+          us: "United States",
+          uy: "Uruguay",
+          uz: "Uzbekistan",
+          va: "Vatican City",
+          vc: "St. Vincent & Grenadines",
+          ve: "Venezuela",
+          vg: "British Virgin Islands",
+          vi: "U.S. Virgin Islands",
+          vn: "Vietnam",
+          vu: "Vanuatu",
+          wf: "Wallis & Futuna",
+          ws: "Samoa",
+          ye: "Yemen",
+          yt: "Mayotte",
+          za: "South Africa",
+          zm: "Zambia",
+          zw: "Zimbabwe"
+        }, w = y, S = {
+          selectedCountryAriaLabel: "Selected country",
+          noCountrySelected: "No country selected",
+          countryListAriaLabel: "List of countries",
+          searchPlaceholder: "Search",
+          zeroSearchResults: "No results found",
+          oneSearchResult: "1 result found",
+          multipleSearchResults: "${count} results found",
+          // additional countries (not supported by country-list library)
+          ac: "Ascension Island",
+          xk: "Kosovo"
+        }, L = S, P = { ...w, ...L }, z = P;
+        for (let a = 0; a < b.length; a++)
+          b[a].name = z[b[a].iso2];
+        var D = 0, W = {
+          //* Whether or not to allow the dropdown.
+          allowDropdown: !0,
+          //* Add a placeholder in the input with an example number for the selected country.
+          autoPlaceholder: "polite",
+          //* Modify the parentClass.
+          containerClass: "",
+          //* The order of the countries in the dropdown. Defaults to alphabetical.
+          countryOrder: null,
+          //* Add a country search input at the top of the dropdown.
+          countrySearch: !0,
+          //* Modify the auto placeholder.
+          customPlaceholder: null,
+          //* Append menu to specified element.
+          dropdownContainer: null,
+          //* Don't display these countries.
+          excludeCountries: [],
+          //* Fix the dropdown width to the input width (rather than being as wide as the longest country name).
+          fixDropdownWidth: !0,
+          //* Format the number as the user types
+          formatAsYouType: !0,
+          //* Format the input value during initialisation and on setNumber.
+          formatOnDisplay: !0,
+          //* geoIp lookup function.
+          geoIpLookup: null,
+          //* Inject a hidden input with the name returned from this function, and on submit, populate it with the result of getNumber.
+          hiddenInput: null,
+          //* Internationalise the plugin text e.g. search input placeholder, country names.
+          i18n: {},
+          //* Initial country.
+          initialCountry: "",
+          //* A function to load the utils script.
+          loadUtils: null,
+          //* National vs international formatting for numbers e.g. placeholders and displaying existing numbers.
+          nationalMode: !0,
+          //* Display only these countries.
+          onlyCountries: [],
+          //* Number type to use for placeholders.
+          placeholderNumberType: "MOBILE",
+          //* Show flags - for both the selected country, and in the country dropdown
+          showFlags: !0,
+          //* Display the international dial code next to the selected flag.
+          separateDialCode: !1,
+          //* Only allow certain chars e.g. a plus followed by numeric digits, and cap at max valid length.
+          strictMode: !1,
+          //* Use full screen popup instead of dropdown for country list.
+          useFullscreenPopup: typeof navigator < "u" && typeof window < "u" ? (
+            //* We cannot just test screen size as some smartphones/website meta tags will report desktop resolutions.
+            //* Note: to target Android Mobiles (and not Tablets), we must find 'Android' and 'Mobile'
+            /Android.+Mobile|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+              navigator.userAgent
+            ) || window.innerWidth <= 500
+          ) : !1,
+          //* The number type to enforce during validation.
+          validationNumberTypes: ["MOBILE"]
+        }, G = [
+          "800",
+          "822",
+          "833",
+          "844",
+          "855",
+          "866",
+          "877",
+          "880",
+          "881",
+          "882",
+          "883",
+          "884",
+          "885",
+          "886",
+          "887",
+          "888",
+          "889"
+        ], q = (a) => a.replace(/\D/g, ""), J = (a = "") => a.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase(), T = (a) => {
+          const l = q(a);
+          if (l.charAt(0) === "1") {
+            const d = l.substr(1, 3);
+            return G.includes(d);
+          }
+          return !1;
+        }, V = (a, l, d, h) => {
+          if (d === 0 && !h)
+            return 0;
+          let m = 0;
+          for (let $ = 0; $ < l.length; $++) {
+            if (/[+0-9]/.test(l[$]) && m++, m === a && !h)
+              return $ + 1;
+            if (h && m === a + 1)
+              return $;
+          }
+          return l.length;
+        }, O = (a, l, d) => {
+          const h = document.createElement(a);
+          return l && Object.entries(l).forEach(([m, $]) => h.setAttribute(m, $)), d && d.appendChild(h), h;
+        }, te = (a, ...l) => {
+          const { instances: d } = k;
+          Object.values(d).forEach((h) => h[a](...l));
+        }, Q = class {
+          constructor(a, l = {}) {
+            this.id = D++, this.telInput = a, this.highlightedItem = null, this.options = Object.assign({}, W, l), this.hadInitialPlaceholder = !!a.getAttribute("placeholder");
+          }
+          //* Can't be private as it's called from intlTelInput convenience wrapper.
+          _init() {
+            this.options.useFullscreenPopup && (this.options.fixDropdownWidth = !1), this.options.onlyCountries.length === 1 && (this.options.initialCountry = this.options.onlyCountries[0]), this.options.separateDialCode && (this.options.nationalMode = !1), this.options.allowDropdown && !this.options.showFlags && !this.options.separateDialCode && (this.options.nationalMode = !1), this.options.useFullscreenPopup && !this.options.dropdownContainer && (this.options.dropdownContainer = document.body), this.isAndroid = typeof navigator < "u" ? /Android/i.test(navigator.userAgent) : !1, this.isRTL = !!this.telInput.closest("[dir=rtl]");
+            const a = this.options.allowDropdown || this.options.separateDialCode;
+            this.showSelectedCountryOnLeft = this.isRTL ? !a : a, this.options.separateDialCode && (this.isRTL ? this.originalPaddingRight = this.telInput.style.paddingRight : this.originalPaddingLeft = this.telInput.style.paddingLeft), this.options.i18n = { ...z, ...this.options.i18n };
+            const l = new Promise((h, m) => {
+              this.resolveAutoCountryPromise = h, this.rejectAutoCountryPromise = m;
+            }), d = new Promise((h, m) => {
+              this.resolveUtilsScriptPromise = h, this.rejectUtilsScriptPromise = m;
+            });
+            this.promise = Promise.all([l, d]), this.selectedCountryData = {}, this._processCountryData(), this._generateMarkup(), this._setInitialState(), this._initListeners(), this._initRequests();
+          }
+          //********************
+          //*  PRIVATE METHODS
+          //********************
+          //* Prepare all of the country data, including onlyCountries, excludeCountries, countryOrder options.
+          _processCountryData() {
+            this._processAllCountries(), this._processDialCodes(), this._translateCountryNames(), this._sortCountries();
+          }
+          //* Sort countries by countryOrder option (if present), then name.
+          _sortCountries() {
+            this.options.countryOrder && (this.options.countryOrder = this.options.countryOrder.map((a) => a.toLowerCase())), this.countries.sort((a, l) => {
+              const { countryOrder: d } = this.options;
+              if (d) {
+                const h = d.indexOf(a.iso2), m = d.indexOf(l.iso2), $ = h > -1, M = m > -1;
+                if ($ || M)
+                  return $ && M ? h - m : $ ? -1 : 1;
+              }
+              return a.name.localeCompare(l.name);
+            });
+          }
+          //* Add a dial code to this.dialCodeToIso2Map.
+          _addToDialCodeMap(a, l, d) {
+            l.length > this.dialCodeMaxLen && (this.dialCodeMaxLen = l.length), this.dialCodeToIso2Map.hasOwnProperty(l) || (this.dialCodeToIso2Map[l] = []);
+            for (let m = 0; m < this.dialCodeToIso2Map[l].length; m++)
+              if (this.dialCodeToIso2Map[l][m] === a)
+                return;
+            const h = d !== void 0 ? d : this.dialCodeToIso2Map[l].length;
+            this.dialCodeToIso2Map[l][h] = a;
+          }
+          //* Process onlyCountries or excludeCountries array if present.
+          _processAllCountries() {
+            const { onlyCountries: a, excludeCountries: l } = this.options;
+            if (a.length) {
+              const d = a.map(
+                (h) => h.toLowerCase()
+              );
+              this.countries = b.filter(
+                (h) => d.includes(h.iso2)
+              );
+            } else if (l.length) {
+              const d = l.map(
+                (h) => h.toLowerCase()
+              );
+              this.countries = b.filter(
+                (h) => !d.includes(h.iso2)
+              );
+            } else
+              this.countries = b;
+          }
+          //* Translate Countries by object literal provided on config.
+          _translateCountryNames() {
+            for (let a = 0; a < this.countries.length; a++) {
+              const l = this.countries[a].iso2.toLowerCase();
+              this.options.i18n.hasOwnProperty(l) && (this.countries[a].name = this.options.i18n[l]);
             }
-            return a.name.localeCompare(u.name);
-          });
-        }
-        //* Add a dial code to this.dialCodeToIso2Map.
-        _addToDialCodeMap(a, u, c) {
-          u.length > this.dialCodeMaxLen && (this.dialCodeMaxLen = u.length), this.dialCodeToIso2Map.hasOwnProperty(u) || (this.dialCodeToIso2Map[u] = []);
-          for (let b = 0; b < this.dialCodeToIso2Map[u].length; b++)
-            if (this.dialCodeToIso2Map[u][b] === a)
-              return;
-          const h = c !== void 0 ? c : this.dialCodeToIso2Map[u].length;
-          this.dialCodeToIso2Map[u][h] = a;
-        }
-        //* Process onlyCountries or excludeCountries array if present.
-        _processAllCountries() {
-          const { onlyCountries: a, excludeCountries: u } = this.options;
-          if (a.length) {
-            const c = a.map(
-              (h) => h.toLowerCase()
-            );
-            this.countries = m.filter(
-              (h) => c.indexOf(h.iso2) > -1
-            );
-          } else if (u.length) {
-            const c = u.map(
-              (h) => h.toLowerCase()
-            );
-            this.countries = m.filter(
-              (h) => c.indexOf(h.iso2) === -1
-            );
-          } else
-            this.countries = m;
-        }
-        //* Translate Countries by object literal provided on config.
-        _translateCountryNames() {
-          for (let a = 0; a < this.countries.length; a++) {
-            const u = this.countries[a].iso2.toLowerCase();
-            this.options.i18n.hasOwnProperty(u) && (this.countries[a].name = this.options.i18n[u]);
           }
-        }
-        //* Generate this.dialCodes and this.dialCodeToIso2Map.
-        _processDialCodes() {
-          this.dialCodes = {}, this.dialCodeMaxLen = 0, this.dialCodeToIso2Map = {};
-          for (let a = 0; a < this.countries.length; a++) {
-            const u = this.countries[a];
-            this.dialCodes[u.dialCode] || (this.dialCodes[u.dialCode] = !0), this._addToDialCodeMap(u.iso2, u.dialCode, u.priority);
-          }
-          for (let a = 0; a < this.countries.length; a++) {
-            const u = this.countries[a];
-            if (u.areaCodes) {
-              const c = this.dialCodeToIso2Map[u.dialCode][0];
-              for (let h = 0; h < u.areaCodes.length; h++) {
-                const b = u.areaCodes[h];
-                for (let v = 1; v < b.length; v++) {
-                  const N = u.dialCode + b.substr(0, v);
-                  this._addToDialCodeMap(c, N), this._addToDialCodeMap(u.iso2, N);
+          //* Generate this.dialCodes and this.dialCodeToIso2Map.
+          _processDialCodes() {
+            this.dialCodes = {}, this.dialCodeMaxLen = 0, this.dialCodeToIso2Map = {};
+            for (let a = 0; a < this.countries.length; a++) {
+              const l = this.countries[a];
+              this.dialCodes[l.dialCode] || (this.dialCodes[l.dialCode] = !0), this._addToDialCodeMap(l.iso2, l.dialCode, l.priority);
+            }
+            for (let a = 0; a < this.countries.length; a++) {
+              const l = this.countries[a];
+              if (l.areaCodes) {
+                const d = this.dialCodeToIso2Map[l.dialCode][0];
+                for (let h = 0; h < l.areaCodes.length; h++) {
+                  const m = l.areaCodes[h];
+                  for (let $ = 1; $ < m.length; $++) {
+                    const M = m.substr(0, $), I = l.dialCode + M;
+                    this._addToDialCodeMap(d, I), this._addToDialCodeMap(l.iso2, I);
+                  }
+                  this._addToDialCodeMap(l.iso2, l.dialCode + m);
                 }
-                this._addToDialCodeMap(u.iso2, u.dialCode + b);
               }
             }
           }
-        }
-        //* Generate all of the markup for the plugin: the selected country overlay, and the dropdown.
-        _generateMarkup() {
-          var Se;
-          this.telInput.classList.add("iti__tel-input"), !this.telInput.hasAttribute("autocomplete") && !(this.telInput.form && this.telInput.form.hasAttribute("autocomplete")) && this.telInput.setAttribute("autocomplete", "off");
-          const {
-            allowDropdown: a,
-            separateDialCode: u,
-            showFlags: c,
-            containerClass: h,
-            hiddenInput: b,
-            dropdownContainer: v,
-            fixDropdownWidth: N,
-            useFullscreenPopup: P,
-            countrySearch: re,
-            i18n: q
-          } = this.options;
-          let oe = "iti";
-          a && (oe += " iti--allow-dropdown"), c && (oe += " iti--show-flags"), h && (oe += ` ${h}`), P || (oe += " iti--inline-dropdown");
-          const Y = D("div", { class: oe });
-          if ((Se = this.telInput.parentNode) == null || Se.insertBefore(Y, this.telInput), a || c || u) {
-            this.countryContainer = D(
-              "div",
-              { class: "iti__country-container" },
-              Y
-            ), this.showSelectedCountryOnLeft ? this.countryContainer.style.left = "0px" : this.countryContainer.style.right = "0px", a ? (this.selectedCountry = D(
-              "button",
-              {
-                type: "button",
-                class: "iti__selected-country",
-                "aria-expanded": "false",
-                "aria-label": this.options.i18n.selectedCountryAriaLabel,
-                "aria-haspopup": "true",
-                "aria-controls": `iti-${this.id}__dropdown-content`,
-                role: "combobox"
-              },
-              this.countryContainer
-            ), this.telInput.disabled && this.selectedCountry.setAttribute("disabled", "true")) : this.selectedCountry = D(
-              "div",
-              { class: "iti__selected-country" },
-              this.countryContainer
-            );
-            const ce = D("div", { class: "iti__selected-country-primary" }, this.selectedCountry);
-            if (this.selectedCountryInner = D("div", { class: "iti__flag" }, ce), this.selectedCountryA11yText = D(
-              "span",
-              { class: "iti__a11y-text" },
-              this.selectedCountryInner
-            ), a && (this.dropdownArrow = D(
-              "div",
-              { class: "iti__arrow", "aria-hidden": "true" },
-              ce
-            )), u && (this.selectedDialCode = D(
-              "div",
-              { class: "iti__selected-dial-code" },
-              this.selectedCountry
-            )), a) {
-              const pe = N ? "" : "iti--flexible-dropdown-width";
-              if (this.dropdownContent = D("div", {
-                id: `iti-${this.id}__dropdown-content`,
-                class: `iti__dropdown-content iti__hide ${pe}`
-              }), re && (this.searchInput = D(
-                "input",
+          //* Generate all of the markup for the plugin: the selected country overlay, and the dropdown.
+          _generateMarkup() {
+            this.telInput.classList.add("iti__tel-input"), !this.telInput.hasAttribute("autocomplete") && !(this.telInput.form && this.telInput.form.hasAttribute("autocomplete")) && this.telInput.setAttribute("autocomplete", "off");
+            const {
+              allowDropdown: a,
+              separateDialCode: l,
+              showFlags: d,
+              containerClass: h,
+              hiddenInput: m,
+              dropdownContainer: $,
+              fixDropdownWidth: M,
+              useFullscreenPopup: I,
+              countrySearch: R,
+              i18n: K
+            } = this.options;
+            let X = "iti";
+            a && (X += " iti--allow-dropdown"), d && (X += " iti--show-flags"), h && (X += ` ${h}`), I || (X += " iti--inline-dropdown");
+            const E = O("div", { class: X });
+            if (this.telInput.parentNode?.insertBefore(E, this.telInput), a || d || l) {
+              this.countryContainer = O(
+                "div",
+                { class: "iti__country-container" },
+                E
+              ), this.showSelectedCountryOnLeft ? this.countryContainer.style.left = "0px" : this.countryContainer.style.right = "0px", a ? (this.selectedCountry = O(
+                "button",
                 {
-                  type: "text",
-                  class: "iti__search-input",
-                  placeholder: q.searchPlaceholder,
-                  role: "combobox",
-                  "aria-expanded": "true",
-                  "aria-label": q.searchPlaceholder,
-                  "aria-controls": `iti-${this.id}__country-listbox`,
-                  "aria-autocomplete": "list",
-                  autocomplete: "off"
+                  type: "button",
+                  class: "iti__selected-country",
+                  "aria-expanded": "false",
+                  "aria-label": this.options.i18n.selectedCountryAriaLabel,
+                  "aria-haspopup": "true",
+                  "aria-controls": `iti-${this.id}__dropdown-content`,
+                  role: "combobox"
                 },
-                this.dropdownContent
-              ), this.searchResultsA11yText = D(
+                this.countryContainer
+              ), this.telInput.disabled && this.selectedCountry.setAttribute("disabled", "true")) : this.selectedCountry = O(
+                "div",
+                { class: "iti__selected-country" },
+                this.countryContainer
+              );
+              const ce = O("div", { class: "iti__selected-country-primary" }, this.selectedCountry);
+              if (this.selectedCountryInner = O("div", { class: "iti__flag" }, ce), this.selectedCountryA11yText = O(
                 "span",
                 { class: "iti__a11y-text" },
-                this.dropdownContent
-              )), this.countryList = D(
-                "ul",
+                this.selectedCountryInner
+              ), a && (this.dropdownArrow = O(
+                "div",
+                { class: "iti__arrow", "aria-hidden": "true" },
+                ce
+              )), l && (this.selectedDialCode = O(
+                "div",
+                { class: "iti__selected-dial-code" },
+                this.selectedCountry
+              )), a) {
+                const re = M ? "" : "iti--flexible-dropdown-width";
+                if (this.dropdownContent = O("div", {
+                  id: `iti-${this.id}__dropdown-content`,
+                  class: `iti__dropdown-content iti__hide ${re}`
+                }), R && (this.searchInput = O(
+                  "input",
+                  {
+                    type: "text",
+                    class: "iti__search-input",
+                    placeholder: K.searchPlaceholder,
+                    role: "combobox",
+                    "aria-expanded": "true",
+                    "aria-label": K.searchPlaceholder,
+                    "aria-controls": `iti-${this.id}__country-listbox`,
+                    "aria-autocomplete": "list",
+                    autocomplete: "off"
+                  },
+                  this.dropdownContent
+                ), this.searchResultsA11yText = O(
+                  "span",
+                  { class: "iti__a11y-text" },
+                  this.dropdownContent
+                )), this.countryList = O(
+                  "ul",
+                  {
+                    class: "iti__country-list",
+                    id: `iti-${this.id}__country-listbox`,
+                    role: "listbox",
+                    "aria-label": K.countryListAriaLabel
+                  },
+                  this.dropdownContent
+                ), this._appendListItems(), R && this._updateSearchResultsText(), $) {
+                  let oe = "iti iti--container";
+                  I ? oe += " iti--fullscreen-popup" : oe += " iti--inline-dropdown", this.dropdown = O("div", { class: oe }), this.dropdown.appendChild(this.dropdownContent);
+                } else
+                  this.countryContainer.appendChild(this.dropdownContent);
+              }
+            }
+            if (E.appendChild(this.telInput), this._updateInputPadding(), m) {
+              const ce = this.telInput.getAttribute("name") || "", re = m(ce);
+              if (re.phone) {
+                const oe = this.telInput.form?.querySelector(`input[name="${re.phone}"]`);
+                oe ? this.hiddenInput = oe : (this.hiddenInput = O("input", {
+                  type: "hidden",
+                  name: re.phone
+                }), E.appendChild(this.hiddenInput));
+              }
+              if (re.country) {
+                const oe = this.telInput.form?.querySelector(`input[name="${re.country}"]`);
+                oe ? this.hiddenInputCountry = oe : (this.hiddenInputCountry = O("input", {
+                  type: "hidden",
+                  name: re.country
+                }), E.appendChild(this.hiddenInputCountry));
+              }
+            }
+          }
+          //* For each country: add a country list item <li> to the countryList <ul> container.
+          _appendListItems() {
+            for (let a = 0; a < this.countries.length; a++) {
+              const l = this.countries[a], d = a === 0 ? "iti__highlight" : "", h = O(
+                "li",
                 {
-                  class: "iti__country-list",
-                  id: `iti-${this.id}__country-listbox`,
-                  role: "listbox",
-                  "aria-label": q.countryListAriaLabel
+                  id: `iti-${this.id}__item-${l.iso2}`,
+                  class: `iti__country ${d}`,
+                  tabindex: "-1",
+                  role: "option",
+                  "data-dial-code": l.dialCode,
+                  "data-country-code": l.iso2,
+                  "aria-selected": "false"
                 },
-                this.dropdownContent
-              ), this._appendListItems(), re && this._updateSearchResultsText(), v) {
-                let me = "iti iti--container";
-                P ? me += " iti--fullscreen-popup" : me += " iti--inline-dropdown", this.dropdown = D("div", { class: me }), this.dropdown.appendChild(this.dropdownContent);
-              } else
-                this.countryContainer.appendChild(this.dropdownContent);
+                this.countryList
+              );
+              l.nodeById[this.id] = h;
+              let m = "";
+              this.options.showFlags && (m += `<div class='iti__flag iti__${l.iso2}'></div>`), m += `<span class='iti__country-name'>${l.name}</span>`, m += `<span class='iti__dial-code'>+${l.dialCode}</span>`, h.insertAdjacentHTML("beforeend", m);
             }
           }
-          if (Y.appendChild(this.telInput), this._updateInputPadding(), b) {
-            const ce = this.telInput.getAttribute("name") || "", pe = b(ce);
-            pe.phone && (this.hiddenInput = D("input", {
-              type: "hidden",
-              name: pe.phone
-            }), Y.appendChild(this.hiddenInput)), pe.country && (this.hiddenInputCountry = D("input", {
-              type: "hidden",
-              name: pe.country
-            }), Y.appendChild(this.hiddenInputCountry));
+          //* Set the initial state of the input value and the selected country by:
+          //* 1. Extracting a dial code from the given number
+          //* 2. Using explicit initialCountry
+          _setInitialState(a = !1) {
+            const l = this.telInput.getAttribute("value"), d = this.telInput.value, m = l && l.charAt(0) === "+" && (!d || d.charAt(0) !== "+") ? l : d, $ = this._getDialCode(m), M = T(m), { initialCountry: I, geoIpLookup: R } = this.options, K = I === "auto" && R;
+            if ($ && !M)
+              this._updateCountryFromNumber(m);
+            else if (!K || a) {
+              const X = I ? I.toLowerCase() : "";
+              X && this._getCountryData(X, !0) ? this._setCountry(X) : $ && M ? this._setCountry("us") : this._setCountry();
+            }
+            m && this._updateValFromNumber(m);
           }
-        }
-        //* For each country: add a country list item <li> to the countryList <ul> container.
-        _appendListItems() {
-          for (let a = 0; a < this.countries.length; a++) {
-            const u = this.countries[a], c = a === 0 ? "iti__highlight" : "", h = D(
-              "li",
-              {
-                id: `iti-${this.id}__item-${u.iso2}`,
-                class: `iti__country ${c}`,
-                tabindex: "-1",
-                role: "option",
-                "data-dial-code": u.dialCode,
-                "data-country-code": u.iso2,
-                "aria-selected": "false"
-              },
-              this.countryList
+          //* Initialise the main event listeners: input keyup, and click selected country.
+          _initListeners() {
+            this._initTelInputListeners(), this.options.allowDropdown && this._initDropdownListeners(), (this.hiddenInput || this.hiddenInputCountry) && this.telInput.form && this._initHiddenInputListener();
+          }
+          //* Update hidden input on form submit.
+          _initHiddenInputListener() {
+            this._handleHiddenInputSubmit = () => {
+              this.hiddenInput && (this.hiddenInput.value = this.getNumber()), this.hiddenInputCountry && (this.hiddenInputCountry.value = this.getSelectedCountryData().iso2 || "");
+            }, this.telInput.form?.addEventListener(
+              "submit",
+              this._handleHiddenInputSubmit
             );
-            u.nodeById[this.id] = h;
-            let b = "";
-            this.options.showFlags && (b += `<div class='iti__flag iti__${u.iso2}'></div>`), b += `<span class='iti__country-name'>${u.name}</span>`, b += `<span class='iti__dial-code'>+${u.dialCode}</span>`, h.insertAdjacentHTML("beforeend", b);
           }
-        }
-        //* Set the initial state of the input value and the selected country by:
-        //* 1. Extracting a dial code from the given number
-        //* 2. Using explicit initialCountry
-        _setInitialState(a = !1) {
-          const u = this.telInput.getAttribute("value"), c = this.telInput.value, b = u && u.charAt(0) === "+" && (!c || c.charAt(0) !== "+") ? u : c, v = this._getDialCode(b), N = X(b), { initialCountry: P, geoIpLookup: re } = this.options, q = P === "auto" && re;
-          if (v && !N)
-            this._updateCountryFromNumber(b);
-          else if (!q || a) {
-            const oe = P ? P.toLowerCase() : "";
-            oe && this._getCountryData(oe, !0) ? this._setCountry(oe) : v && N ? this._setCountry("us") : this._setCountry();
-          }
-          b && this._updateValFromNumber(b);
-        }
-        //* Initialise the main event listeners: input keyup, and click selected country.
-        _initListeners() {
-          this._initTelInputListeners(), this.options.allowDropdown && this._initDropdownListeners(), (this.hiddenInput || this.hiddenInputCountry) && this.telInput.form && this._initHiddenInputListener();
-        }
-        //* Update hidden input on form submit.
-        _initHiddenInputListener() {
-          var a;
-          this._handleHiddenInputSubmit = () => {
-            this.hiddenInput && (this.hiddenInput.value = this.getNumber()), this.hiddenInputCountry && (this.hiddenInputCountry.value = this.getSelectedCountryData().iso2 || "");
-          }, (a = this.telInput.form) == null || a.addEventListener(
-            "submit",
-            this._handleHiddenInputSubmit
-          );
-        }
-        //* initialise the dropdown listeners.
-        _initDropdownListeners() {
-          this._handleLabelClick = (u) => {
-            this.dropdownContent.classList.contains("iti__hide") ? this.telInput.focus() : u.preventDefault();
-          };
-          const a = this.telInput.closest("label");
-          a && a.addEventListener("click", this._handleLabelClick), this._handleClickSelectedCountry = () => {
-            this.dropdownContent.classList.contains("iti__hide") && !this.telInput.disabled && !this.telInput.readOnly && this._openDropdown();
-          }, this.selectedCountry.addEventListener("click", this._handleClickSelectedCountry), this._handleCountryContainerKeydown = (u) => {
-            this.dropdownContent.classList.contains("iti__hide") && ["ArrowUp", "ArrowDown", " ", "Enter"].includes(u.key) && (u.preventDefault(), u.stopPropagation(), this._openDropdown()), u.key === "Tab" && this._closeDropdown();
-          }, this.countryContainer.addEventListener(
-            "keydown",
-            this._handleCountryContainerKeydown
-          );
-        }
-        //* Init many requests: utils script / geo ip lookup.
-        _initRequests() {
-          const { utilsScript: a, initialCountry: u, geoIpLookup: c } = this.options;
-          a && !C.utils ? C.documentReady() ? C.loadUtils(a) : window.addEventListener("load", () => {
-            C.loadUtils(a);
-          }) : this.resolveUtilsScriptPromise(), u === "auto" && c && !this.selectedCountryData.iso2 ? this._loadAutoCountry() : this.resolveAutoCountryPromise();
-        }
-        //* Perform the geo ip lookup.
-        _loadAutoCountry() {
-          C.autoCountry ? this.handleAutoCountry() : C.startedLoadingAutoCountry || (C.startedLoadingAutoCountry = !0, typeof this.options.geoIpLookup == "function" && this.options.geoIpLookup(
-            (a = "") => {
-              const u = a.toLowerCase();
-              u && this._getCountryData(u, !0) ? (C.autoCountry = u, setTimeout(() => M("handleAutoCountry"))) : (this._setInitialState(!0), M("rejectAutoCountryPromise"));
-            },
-            () => {
-              this._setInitialState(!0), M("rejectAutoCountryPromise");
-            }
-          ));
-        }
-        _openDropdownWithPlus() {
-          this._openDropdown(), this.searchInput.value = "+", this._filterCountries("", !0);
-        }
-        //* Initialize the tel input listeners.
-        _initTelInputListeners() {
-          const { strictMode: a, formatAsYouType: u, separateDialCode: c, formatOnDisplay: h, allowDropdown: b, countrySearch: v } = this.options;
-          let N = !1;
-          new RegExp("\\p{L}", "u").test(this.telInput.value) && (N = !0), this._handleInputEvent = (P) => {
-            if (this.isAndroid && (P == null ? void 0 : P.data) === "+" && c && b && v) {
-              const Y = this.telInput.selectionStart || 0, Se = this.telInput.value.substring(0, Y - 1), ce = this.telInput.value.substring(Y);
-              this.telInput.value = Se + ce, this._openDropdownWithPlus();
-              return;
-            }
-            this._updateCountryFromNumber(this.telInput.value) && this._triggerCountryChange();
-            const re = (P == null ? void 0 : P.data) && /[^+0-9]/.test(P.data), q = (P == null ? void 0 : P.inputType) === "insertFromPaste" && this.telInput.value;
-            re || q && !a ? N = !0 : /[^+0-9]/.test(this.telInput.value) || (N = !1);
-            const oe = (P == null ? void 0 : P.detail) && P.detail.isSetNumber && !h;
-            if (u && !N && !oe) {
-              const Y = this.telInput.selectionStart || 0, ce = this.telInput.value.substring(0, Y).replace(/[^+0-9]/g, "").length, pe = (P == null ? void 0 : P.inputType) === "deleteContentForward", me = this._formatNumberAsYouType(), Nt = ee(ce, me, Y, pe);
-              this.telInput.value = me, this.telInput.setSelectionRange(Nt, Nt);
-            }
-          }, this.telInput.addEventListener("input", this._handleInputEvent), (a || c) && (this._handleKeydownEvent = (P) => {
-            if (P.key && P.key.length === 1 && !P.altKey && !P.ctrlKey && !P.metaKey) {
-              if (c && b && v && P.key === "+") {
-                P.preventDefault(), this._openDropdownWithPlus();
-                return;
-              }
-              if (a) {
-                const re = this.telInput.selectionStart === 0 && P.key === "+", q = /^[0-9]$/.test(P.key), oe = c ? q : re || q, Y = this._getFullNumber(), Se = C.utils.getCoreNumber(Y, this.selectedCountryData.iso2), ce = this.maxCoreNumberLength && Se.length >= this.maxCoreNumberLength, pe = this.telInput.value.substring(this.telInput.selectionStart, this.telInput.selectionEnd), me = /\d/.test(pe), Do = (this.telInput.selectionStart || 0) === this.telInput.value.length;
-                (!oe || ce && !me && Do) && P.preventDefault();
-              }
-            }
-          }, this.telInput.addEventListener("keydown", this._handleKeydownEvent));
-        }
-        //* Adhere to the input's maxlength attr.
-        _cap(a) {
-          const u = parseInt(this.telInput.getAttribute("maxlength") || "", 10);
-          return u && a.length > u ? a.substr(0, u) : a;
-        }
-        //* Trigger a custom event on the input.
-        _trigger(a, u = {}) {
-          const c = new CustomEvent(a, {
-            bubbles: !0,
-            cancelable: !0,
-            detail: u
-          });
-          this.telInput.dispatchEvent(c);
-        }
-        //* Open the dropdown.
-        _openDropdown() {
-          const { fixDropdownWidth: a, countrySearch: u } = this.options;
-          if (a && (this.dropdownContent.style.width = `${this.telInput.offsetWidth}px`), this.dropdownContent.classList.remove("iti__hide"), this.selectedCountry.setAttribute("aria-expanded", "true"), this._setDropdownPosition(), u) {
-            const c = this.countryList.firstElementChild;
-            c && (this._highlightListItem(c, !1), this.countryList.scrollTop = 0), this.searchInput.focus();
-          }
-          this._bindDropdownListeners(), this.dropdownArrow.classList.add("iti__arrow--up"), this._trigger("open:countrydropdown");
-        }
-        //* Set the dropdown position
-        _setDropdownPosition() {
-          if (this.options.dropdownContainer && this.options.dropdownContainer.appendChild(this.dropdown), !this.options.useFullscreenPopup) {
-            const a = this.telInput.getBoundingClientRect(), u = this.telInput.offsetHeight;
-            this.options.dropdownContainer && (this.dropdown.style.top = `${a.top + u}px`, this.dropdown.style.left = `${a.left}px`, this._handleWindowScroll = () => this._closeDropdown(), window.addEventListener("scroll", this._handleWindowScroll));
-          }
-        }
-        //* We only bind dropdown listeners when the dropdown is open.
-        _bindDropdownListeners() {
-          this._handleMouseoverCountryList = (h) => {
-            var v;
-            const b = (v = h.target) == null ? void 0 : v.closest(".iti__country");
-            b && this._highlightListItem(b, !1);
-          }, this.countryList.addEventListener(
-            "mouseover",
-            this._handleMouseoverCountryList
-          ), this._handleClickCountryList = (h) => {
-            var v;
-            const b = (v = h.target) == null ? void 0 : v.closest(".iti__country");
-            b && this._selectListItem(b);
-          }, this.countryList.addEventListener("click", this._handleClickCountryList);
-          let a = !0;
-          this._handleClickOffToClose = () => {
-            a || this._closeDropdown(), a = !1;
-          }, document.documentElement.addEventListener(
-            "click",
-            this._handleClickOffToClose
-          );
-          let u = "", c = null;
-          if (this._handleKeydownOnDropdown = (h) => {
-            ["ArrowUp", "ArrowDown", "Enter", "Escape"].includes(h.key) && (h.preventDefault(), h.stopPropagation(), h.key === "ArrowUp" || h.key === "ArrowDown" ? this._handleUpDownKey(h.key) : h.key === "Enter" ? this._handleEnterKey() : h.key === "Escape" && this._closeDropdown()), !this.options.countrySearch && /^[a-zA-ZÀ-ÿа-яА-Я ]$/.test(h.key) && (h.stopPropagation(), c && clearTimeout(c), u += h.key.toLowerCase(), this._searchForCountry(u), c = setTimeout(() => {
-              u = "";
-            }, 1e3));
-          }, document.addEventListener("keydown", this._handleKeydownOnDropdown), this.options.countrySearch) {
-            const h = () => {
-              const v = this.searchInput.value.trim();
-              v ? this._filterCountries(v) : this._filterCountries("", !0);
+          //* initialise the dropdown listeners.
+          _initDropdownListeners() {
+            this._handleLabelClick = (l) => {
+              this.dropdownContent.classList.contains("iti__hide") ? this.telInput.focus() : l.preventDefault();
             };
-            let b = null;
-            this._handleSearchChange = () => {
-              b && clearTimeout(b), b = setTimeout(() => {
-                h(), b = null;
-              }, 100);
-            }, this.searchInput.addEventListener("input", this._handleSearchChange), this.searchInput.addEventListener("click", (v) => v.stopPropagation());
-          }
-        }
-        //* Hidden search (countrySearch disabled): Find the first list item whose name starts with the query string.
-        _searchForCountry(a) {
-          for (let u = 0; u < this.countries.length; u++) {
-            const c = this.countries[u];
-            if (c.name.substr(0, a.length).toLowerCase() === a) {
-              const b = c.nodeById[this.id];
-              this._highlightListItem(b, !1), this._scrollTo(b);
-              break;
-            }
-          }
-        }
-        //* Country search enabled: Filter the countries according to the search query.
-        _filterCountries(a, u = !1) {
-          let c = !0;
-          this.countryList.innerHTML = "";
-          const h = J(a);
-          for (let b = 0; b < this.countries.length; b++) {
-            const v = this.countries[b], N = J(v.name), P = v.name.split(/[^a-zA-ZÀ-ÿа-яА-Я]/).map((q) => q[0]).join("").toLowerCase(), re = `+${v.dialCode}`;
-            if (u || N.includes(h) || re.includes(h) || v.iso2.includes(h) || P.includes(h)) {
-              const q = v.nodeById[this.id];
-              q && this.countryList.appendChild(q), c && (this._highlightListItem(q, !1), c = !1);
-            }
-          }
-          c && this._highlightListItem(null, !1), this.countryList.scrollTop = 0, this._updateSearchResultsText();
-        }
-        //* Update search results text (for a11y).
-        _updateSearchResultsText() {
-          const { i18n: a } = this.options, u = this.countryList.childElementCount;
-          let c;
-          u === 0 ? c = a.zeroSearchResults : u === 1 ? c = a.oneSearchResult : c = a.multipleSearchResults.replace("${count}", u.toString()), this.searchResultsA11yText.textContent = c;
-        }
-        //* Highlight the next/prev item in the list (and ensure it is visible).
-        _handleUpDownKey(a) {
-          var c, h;
-          let u = a === "ArrowUp" ? (c = this.highlightedItem) == null ? void 0 : c.previousElementSibling : (h = this.highlightedItem) == null ? void 0 : h.nextElementSibling;
-          !u && this.countryList.childElementCount > 1 && (u = a === "ArrowUp" ? this.countryList.lastElementChild : this.countryList.firstElementChild), u && (this._scrollTo(u), this._highlightListItem(u, !1));
-        }
-        //* Select the currently highlighted item.
-        _handleEnterKey() {
-          this.highlightedItem && this._selectListItem(this.highlightedItem);
-        }
-        //* Update the input's value to the given val (format first if possible)
-        //* NOTE: this is called from _setInitialState, handleUtils and setNumber.
-        _updateValFromNumber(a) {
-          let u = a;
-          if (this.options.formatOnDisplay && C.utils && this.selectedCountryData) {
-            const c = this.options.nationalMode || u.charAt(0) !== "+" && !this.options.separateDialCode, { NATIONAL: h, INTERNATIONAL: b } = C.utils.numberFormat, v = c ? h : b;
-            u = C.utils.formatNumber(
-              u,
-              this.selectedCountryData.iso2,
-              v
-            );
-          }
-          u = this._beforeSetNumber(u), this.telInput.value = u;
-        }
-        //* Check if need to select a new country based on the given number
-        //* Note: called from _setInitialState, keyup handler, setNumber.
-        _updateCountryFromNumber(a) {
-          const u = a.indexOf("+");
-          let c = u ? a.substring(u) : a;
-          const h = this.selectedCountryData.dialCode;
-          c && h === "1" && c.charAt(0) !== "+" && (c.charAt(0) !== "1" && (c = `1${c}`), c = `+${c}`), this.options.separateDialCode && h && c.charAt(0) !== "+" && (c = `+${h}${c}`);
-          const v = this._getDialCode(c, !0), N = F(c);
-          let P = null;
-          if (v) {
-            const re = this.dialCodeToIso2Map[F(v)], q = re.indexOf(this.selectedCountryData.iso2) !== -1 && N.length <= v.length - 1;
-            if (!(h === "1" && X(N)) && !q) {
-              for (let Y = 0; Y < re.length; Y++)
-                if (re[Y]) {
-                  P = re[Y];
-                  break;
-                }
-            }
-          } else
-            c.charAt(0) === "+" && N.length ? P = "" : (!c || c === "+") && !this.selectedCountryData.iso2 && (P = this.defaultCountry);
-          return P !== null ? this._setCountry(P) : !1;
-        }
-        //* Remove highlighting from other list items and highlight the given item.
-        _highlightListItem(a, u) {
-          const c = this.highlightedItem;
-          if (c && (c.classList.remove("iti__highlight"), c.setAttribute("aria-selected", "false")), this.highlightedItem = a, this.highlightedItem) {
-            this.highlightedItem.classList.add("iti__highlight"), this.highlightedItem.setAttribute("aria-selected", "true");
-            const h = this.highlightedItem.getAttribute("id") || "";
-            this.selectedCountry.setAttribute("aria-activedescendant", h), this.options.countrySearch && this.searchInput.setAttribute("aria-activedescendant", h);
-          }
-          u && this.highlightedItem.focus();
-        }
-        //* Find the country data for the given iso2 code
-        //* the ignoreOnlyCountriesOption is only used during init() while parsing the onlyCountries array
-        _getCountryData(a, u) {
-          for (let c = 0; c < this.countries.length; c++)
-            if (this.countries[c].iso2 === a)
-              return this.countries[c];
-          if (u)
-            return null;
-          throw new Error(`No country data for '${a}'`);
-        }
-        //* Update the selected country, dial code (if separateDialCode), placeholder, title, and active list item.
-        //* Note: called from _setInitialState, _updateCountryFromNumber, _selectListItem, setCountry.
-        _setCountry(a) {
-          const { separateDialCode: u, showFlags: c, i18n: h } = this.options, b = this.selectedCountryData.iso2 ? this.selectedCountryData : {};
-          if (this.selectedCountryData = a ? this._getCountryData(a, !1) || {} : {}, this.selectedCountryData.iso2 && (this.defaultCountry = this.selectedCountryData.iso2), this.selectedCountryInner) {
-            let v = "", N = "";
-            a && c ? (v = `iti__flag iti__${a}`, N = `${this.selectedCountryData.name} +${this.selectedCountryData.dialCode}`) : (v = "iti__flag iti__globe", N = h.noCountrySelected), this.selectedCountryInner.className = v, this.selectedCountryA11yText.textContent = N;
-          }
-          if (this._setSelectedCountryTitleAttribute(a, u), u) {
-            const v = this.selectedCountryData.dialCode ? `+${this.selectedCountryData.dialCode}` : "";
-            this.selectedDialCode.innerHTML = v, this._updateInputPadding();
-          }
-          return this._updatePlaceholder(), this._updateMaxLength(), b.iso2 !== a;
-        }
-        //* Update the input padding to make space for the selected country/dial code.
-        _updateInputPadding() {
-          if (this.selectedCountry) {
-            const u = (this.selectedCountry.offsetWidth || this._getHiddenSelectedCountryWidth()) + 6;
-            this.showSelectedCountryOnLeft ? this.telInput.style.paddingLeft = `${u}px` : this.telInput.style.paddingRight = `${u}px`;
-          }
-        }
-        //* Update the maximum valid number length for the currently selected country.
-        _updateMaxLength() {
-          const { strictMode: a, placeholderNumberType: u, validationNumberType: c } = this.options;
-          if (a && C.utils)
-            if (this.selectedCountryData.iso2) {
-              const h = C.utils.numberType[u];
-              let b = C.utils.getExampleNumber(
-                this.selectedCountryData.iso2,
-                !1,
-                h,
-                !0
-              ), v = b;
-              for (; C.utils.isPossibleNumber(b, this.selectedCountryData.iso2, c); )
-                v = b, b += "0";
-              const N = C.utils.getCoreNumber(v, this.selectedCountryData.iso2);
-              this.maxCoreNumberLength = N.length;
-            } else
-              this.maxCoreNumberLength = null;
-        }
-        _setSelectedCountryTitleAttribute(a = null, u) {
-          if (!this.selectedCountry)
-            return;
-          let c;
-          a && !u ? c = `${this.selectedCountryData.name}: +${this.selectedCountryData.dialCode}` : a ? c = this.selectedCountryData.name : c = "Unknown", this.selectedCountry.setAttribute("title", c);
-        }
-        //* When the input is in a hidden container during initialisation, we must inject some markup
-        //* into the end of the DOM to calculate the correct offsetWidth.
-        //* NOTE: this is only used when separateDialCode is enabled, so countryContainer and selectedCountry
-        //* will definitely exist.
-        _getHiddenSelectedCountryWidth() {
-          if (this.telInput.parentNode) {
-            const a = this.telInput.parentNode.cloneNode(!1);
-            a.style.visibility = "hidden", document.body.appendChild(a);
-            const u = this.countryContainer.cloneNode();
-            a.appendChild(u);
-            const c = this.selectedCountry.cloneNode(!0);
-            u.appendChild(c);
-            const h = c.offsetWidth;
-            return document.body.removeChild(a), h;
-          }
-          return 0;
-        }
-        //* Update the input placeholder to an example number from the currently selected country.
-        _updatePlaceholder() {
-          const {
-            autoPlaceholder: a,
-            placeholderNumberType: u,
-            nationalMode: c,
-            customPlaceholder: h
-          } = this.options, b = a === "aggressive" || !this.hadInitialPlaceholder && a === "polite";
-          if (C.utils && b) {
-            const v = C.utils.numberType[u];
-            let N = this.selectedCountryData.iso2 ? C.utils.getExampleNumber(
-              this.selectedCountryData.iso2,
-              c,
-              v
-            ) : "";
-            N = this._beforeSetNumber(N), typeof h == "function" && (N = h(N, this.selectedCountryData)), this.telInput.setAttribute("placeholder", N);
-          }
-        }
-        //* Called when the user selects a list item from the dropdown.
-        _selectListItem(a) {
-          const u = this._setCountry(
-            a.getAttribute("data-country-code")
-          );
-          this._closeDropdown(), this._updateDialCode(a.getAttribute("data-dial-code")), this.telInput.focus(), u && this._triggerCountryChange();
-        }
-        //* Close the dropdown and unbind any listeners.
-        _closeDropdown() {
-          this.dropdownContent.classList.add("iti__hide"), this.selectedCountry.setAttribute("aria-expanded", "false"), this.selectedCountry.removeAttribute("aria-activedescendant"), this.highlightedItem && this.highlightedItem.setAttribute("aria-selected", "false"), this.options.countrySearch && this.searchInput.removeAttribute("aria-activedescendant"), this.dropdownArrow.classList.remove("iti__arrow--up"), document.removeEventListener("keydown", this._handleKeydownOnDropdown), this.options.countrySearch && this.searchInput.removeEventListener("input", this._handleSearchChange), document.documentElement.removeEventListener(
-            "click",
-            this._handleClickOffToClose
-          ), this.countryList.removeEventListener(
-            "mouseover",
-            this._handleMouseoverCountryList
-          ), this.countryList.removeEventListener("click", this._handleClickCountryList), this.options.dropdownContainer && (this.options.useFullscreenPopup || window.removeEventListener("scroll", this._handleWindowScroll), this.dropdown.parentNode && this.dropdown.parentNode.removeChild(this.dropdown)), this._trigger("close:countrydropdown");
-        }
-        //* Check if an element is visible within it's container, else scroll until it is.
-        _scrollTo(a) {
-          const u = this.countryList, c = document.documentElement.scrollTop, h = u.offsetHeight, b = u.getBoundingClientRect().top + c, v = b + h, N = a.offsetHeight, P = a.getBoundingClientRect().top + c, re = P + N, q = P - b + u.scrollTop;
-          if (P < b)
-            u.scrollTop = q;
-          else if (re > v) {
-            const oe = h - N;
-            u.scrollTop = q - oe;
-          }
-        }
-        //* Replace any existing dial code with the new one
-        //* Note: called from _selectListItem and setCountry
-        _updateDialCode(a) {
-          const u = this.telInput.value, c = `+${a}`;
-          let h;
-          if (u.charAt(0) === "+") {
-            const b = this._getDialCode(u);
-            b ? h = u.replace(b, c) : h = c, this.telInput.value = h;
-          }
-        }
-        //* Try and extract a valid international dial code from a full telephone number.
-        //* Note: returns the raw string inc plus character and any whitespace/dots etc.
-        _getDialCode(a, u) {
-          let c = "";
-          if (a.charAt(0) === "+") {
-            let h = "";
-            for (let b = 0; b < a.length; b++) {
-              const v = a.charAt(b);
-              if (!isNaN(parseInt(v, 10))) {
-                if (h += v, u)
-                  this.dialCodeToIso2Map[h] && (c = a.substr(0, b + 1));
-                else if (this.dialCodes[h]) {
-                  c = a.substr(0, b + 1);
-                  break;
-                }
-                if (h.length === this.dialCodeMaxLen)
-                  break;
-              }
-            }
-          }
-          return c;
-        }
-        //* Get the input val, adding the dial code if separateDialCode is enabled.
-        _getFullNumber() {
-          const a = this.telInput.value.trim(), { dialCode: u } = this.selectedCountryData;
-          let c;
-          const h = F(a);
-          return this.options.separateDialCode && a.charAt(0) !== "+" && u && h ? c = `+${u}` : c = "", c + a;
-        }
-        //* Remove the dial code if separateDialCode is enabled also cap the length if the input has a maxlength attribute
-        _beforeSetNumber(a) {
-          let u = a;
-          if (this.options.separateDialCode) {
-            let c = this._getDialCode(u);
-            if (c) {
-              c = `+${this.selectedCountryData.dialCode}`;
-              const h = u[c.length] === " " || u[c.length] === "-" ? c.length + 1 : c.length;
-              u = u.substr(h);
-            }
-          }
-          return this._cap(u);
-        }
-        //* Trigger the 'countrychange' event.
-        _triggerCountryChange() {
-          this._trigger("countrychange");
-        }
-        //* Format the number as the user types.
-        _formatNumberAsYouType() {
-          const a = this._getFullNumber(), u = C.utils ? C.utils.formatNumberAsYouType(a, this.selectedCountryData.iso2) : a, { dialCode: c } = this.selectedCountryData;
-          return this.options.separateDialCode && this.telInput.value.charAt(0) !== "+" && u.includes(`+${c}`) ? (u.split(`+${c}`)[1] || "").trim() : u;
-        }
-        //**************************
-        //*  SECRET PUBLIC METHODS
-        //**************************
-        //* This is called when the geoip call returns.
-        handleAutoCountry() {
-          this.options.initialCountry === "auto" && C.autoCountry && (this.defaultCountry = C.autoCountry, this.selectedCountryData.iso2 || this.selectedCountryInner.classList.contains("iti__globe") || this.setCountry(this.defaultCountry), this.resolveAutoCountryPromise());
-        }
-        //* This is called when the utils request completes.
-        handleUtils() {
-          C.utils && (this.telInput.value && this._updateValFromNumber(this.telInput.value), this.selectedCountryData.iso2 && (this._updatePlaceholder(), this._updateMaxLength())), this.resolveUtilsScriptPromise();
-        }
-        //********************
-        //*  PUBLIC METHODS
-        //********************
-        //* Remove plugin.
-        destroy() {
-          var b, v;
-          const { allowDropdown: a, separateDialCode: u } = this.options;
-          if (a) {
-            this._closeDropdown(), this.selectedCountry.removeEventListener(
-              "click",
-              this._handleClickSelectedCountry
-            ), this.countryContainer.removeEventListener(
+            const a = this.telInput.closest("label");
+            a && a.addEventListener("click", this._handleLabelClick), this._handleClickSelectedCountry = () => {
+              this.dropdownContent.classList.contains("iti__hide") && !this.telInput.disabled && !this.telInput.readOnly && this._openDropdown();
+            }, this.selectedCountry.addEventListener("click", this._handleClickSelectedCountry), this._handleCountryContainerKeydown = (l) => {
+              this.dropdownContent.classList.contains("iti__hide") && ["ArrowUp", "ArrowDown", " ", "Enter"].includes(l.key) && (l.preventDefault(), l.stopPropagation(), this._openDropdown()), l.key === "Tab" && this._closeDropdown();
+            }, this.countryContainer.addEventListener(
               "keydown",
               this._handleCountryContainerKeydown
             );
-            const N = this.telInput.closest("label");
-            N && N.removeEventListener("click", this._handleLabelClick);
           }
-          const { form: c } = this.telInput;
-          this._handleHiddenInputSubmit && c && c.removeEventListener("submit", this._handleHiddenInputSubmit), this.telInput.removeEventListener("input", this._handleInputEvent), this._handleKeydownEvent && this.telInput.removeEventListener("keydown", this._handleKeydownEvent), this.telInput.removeAttribute("data-intl-tel-input-id"), u && (this.isRTL ? this.telInput.style.paddingRight = this.originalPaddingRight : this.telInput.style.paddingLeft = this.originalPaddingLeft);
-          const h = this.telInput.parentNode;
-          (b = h == null ? void 0 : h.parentNode) == null || b.insertBefore(this.telInput, h), (v = h == null ? void 0 : h.parentNode) == null || v.removeChild(h), delete C.instances[this.id];
-        }
-        //* Get the extension from the current number.
-        getExtension() {
-          return C.utils ? C.utils.getExtension(
-            this._getFullNumber(),
-            this.selectedCountryData.iso2
-          ) : "";
-        }
-        //* Format the number to the given format.
-        getNumber(a) {
-          if (C.utils) {
-            const { iso2: u } = this.selectedCountryData;
-            return C.utils.formatNumber(
-              this._getFullNumber(),
-              u,
-              a
+          //* Init many requests: utils script / geo ip lookup.
+          _initRequests() {
+            let { loadUtils: a, initialCountry: l, geoIpLookup: d } = this.options;
+            a && !k.utils ? (this._handlePageLoad = () => {
+              window.removeEventListener("load", this._handlePageLoad), k.attachUtils(a)?.catch(() => {
+              });
+            }, k.documentReady() ? this._handlePageLoad() : window.addEventListener("load", this._handlePageLoad)) : this.resolveUtilsScriptPromise(), l === "auto" && d && !this.selectedCountryData.iso2 ? this._loadAutoCountry() : this.resolveAutoCountryPromise();
+          }
+          //* Perform the geo ip lookup.
+          _loadAutoCountry() {
+            k.autoCountry ? this.handleAutoCountry() : k.startedLoadingAutoCountry || (k.startedLoadingAutoCountry = !0, typeof this.options.geoIpLookup == "function" && this.options.geoIpLookup(
+              (a = "") => {
+                const l = a.toLowerCase();
+                l && this._getCountryData(l, !0) ? (k.autoCountry = l, setTimeout(() => te("handleAutoCountry"))) : (this._setInitialState(!0), te("rejectAutoCountryPromise"));
+              },
+              () => {
+                this._setInitialState(!0), te("rejectAutoCountryPromise");
+              }
+            ));
+          }
+          _openDropdownWithPlus() {
+            this._openDropdown(), this.searchInput.value = "+", this._filterCountries("", !0);
+          }
+          //* Initialize the tel input listeners.
+          _initTelInputListeners() {
+            const { strictMode: a, formatAsYouType: l, separateDialCode: d, formatOnDisplay: h, allowDropdown: m, countrySearch: $ } = this.options;
+            let M = !1;
+            new RegExp("\\p{L}", "u").test(this.telInput.value) && (M = !0), this._handleInputEvent = (I) => {
+              if (this.isAndroid && I?.data === "+" && d && m && $) {
+                const E = this.telInput.selectionStart || 0, ce = this.telInput.value.substring(0, E - 1), re = this.telInput.value.substring(E);
+                this.telInput.value = ce + re, this._openDropdownWithPlus();
+                return;
+              }
+              this._updateCountryFromNumber(this.telInput.value) && this._triggerCountryChange();
+              const R = I?.data && /[^+0-9]/.test(I.data), K = I?.inputType === "insertFromPaste" && this.telInput.value;
+              R || K && !a ? M = !0 : /[^+0-9]/.test(this.telInput.value) || (M = !1);
+              const X = I?.detail && I.detail.isSetNumber && !h;
+              if (l && !M && !X) {
+                const E = this.telInput.selectionStart || 0, re = this.telInput.value.substring(0, E).replace(/[^+0-9]/g, "").length, oe = I?.inputType === "deleteContentForward", we = this._formatNumberAsYouType(), be = V(re, we, E, oe);
+                this.telInput.value = we, this.telInput.setSelectionRange(be, be);
+              }
+            }, this.telInput.addEventListener("input", this._handleInputEvent), (a || d) && (this._handleKeydownEvent = (I) => {
+              if (I.key && I.key.length === 1 && !I.altKey && !I.ctrlKey && !I.metaKey) {
+                if (d && m && $ && I.key === "+") {
+                  I.preventDefault(), this._openDropdownWithPlus();
+                  return;
+                }
+                if (a) {
+                  const R = this.telInput.value, K = R.charAt(0) === "+", X = !K && this.telInput.selectionStart === 0 && I.key === "+", E = /^[0-9]$/.test(I.key), ce = d ? E : X || E, re = R.slice(0, this.telInput.selectionStart) + I.key + R.slice(this.telInput.selectionEnd), oe = this._getFullNumber(re), we = k.utils.getCoreNumber(oe, this.selectedCountryData.iso2), be = this.maxCoreNumberLength && we.length > this.maxCoreNumberLength;
+                  let br = !1;
+                  if (K) {
+                    const Ko = this.selectedCountryData.iso2;
+                    br = this._getCountryFromNumber(oe) !== Ko;
+                  }
+                  (!ce || be && !br && !X) && I.preventDefault();
+                }
+              }
+            }, this.telInput.addEventListener("keydown", this._handleKeydownEvent));
+          }
+          //* Adhere to the input's maxlength attr.
+          _cap(a) {
+            const l = parseInt(this.telInput.getAttribute("maxlength") || "", 10);
+            return l && a.length > l ? a.substr(0, l) : a;
+          }
+          //* Trigger a custom event on the input.
+          _trigger(a, l = {}) {
+            const d = new CustomEvent(a, {
+              bubbles: !0,
+              cancelable: !0,
+              detail: l
+            });
+            this.telInput.dispatchEvent(d);
+          }
+          //* Open the dropdown.
+          _openDropdown() {
+            const { fixDropdownWidth: a, countrySearch: l } = this.options;
+            if (a && (this.dropdownContent.style.width = `${this.telInput.offsetWidth}px`), this.dropdownContent.classList.remove("iti__hide"), this.selectedCountry.setAttribute("aria-expanded", "true"), this._setDropdownPosition(), l) {
+              const d = this.countryList.firstElementChild;
+              d && (this._highlightListItem(d, !1), this.countryList.scrollTop = 0), this.searchInput.focus();
+            }
+            this._bindDropdownListeners(), this.dropdownArrow.classList.add("iti__arrow--up"), this._trigger("open:countrydropdown");
+          }
+          //* Set the dropdown position
+          _setDropdownPosition() {
+            if (this.options.dropdownContainer && this.options.dropdownContainer.appendChild(this.dropdown), !this.options.useFullscreenPopup) {
+              const a = this.telInput.getBoundingClientRect(), l = this.telInput.offsetHeight;
+              this.options.dropdownContainer && (this.dropdown.style.top = `${a.top + l}px`, this.dropdown.style.left = `${a.left}px`, this._handleWindowScroll = () => this._closeDropdown(), window.addEventListener("scroll", this._handleWindowScroll));
+            }
+          }
+          //* We only bind dropdown listeners when the dropdown is open.
+          _bindDropdownListeners() {
+            this._handleMouseoverCountryList = (h) => {
+              const m = h.target?.closest(".iti__country");
+              m && this._highlightListItem(m, !1);
+            }, this.countryList.addEventListener(
+              "mouseover",
+              this._handleMouseoverCountryList
+            ), this._handleClickCountryList = (h) => {
+              const m = h.target?.closest(".iti__country");
+              m && this._selectListItem(m);
+            }, this.countryList.addEventListener("click", this._handleClickCountryList);
+            let a = !0;
+            this._handleClickOffToClose = () => {
+              a || this._closeDropdown(), a = !1;
+            }, document.documentElement.addEventListener(
+              "click",
+              this._handleClickOffToClose
             );
+            let l = "", d = null;
+            if (this._handleKeydownOnDropdown = (h) => {
+              ["ArrowUp", "ArrowDown", "Enter", "Escape"].includes(h.key) && (h.preventDefault(), h.stopPropagation(), h.key === "ArrowUp" || h.key === "ArrowDown" ? this._handleUpDownKey(h.key) : h.key === "Enter" ? this._handleEnterKey() : h.key === "Escape" && this._closeDropdown()), !this.options.countrySearch && /^[a-zA-ZÀ-ÿа-яА-Я ]$/.test(h.key) && (h.stopPropagation(), d && clearTimeout(d), l += h.key.toLowerCase(), this._searchForCountry(l), d = setTimeout(() => {
+                l = "";
+              }, 1e3));
+            }, document.addEventListener("keydown", this._handleKeydownOnDropdown), this.options.countrySearch) {
+              const h = () => {
+                const $ = this.searchInput.value.trim();
+                $ ? this._filterCountries($) : this._filterCountries("", !0);
+              };
+              let m = null;
+              this._handleSearchChange = () => {
+                m && clearTimeout(m), m = setTimeout(() => {
+                  h(), m = null;
+                }, 100);
+              }, this.searchInput.addEventListener("input", this._handleSearchChange), this.searchInput.addEventListener("click", ($) => $.stopPropagation());
+            }
           }
-          return "";
-        }
-        //* Get the type of the entered number e.g. landline/mobile.
-        getNumberType() {
-          return C.utils ? C.utils.getNumberType(
-            this._getFullNumber(),
-            this.selectedCountryData.iso2
-          ) : -99;
-        }
-        //* Get the country data for the currently selected country.
-        getSelectedCountryData() {
-          return this.selectedCountryData;
-        }
-        //* Get the validation error.
-        getValidationError() {
-          if (C.utils) {
-            const { iso2: a } = this.selectedCountryData;
-            return C.utils.getValidationError(this._getFullNumber(), a);
+          //* Hidden search (countrySearch disabled): Find the first list item whose name starts with the query string.
+          _searchForCountry(a) {
+            for (let l = 0; l < this.countries.length; l++) {
+              const d = this.countries[l];
+              if (d.name.substr(0, a.length).toLowerCase() === a) {
+                const m = d.nodeById[this.id];
+                this._highlightListItem(m, !1), this._scrollTo(m);
+                break;
+              }
+            }
           }
-          return -99;
-        }
-        //* Validate the input val
-        isValidNumber() {
-          if (!this.selectedCountryData.iso2)
-            return !1;
-          const a = this._getFullNumber(), u = a.search(new RegExp("\\p{L}", "u"));
-          if (u > -1) {
-            const c = a.substring(0, u), h = this._utilsIsPossibleNumber(c), b = this._utilsIsPossibleNumber(a);
-            return h && b;
+          //* Country search enabled: Filter the countries according to the search query.
+          _filterCountries(a, l = !1) {
+            let d = !0;
+            this.countryList.innerHTML = "";
+            const h = J(a);
+            for (let m = 0; m < this.countries.length; m++) {
+              const $ = this.countries[m], M = J($.name), I = $.name.split(/[^a-zA-ZÀ-ÿа-яА-Я]/).map((K) => K[0]).join("").toLowerCase(), R = `+${$.dialCode}`;
+              if (l || M.includes(h) || R.includes(h) || $.iso2.includes(h) || I.includes(h)) {
+                const K = $.nodeById[this.id];
+                K && this.countryList.appendChild(K), d && (this._highlightListItem(K, !1), d = !1);
+              }
+            }
+            d && this._highlightListItem(null, !1), this.countryList.scrollTop = 0, this._updateSearchResultsText();
           }
-          return this._utilsIsPossibleNumber(a);
-        }
-        _utilsIsPossibleNumber(a) {
-          return C.utils ? C.utils.isPossibleNumber(a, this.selectedCountryData.iso2, this.options.validationNumberType) : null;
-        }
-        //* Validate the input val (precise)
-        isValidNumberPrecise() {
-          if (!this.selectedCountryData.iso2)
-            return !1;
-          const a = this._getFullNumber(), u = a.search(new RegExp("\\p{L}", "u"));
-          if (u > -1) {
-            const c = a.substring(0, u), h = this._utilsIsValidNumber(c), b = this._utilsIsValidNumber(a);
-            return h && b;
+          //* Update search results text (for a11y).
+          _updateSearchResultsText() {
+            const { i18n: a } = this.options, l = this.countryList.childElementCount;
+            let d;
+            l === 0 ? d = a.zeroSearchResults : l === 1 ? d = a.oneSearchResult : d = a.multipleSearchResults.replace("${count}", l.toString()), this.searchResultsA11yText.textContent = d;
           }
-          return this._utilsIsValidNumber(a);
-        }
-        _utilsIsValidNumber(a) {
-          return C.utils ? C.utils.isValidNumber(a, this.selectedCountryData.iso2) : null;
-        }
-        //* Update the selected country, and update the input val accordingly.
-        setCountry(a) {
-          const u = a == null ? void 0 : a.toLowerCase(), c = this.selectedCountryData.iso2;
-          (a && u !== c || !a && c) && (this._setCountry(u), this._updateDialCode(this.selectedCountryData.dialCode), this._triggerCountryChange());
-        }
-        //* Set the input value and update the country.
-        setNumber(a) {
-          const u = this._updateCountryFromNumber(a);
-          this._updateValFromNumber(a), u && this._triggerCountryChange(), this._trigger("input", { isSetNumber: !0 });
-        }
-        //* Set the placeholder number typ
-        setPlaceholderNumberType(a) {
-          this.options.placeholderNumberType = a, this._updatePlaceholder();
-        }
-        setDisabled(a) {
-          this.telInput.disabled = a, a ? this.selectedCountry.setAttribute("disabled", "true") : this.selectedCountry.removeAttribute("disabled");
-        }
-      }, j = (a) => !C.utils && !C.startedLoadingUtilsScript ? (C.startedLoadingUtilsScript = !0, new Promise((u, c) => {
-        import(
-          /* webpackIgnore: true */
-          /* @vite-ignore */
-          a
-        ).then(({ default: h }) => {
-          C.utils = h, M("handleUtils"), u(!0);
-        }).catch(() => {
-          M("rejectUtilsScriptPromise"), c();
-        });
-      })) : null, C = Object.assign(
-        (a, u) => {
-          const c = new A(a, u);
-          return c._init(), a.setAttribute("data-intl-tel-input-id", c.id.toString()), C.instances[c.id] = c, c;
-        },
-        {
-          defaults: V,
-          //* Using a static var like this allows us to mock it in the tests.
-          documentReady: () => document.readyState === "complete",
-          //* Get the country data object.
-          getCountryData: () => m,
-          //* A getter for the plugin instance.
-          getInstance: (a) => {
-            const u = a.getAttribute("data-intl-tel-input-id");
-            return u ? C.instances[u] : null;
+          //* Highlight the next/prev item in the list (and ensure it is visible).
+          _handleUpDownKey(a) {
+            let l = a === "ArrowUp" ? this.highlightedItem?.previousElementSibling : this.highlightedItem?.nextElementSibling;
+            !l && this.countryList.childElementCount > 1 && (l = a === "ArrowUp" ? this.countryList.lastElementChild : this.countryList.firstElementChild), l && (this._scrollTo(l), this._highlightListItem(l, !1));
+          }
+          //* Select the currently highlighted item.
+          _handleEnterKey() {
+            this.highlightedItem && this._selectListItem(this.highlightedItem);
+          }
+          //* Update the input's value to the given val (format first if possible)
+          //* NOTE: this is called from _setInitialState, handleUtils and setNumber.
+          _updateValFromNumber(a) {
+            let l = a;
+            if (this.options.formatOnDisplay && k.utils && this.selectedCountryData) {
+              const d = this.options.nationalMode || l.charAt(0) !== "+" && !this.options.separateDialCode, { NATIONAL: h, INTERNATIONAL: m } = k.utils.numberFormat, $ = d ? h : m;
+              l = k.utils.formatNumber(
+                l,
+                this.selectedCountryData.iso2,
+                $
+              );
+            }
+            l = this._beforeSetNumber(l), this.telInput.value = l;
+          }
+          //* Check if need to select a new country based on the given number
+          //* Note: called from _setInitialState, keyup handler, setNumber.
+          _updateCountryFromNumber(a) {
+            const l = this._getCountryFromNumber(a);
+            return l !== null ? this._setCountry(l) : !1;
+          }
+          _ensureHasDialCode(a) {
+            const { dialCode: l, nationalPrefix: d } = this.selectedCountryData;
+            if (a.charAt(0) === "+" || !l)
+              return a;
+            const $ = d && a.charAt(0) === d && !this.options.separateDialCode ? a.substring(1) : a;
+            return `+${l}${$}`;
+          }
+          _getCountryFromNumber(a) {
+            const l = a.indexOf("+");
+            let d = l ? a.substring(l) : a;
+            const h = this.selectedCountryData.iso2, m = this.selectedCountryData.dialCode;
+            d = this._ensureHasDialCode(d);
+            const $ = this._getDialCode(d, !0), M = q(d);
+            if ($) {
+              const I = q($), R = this.dialCodeToIso2Map[I];
+              if (!h && this.defaultCountry && R.includes(this.defaultCountry))
+                return this.defaultCountry;
+              const K = h && R.includes(h) && (M.length === I.length || !this.selectedCountryData.areaCodes);
+              if (!(m === "1" && T(M)) && !K) {
+                for (let E = 0; E < R.length; E++)
+                  if (R[E])
+                    return R[E];
+              }
+            } else {
+              if (d.charAt(0) === "+" && M.length)
+                return "";
+              if ((!d || d === "+") && !this.selectedCountryData.iso2)
+                return this.defaultCountry;
+            }
+            return null;
+          }
+          //* Remove highlighting from other list items and highlight the given item.
+          _highlightListItem(a, l) {
+            const d = this.highlightedItem;
+            if (d && (d.classList.remove("iti__highlight"), d.setAttribute("aria-selected", "false")), this.highlightedItem = a, this.highlightedItem) {
+              this.highlightedItem.classList.add("iti__highlight"), this.highlightedItem.setAttribute("aria-selected", "true");
+              const h = this.highlightedItem.getAttribute("id") || "";
+              this.selectedCountry.setAttribute("aria-activedescendant", h), this.options.countrySearch && this.searchInput.setAttribute("aria-activedescendant", h);
+            }
+            l && this.highlightedItem.focus();
+          }
+          //* Find the country data for the given iso2 code
+          //* the ignoreOnlyCountriesOption is only used during init() while parsing the onlyCountries array
+          _getCountryData(a, l) {
+            for (let d = 0; d < this.countries.length; d++)
+              if (this.countries[d].iso2 === a)
+                return this.countries[d];
+            if (l)
+              return null;
+            throw new Error(`No country data for '${a}'`);
+          }
+          //* Update the selected country, dial code (if separateDialCode), placeholder, title, and active list item.
+          //* Note: called from _setInitialState, _updateCountryFromNumber, _selectListItem, setCountry.
+          _setCountry(a) {
+            const { separateDialCode: l, showFlags: d, i18n: h } = this.options, m = this.selectedCountryData.iso2 ? this.selectedCountryData : {};
+            if (this.selectedCountryData = a ? this._getCountryData(a, !1) || {} : {}, this.selectedCountryData.iso2 && (this.defaultCountry = this.selectedCountryData.iso2), this.selectedCountryInner) {
+              let $ = "", M = "";
+              a && d ? ($ = `iti__flag iti__${a}`, M = `${this.selectedCountryData.name} +${this.selectedCountryData.dialCode}`) : ($ = "iti__flag iti__globe", M = h.noCountrySelected), this.selectedCountryInner.className = $, this.selectedCountryA11yText.textContent = M;
+            }
+            if (this._setSelectedCountryTitleAttribute(a, l), l) {
+              const $ = this.selectedCountryData.dialCode ? `+${this.selectedCountryData.dialCode}` : "";
+              this.selectedDialCode.innerHTML = $, this._updateInputPadding();
+            }
+            return this._updatePlaceholder(), this._updateMaxLength(), m.iso2 !== a;
+          }
+          //* Update the input padding to make space for the selected country/dial code.
+          _updateInputPadding() {
+            if (this.selectedCountry) {
+              const l = (this.selectedCountry.offsetWidth || this._getHiddenSelectedCountryWidth()) + 6;
+              this.showSelectedCountryOnLeft ? this.telInput.style.paddingLeft = `${l}px` : this.telInput.style.paddingRight = `${l}px`;
+            }
+          }
+          //* Update the maximum valid number length for the currently selected country.
+          _updateMaxLength() {
+            const { strictMode: a, placeholderNumberType: l, validationNumberTypes: d } = this.options, { iso2: h } = this.selectedCountryData;
+            if (a && k.utils)
+              if (h) {
+                const m = k.utils.numberType[l];
+                let $ = k.utils.getExampleNumber(
+                  h,
+                  !1,
+                  m,
+                  !0
+                ), M = $;
+                for (; k.utils.isPossibleNumber($, h, d); )
+                  M = $, $ += "0";
+                const I = k.utils.getCoreNumber(M, h);
+                this.maxCoreNumberLength = I.length, h === "by" && (this.maxCoreNumberLength = I.length + 1);
+              } else
+                this.maxCoreNumberLength = null;
+          }
+          _setSelectedCountryTitleAttribute(a = null, l) {
+            if (!this.selectedCountry)
+              return;
+            let d;
+            a && !l ? d = `${this.selectedCountryData.name}: +${this.selectedCountryData.dialCode}` : a ? d = this.selectedCountryData.name : d = "Unknown", this.selectedCountry.setAttribute("title", d);
+          }
+          //* When the input is in a hidden container during initialisation, we must inject some markup
+          //* into the end of the DOM to calculate the correct offsetWidth.
+          //* NOTE: this is only used when separateDialCode is enabled, so countryContainer and selectedCountry
+          //* will definitely exist.
+          _getHiddenSelectedCountryWidth() {
+            if (this.telInput.parentNode) {
+              const a = this.telInput.parentNode.cloneNode(!1);
+              a.style.visibility = "hidden", document.body.appendChild(a);
+              const l = this.countryContainer.cloneNode();
+              a.appendChild(l);
+              const d = this.selectedCountry.cloneNode(!0);
+              l.appendChild(d);
+              const h = d.offsetWidth;
+              return document.body.removeChild(a), h;
+            }
+            return 0;
+          }
+          //* Update the input placeholder to an example number from the currently selected country.
+          _updatePlaceholder() {
+            const {
+              autoPlaceholder: a,
+              placeholderNumberType: l,
+              nationalMode: d,
+              customPlaceholder: h
+            } = this.options, m = a === "aggressive" || !this.hadInitialPlaceholder && a === "polite";
+            if (k.utils && m) {
+              const $ = k.utils.numberType[l];
+              let M = this.selectedCountryData.iso2 ? k.utils.getExampleNumber(
+                this.selectedCountryData.iso2,
+                d,
+                $
+              ) : "";
+              M = this._beforeSetNumber(M), typeof h == "function" && (M = h(M, this.selectedCountryData)), this.telInput.setAttribute("placeholder", M);
+            }
+          }
+          //* Called when the user selects a list item from the dropdown.
+          _selectListItem(a) {
+            const l = this._setCountry(
+              a.getAttribute("data-country-code")
+            );
+            this._closeDropdown(), this._updateDialCode(a.getAttribute("data-dial-code")), this.telInput.focus(), l && this._triggerCountryChange();
+          }
+          //* Close the dropdown and unbind any listeners.
+          _closeDropdown() {
+            this.dropdownContent.classList.add("iti__hide"), this.selectedCountry.setAttribute("aria-expanded", "false"), this.selectedCountry.removeAttribute("aria-activedescendant"), this.highlightedItem && this.highlightedItem.setAttribute("aria-selected", "false"), this.options.countrySearch && this.searchInput.removeAttribute("aria-activedescendant"), this.dropdownArrow.classList.remove("iti__arrow--up"), document.removeEventListener("keydown", this._handleKeydownOnDropdown), this.options.countrySearch && this.searchInput.removeEventListener("input", this._handleSearchChange), document.documentElement.removeEventListener(
+              "click",
+              this._handleClickOffToClose
+            ), this.countryList.removeEventListener(
+              "mouseover",
+              this._handleMouseoverCountryList
+            ), this.countryList.removeEventListener("click", this._handleClickCountryList), this.options.dropdownContainer && (this.options.useFullscreenPopup || window.removeEventListener("scroll", this._handleWindowScroll), this.dropdown.parentNode && this.dropdown.parentNode.removeChild(this.dropdown)), this._handlePageLoad && window.removeEventListener("load", this._handlePageLoad), this._trigger("close:countrydropdown");
+          }
+          //* Check if an element is visible within it's container, else scroll until it is.
+          _scrollTo(a) {
+            const l = this.countryList, d = document.documentElement.scrollTop, h = l.offsetHeight, m = l.getBoundingClientRect().top + d, $ = m + h, M = a.offsetHeight, I = a.getBoundingClientRect().top + d, R = I + M, K = I - m + l.scrollTop;
+            if (I < m)
+              l.scrollTop = K;
+            else if (R > $) {
+              const X = h - M;
+              l.scrollTop = K - X;
+            }
+          }
+          //* Replace any existing dial code with the new one
+          //* Note: called from _selectListItem and setCountry
+          _updateDialCode(a) {
+            const l = this.telInput.value, d = `+${a}`;
+            let h;
+            if (l.charAt(0) === "+") {
+              const m = this._getDialCode(l);
+              m ? h = l.replace(m, d) : h = d, this.telInput.value = h;
+            }
+          }
+          //* Try and extract a valid international dial code from a full telephone number.
+          //* Note: returns the raw string inc plus character and any whitespace/dots etc.
+          _getDialCode(a, l) {
+            let d = "";
+            if (a.charAt(0) === "+") {
+              let h = "";
+              for (let m = 0; m < a.length; m++) {
+                const $ = a.charAt(m);
+                if (!isNaN(parseInt($, 10))) {
+                  if (h += $, l)
+                    this.dialCodeToIso2Map[h] && (d = a.substr(0, m + 1));
+                  else if (this.dialCodes[h]) {
+                    d = a.substr(0, m + 1);
+                    break;
+                  }
+                  if (h.length === this.dialCodeMaxLen)
+                    break;
+                }
+              }
+            }
+            return d;
+          }
+          //* Get the input val, adding the dial code if separateDialCode is enabled.
+          _getFullNumber(a) {
+            const l = a || this.telInput.value.trim(), { dialCode: d } = this.selectedCountryData;
+            let h;
+            const m = q(l);
+            return this.options.separateDialCode && l.charAt(0) !== "+" && d && m ? h = `+${d}` : h = "", h + l;
+          }
+          //* Remove the dial code if separateDialCode is enabled also cap the length if the input has a maxlength attribute
+          _beforeSetNumber(a) {
+            let l = a;
+            if (this.options.separateDialCode) {
+              let d = this._getDialCode(l);
+              if (d) {
+                d = `+${this.selectedCountryData.dialCode}`;
+                const h = l[d.length] === " " || l[d.length] === "-" ? d.length + 1 : d.length;
+                l = l.substr(h);
+              }
+            }
+            return this._cap(l);
+          }
+          //* Trigger the 'countrychange' event.
+          _triggerCountryChange() {
+            this._trigger("countrychange");
+          }
+          //* Format the number as the user types.
+          _formatNumberAsYouType() {
+            const a = this._getFullNumber(), l = k.utils ? k.utils.formatNumberAsYouType(a, this.selectedCountryData.iso2) : a, { dialCode: d } = this.selectedCountryData;
+            return this.options.separateDialCode && this.telInput.value.charAt(0) !== "+" && l.includes(`+${d}`) ? (l.split(`+${d}`)[1] || "").trim() : l;
+          }
+          //**************************
+          //*  SECRET PUBLIC METHODS
+          //**************************
+          //* This is called when the geoip call returns.
+          handleAutoCountry() {
+            this.options.initialCountry === "auto" && k.autoCountry && (this.defaultCountry = k.autoCountry, this.selectedCountryData.iso2 || this.selectedCountryInner.classList.contains("iti__globe") || this.setCountry(this.defaultCountry), this.resolveAutoCountryPromise());
+          }
+          //* This is called when the utils request completes.
+          handleUtils() {
+            k.utils && (this.telInput.value && this._updateValFromNumber(this.telInput.value), this.selectedCountryData.iso2 && (this._updatePlaceholder(), this._updateMaxLength())), this.resolveUtilsScriptPromise();
+          }
+          //********************
+          //*  PUBLIC METHODS
+          //********************
+          //* Remove plugin.
+          destroy() {
+            const { allowDropdown: a, separateDialCode: l } = this.options;
+            if (a) {
+              this._closeDropdown(), this.selectedCountry.removeEventListener(
+                "click",
+                this._handleClickSelectedCountry
+              ), this.countryContainer.removeEventListener(
+                "keydown",
+                this._handleCountryContainerKeydown
+              );
+              const m = this.telInput.closest("label");
+              m && m.removeEventListener("click", this._handleLabelClick);
+            }
+            const { form: d } = this.telInput;
+            this._handleHiddenInputSubmit && d && d.removeEventListener("submit", this._handleHiddenInputSubmit), this.telInput.removeEventListener("input", this._handleInputEvent), this._handleKeydownEvent && this.telInput.removeEventListener("keydown", this._handleKeydownEvent), this.telInput.removeAttribute("data-intl-tel-input-id"), l && (this.isRTL ? this.telInput.style.paddingRight = this.originalPaddingRight : this.telInput.style.paddingLeft = this.originalPaddingLeft);
+            const h = this.telInput.parentNode;
+            h?.parentNode?.insertBefore(this.telInput, h), h?.parentNode?.removeChild(h), delete k.instances[this.id];
+          }
+          //* Get the extension from the current number.
+          getExtension() {
+            return k.utils ? k.utils.getExtension(
+              this._getFullNumber(),
+              this.selectedCountryData.iso2
+            ) : "";
+          }
+          //* Format the number to the given format.
+          getNumber(a) {
+            if (k.utils) {
+              const { iso2: l } = this.selectedCountryData;
+              return k.utils.formatNumber(
+                this._getFullNumber(),
+                l,
+                a
+              );
+            }
+            return "";
+          }
+          //* Get the type of the entered number e.g. landline/mobile.
+          getNumberType() {
+            return k.utils ? k.utils.getNumberType(
+              this._getFullNumber(),
+              this.selectedCountryData.iso2
+            ) : -99;
+          }
+          //* Get the country data for the currently selected country.
+          getSelectedCountryData() {
+            return this.selectedCountryData;
+          }
+          //* Get the validation error.
+          getValidationError() {
+            if (k.utils) {
+              const { iso2: a } = this.selectedCountryData;
+              return k.utils.getValidationError(this._getFullNumber(), a);
+            }
+            return -99;
+          }
+          //* Validate the input val
+          isValidNumber() {
+            if (!this.selectedCountryData.iso2)
+              return !1;
+            const a = this._getFullNumber(), l = a.search(new RegExp("\\p{L}", "u"));
+            if (l > -1) {
+              const d = a.substring(0, l), h = this._utilsIsPossibleNumber(d), m = this._utilsIsPossibleNumber(a);
+              return h && m;
+            }
+            return this._utilsIsPossibleNumber(a);
+          }
+          _utilsIsPossibleNumber(a) {
+            return k.utils ? k.utils.isPossibleNumber(a, this.selectedCountryData.iso2, this.options.validationNumberTypes) : null;
+          }
+          //* Validate the input val (precise)
+          isValidNumberPrecise() {
+            if (!this.selectedCountryData.iso2)
+              return !1;
+            const a = this._getFullNumber(), l = a.search(new RegExp("\\p{L}", "u"));
+            if (l > -1) {
+              const d = a.substring(0, l), h = this._utilsIsValidNumber(d), m = this._utilsIsValidNumber(a);
+              return h && m;
+            }
+            return this._utilsIsValidNumber(a);
+          }
+          _utilsIsValidNumber(a) {
+            return k.utils ? k.utils.isValidNumber(a, this.selectedCountryData.iso2, this.options.validationNumberTypes) : null;
+          }
+          //* Update the selected country, and update the input val accordingly.
+          setCountry(a) {
+            const l = a?.toLowerCase(), d = this.selectedCountryData.iso2;
+            (a && l !== d || !a && d) && (this._setCountry(l), this._updateDialCode(this.selectedCountryData.dialCode), this._triggerCountryChange());
+          }
+          //* Set the input value and update the country.
+          setNumber(a) {
+            const l = this._updateCountryFromNumber(a);
+            this._updateValFromNumber(a), l && this._triggerCountryChange(), this._trigger("input", { isSetNumber: !0 });
+          }
+          //* Set the placeholder number typ
+          setPlaceholderNumberType(a) {
+            this.options.placeholderNumberType = a, this._updatePlaceholder();
+          }
+          setDisabled(a) {
+            this.telInput.disabled = a, a ? this.selectedCountry.setAttribute("disabled", "true") : this.selectedCountry.removeAttribute("disabled");
+          }
+        }, ue = (a) => {
+          if (!k.utils && !k.startedLoadingUtilsScript) {
+            let l;
+            if (typeof a == "function")
+              try {
+                l = Promise.resolve(a());
+              } catch (d) {
+                return Promise.reject(d);
+              }
+            else
+              return Promise.reject(new TypeError(`The argument passed to attachUtils must be a function that returns a promise for the utilities module, not ${typeof a}`));
+            return k.startedLoadingUtilsScript = !0, l.then((d) => {
+              const h = d?.default;
+              if (!h || typeof h != "object")
+                throw new TypeError("The loader function passed to attachUtils did not resolve to a module object with utils as its default export.");
+              return k.utils = h, te("handleUtils"), !0;
+            }).catch((d) => {
+              throw te("rejectUtilsScriptPromise", d), d;
+            });
+          }
+          return null;
+        }, k = Object.assign(
+          (a, l) => {
+            const d = new Q(a, l);
+            return d._init(), a.setAttribute("data-intl-tel-input-id", d.id.toString()), k.instances[d.id] = d, d;
           },
-          //* A map from instance ID to instance object.
-          instances: {},
-          loadUtils: j,
-          version: "24.4.0"
-        }
-      ), te = C;
-      return d(p);
-    })();
-    return t.default;
-  });
-})(No);
-var Su = No.exports;
-const Iu = /* @__PURE__ */ $u(Su), Tu = ["placeholder", "data-testid"], Hu = {
+          {
+            defaults: W,
+            //* Using a static var like this allows us to mock it in the tests.
+            documentReady: () => document.readyState === "complete",
+            //* Get the country data object.
+            getCountryData: () => b,
+            //* A getter for the plugin instance.
+            getInstance: (a) => {
+              const l = a.getAttribute("data-intl-tel-input-id");
+              return l ? k.instances[l] : null;
+            },
+            //* A map from instance ID to instance object.
+            instances: {},
+            attachUtils: ue,
+            startedLoadingUtilsScript: !1,
+            startedLoadingAutoCountry: !1,
+            version: "25.3.1"
+          }
+        ), le = k;
+        return p(c);
+      })();
+      return t.default;
+    });
+  }(Gt)), Gt.exports;
+}
+var Au = Iu();
+const Pu = /* @__PURE__ */ Tu(Au), Lu = ["placeholder", "data-testid"], Uu = {
   __name: "TwcPhoneInput",
-  props: /* @__PURE__ */ gt({
+  props: /* @__PURE__ */ rt({
     ipInfoKey: {
       type: String,
       default: ""
@@ -8437,46 +9496,46 @@ const Iu = /* @__PURE__ */ $u(Su), Tu = ["placeholder", "data-testid"], Hu = {
     },
     modelModifiers: {}
   }),
-  emits: /* @__PURE__ */ gt(["change", "update:modelValue"], ["update:modelValue"]),
+  emits: /* @__PURE__ */ rt(["change", "update:modelValue"], ["update:modelValue"]),
   setup(e, { emit: t }) {
-    const r = ie(null), o = ie(null), n = ie(!1), i = Yr(e, "modelValue"), s = e, l = t;
-    function d() {
-      n.value = o.value.isValidNumber(), n.value ? l("change", r.value.value, !0, o.value.getNumber()) : l("change", r.value.value, !1);
+    const r = ae(null), o = ae(null), n = ae(!1), i = nr(e, "modelValue"), s = e, u = t;
+    function p() {
+      n.value = o.value.isValidNumber(), n.value ? u("change", r.value.value, !0, o.value.getNumber()) : u("change", r.value.value, !1);
     }
-    const p = x(() => {
-      let g = "TwcPhoneInput mt-1 !text-base bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-sm iti__tel-input";
-      return n.value && (g += " border-green-500 focus:border-green-500 focus:outline-green-500 focus:ring-green-500 bg-green-50"), s.displayError && (g += " border-red-500 focus:border-red-500 focus:outline-red-500 bg-red-50"), g;
+    const c = v(() => {
+      let f = "TwcPhoneInput mt-1 !text-base bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-sm iti__tel-input";
+      return n.value && (f += " border-green-500 focus:border-green-500 focus:outline-green-500 focus:ring-green-500 bg-green-50"), s.displayError && (f += " border-red-500 focus:border-red-500 focus:outline-red-500 bg-red-50"), f;
     });
-    return _t(() => {
-      const g = (f) => {
-        localStorage != null && localStorage.getItem("ipCountry") ? f(localStorage.getItem("ipCountry")) : s.ipInfoKey ? fetch(`https://ipinfo.io/json?token=${s.ipInfoKey}`, {
+    return It(() => {
+      const f = (g) => {
+        localStorage?.getItem("ipCountry") ? g(localStorage.getItem("ipCountry")) : s.ipInfoKey ? fetch(`https://ipinfo.io/json?token=${s.ipInfoKey}`, {
           headers: { Accept: "application/json" }
-        }).then((m) => m.json()).then((m) => {
-          f(m.country), localStorage == null || localStorage.setItem("ipCountry", m.country);
+        }).then((b) => b.json()).then((b) => {
+          g(b.country), localStorage?.setItem("ipCountry", b.country);
         }).catch(() => {
-          f("US");
-        }) : f("US");
+          g("US");
+        }) : g("US");
       };
-      o.value = Iu(r.value, {
+      o.value = Pu(r.value, {
         initialCountry: "auto",
-        geoIpLookup: g,
+        geoIpLookup: f,
         autoPlaceholder: "off",
-        utilsScript: process.env.NODE_ENV == "test" ? "" : "https://cdn.jsdelivr.net/npm/intl-tel-input@24.4.0/build/js/utils.js"
+        loadUtils: () => import("./utils-DvbN-1pr.js")
       });
-    }), (g, f) => Ct((w(), L("input", {
-      "onUpdate:modelValue": f[0] || (f[0] = (m) => i.value = m),
+    }), (f, g) => At((x(), N("input", {
+      "onUpdate:modelValue": g[0] || (g[0] = (b) => i.value = b),
       ref_key: "phoneInput",
       ref: r,
       type: "tel",
-      placeholder: g.$props.placeholder,
-      class: H(p.value),
-      "data-testid": g.$props.dataTestid,
-      onInput: d
-    }, null, 42, Tu)), [
-      [Xo, i.value]
+      placeholder: f.$props.placeholder,
+      class: H(c.value),
+      "data-testid": f.$props.dataTestid,
+      onInput: p
+    }, null, 42, Lu)), [
+      [bn, i.value]
     ]);
   }
-}, Vu = {
+}, qu = {
   __name: "TwcSpinner",
   props: {
     color: {
@@ -8508,12 +9567,12 @@ const Iu = /* @__PURE__ */ $u(Su), Tu = ["placeholder", "data-testid"], Hu = {
           return "!animate-[spin_0.75s_linear_infinite]";
       }
     }
-    return (o, n) => (w(), L("div", {
+    return (o, n) => (x(), N("div", {
       class: H(`h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-surface ${r()} ${t.color} ${t.class}`),
       role: "status"
     }, null, 2));
   }
-}, Wu = {
+}, Ku = {
   __name: "TwcIcon",
   props: {
     type: {
@@ -8546,24 +9605,24 @@ const Iu = /* @__PURE__ */ $u(Su), Tu = ["placeholder", "data-testid"], Hu = {
     function r() {
       return t.custom ? `fa-kit fa-${t.icon} fa-${t.size}` : `${t.sharp ? "fa-sharp " : ""}fa-${t.type} fa-${t.icon} fa-${t.size}`;
     }
-    return (o, n) => (w(), L("i", {
+    return (o, n) => (x(), N("i", {
       class: H(`${r()} ${t.class}`)
     }, null, 2));
   }
-}, Pu = {
+}, Nu = {
   __name: "TwcAccordionTable",
   setup(e) {
-    return (t, r) => (w(), Q(T(tn), { class: "TwcAccordionTable" }, {
-      default: Z(() => [
-        z(t.$slots, "default", {}, void 0, !0)
+    return (t, r) => (x(), ee(A(ti), { class: "TwcAccordionTable" }, {
+      default: ie(() => [
+        j(t.$slots, "default", {}, void 0, !0)
       ]),
       _: 3
     }));
   }
-}, Gu = /* @__PURE__ */ Ve(Pu, [["__scopeId", "data-v-7d937965"]]), Lu = { class: "flex" }, Au = {
+}, Yu = /* @__PURE__ */ Ke(Nu, [["__scopeId", "data-v-7d937965"]]), zu = { class: "flex" }, Du = {
   key: 0,
   class: "flex-1 mr-5"
-}, Nu = {
+}, Mu = {
   __name: "TwcAccordionTableRow",
   props: {
     data: {
@@ -8573,25 +9632,25 @@ const Iu = /* @__PURE__ */ $u(Su), Tu = ["placeholder", "data-testid"], Hu = {
     }
   },
   setup(e) {
-    return (t, r) => (w(), Q(T(Fn), { class: "TwcAccordionTableRow" }, {
-      default: Z(() => [
-        Ye(T(jn), null, {
-          default: Z(() => [
-            R("div", Lu, [
-              (w(!0), L(Be, null, Jr(e.data, (o, n) => (w(), L("div", {
+    return (t, r) => (x(), ee(A(ci), { class: "TwcAccordionTableRow" }, {
+      default: ie(() => [
+        tt(A(li), null, {
+          default: ie(() => [
+            U("div", zu, [
+              (x(!0), N(We, null, co(e.data, (o, n) => (x(), N("div", {
                 key: n,
                 class: "flex-1 self-center first:font-bold uppercase"
-              }, ne(o), 1))), 128)),
-              t.$slots.action ? (w(), L("div", Au, [
-                z(t.$slots, "action", {}, void 0, !0)
-              ])) : U("", !0)
+              }, de(o), 1))), 128)),
+              t.$slots.action ? (x(), N("div", Du, [
+                j(t.$slots, "action", {}, void 0, !0)
+              ])) : Y("", !0)
             ])
           ]),
           _: 3
         }),
-        Ye(T(Nn), null, {
-          default: Z(() => [
-            z(t.$slots, "default", {}, void 0, !0)
+        tt(A(oi), null, {
+          default: ie(() => [
+            j(t.$slots, "default", {}, void 0, !0)
           ]),
           _: 3
         })
@@ -8599,19 +9658,19 @@ const Iu = /* @__PURE__ */ $u(Su), Tu = ["placeholder", "data-testid"], Hu = {
       _: 3
     }));
   }
-}, Uu = /* @__PURE__ */ Ve(Nu, [["__scopeId", "data-v-3a028803"]]);
+}, Ju = /* @__PURE__ */ Ke(Mu, [["__scopeId", "data-v-3a028803"]]);
 export {
-  Gu as TwcAccordionTable,
-  Uu as TwcAccordionTableRow,
-  zu as TwcButton,
-  Ou as TwcHeading,
-  Wu as TwcIcon,
-  Mu as TwcInput,
-  Bu as TwcLabel,
-  ju as TwcLink,
-  Ru as TwcParagraph,
-  Hu as TwcPhoneInput,
-  Fu as TwcSelect,
-  Vu as TwcSpinner,
-  Eu as TwcToggle
+  Yu as TwcAccordionTable,
+  Ju as TwcAccordionTableRow,
+  Ou as TwcButton,
+  Ru as TwcHeading,
+  Ku as TwcIcon,
+  Fu as TwcInput,
+  Hu as TwcLabel,
+  Vu as TwcLink,
+  Wu as TwcParagraph,
+  Uu as TwcPhoneInput,
+  Gu as TwcSelect,
+  qu as TwcSpinner,
+  ju as TwcToggle
 };
