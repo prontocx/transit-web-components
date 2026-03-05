@@ -17,7 +17,7 @@ jobs:
           token: ${{ secrets.APP_MONOREPO }}
           submodules: false
 
-      - name: Bump salud-360-be pointer
+      - name: Bump transit-web-components pointer in the monorepo
         run: |
           # Use GITHUB_TOKEN to clone this repo as submodule (has read access to current repo)
           git config --global url."https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/".insteadOf "https://github.com/"
