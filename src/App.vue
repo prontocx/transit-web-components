@@ -1,6 +1,6 @@
 <template>
   <fwb-tabs v-model="activeTab" variant="underline" class="p-5">
-    <!-- Buttons -->
+    
     <fwb-tab name="buttons" title="Buttons">
       <TwcButton size="sm">Primary (small)</TwcButton>
       <span class="ml-2"></span>
