@@ -1,0 +1,29 @@
+name: Update monorepo submodule pointer
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  bump-submodule:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: monorepo-submodule-update
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: prontocx/app
+          token: ${{ secrets.APP_MONOREPO }}
+          submodules: false
+
+      - name: Bump salud-360-be pointer
+        run: |
+          # Use GITHUB_TOKEN to clone this repo as submodule (has read access to current repo)
+          git config --global url."https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/".insteadOf "https://github.com/"
+          git submodule update --init --remote transit-web-components
+          git config user.email "ci-bot@prontocx.com"
+          git config user.name "CI Bot"
+          git add transit-web-components
+          git diff --staged --quiet || git commit -m "chore: bump transit-web-components to $(git -C transit-web-components rev-parse --short HEAD)"
+          git push
