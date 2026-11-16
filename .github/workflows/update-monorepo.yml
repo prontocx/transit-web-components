@@ -4,6 +4,9 @@ on:
   push:
     branches: [main]
 
+permissions:
+  contents: read
+
 jobs:
   bump-submodule:
     runs-on: ubuntu-latest
@@ -15,44 +18,52 @@ jobs:
         id: app-token
         uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3
         with:
-          app-id: ${{ secrets.PRONTO_MONOREPO_APP_ID }}
+          client-id: ${{ secrets.PRONTO_MONOREPO_APP_CLIENT_ID }}
           private-key: ${{ secrets.PRONTO_MONOREPO_APP_PRIVATE_KEY }}
           owner: prontocx
           repositories: transit
 
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
-        with:
-          repository: prontocx/transit
-          token: ${{ steps.app-token.outputs.token }}
-          submodules: false
-
+      # The commit is created through the Git Data API instead of git push so GitHub signs it
+      # as the app; a gitlink (mode 160000) cannot be set with createCommitOnBranch.
       - name: Bump transit-web-components pointer in the monorepo
+        env:
+          MONOREPO: prontocx/transit
+          SUBMODULE: transit-web-components
+          APP_TOKEN: ${{ steps.app-token.outputs.token }}
+          GITHUB_TOKEN: ${{ github.token }}
         run: |
-          # Use GITHUB_TOKEN to clone this repo as submodule (has read access to current repo)
-          git config --global url."https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/prontocx/transit-web-components.git".insteadOf "https://github.com/prontocx/transit-web-components.git"
-          git config user.email "ci-bot@prontocx.com"
-          git config user.name "CI Bot"
+          set -euo pipefail
 
-          git submodule update --init --remote transit-web-components
-          git add transit-web-components
-          if git diff --staged --quiet; then
-            echo "No pointer change needed."
-            exit 0
-          fi
-          git commit -m "chore: bump transit-web-components to $(git -C transit-web-components rev-parse --short HEAD)"
+          # Read the branch tip, not github.sha, so a re-run of an old push never moves the pointer back.
+          target=$(GH_TOKEN="$GITHUB_TOKEN" gh api "repos/$GITHUB_REPOSITORY/commits/$GITHUB_REF_NAME" --jq .sha)
+          export GH_TOKEN="$APP_TOKEN"
 
-          # Concurrency above only guards overlapping runs within this repo; the other
-          # Transit repos can push a bump to prontocx/transit at nearly the same time, so
-          # retry with a rebase if our push gets rejected as non-fast-forward.
-          for attempt in 1 2 3; do
-            if git push; then
-              break
+          # The other repos bump the same monorepo, so a non-fast-forward ref update is retried from the new head.
+          for attempt in 1 2 3 4 5; do
+            head=$(gh api "repos/$MONOREPO/git/ref/heads/main" --jq .object.sha)
+            current=$(gh api "repos/$MONOREPO/contents/$SUBMODULE?ref=$head" --jq .sha)
+            if [ "$current" = "$target" ]; then
+              echo "No pointer change needed."
+              exit 0
             fi
-            if [ "$attempt" = "3" ]; then
-              echo "Push failed after 3 attempts" >&2
-              exit 1
+
+            base_tree=$(gh api "repos/$MONOREPO/git/commits/$head" --jq .tree.sha)
+            tree=$(jq -n --arg base "$base_tree" --arg path "$SUBMODULE" --arg sha "$target" \
+              '{base_tree: $base, tree: [{path: $path, mode: "160000", type: "commit", sha: $sha}]}' \
+              | gh api "repos/$MONOREPO/git/trees" --input - --jq .sha)
+            commit=$(jq -n --arg msg "chore: bump $SUBMODULE to ${target:0:8}" --arg tree "$tree" --arg parent "$head" \
+              '{message: $msg, tree: $tree, parents: [$parent]}' \
+              | gh api "repos/$MONOREPO/git/commits" --input - --jq .sha)
+
+            if jq -n --arg sha "$commit" '{sha: $sha, force: false}' \
+              | gh api -X PATCH "repos/$MONOREPO/git/refs/heads/main" --input - --silent; then
+              echo "Bumped $SUBMODULE to $target in $MONOREPO ($commit)."
+              exit 0
             fi
-            echo "Push rejected, retrying ($attempt/3)..."
-            git fetch origin main
-            git rebase origin/main
+
+            echo "Ref update rejected, retrying ($attempt/5)..."
+            sleep $((attempt * 2))
           done
+
+          echo "Bump failed after 5 attempts" >&2
+          exit 1
