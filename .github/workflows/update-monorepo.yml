@@ -11,19 +11,48 @@ jobs:
       group: monorepo-submodule-update
       cancel-in-progress: false
     steps:
-      - uses: actions/checkout@v4
+      - name: Generate app token
+        id: app-token
+        uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3
+        with:
+          app-id: ${{ secrets.PRONTO_MONOREPO_APP_ID }}
+          private-key: ${{ secrets.PRONTO_MONOREPO_APP_PRIVATE_KEY }}
+          owner: prontocx
+          repositories: transit
+
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           repository: prontocx/transit
-          token: ${{ secrets.APP_MONOREPO }}
+          token: ${{ steps.app-token.outputs.token }}
           submodules: false
 
       - name: Bump transit-web-components pointer in the monorepo
         run: |
           # Use GITHUB_TOKEN to clone this repo as submodule (has read access to current repo)
-          git config --global url."https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/".insteadOf "https://github.com/"
-          git submodule update --init --remote transit-web-components
+          git config --global url."https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/prontocx/transit-web-components.git".insteadOf "https://github.com/prontocx/transit-web-components.git"
           git config user.email "ci-bot@prontocx.com"
           git config user.name "CI Bot"
+
+          git submodule update --init --remote transit-web-components
           git add transit-web-components
-          git diff --staged --quiet || git commit -m "chore: bump transit-web-components to $(git -C transit-web-components rev-parse --short HEAD)"
-          git push
+          if git diff --staged --quiet; then
+            echo "No pointer change needed."
+            exit 0
+          fi
+          git commit -m "chore: bump transit-web-components to $(git -C transit-web-components rev-parse --short HEAD)"
+
+          # Concurrency above only guards overlapping runs within this repo; the other
+          # Transit repos can push a bump to prontocx/transit at nearly the same time, so
+          # retry with a rebase if our push gets rejected as non-fast-forward.
+          for attempt in 1 2 3; do
+            if git push; then
+              break
+            fi
+            if [ "$attempt" = "3" ]; then
+              echo "Push failed after 3 attempts" >&2
+              exit 1
+            fi
+            echo "Push rejected, retrying ($attempt/3)..."
+            git fetch origin main
+            git rebase origin/main
+          done
